@@ -24,26 +24,31 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.packetmania.net","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk | utterances | disqus","storage":true,"lazyload":false,"nav":{"disqus":{"text":"Disqus Comments","order":-1},"utterances":{"order":-2},"gitalk":{"order":-3}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/en/js/config.js"></script>
-<meta name="description" content="Computer Networking and Software Design &amp; Implementation">
-<meta property="og:type" content="website">
-<meta property="og:title" content="PacketMania">
-<meta property="og:url" content="https://www.packetmania.net/en/index.html">
+<meta name="description" content="The problem of Endianness is essentially a question about how computers store large numbers.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Understand Endianness">
+<meta property="og:url" content="https://www.packetmania.net/en/2021-12-24-Endianness.html">
 <meta property="og:site_name" content="PacketMania">
-<meta property="og:description" content="Computer Networking and Software Design &amp; Implementation">
+<meta property="og:description" content="The problem of Endianness is essentially a question about how computers store large numbers.">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-12-25T05:58:43.000Z">
+<meta property="article:modified_time" content="2021-12-31T05:06:00.501Z">
 <meta property="article:author" content="Zixi">
-<meta property="article:tag" content="TCP&#x2F;IP, Wi-Fi, Routing and Switching, Network Security, Cryptography, System Programming, Data Structure and Algorithm, Cisco Products">
+<meta property="article:tag" content="C&#x2F;C++ Programming">
+<meta property="article:tag" content="Computer Architecture">
+<meta property="article:tag" content="Computer Communications">
+<meta property="article:tag" content="System Programming">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://www.packetmania.net/en/">
+<link rel="canonical" href="https://www.packetmania.net/en/2021-12-24-Endianness.html">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"en","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.packetmania.net/en/2021-12-24-Endianness.html","path":"2021-12-24-Endianness.html","title":"Understand Endianness"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>PacketMania - Technology | Knowledge | Sharing</title>
+<title>Understand Endianness | PacketMania</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YKBP0QK7Z"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-9YKBP0QK7Z","only_pageview":false}</script>
@@ -76,7 +81,7 @@
 
     <a href="/en/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">PacketMania</h1>
+      <p class="site-title">PacketMania</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">Technology | Knowledge | Sharing</p>
@@ -144,7 +149,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -157,6 +162,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#program-example"><span class="nav-number">1.</span> <span class="nav-text">Program Example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#network-order"><span class="nav-number">2.</span> <span class="nav-text">Network Order</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -229,118 +235,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.packetmania.net/en/2021-12-26-Analyze-IPv4-IPv6-checksum.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/en/images/ccie_emeritus.jpg">
-      <meta itemprop="name" content="Zixi">
-      <meta itemprop="description" content="Computer Networking and Software Design & Implementation">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PacketMania">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/en/2021-12-26-Analyze-IPv4-IPv6-checksum.html" class="post-title-link" itemprop="url">Explain IPv4 and IPv6 header checksum algorithm</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-12-26 20:52:03" itemprop="dateCreated datePublished" datetime="2021-12-26T20:52:03-08:00">2021-12-26</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-12-31 16:58:05" itemprop="dateModified" datetime="2021-12-31T16:58:05-08:00">2021-12-31</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/en/categories/Study-Notes/" itemprop="url" rel="index"><span itemprop="name">Study Notes</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Symbols count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>9k</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>8 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>About IP packet header checksum algorithm, simply put, it is 16-bit ones' complement of the ones' complement sum of all 16-bit words in the header. However, not many sources show exactly how this is done.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/en/2021-12-26-Analyze-IPv4-IPv6-checksum.html#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="https://www.packetmania.net/en/2021-12-24-Endianness.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -353,9 +258,9 @@
       <meta itemprop="name" content="PacketMania">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/en/2021-12-24-Endianness.html" class="post-title-link" itemprop="url">Understand Endianness</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Understand Endianness
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -385,6 +290,13 @@
     </span>
 
   
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
     <span class="post-meta-break"></span>
     <span class="post-meta-item" title="Symbols count in article">
       <span class="post-meta-item-icon">
@@ -409,16 +321,48 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>The problem of Endianness is essentially a question about how computers store large numbers.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/en/2021-12-24-Endianness.html#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
+        <p>The problem of Endianness is essentially a question about how computers store large numbers. <span id="more"></span></p>
+<div class="note success no-icon"><p><strong>I do not fear computers. I fear lack of them.</strong><br> <strong>— <em>Isaac Asimov</em> (American writer and professor of biochemistry, best known for his hard science fiction)</strong></p>
+</div>
+<p>We know that one basic memory unit can hold one byte, and each memory unit has its own address. For an integer larger than decimal 255 (0xff in hexadecimal), more than one memory unit is required. For example, 4660 is 0x1234 in hexadecimal and requires two bytes. Different computer systems use different methods to store these two bytes. In our common PC, the least-significant byte 0x34 is stored in the low address memory unit and the most-significant byte 0x12 is stored in the high address memory unit. While in Sun workstations, the opposite is true, with 0x34 in the high address memory unit and 0x12 in the low address memory unit. The former is called <code>Little Endian</code> and the latter is <code>Big Endian</code>.</p>
+<p>How can I remember these two data storing modes? It is actually quite simple. First remember that the addresses of the memory units we are talking about are always arranged from low to high. For a multi-byte number, if the first byte in the low address you see is the least-significant byte, the system is <code>Little Endian</code>, where Little matchs <code>low</code>. On the contrary is <code>Big Endian</code>, where Big corresponds to "high".</p>
+<h2 id="program-example">Program Example</h2>
+<p>To deepen our understanding of Endianness, let's look at the following example of a C program:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> a = <span class="number">1</span>; 	 	 	 </span><br><span class="line"><span class="keyword">char</span> b = <span class="number">2</span>;                       </span><br><span class="line"><span class="keyword">short</span> c = <span class="number">255</span>;	<span class="comment">/* 0x00ff */</span></span><br><span class="line"><span class="keyword">long</span> d = <span class="number">0x44332211</span>;</span><br></pre></td></tr></table></figure>
+<p>On Intel 80x86 based systems, the memory content corresponding to variables a, b, c, and d are shown in the following table：</p>
+<table>
+<thead>
+<tr class="header">
+<th>Address Offset</th>
+<th>Memory Content</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0x0000</td>
+<td>01 02 FF 00</td>
+</tr>
+<tr class="even">
+<td>0x0004</td>
+<td>11 22 33 44</td>
+</tr>
+</tbody>
+</table>
+<p>Obviously we can immediately tell that this system is <code>Little Endian</code>. For a 16-bit integer <code>short c</code>, we see the least-significant byte 0xff first, and the next one is 0x00. Similarly for a 32-bit integer <code>long d</code>, the least-significant byte 0x11 is stored at the lowest address 0x0004. If this is in a <code>Big Endian</code> computer, memory content would be: <em>01 02 00 FF 44 33 22 11</em>.</p>
+<p>At run time all computer processors must choose between these two Endians. The following is a short list of processor types with supported Endian modes:</p>
+<ul>
+<li>Pure<code>Big Endian</code>: Sun SPARC, Motorola 68000，Java Virtual Machine</li>
+<li>Bi-Endian running <code>Big Endian</code> mode: MIPS with IRIX, PA-RISC, most Power and PowerPC systems</li>
+<li>Bi-Endian running <code>Little Endian</code> mode: ARM, MIPS with Ultrix, most DEC Alpha, IA-64 with Linux</li>
+<li><code>Little Endian</code>: Intel x86, AMD64, DEC VAX</li>
+</ul>
+<p>How to detect the Endianess of local system in the program? The following function can be called for a quick check. If the return value is 1, it is <code>Little Endian</code>, else <code>Big Endian</code>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">test_endian</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> *((<span class="keyword">char</span> *)&amp;x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="network-order">Network Order</h2>
+<p>Endianness is also important for computer communications. Imagining that when a <code>Little Endian</code> system communicates with a <code>Big Endian</code> system, the receiver and sender will interpret the data completely differently if not handled properly. For example, for the variable d in the C program segment above, the <code>Little Endian</code> sender sends <em>11 22 33 44</em> four bytes, which the <code>Big Endian</code> receiver converts to the value 0x11223344. This is very different from the original value. To solve this problem, the TCP/IP protocol specifies a special "network byte order" (referred to as "network order"), which means that regardless of the Endian supported by the computer system, the most-significant byte is always sent first while transmitting data. From the definition, we can see that the network order actually corresponds to the <code>Big Endian</code>.</p>
+<p>In order to avoid communication problems caused by Endianness and to facilitate software developers to write portable programs, some C preprocessing macros are defined for conversion between network bytes and local byte order. <code>htons()</code> and <code>htonl()</code> are used to convert local byte order to network byte order, the former works with 16-bit unsigned numbers and the latter for 32-bit unsigned numbers. <code>ntohs()</code> and <code>ntohl()</code> implement the conversion in the opposite direction. The prototype definitions of these four macros can be found as follows (available in the <code>netinet/in.h</code> file on Linux systems).</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">if</span> defined(BIG_ENDIAN) &amp;&amp; !defined(LITTLE_ENDIAN)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> htons(A)  (A)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> htonl(A)  (A)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ntohs(A)  (A)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ntohl(A)  (A)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">elif</span> defined(LITTLE_ENDIAN) &amp;&amp; !defined(BIG_ENDIAN)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> htons(A)  ((((uint16)(A) &amp; 0xff00) &gt;&gt; 8) | \</span></span><br><span class="line"><span class="meta">                   (((uint16)(A) &amp; 0x00ff) &lt;&lt; 8))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> htonl(A)  ((((uint32)(A) &amp; 0xff000000) &gt;&gt; 24) | \</span></span><br><span class="line"><span class="meta">                   (((uint32)(A) &amp; 0x00ff0000) &gt;&gt; 8)  | \</span></span><br><span class="line"><span class="meta">                   (((uint32)(A) &amp; 0x0000ff00) &lt;&lt; 8)  | \</span></span><br><span class="line"><span class="meta">                   (((uint32)(A) &amp; 0x000000ff) &lt;&lt; 24))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ntohs     htons</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ntohl     htohl</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">error</span> <span class="meta-string">&quot;Either BIG_ENDIAN or LITTLE_ENDIAN must be #defined, but not both.&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
     </div>
 
     
@@ -426,8 +370,41 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Zixi
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://www.packetmania.net/en/2021-12-24-Endianness.html" title="Understand Endianness">https://www.packetmania.net/en/2021-12-24-Endianness.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/en/tags/C-C-Programming/" rel="tag"><i class="fa fa-tag"></i> C/C++ Programming</a>
+              <a href="/en/tags/Computer-Architecture/" rel="tag"><i class="fa fa-tag"></i> Computer Architecture</a>
+              <a href="/en/tags/Computer-Communications/" rel="tag"><i class="fa fa-tag"></i> Computer Communications</a>
+              <a href="/en/tags/System-Programming/" rel="tag"><i class="fa fa-tag"></i> System Programming</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/2021-12-26-Analyze-IPv4-IPv6-checksum.html" rel="next" title="Explain IPv4 and IPv6 header checksum algorithm">
+                  Explain IPv4 and IPv6 header checksum algorithm <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
     </footer>
   </article>
 </div>
@@ -436,6 +413,29 @@
 
 
 
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">gitalk</a></li>
+            <li class="tab"><a href="#comment-utterances">utterances</a></li>
+            <li class="tab"><a href="#comment-disqus">Disqus Comments</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+            <div class="tab-pane disqus" id="comment-disqus">
+              
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+            </div>
+        </div>
+      </div>
 </div>
   </main>
 
@@ -527,7 +527,7 @@
 <script src="/en/js/third-party/comments/disqus.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"packetmania","repo":"en","client_id":"a45f6ae3f97c1a467856","client_secret":"7d81b74f952b388f93dcb5a8c44cd12f657969fa","admin_user":"packetmania","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"7ca1683270c6b093ba99d39d2ca45567"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"packetmania","repo":"en","client_id":"a45f6ae3f97c1a467856","client_secret":"7d81b74f952b388f93dcb5a8c44cd12f657969fa","admin_user":"packetmania","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"a6a7a8396b3d73fefa3c314840de0213"}</script>
 <script src="/en/js/third-party/comments/gitalk.js"></script>
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"packetmania/en","issue_term":"pathname","theme":"github-light"}</script>
 <script src="/en/js/third-party/comments/utterances.js"></script>

@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2021-12-30T03:10:18.393Z</updated>
+  <updated>2022-01-01T00:58:05.981Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -17,23 +17,48 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="https://www.packetmania.net/en/2021-12-29-hello-world.html"/>
-    <id>https://www.packetmania.net/en/2021-12-29-hello-world.html</id>
-    <published>2021-12-30T03:10:18.393Z</published>
-    <updated>2021-12-30T03:10:18.393Z</updated>
+    <title>Explain IPv4 and IPv6 header checksum algorithm</title>
+    <link href="https://www.packetmania.net/en/2021-12-26-Analyze-IPv4-IPv6-checksum.html"/>
+    <id>https://www.packetmania.net/en/2021-12-26-Analyze-IPv4-IPv6-checksum.html</id>
+    <published>2021-12-27T04:52:03.000Z</published>
+    <updated>2022-01-01T00:58:05.981Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
-        
-      
+    <summary type="html">&lt;p&gt;About IP packet header checksum algorithm, simply put, it is 16-bit ones&#39; complement of the ones&#39; complement sum of all 16-bit words in the header. However, not many sources show exactly how this is done.</summary>
     
     
     
+    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
+    
+    
+    <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
+    
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Understand Endianness</title>
+    <link href="https://www.packetmania.net/en/2021-12-24-Endianness.html"/>
+    <id>https://www.packetmania.net/en/2021-12-24-Endianness.html</id>
+    <published>2021-12-25T05:58:43.000Z</published>
+    <updated>2021-12-31T05:06:00.501Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;The problem of Endianness is essentially a question about how computers store large numbers.</summary>
+    
+    
+    
+    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
+    
+    
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
+    
+    <category term="Computer Architecture" scheme="https://www.packetmania.net/en/tags/Computer-Architecture/"/>
+    
+    <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
+    
+    <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
     
   </entry>
   

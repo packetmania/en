@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.0.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/en/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="piAnQ_mnwkhV_qh4_Se1yLzM1IwOvuq-vmYfXBkWRXU">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=EB+Garamond:300,300italic,400,400italic,700,700italic%7CNoto+Serif+SC:300,300italic,400,400italic,700,700italic%7CRoboto+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.packetmania.net","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk | utterances | disqus","storage":true,"lazyload":false,"nav":{"disqus":{"text":"Disqus Comments","order":-1},"utterances":{"order":-2},"gitalk":{"order":-3}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/en/js/config.js"></script>
+<meta name="description" content="About IP packet header checksum algorithm, simply put, it is 16-bit ones&#39; complement of the ones&#39; complement sum of all 16-bit words in the header. However, not many sources show exactly how this is d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Explain IPv4 and IPv6 header checksum algorithm">
+<meta property="og:url" content="https://www.packetmania.net/en/2021-12-26-Analyze-IPv4-IPv6-checksum.html">
+<meta property="og:site_name" content="PacketMania">
+<meta property="og:description" content="About IP packet header checksum algorithm, simply put, it is 16-bit ones&#39; complement of the ones&#39; complement sum of all 16-bit words in the header. However, not many sources show exactly how this is d">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-12-27T04:52:03.000Z">
+<meta property="article:modified_time" content="2022-01-01T00:58:05.981Z">
+<meta property="article:author" content="Zixi">
+<meta property="article:tag" content="TCP&#x2F;IP">
+<meta property="article:tag" content="C&#x2F;C++ Programming">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.packetmania.net/en/2021-12-26-Analyze-IPv4-IPv6-checksum.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.packetmania.net/en/2021-12-26-Analyze-IPv4-IPv6-checksum.html","path":"2021-12-26-Analyze-IPv4-IPv6-checksum.html","title":"Explain IPv4 and IPv6 header checksum algorithm"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Explain IPv4 and IPv6 header checksum algorithm | PacketMania</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YKBP0QK7Z"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-9YKBP0QK7Z","only_pageview":false}</script>
+  <script src="/en/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PacketMania" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PacketMania</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Technology | Knowledge | Sharing</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/en/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/en/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/en/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+        <li class="menu-item menu-item-rss"><a href="/en/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+        <li class="menu-item menu-item-language"><a href="https://www.packetmania.net/" rel="section"><i class="fa fa-language fa-fw"></i>中文</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ipv4-header-checksum"><span class="nav-number">1.</span> <span class="nav-text">IPv4 Header Checksum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c-program-implementation"><span class="nav-number">2.</span> <span class="nav-text">C Program Implementation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tcpudp-header-checksum"><span class="nav-number">3.</span> <span class="nav-text">TCP&#x2F;UDP Header Checksum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ipv6-difference"><span class="nav-number">4.</span> <span class="nav-text">IPv6 Difference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#udp-lite-application"><span class="nav-number">5.</span> <span class="nav-text">UDP-Lite Application</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zixi"
+      src="/en/images/ccie_emeritus.jpg">
+  <p class="site-author-name" itemprop="name">Zixi</p>
+  <div class="site-description" itemprop="description">Computer Networking and Software Design & Implementation</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/packetmania" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;packetmania" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zixiruoxue@gmail.com" title="E-Mail → mailto:zixiruoxue@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/zixisean" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zixisean" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/15140531" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;15140531" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_nd.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.packetmania.net/en/2021-12-26-Analyze-IPv4-IPv6-checksum.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/ccie_emeritus.jpg">
+      <meta itemprop="name" content="Zixi">
+      <meta itemprop="description" content="Computer Networking and Software Design & Implementation">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PacketMania">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Explain IPv4 and IPv6 header checksum algorithm
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-12-26 20:52:03" itemprop="dateCreated datePublished" datetime="2021-12-26T20:52:03-08:00">2021-12-26</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-12-31 16:58:05" itemprop="dateModified" datetime="2021-12-31T16:58:05-08:00">2021-12-31</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/Study-Notes/" itemprop="url" rel="index"><span itemprop="name">Study Notes</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>9k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>8 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>About IP packet header checksum algorithm, simply put, it is 16-bit ones' complement of the ones' complement sum of all 16-bit words in the header. However, not many sources show exactly how this is done.<span id="more"></span> The same checksum algorithm is used by TCP segment and UDP datagram, but the data involved in the checksum is different from that in the IP header. In addition, the checksum operation of IPv6 is slightly different from that of IPv4. Therefore, it is necessary to make a comprehensive analysis of the checksum algorithm of IP packets.</p>
+<div class="note success no-icon"><p><strong>Nothing in life is to be feared, it is only to be understood.</strong><br> <strong>— <em>Marie Curie</em> (Polish and naturalized-French physicist and chemist, twice Nobel Prize winner)</strong></p>
+</div>
+<h2 id="ipv4-header-checksum">IPv4 Header Checksum</h2>
+<p>IPv4 packet header format can be seen below</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">0                   1                   2                   3    </span><br><span class="line">0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1  </span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|Version|  IHL  |Type of Service|          Total Length         |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|         Identification        |Flags|      Fragment Offset    |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|  Time to Live |    Protocol   |        Header Checksum        |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|                       Source Address                          |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|                    Destination Address                        |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|                    Options                    |    Padding    |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br></pre></td></tr></table></figure>
+<p>Here the 16-bit Header Checksum field is used for error-checking of the. While computing the IPv4 header checksum, the sender first clears the checksum field to zero, then calculates the sum of each 16-bit value within the header. The sum is saved in a 32-bit value. If the total number of bytes is odd, the last byte is added separately.</p>
+<p>After all additions, the higher 16 bits saving the carry is added to the lower 16 bits. Repeat this till all higher 16 bits are zeros. Finally the sender takes the ones' complement of the lower 16 bits of the result and writes it to IP header checuksum field.</p>
+<p>The following demonstrates the entire calculation process using actual captured IPv4 packets.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0x0000: 00 60 47 41 11 c9 00 09 6b 7a 5b 3b 08 00 45 00 </span><br><span class="line">0x0010: 00 1c 74 68 00 00 80 11 59 8f c0 a8 64 01 ab 46 </span><br><span class="line">0x0020: 9c e9 0f 3a 04 05 00 08 7f c5 00 00 00 00 00 00 </span><br><span class="line">0x0030: 00 00 00 00 00 00 00 00 00 00 00 00</span><br></pre></td></tr></table></figure>
+<p>At the beginning of the above 16-bit hex dump is the Ethernet frame header. The IP packet header start from offset 0x000e, with the first byte 0x45 and the last byte 0xe9. Based on the previous description of the algorithm, we can make the following calculations:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(1) 0x4500 + 0x001c + 0x7468 + 0x0000 + 0x8011 +</span><br><span class="line">    0x0000 + 0xc0a8 + 0x6401 + 0xab46 + 0x9ce9 = 0x3a66d</span><br><span class="line">(2) 0xa66d + 0x3 = 0xa670</span><br><span class="line">(3) 0xffff - 0xa670 = 0x598f</span><br></pre></td></tr></table></figure>
+<p>Notice at step (1) we replace the checksum field with <u>0x0000</u>. As can be seen, the calculated header checksum 0x598f is exactly the same as the value in the captured packet. This calculating process is only used for the sender to generate the initial checksum. In practice, for the intermediate forwarding router and the final receiver, they can just sum up all header fields of the receive IP packet by the same algorithm. If the result is <u>0xffff</u>, the checksum verification passes.</p>
+<h2 id="c-program-implementation">C Program Implementation</h2>
+<p>How to program IPv4 header checksum computing? <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc1071">RFC 1071</a> (Computing the Internet Checksum) shows a reference "C" language implementation:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* Compute Internet Checksum for &quot;count&quot; bytes</span></span><br><span class="line"><span class="comment">     * beginning at location &quot;addr&quot;.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>( count &gt; <span class="number">1</span> )  &#123;</span><br><span class="line">        <span class="comment">/* This is the inner loop */</span></span><br><span class="line">        sum += * (<span class="keyword">unsigned</span> <span class="keyword">short</span> *) addr++;</span><br><span class="line">        count -= <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*  Add left-over byte, if any */</span></span><br><span class="line">    <span class="keyword">if</span> ( count &gt; <span class="number">0</span> )</span><br><span class="line">        sum += * (<span class="keyword">unsigned</span> <span class="keyword">char</span> *) addr;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*  Fold 32-bit sum to 16 bits */</span></span><br><span class="line">    <span class="keyword">while</span> (sum&gt;&gt;<span class="number">16</span>)</span><br><span class="line">        sum = (sum &amp; <span class="number">0xffff</span>) + (sum &gt;&gt; <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line">    checksum = ~sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>In a real network connection, the source device can call the above code to generate the initial IPv4 header checksum. This checksum is then updated at each step of the routing hop because the router must decrement the Time To Live (TTL) field. <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc1141">RFC 1141</a> (Incremental Updating of the Internet Checksum) gives a reference implemenatation of fast checksum update：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span> sum;</span><br><span class="line">ipptr-&gt;ttl--;                  <span class="comment">/* decrement ttl */</span></span><br><span class="line">sum = ipptr-&gt;Checksum + <span class="number">0x100</span>; <span class="comment">/* increment checksum high byte*/</span></span><br><span class="line">ipptr-&gt;Checksum = (sum + (sum&gt;&gt;<span class="number">16</span>)); <span class="comment">/* add carry */</span></span><br></pre></td></tr></table></figure>
+<h2 id="tcpudp-header-checksum">TCP/UDP Header Checksum</h2>
+<p>For TCP segment and UDP datagram, they both have 16-bit header checkum fields used for error-checking by the destination host. The checksum computing algorithm is the same as IP header, except the difference of covered data. Here the checksum in calculated over the whole TCP/UDP header and the payload, plus a pseudo-header that mimics the IPv4 header as shown below:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> 0      7 8     15 16    23 24    31 </span><br><span class="line">+--------+--------+--------+--------+</span><br><span class="line">|          source address           |</span><br><span class="line">+--------+--------+--------+--------+</span><br><span class="line">|        destination address        |</span><br><span class="line">+--------+--------+--------+--------+</span><br><span class="line">|  zero  |protocol| TCP/UDP length  |</span><br><span class="line">+--------+--------+--------+--------+</span><br></pre></td></tr></table></figure>
+<p>It consists of the source and destination IP addresses, the protocol number (TCP:6/UDP:17), and the total length of the TCP/UDP header and payload (in bytes). The purpose of including the pseudo-header in the checksum computing is to confirm the packet reachs the expected destination and avoid IP spoofing attack. Besides, for IPv4 UDP header checksum is optional, it carries all-zeros if unused.</p>
+<h2 id="ipv6-difference">IPv6 Difference</h2>
+<p>IPv6 is IP protocol version 6, and its main design goal was to resolve the problem of IPv4 address exhaustion. Of course it provides many benefits in other aspects. Although the IPv6 usage is growing slowly, the trend is unstoppable. The latest IPv6 standard is published in <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc8200">RFC 8200</a>(Internet Protocol, Version 6 (IPv6) Specification).</p>
+<p>IPv6 packet header format can be seen below</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|Version| Traffic Class |           Flow Label                  |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|         Payload Length        |  Next Header  |   Hop Limit   |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|                                                               |</span><br><span class="line">+                                                               +</span><br><span class="line">|                                                               |</span><br><span class="line">+                         Source Address                        +</span><br><span class="line">|                                                               |</span><br><span class="line">+                                                               +</span><br><span class="line">|                                                               |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|                                                               |</span><br><span class="line">+                                                               +</span><br><span class="line">|                                                               |</span><br><span class="line">+                      Destination Address                      +</span><br><span class="line">|                                                               |</span><br><span class="line">+                                                               +</span><br><span class="line">|                                                               |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br></pre></td></tr></table></figure>
+<p>Notice that the IPv6 header does not include a checksum field, a significant difference from IPv4. The absence of a checksum in the IPv6 header furthers the end-to-end principle of Internet design, to simplify router processing and speed up the packet transmission. Protection for the data integrity can be accomplished by error detection at the link layer or the higher-layer protocols between endpoints (such as TCP/UDP on the transport layer). This is why IPv6 forces the UDP layer to set the header checksum.</p>
+<p>For IPv6 TCP segment and UDP datagram header checksum computing, the pseudo-header that mimics the IPv6 header is shown below</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|                                                               |</span><br><span class="line">+                                                               +</span><br><span class="line">|                                                               |</span><br><span class="line">+                         Source Address                        +</span><br><span class="line">|                                                               |</span><br><span class="line">+                                                               +</span><br><span class="line">|                                                               |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|                                                               |</span><br><span class="line">+                                                               +</span><br><span class="line">|                                                               |</span><br><span class="line">+                      Destination Address                      +</span><br><span class="line">|                                                               |</span><br><span class="line">+                                                               +</span><br><span class="line">|                                                               |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|                   Upper-Layer Packet Length                   |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|                      zero                     |  Next Header  |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br></pre></td></tr></table></figure>
+<h2 id="udp-lite-application">UDP-Lite Application</h2>
+<p>In actual IPv6 network applications, UDP-Lite (Lightweight UDP) can be used to balance error detection and transmission efficiency. UDP-Lite has its own protocol number 136, and its standard is described in <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc8200">RFC 3828</a> (The Lightweight User Datagram Protocol (UDP-Lite)).</p>
+<p>Referring to the following header format, UDP-Lite uses the same set of <a target="_blank" rel="noopener" href="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml">port number values assigned by the IANA</a> for use by UDP. But it redefines "length" field in UDP header to "Checksum Coverage", which allows the application layer to control the length of checksummed data. This is usful for the application that can be tolerant of the potentially lossy transmission of the uncovered portion of the data.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> 0              15 16             31</span><br><span class="line">+--------+--------+--------+--------+</span><br><span class="line">|     Source      |   Destination   |</span><br><span class="line">|      Port       |      Port       |</span><br><span class="line">+--------+--------+--------+--------+</span><br><span class="line">|    Checksum     |                 |</span><br><span class="line">|    Coverage     |    Checksum     |</span><br><span class="line">+--------+--------+--------+--------+</span><br><span class="line">|                                   |</span><br><span class="line">:              Payload              :</span><br><span class="line">|                                   |</span><br><span class="line">+-----------------------------------+</span><br></pre></td></tr></table></figure>
+<p>UDP-Lite protocol defines the values of "Checksum Coverage" (in bytes) as shown in the following table:</p>
+<table>
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 36%" />
+<col style="width: 31%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Checksum Coverage</th>
+<th style="text-align: center;">Coverage Area</th>
+<th style="text-align: center;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">entire UDP-Lites datagram</td>
+<td style="text-align: center;">Calculation covers IP pseudo-header</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1-7</td>
+<td style="text-align: center;">(invalid)</td>
+<td style="text-align: center;">The receiver has to drop the datagram</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">UDP-Lites header</td>
+<td style="text-align: center;">Calculation covers IP pseudo-header</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">&gt; 8</td>
+<td style="text-align: center;">UDP-Lites header + portion of payload data</td>
+<td style="text-align: center;">Calculation covers IP pseudo-header</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">&gt; IP datagram length</td>
+<td style="text-align: center;">(invalid)</td>
+<td style="text-align: center;">The receiver has to drop the datagram</td>
+</tr>
+</tbody>
+</table>
+<p>For multimedia applications running VoIP or streaming video data transmission protocols, it'd better receive data with some degree of corruption than not receiving any data at all. Another example is the <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc5415">CAPWAP</a> protocol used to connect Cisco wireless controller and access points. It specifies UDP-Lite as the default transport protocol for the CAPWAP Data channel, while the connection is established over IPv6 network.</p>
+<p>At last, share a C program snippet to present how to initialize a Berkeley socket to establish an IPv6 UDP-Lite connection:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;netinet/in.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;net/udplite.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> udplite_conn = socket(AF_INET6, SOCK_DGRAM, IPPROTO_UDPLITE);</span><br><span class="line"><span class="keyword">int</span> val = <span class="number">8</span>;    <span class="comment">/* checksum only covers 8-byte UDP-Lite header */</span></span><br><span class="line">(<span class="keyword">void</span>)setsockopt(udplite_conn, IPPROTO_UDPLITE, UDPLITE_SEND_CSCOV, &amp;val, <span class="keyword">sizeof</span> val);</span><br><span class="line">(<span class="keyword">void</span>)setsockopt(udplite_conn, IPPROTO_UDPLITE, UDPLITE_RECV_CSCOV, &amp;val, <span class="keyword">sizeof</span> val);</span><br></pre></td></tr></table></figure>
+<p>Here <code>IPPROTO_UDPLITE</code> is protocol number 136, which is used together with <code>AF_INET6</code> address family paramater in <code>socket()</code> funtion call for IPv6 socket creation. The <code>UDPLITE_SEND_CSCOV</code>(10) and <code>UDPLITE_RECV_CSCOV</code>(11) are the control parameters of socket option configuration function <code>setsockopt()</code>, used for setting the Checksum Coverage value in the sender and the receiver respectively. Remember that both the sender and the receiver must set the same value, otherwise the receiver will not be able to verify the checksum properly.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Zixi
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://www.packetmania.net/en/2021-12-26-Analyze-IPv4-IPv6-checksum.html" title="Explain IPv4 and IPv6 header checksum algorithm">https://www.packetmania.net/en/2021-12-26-Analyze-IPv4-IPv6-checksum.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/en/tags/TCP-IP/" rel="tag"><i class="fa fa-tag"></i> TCP/IP</a>
+              <a href="/en/tags/C-C-Programming/" rel="tag"><i class="fa fa-tag"></i> C/C++ Programming</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/2021-12-24-Endianness.html" rel="prev" title="Understand Endianness">
+                  <i class="fa fa-chevron-left"></i> Understand Endianness
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">gitalk</a></li>
+            <li class="tab"><a href="#comment-utterances">utterances</a></li>
+            <li class="tab"><a href="#comment-disqus">Disqus Comments</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+            <div class="tab-pane disqus" id="comment-disqus">
+              
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zixi</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>Symbols count total: </span>
+    <span title="Symbols count total">13k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>Reading time total &asymp;</span>
+    <span title="Reading time total">12 mins.</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5fc1fd29017282c7" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/en/js/comments.js"></script><script src="/en/js/utils.js"></script><script src="/en/js/motion.js"></script><script src="/en/js/next-boot.js"></script><script src="/en/js/bookmark.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/en/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"forest","dark":"forest"},"js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.13.4/dist/mermaid.min.js","integrity":"sha256-96rwDGMWIQYB0yKGp1sKi1yrjrLPj2oT39IpbCsIrsg="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/en/js/third-party/fancybox.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/en/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"packetmania-github-io","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/en/js/third-party/comments/disqus.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"packetmania","repo":"en","client_id":"a45f6ae3f97c1a467856","client_secret":"7d81b74f952b388f93dcb5a8c44cd12f657969fa","admin_user":"packetmania","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"6ecdfb5be77e6bcf452cf26cb818d2aa"}</script>
+<script src="/en/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"packetmania/en","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/en/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

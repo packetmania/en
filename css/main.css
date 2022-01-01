@@ -310,7 +310,7 @@ dd {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-  font-size: 0.875em;
+  font-size: 15px;
   margin: 0 0 20px;
   width: 100%;
 }
@@ -612,7 +612,7 @@ pre figcaption {
   background: var(--highlight-gutter-background);
   color: var(--highlight-foreground);
   display: flow-root;
-  font-size: 0.875em;
+  font-size: 15px;
   line-height: 1.2;
   padding: 0.5em;
 }
@@ -629,11 +629,11 @@ pre figcaption a:hover {
 }
 pre,
 code {
-  font-family: Roboto Mono, consolas, Menlo, monospace, 'PingFang SC', 'Microsoft YaHei';
+  font-family: "PT Mono", Consolas, Monaco, Menlo, monospace;
 }
 code {
   border-radius: 3px;
-  font-size: 0.875em;
+  font-size: 15px;
   padding: 2px 4px;
   overflow-wrap: break-word;
 }
