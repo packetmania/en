@@ -52,9 +52,9 @@
     <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
     
     
-    <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
-    
     <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
+    
+    <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
     
   </entry>
   
@@ -73,13 +73,13 @@
     <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
     
     
-    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
-    
     <category term="Computer Architecture" scheme="https://www.packetmania.net/en/tags/Computer-Architecture/"/>
     
     <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
     
     <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
+    
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
     
   </entry>
   
