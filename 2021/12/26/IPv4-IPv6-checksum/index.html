@@ -23,30 +23,30 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.packetmania.net","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk | utterances | disqus","storage":true,"lazyload":false,"nav":{"disqus":{"text":"Disqus Comments","order":-1},"utterances":{"order":-2},"gitalk":{"order":-3}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/en/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.packetmania.net","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk | utterances | disqus","storage":true,"lazyload":false,"nav":{"disqus":{"text":"Disqus Comments","order":-1},"utterances":{"text":"Utterances Comments","order":-2},"gitalk":{"text":"Gitalk Comments","order":-3}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/en/js/config.js"></script>
 <meta name="description" content="About IP packet header checksum algorithm, simply put, it is 16-bit ones&#39; complement of the ones&#39; complement sum of all 16-bit words in the header. However, not many sources show exactly how this is d">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Explain IPv4 and IPv6 header checksum algorithm">
-<meta property="og:url" content="https://www.packetmania.net/en/2021-12-26-Analyze-IPv4-IPv6-checksum.html">
+<meta property="og:title" content="IPv4 and IPv6 Header Checksum Algorithm Explained">
+<meta property="og:url" content="https://www.packetmania.net/en/2021/12/26/IPv4-IPv6-checksum/index.html">
 <meta property="og:site_name" content="PacketMania">
 <meta property="og:description" content="About IP packet header checksum algorithm, simply put, it is 16-bit ones&#39; complement of the ones&#39; complement sum of all 16-bit words in the header. However, not many sources show exactly how this is d">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-12-27T04:52:03.000Z">
-<meta property="article:modified_time" content="2022-01-01T00:58:05.981Z">
+<meta property="article:modified_time" content="2022-01-01T22:17:46.541Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="TCP&#x2F;IP">
 <meta property="article:tag" content="C&#x2F;C++ Programming">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://www.packetmania.net/en/2021-12-26-Analyze-IPv4-IPv6-checksum.html">
+<link rel="canonical" href="https://www.packetmania.net/en/2021/12/26/IPv4-IPv6-checksum/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.packetmania.net/en/2021-12-26-Analyze-IPv4-IPv6-checksum.html","path":"2021-12-26-Analyze-IPv4-IPv6-checksum.html","title":"Explain IPv4 and IPv6 header checksum algorithm"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.packetmania.net/en/2021/12/26/IPv4-IPv6-checksum/","path":"2021/12/26/IPv4-IPv6-checksum/","title":"IPv4 and IPv6 Header Checksum Algorithm Explained"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Explain IPv4 and IPv6 header checksum algorithm | PacketMania</title>
+<title>IPv4 and IPv6 Header Checksum Algorithm Explained | PacketMania</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YKBP0QK7Z"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-9YKBP0QK7Z","only_pageview":false}</script>
@@ -175,18 +175,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/en/archives/">
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/en/categories/">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/en/tags/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -244,7 +244,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://www.packetmania.net/en/2021-12-26-Analyze-IPv4-IPv6-checksum.html">
+    <link itemprop="mainEntityOfPage" href="https://www.packetmania.net/en/2021/12/26/IPv4-IPv6-checksum/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/en/images/ccie_emeritus.jpg">
@@ -257,7 +257,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Explain IPv4 and IPv6 header checksum algorithm
+          IPv4 and IPv6 Header Checksum Algorithm Explained
         </h1>
 
         <div class="post-meta-container">
@@ -275,7 +275,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-12-31 16:58:05" itemprop="dateModified" datetime="2021-12-31T16:58:05-08:00">2021-12-31</time>
+        <time title="Modified: 2022-01-01 14:17:46" itemprop="dateModified" datetime="2022-01-01T14:17:46-08:00">2022-01-01</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -319,7 +319,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>About IP packet header checksum algorithm, simply put, it is 16-bit ones' complement of the ones' complement sum of all 16-bit words in the header. However, not many sources show exactly how this is done.<span id="more"></span> The same checksum algorithm is used by TCP segment and UDP datagram, but the data involved in the checksum is different from that in the IP header. In addition, the checksum operation of IPv6 is slightly different from that of IPv4. Therefore, it is necessary to make a comprehensive analysis of the checksum algorithm of IP packets.</p>
+        <p>About IP packet header checksum algorithm, simply put, it is 16-bit ones' complement of the ones' complement sum of all 16-bit words in the header. However, not many sources show exactly how this is done.<span id="more"></span> The same checksum algorithm is used by TCP segment and UDP datagram, but the data involved in the checksum computing is different from that in the IP header. In addition, the checksum operation of IPv6 packet is different from that of IPv4. Therefore, it is necessary to make a comprehensive analysis of the checksum algorithm of IP packets.</p>
 <div class="note success no-icon"><p><strong>Nothing in life is to be feared, it is only to be understood.</strong><br> <strong>— <em>Marie Curie</em> (Polish and naturalized-French physicist and chemist, twice Nobel Prize winner)</strong></p>
 </div>
 <h2 id="ipv4-header-checksum">IPv4 Header Checksum</h2>
@@ -415,7 +415,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>Post link: </strong>
-      <a href="https://www.packetmania.net/en/2021-12-26-Analyze-IPv4-IPv6-checksum.html" title="Explain IPv4 and IPv6 header checksum algorithm">https://www.packetmania.net/en/2021-12-26-Analyze-IPv4-IPv6-checksum.html</a>
+      <a href="https://www.packetmania.net/en/2021/12/26/IPv4-IPv6-checksum/" title="IPv4 and IPv6 Header Checksum Algorithm Explained">https://www.packetmania.net/en/2021/12/26/IPv4-IPv6-checksum/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> unless stating additionally.
@@ -432,11 +432,14 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/en/2021-12-24-Endianness.html" rel="prev" title="Understand Endianness">
+                <a href="/en/2021/12/24/Endianness/" rel="prev" title="Understand Endianness">
                   <i class="fa fa-chevron-left"></i> Understand Endianness
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/en/2021/12/29/RPi-NAS-Plex/" rel="next" title="Build an Awesome Raspberry Pi NAS for Home Media Streaming">
+                  Build an Awesome Raspberry Pi NAS for Home Media Streaming <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
@@ -450,8 +453,8 @@
 
       <div class="tabs tabs-comment">
         <ul class="nav-tabs">
-            <li class="tab"><a href="#comment-gitalk">gitalk</a></li>
-            <li class="tab"><a href="#comment-utterances">utterances</a></li>
+            <li class="tab"><a href="#comment-gitalk">Gitalk Comments</a></li>
+            <li class="tab"><a href="#comment-utterances">Utterances Comments</a></li>
             <li class="tab"><a href="#comment-disqus">Disqus Comments</a></li>
         </ul>
         <div class="tab-content">
@@ -479,7 +482,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -491,14 +494,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>Symbols count total: </span>
-    <span title="Symbols count total">13k</span>
+    <span title="Symbols count total">46k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>Reading time total &asymp;</span>
-    <span title="Reading time total">12 mins.</span>
+    <span title="Reading time total">42 mins.</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -561,7 +564,7 @@
 <script src="/en/js/third-party/comments/disqus.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"packetmania","repo":"en","client_id":"a45f6ae3f97c1a467856","client_secret":"7d81b74f952b388f93dcb5a8c44cd12f657969fa","admin_user":"packetmania","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"6ecdfb5be77e6bcf452cf26cb818d2aa"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"packetmania","repo":"en","client_id":"a45f6ae3f97c1a467856","client_secret":"7d81b74f952b388f93dcb5a8c44cd12f657969fa","admin_user":"packetmania","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"fa3a6fb1e5f248dc0b84aedfe9bff30f"}</script>
 <script src="/en/js/third-party/comments/gitalk.js"></script>
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"packetmania/en","issue_term":"pathname","theme":"github-light"}</script>
 <script src="/en/js/third-party/comments/utterances.js"></script>
