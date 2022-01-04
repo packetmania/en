@@ -52,7 +52,7 @@
 <meta property="og:image" content="https://www.packetmania.net/en/2021/12/29/RPi-NAS-Plex/ADM-HDD.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2021/12/29/RPi-NAS-Plex/NASPi-final.jpg">
 <meta property="article:published_time" content="2021-12-29T18:53:08.000Z">
-<meta property="article:modified_time" content="2022-01-04T18:53:47.023Z">
+<meta property="article:modified_time" content="2022-01-04T19:28:55.281Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="Raspberry Pi">
 <meta property="article:tag" content="NAS">
@@ -296,7 +296,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-01-04 10:53:47" itemprop="dateModified" datetime="2022-01-04T10:53:47-08:00">2022-01-04</time>
+        <time title="Modified: 2022-01-04 11:28:55" itemprop="dateModified" datetime="2022-01-04T11:28:55-08:00">2022-01-04</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -609,23 +609,23 @@
 </table>
 <p>As can be seen, rhe speed of remote write is around 20MB/s, while the speed of remote read file can reach over 60MB/s. Considering that scp-related encryption and decryption are implemented in software on general-purpose Raspberry Pi systems, this result should be considered passable.</p>
 <h3 id="disk-access-speed-test">Disk Access Speed Test</h3>
-<p>The real test of the NAS own performance is the network drive read/write speed test. For this, we downloaded the AmorphousDiskMark app from Apple's App Store. This is an easy and efficient drive speed test that measures the read/write performance of a storage device in terms of MB/s and IOPS (input/output operations per second). It has four types of tests.</p>
+<p>The real test of the NAS own performance is the network drive read/write speed test. For this, we downloaded the AmorphousDiskMark app from Apple's App Store. This is an easy and efficient drive speed test that measures the read/write performance of a storage device in terms of MB/s and IOPS (input/output operations per second). It has four types of tests:</p>
 <ol type="1">
-<li>1MB sequential read/write with a queue depth of 8</li>
-<li>1MB sequential read/write with a queue depth of 1</li>
-<li>4KB random read/write with a queue depth of 64</li>
-<li>4KB random read/write with a queue depth of 1</li>
+<li>sequential read/write, 1MB block, queue depth 8</li>
+<li>sequential read/write, 1MB block, queue depth 1</li>
+<li>random read/write, 4KB block, queue depth 64</li>
+<li>random read/write, 4KB block, queue depth 1</li>
 </ol>
 <p>The above queue depths are the default values, but other values are also available. In addition, users can also modify the test file size and duration.</p>
 <p>Run the application on the macOS client and select the remote SMB folders Zixi-Primary (Samsung SSD) and Zixi-Secondary (Seagate HDD) respectively at the top, then click the <code>All</code> button in the upper left corner to start the NAS drive speed test process. A side-by-side comparison of the two test results is shown below</p>
 <div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img src="ADM-SSD.png" /></div><div class="group-picture-column"><img src="ADM-HDD.png" /></div></div></div>
 <p>This gives a few observations:</p>
 <ul>
-<li>Reads is fast than writes for NAS drives, and the difference under random access is very big.</li>
-<li>SSDs outperform HDDs for both sequential and random accesses.</li>
+<li>Reads are fast than writes for NAS drives, and the difference under random access is hugh.</li>
+<li>SSD outperforms HDD for both sequential and random accesses.</li>
 <li>Large queue depth speeds up reads, especially for random accesses, but there is little impact on writes.</li>
-<li>For both SSDs and HDDs, sequential reads and writes are significantly more efficient than random reads and writes.</li>
-<li>For both SSDs and HDDs, sequential reads and writes reach their highest speeds at large queue depths.</li>
+<li>For both SSDs and HDDs, sequential reads/writes are significantly more efficient than random reads/writes.</li>
+<li>For both SSDs and HDDs, sequential reads/writes reach their highest speeds at large queue depths.</li>
 </ul>
 <p>These are not really surprising, and are consistent with the test results on macOS laptops with direct external SSDs and HDDs, only with lower number. With this NAS system, both the SSD and HDD are connected via the USB 3.0 interface. USB 3.0 supports transfer speeds of up to 5Gbit/s, so the performance bottleneck of the system is the network interface bandwidth and processor power.</p>
 <p>That being said, for both SSDs and HDDs the transfer speeds has been in excess of 900Mbit/s at 1MB sequential read and queue depth 8, close to the upper bandwidth limit of the Gigabit Ethernet interface. This read speed can support a single 1080p60 video stream at a frame rate of 60fps or 2 parallel 1080i50 video streams at a frame rate of 25fps, which is sufficient for home streaming services. In another media service test, the NAS system performs satisfactorily with three computers playing HD video on demand and one phone playing MP3 music without any lag.</p>
