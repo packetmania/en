@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2022-01-08T05:07:40.953Z</updated>
+  <updated>2022-02-03T07:57:27.800Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Implement Textbook RSA in Python</title>
+    <link href="https://www.packetmania.net/en/2022/01/22/Python-Textbook-RSA/"/>
+    <id>https://www.packetmania.net/en/2022/01/22/Python-Textbook-RSA/</id>
+    <published>2022-01-23T00:09:23.000Z</published>
+    <updated>2022-02-03T07:57:27.800Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;RSA encryption algorithm is one of the core technologies of modern public key cryptography and is widely used in the Internet. As a classical algorithm of public key cryptography, the programming implementation of textbook RSA can help us quickly grasp its mathematical mechanism and design ideas, and accumulate important experience in software implementation of cryptography. Here is a detailed example of textbook RSA implementation in Python 3.8 programming environment.</summary>
+    
+    
+    
+    <category term="Technology Knowhow" scheme="https://www.packetmania.net/en/categories/Technology-Knowhow/"/>
+    
+    
+    <category term="Python Programming" scheme="https://www.packetmania.net/en/tags/Python-Programming/"/>
+    
+    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
+    
+  </entry>
   
   <entry>
     <title>Build an Awesome Raspberry Pi NAS for Home Media Streaming</title>
@@ -42,7 +63,7 @@
     <link href="https://www.packetmania.net/en/2021/12/26/IPv4-IPv6-checksum/"/>
     <id>https://www.packetmania.net/en/2021/12/26/IPv4-IPv6-checksum/</id>
     <published>2021-12-27T04:52:03.000Z</published>
-    <updated>2022-01-01T22:17:46.541Z</updated>
+    <updated>2022-02-02T07:36:09.245Z</updated>
     
     
     <summary type="html">&lt;p&gt;About IP packet header checksum algorithm, simply put, it is 16-bit ones&#39; complement of the ones&#39; complement sum of all 16-bit words in the header. However, not many sources show exactly how this is done.</summary>

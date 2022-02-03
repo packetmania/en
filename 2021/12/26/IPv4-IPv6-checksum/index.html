@@ -32,7 +32,7 @@
 <meta property="og:description" content="About IP packet header checksum algorithm, simply put, it is 16-bit ones&#39; complement of the ones&#39; complement sum of all 16-bit words in the header. However, not many sources show exactly how this is d">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-12-27T04:52:03.000Z">
-<meta property="article:modified_time" content="2022-01-01T22:17:46.541Z">
+<meta property="article:modified_time" content="2022-02-02T07:36:09.245Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="C&#x2F;C++ Programming">
 <meta property="article:tag" content="TCP&#x2F;IP">
@@ -175,18 +175,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/en/archives/">
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/en/categories/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/en/tags/">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -275,7 +275,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-01-01 14:17:46" itemprop="dateModified" datetime="2022-01-01T14:17:46-08:00">2022-01-01</time>
+        <time title="Modified: 2022-02-01 23:36:09" itemprop="dateModified" datetime="2022-02-01T23:36:09-08:00">2022-02-01</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -325,7 +325,7 @@
 <h2 id="ipv4-header-checksum">IPv4 Header Checksum</h2>
 <p>IPv4 packet header format can be seen below</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">0                   1                   2                   3    </span><br><span class="line">0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1  </span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|Version|  IHL  |Type of Service|          Total Length         |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|         Identification        |Flags|      Fragment Offset    |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|  Time to Live |    Protocol   |        Header Checksum        |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|                       Source Address                          |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|                    Destination Address                        |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|                    Options                    |    Padding    |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br></pre></td></tr></table></figure>
-<p>Here the 16-bit Header Checksum field is used for error-checking of the. While computing the IPv4 header checksum, the sender first clears the checksum field to zero, then calculates the sum of each 16-bit value within the header. The sum is saved in a 32-bit value. If the total number of bytes is odd, the last byte is added separately.</p>
+<p>Here the 16-bit Header Checksum field is used for error-checking of the IPv4 header. While computing the IPv4 header checksum, the sender first clears the checksum field to zero, then calculates the sum of each 16-bit value within the header. The sum is saved in a 32-bit value. If the total number of bytes is odd, the last byte is added separately.</p>
 <p>After all additions, the higher 16 bits saving the carry is added to the lower 16 bits. Repeat this till all higher 16 bits are zeros. Finally the sender takes the ones' complement of the lower 16 bits of the result and writes it to IP header checuksum field.</p>
 <p>The following demonstrates the entire calculation process using actual captured IPv4 packets.</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0x0000: 00 60 47 41 11 c9 00 09 6b 7a 5b 3b 08 00 45 00 </span><br><span class="line">0x0010: 00 1c 74 68 00 00 80 11 59 8f c0 a8 64 01 ab 46 </span><br><span class="line">0x0020: 9c e9 0f 3a 04 05 00 08 7f c5 00 00 00 00 00 00 </span><br><span class="line">0x0030: 00 00 00 00 00 00 00 00 00 00 00 00</span><br></pre></td></tr></table></figure>
@@ -494,14 +494,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>Symbols count total: </span>
-    <span title="Symbols count total">46k</span>
+    <span title="Symbols count total">65k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>Reading time total &asymp;</span>
-    <span title="Reading time total">42 mins.</span>
+    <span title="Reading time total">59 mins.</span>
   </span>
 </div>
 <div class="busuanzi-count">
