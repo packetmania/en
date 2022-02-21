@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2022-02-03T08:20:13.182Z</updated>
+  <updated>2022-02-21T00:54:17.568Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -21,10 +21,10 @@
     <link href="https://www.packetmania.net/en/2022/01/22/Python-Textbook-RSA/"/>
     <id>https://www.packetmania.net/en/2022/01/22/Python-Textbook-RSA/</id>
     <published>2022-01-23T00:09:23.000Z</published>
-    <updated>2022-02-03T08:20:13.182Z</updated>
+    <updated>2022-02-21T00:54:17.568Z</updated>
     
     
-    <summary type="html">&lt;p&gt;RSA encryption algorithm is one of the core technologies of modern public key cryptography and is widely used in the Internet. As a classical algorithm of public key cryptography, the programming implementation of textbook RSA can help us quickly grasp its mathematical mechanism and design ideas, and accumulate important experience in software implementation of cryptography. Here is a detailed example of textbook RSA implementation in Python 3.8 programming environment.</summary>
+    <summary type="html">&lt;p&gt;RSA encryption algorithm is one of the core technologies of modern public-key cryptography and is widely used on the Internet. As a classical algorithm of public-key cryptography, the programming implementation of textbook RSA can help us quickly grasp its mathematical mechanism and design ideas, and accumulate important experience in the software implementation of cryptography. Here is a detailed example of textbook RSA implementation in Python 3.8 programming environment.</summary>
     
     
     
@@ -42,7 +42,7 @@
     <link href="https://www.packetmania.net/en/2021/12/29/RPi-NAS-Plex/"/>
     <id>https://www.packetmania.net/en/2021/12/29/RPi-NAS-Plex/</id>
     <published>2021-12-29T18:53:08.000Z</published>
-    <updated>2022-01-08T05:07:40.953Z</updated>
+    <updated>2022-02-21T00:50:34.374Z</updated>
     
     
     <summary type="html">&lt;p&gt;Network Attached Storage (NAS) provides data access to a heterogeneous group of clients over computer networks. As hard drive prices continue to drop, NAS devices have made their way into the homes of the masses. Leading brands in the SMB and home NAS market, such as Synology, have their products range in price from as low as $300 to $700 for the high models. But if you are a Raspberry Pi player, you can build a very nice home NAS and streaming service for only about half the cost of the lowest price.</summary>
@@ -63,10 +63,10 @@
     <link href="https://www.packetmania.net/en/2021/12/26/IPv4-IPv6-checksum/"/>
     <id>https://www.packetmania.net/en/2021/12/26/IPv4-IPv6-checksum/</id>
     <published>2021-12-27T04:52:03.000Z</published>
-    <updated>2022-02-02T07:36:09.245Z</updated>
+    <updated>2022-02-21T00:57:05.313Z</updated>
     
     
-    <summary type="html">&lt;p&gt;About IP packet header checksum algorithm, simply put, it is 16-bit ones&#39; complement of the ones&#39; complement sum of all 16-bit words in the header. However, not many sources show exactly how this is done.</summary>
+    <summary type="html">&lt;p&gt;About the IP packet header checksum algorithm, simply put, it is 16-bit ones&#39; complement of the ones&#39; complement sum of all 16-bit words in the header. However, not many sources show exactly how this is done.</summary>
     
     
     
@@ -84,7 +84,7 @@
     <link href="https://www.packetmania.net/en/2021/12/24/Endianness/"/>
     <id>https://www.packetmania.net/en/2021/12/24/Endianness/</id>
     <published>2021-12-25T05:58:43.000Z</published>
-    <updated>2021-12-31T05:06:00.501Z</updated>
+    <updated>2022-02-21T00:56:05.148Z</updated>
     
     
     <summary type="html">&lt;p&gt;The problem of Endianness is essentially a question about how computers store large numbers.</summary>
