@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2022-03-24T06:31:35.502Z</updated>
+  <updated>2022-03-24T06:52:16.112Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.packetmania.net/en/2022/03/13/IPv6-Addressing/"/>
     <id>https://www.packetmania.net/en/2022/03/13/IPv6-Addressing/</id>
     <published>2022-03-14T05:14:48.000Z</published>
-    <updated>2022-03-24T06:31:35.502Z</updated>
+    <updated>2022-03-24T06:52:16.112Z</updated>
     
     
     <summary type="html">&lt;p&gt;IPv6 supports multiple addresses, making address assignments more flexible and convenient. Unlike IPv4, which relied solely on the DHCP protocol for address assignment, IPv6 incorporates a native &lt;a href=&quot;https://tools.ietf.org/html/rfc4862&quot;&gt;Stateless Address AutoConfiguration&lt;/a&gt; SLAAC) protocol. SLAAC can either work alone to provide IPv6 addresses to hosts, or it can work with &lt;a href=&quot;https://tools.ietf.org/html/rfc8415&quot;&gt;DHCPv6&lt;/a&gt; to generate new assignment schemes. Here is a comprehensive analysis of the dynamic address allocation mechanism for IPv6.</summary>
