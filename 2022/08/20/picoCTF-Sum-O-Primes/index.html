@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.0.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/en/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="piAnQ_mnwkhV_qh4_Se1yLzM1IwOvuq-vmYfXBkWRXU">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=EB+Garamond:300,300italic,400,400italic,700,700italic%7CNoto+Serif+SC:300,300italic,400,400italic,700,700italic%7CRoboto+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.packetmania.net","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk | utterances | disqus","storage":true,"lazyload":false,"nav":{"disqus":{"text":"Disqus Comments","order":-1},"utterances":{"text":"Utterances Comments","order":-2},"gitalk":{"text":"Gitalk Comments","order":-3}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/en/js/config.js"></script>
+<meta name="description" content="By chance, I came across a picoCTF RSA challenge called Sum-O-Primes. This problem is not difficult, you can do it by knowing the basics of RSA algorithm. In addition, if you are familiar with the his">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Solve picoCTF&#39;s RSA challenge Sum-O-Primes">
+<meta property="og:url" content="https://www.packetmania.net/en/2022/08/20/picoCTF-Sum-O-Primes/index.html">
+<meta property="og:site_name" content="PacketMania">
+<meta property="og:description" content="By chance, I came across a picoCTF RSA challenge called Sum-O-Primes. This problem is not difficult, you can do it by knowing the basics of RSA algorithm. In addition, if you are familiar with the his">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.packetmania.net/en/2022/08/20/picoCTF-Sum-O-Primes/picoGym.png">
+<meta property="article:published_time" content="2022-08-20T21:31:09.000Z">
+<meta property="article:modified_time" content="2022-08-21T02:35:39.263Z">
+<meta property="article:author" content="Zixi">
+<meta property="article:tag" content="Python Programming">
+<meta property="article:tag" content="Cryptography">
+<meta property="article:tag" content="CTF">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.packetmania.net/en/2022/08/20/picoCTF-Sum-O-Primes/picoGym.png">
+
+
+<link rel="canonical" href="https://www.packetmania.net/en/2022/08/20/picoCTF-Sum-O-Primes/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.packetmania.net/en/2022/08/20/picoCTF-Sum-O-Primes/","path":"2022/08/20/picoCTF-Sum-O-Primes/","title":"Solve picoCTF's RSA challenge Sum-O-Primes"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Solve picoCTF's RSA challenge Sum-O-Primes | PacketMania</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YKBP0QK7Z"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-9YKBP0QK7Z","only_pageview":false}</script>
+  <script src="/en/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PacketMania" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PacketMania</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Technology | Knowledge | Sharing</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/en/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/en/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/en/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+        <li class="menu-item menu-item-rss"><a href="/en/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+        <li class="menu-item menu-item-language"><a href="https://www.packetmania.net/" rel="section"><i class="fa fa-language fa-fw"></i>中文</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#picoctf-project"><span class="nav-number">1.</span> <span class="nav-text">picoCTF Project</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sum-o-primes-challenge"><span class="nav-number">2.</span> <span class="nav-text">Sum-O-Primes Challenge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#conventional-solution"><span class="nav-number">3.</span> <span class="nav-text">Conventional Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#quick-solution"><span class="nav-number">4.</span> <span class="nav-text">Quick Solution</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zixi"
+      src="/en/images/ccie_emeritus.jpg">
+  <p class="site-author-name" itemprop="name">Zixi</p>
+  <div class="site-description" itemprop="description">Computer Networking and Software Design & Implementation</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/packetmania" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;packetmania" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zixiruoxue@gmail.com" title="E-Mail → mailto:zixiruoxue@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/zixisean" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zixisean" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/15140531" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;15140531" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_nd.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.packetmania.net/en/2022/08/20/picoCTF-Sum-O-Primes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/ccie_emeritus.jpg">
+      <meta itemprop="name" content="Zixi">
+      <meta itemprop="description" content="Computer Networking and Software Design & Implementation">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PacketMania">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Solve picoCTF's RSA challenge Sum-O-Primes
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-08-20 14:31:09 / Modified: 19:35:39" itemprop="dateCreated datePublished" datetime="2022-08-20T14:31:09-07:00">2022-08-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/Technology-Knowhow/" itemprop="url" rel="index"><span itemprop="name">Technology Knowhow</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>10k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>9 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>By chance, I came across a picoCTF RSA challenge called Sum-O-Primes. This problem is not difficult, you can do it by knowing the basics of RSA algorithm. In addition, if you are familiar with the history of the evolution of RSA algorithm, you can find a second ingenious fast solution.<span id="more"></span></p>
+<h3 id="picoctf-project">picoCTF Project</h3>
+<p>picoCTF is a free computer security education program created by security and privacy experts at Carnegie Mellon University. It uses original content built on the CTF (Capture the Flag) framework to provide a variety of challenges. It provides participants with valuable opportunities to systematically learn cybersecurity knowledge and gain practical experience.</p>
+<p>The collection of practice questions for picoCTF is called picoGym. The general problem solution is to search or decipher a string in the format "picoCTF{...}" from the given information, that is, the flag to be captured. As shown in the figure below, picoGym currently contains 271 cybersecurity challenge exercises, covering general skills, cryptography, reverse engineering, forensics, and other fields.</p>
+<p><img src="picoGym.png" style="width:40.0%;height:40.0%" /></p>
+<h3 id="sum-o-primes-challenge">Sum-O-Primes Challenge</h3>
+<p>There are 50 cryptography-related challenges in picoGym, one of which is Sum-O-Primes. The ask of this challenge is simple and explained as follows:</p>
+<blockquote>
+<p>We have so much faith in RSA we give you not just the product of the primes, but their sum as well!</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://artifacts.picoctf.net/c/180/gen.py">gen.py</a></li>
+<li><a target="_blank" rel="noopener" href="https://artifacts.picoctf.net/c/180/output.txt">output.txt</a></li>
+</ul>
+</blockquote>
+<p>That is, we not only give the product of the two prime numbers used by RSA, but also tell you their sum. How is it given? This requires you to discover from the rest of the information by yourself. After clicking the two links given to download, open the first Python file:</p>
+<figure class="highlight python"><figcaption><span>gen.py</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> binascii <span class="keyword">import</span> hexlify</span><br><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> mpz_urandomb, next_prime, random_state</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> sys.version_info &lt; (<span class="number">3</span>, <span class="number">9</span>):</span><br><span class="line">    <span class="keyword">import</span> gmpy2</span><br><span class="line">    math.gcd = gmpy2.gcd</span><br><span class="line">    math.lcm = gmpy2.lcm</span><br><span class="line"></span><br><span class="line">FLAG  = <span class="built_in">open</span>(<span class="string">&#x27;flag.txt&#x27;</span>).read().strip()</span><br><span class="line">FLAG  = <span class="built_in">int</span>(hexlify(FLAG.encode()), <span class="number">16</span>)</span><br><span class="line">SEED  = <span class="built_in">int</span>(hexlify(os.urandom(<span class="number">32</span>)).decode(), <span class="number">16</span>)</span><br><span class="line">STATE = random_state(SEED)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_prime</span>(<span class="params">bits</span>):</span></span><br><span class="line">    <span class="keyword">return</span> next_prime(mpz_urandomb(STATE, bits) | (<span class="number">1</span> &lt;&lt; (bits - <span class="number">1</span>)))</span><br><span class="line"></span><br><span class="line">p = get_prime(<span class="number">1024</span>)</span><br><span class="line">q = get_prime(<span class="number">1024</span>)</span><br><span class="line"></span><br><span class="line">x = p + q</span><br><span class="line">n = p * q</span><br><span class="line"></span><br><span class="line">e = <span class="number">65537</span></span><br><span class="line"></span><br><span class="line">m = math.lcm(p - <span class="number">1</span>, q - <span class="number">1</span>)</span><br><span class="line">d = <span class="built_in">pow</span>(e, -<span class="number">1</span>, m)</span><br><span class="line"></span><br><span class="line">c = <span class="built_in">pow</span>(FLAG, e, n)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;x = <span class="subst">&#123;x:x&#125;</span>&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;n = <span class="subst">&#123;n:x&#125;</span>&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;c = <span class="subst">&#123;c:x&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>If you have basic Python programming skills and understand the principles of the RSA algorithm, you should be able to read the above program quickly. What it does is:</p>
+<ol type="1">
+<li>Open the file <code>flag.txt</code> to read in the content. Then use the <code>hexlify</code> and <code>int</code> functions to convert it to an integer and store the result in a variable <code>FLAG</code>.</li>
+<li>Call the function <code>get_prime</code> to generate two prime numbers, store their sum in <code>x</code> and their product in <code>n</code>. Then assign 65537 to <code>e</code> and calculate the RSA private exponent <code>d</code>.</li>
+<li>Use standard <code>pow</code> functions to perform modular exponentiation, which implements RSA encryption to encrypt plaintext <code>FLAG</code> into ciphertext <code>c</code>.</li>
+<li>Print out <code>x</code>, <code>n</code> and <code>c</code>.</li>
+</ol>
+<p>Open the second file, which is obviously the output of the first program in Python:</p>
+<figure class="highlight bash"><figcaption><span>output.txt</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = 154ee809a4dc337290e6a4996e0717dd938160d6abfb651736d9f5d524812a659b310ad1f221196ee8ab187fa746a1b488a4079cddfc5db08e78be0d96c83c01e9bb42420b40d6f0ad9f220633459a6dc058bb01c517386bfbd2d4811c9b08558b0e05534768581a74884758d15e15b4ef0dbd6a338bf1f52eed4f137957737d2</span><br><span class="line">n = 6ce91e471f1df651b0d275d6d5522703feecdd77e7821a2caf9514104c059781c1b2e64772d9220addd657ecbd4e6cb8b5941608f6ab54bd5760074a5cd5854920439422192d2ee8912f1ebcc0d97714f209ee2a22e2da60e071541cb7e0772373cfea71831673378ee6432e63abfd14db0d4aa601928923253f9edd419ce96f4d68ce0aa3e6d6b530cd46eefbdac93038ce949c9dd2e573a47471cf8223f88b96e00a92f4d47fd277c42c4075b5e99b41a9f279f442bc0d533b9ddc50592e369e7026b3f7afaa8edf8972f0c3055f4de67a0eea963f099a32e1539de1d1727abadd9235f66371998ec883d1f89b8d907270842818cae49cd5c7f906c4752e81</span><br><span class="line">c = 48b89662b9718fb391c96527272bf74c27810edaca09b63e694af9d11608010b1db9aedd1c867849371121941a1ccac610f7b28b92fa2f981babe816e6d3ecfab83514ed7e18e2b23fc3b96c7002ff47da897e9f2a9cb1b4e245396589e0b72affb73568a2016031555d2a46557919e44a15cd43fe9e1881d40dce1d1e36625e63b1472d3c317898102943072e06d79688c96b6ee2e584002c66497a9cdc48c38aa0548a7bc4fed9b4c23fcd493f38ece68788ef37a559b7f20c6941fcf8e567d9f50807259a7f11fa7a01d3125a1f7609cd94781f224ec8351605354b11c6b078fe015826342c3271ee3af4b99bb0a538b1e6b845594ee6546be8abd22ef2bd</span><br></pre></td></tr></table></figure>
+<p>Once you understand the meaning of the question, you can make a judgment immediately —— if you can decrypt the ciphertext <code>c</code> and retrieve the plaintext FLAG, you can get the original content of <code>flag.txt</code>, that is, capture the flag.</p>
+<h3 id="conventional-solution">Conventional Solution</h3>
+<p>RSA decryption requires a private key exponent <code>d</code>. Referring to the steps of the RSA algorithm below, it is obvious that this requires integer factorization for large prime numbers <code>p</code> and <code>q</code> first.</p>
+<ol type="1">
+<li>Choose two large prime numbers <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>, compute <span class="math inline">\(n=pq\)</span></li>
+<li>Compute <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Carmichael_function">Carmichael function</a> <span class="math inline">\(\lambda(n)=\operatorname{lcm}(p − 1, q − 1)\)</span> the product, <span class="math inline">\(\operatorname{lcm}\)</span> is a function to find the least common multiple</li>
+<li>Choose any number <span class="math inline">\(e\)</span> that is less than and coprime to <span class="math inline">\(\lambda(n)\)</span>, then compute <span class="math inline">\(d\)</span>, the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Modular_multiplicative_inverse">modular multiplicative inverse</a> of <span class="math inline">\(e\)</span> regarding <span class="math inline">\(\lambda(n)\)</span>, <span class="math inline">\(d\equiv e^{-1}\pmod {\lambda(n)}\)</span></li>
+<li><span class="math inline">\((n,e)\)</span> is the RSA public key, <span class="math inline">\((n,d)\)</span> the RSA private key</li>
+<li>Use the public key to encrypt the plaintext <span class="math inline">\(m\)</span>, the formula is <span class="math inline">\(c\equiv m^e\pmod n\)</span></li>
+<li>Use private key to decrypt the ciphertext <span class="math inline">\(c\)</span>, the formula is <span class="math inline">\(m\equiv c^d\pmod n\)</span></li>
+</ol>
+<p>From here, the challenge becomes a problem that, knowing the sum and product of two large prime numbers known, find these two large prime numbers. That is, to solve a system of quadratic linear equations</p>
+<p><span class="math display">\[
+\left\{
+\begin{aligned}
+p+q &amp;=n \\ 
+p*q &amp;=x
+\end{aligned} 
+\right. 
+\]</span></p>
+<p>Using the knowledge of elementary mathematics, the above equations can be transformed into a quadratic equation <span class="math display">\[p^2 - x * p + n = 0\]</span></p>
+<p>Obviously <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> are its two roots. According to the quadratic formula</p>
+<p><span class="math display">\[(p,q)={\frac {x}{2}}\pm {\sqrt {\left({\frac {x}{2}}\right)^{2}-n}}\]</span></p>
+<p>We can get <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>. The rest of the work is easy. The code to compute <span class="math inline">\(d\)</span> from <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> can be copied directly from lines 28, 30 and 31 in gen.py. The final complete Python problem-solving code is as follows:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line">file = <span class="built_in">open</span>(<span class="string">&#x27;output.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">Lines = file.readlines()</span><br><span class="line">file.close()</span><br><span class="line"></span><br><span class="line">x = <span class="built_in">int</span>((Lines[<span class="number">0</span>].split())[<span class="number">2</span>], <span class="number">16</span>) <span class="comment"># x = p + q</span></span><br><span class="line">n = <span class="built_in">int</span>((Lines[<span class="number">1</span>].split())[<span class="number">2</span>], <span class="number">16</span>) <span class="comment"># n = p * q</span></span><br><span class="line">c = <span class="built_in">int</span>((Lines[<span class="number">2</span>].split())[<span class="number">2</span>], <span class="number">16</span>) <span class="comment"># Ciphertext</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solve_rsa_primes</span>(<span class="params">s: <span class="built_in">int</span>, m: <span class="built_in">int</span></span>) -&gt; <span class="built_in">tuple</span>:</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    Solve RSA prime numbers (p, q) from the quadratic equation</span></span><br><span class="line"><span class="string">    p^2 - s * p + m = 0 with the formula p = s/2 +/- sqrt((s/2)^2 - m)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Input: s - sum of primes, m - product of primes</span></span><br><span class="line"><span class="string">    Output: (p, q)</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    half_s = s &gt;&gt; <span class="number">1</span></span><br><span class="line">    tmp = math.isqrt(half_s ** <span class="number">2</span> - m)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">int</span>(half_s + tmp), <span class="built_in">int</span>(half_s - tmp);  </span><br><span class="line"></span><br><span class="line"><span class="comment"># Now run with the real input</span></span><br><span class="line">p, q = solve_rsa_primes(x, n)</span><br><span class="line">m = math.lcm(p - <span class="number">1</span>, q - <span class="number">1</span>)</span><br><span class="line">e = <span class="number">65537</span></span><br><span class="line">d = <span class="built_in">pow</span>(e, -<span class="number">1</span>, m)</span><br><span class="line">FLAG = <span class="built_in">pow</span>(c, d, n)</span><br><span class="line"><span class="built_in">print</span>(FLAG.to_bytes((FLAG.bit_length() + <span class="number">7</span>) // <span class="number">8</span>, <span class="string">&#x27;big&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<p>The above program defines a general function <code>solve_rsa_primes</code> to solve two large prime numbers. After it gets <code>d</code>, the same <code>pow</code> function is called to decrypt, and finally the plaintext is converted from a large integer to a byte sequence and printed out. The result of running this program is</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">b&#x27;picoCTF&#123;pl33z_n0_g1v3_c0ngru3nc3_0f_5qu4r35_92fe3557&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>BINGO! Capture the Flag successfully!</p>
+<div class="note warning"><p><strong>Note:</strong> The function <code>solve_rsa_primes</code> calls <code>math.isqrt</code> to compute the square root of an integer, which is required! If it is written incorrectly with <code>math.sqrt</code>, the following overflow error will occur</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;</span><br><span class="line">=============== RESTART: /Users/zixi/Downloads/Sum-O-Primes.py ==============</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;/Users/zixi/Downloads/Sum-O-Primes.py&quot;</span>, line <span class="number">35</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    p, q = solve_rsa_primes(x, n)</span><br><span class="line">  File <span class="string">&quot;/Users/zixi/Downloads/Sum-O-Primes.py&quot;</span>, line <span class="number">31</span>, <span class="keyword">in</span> solve_rsa_primes</span><br><span class="line">    tmp = math.sqrt(<span class="built_in">int</span>(half_s ** <span class="number">2</span> - m))</span><br><span class="line">OverflowError: <span class="built_in">int</span> too large to convert to <span class="built_in">float</span></span><br></pre></td></tr></table></figure>
+<p>This is because <code>math.sqrt</code> uses floating-point arithmetic, but here it fails to convert large integers to floating-point numbers.</p>
+</div>
+<h3 id="quick-solution">Quick Solution</h3>
+<p>The conventional solution to this problem has to solve a quadratic equation, so the integer square root operation is essential. Is there a solution that doesn't require square root operation? The answer is yes.</p>
+<p>In the <a target="_blank" rel="noopener" href="http://people.csail.mit.edu/rivest/Rsapaper.pdf">original RSA paper</a> , the public exponent <span class="math inline">\(e\)</span> and the private exponent <span class="math inline">\(d\)</span> have the relationship as the following equation</p>
+<p><span class="math display">\[d⋅e≡1\pmod{\varphi(n)}\]</span></p>
+<p>Here the modular is the Euler's totient function <span class="math inline">\(\varphi(n)=(p-1)(q-1)\)</span>. Since <span class="math inline">\(\varphi(N)\)</span> is always divisible by <span class="math inline">\(\lambda(n)\)</span>, any <code>d</code> satisfing the above also satisfies <span class="math inline">\(d⋅e≡1\pmod{\lambda(n)}\)</span>, thus <strong>the private exponent is not unique</strong>. Although the calculated <span class="math inline">\(d&gt;\lambda(n)\)</span>, but when applied to the Sum-O-Primes problem, the square root operation can be avoided. This is because <span class="math display">\[
+\begin{aligned}
+\varphi(n)&amp;=(p-1)(q-1)\\
+&amp;=pq-(p+q)+1\\
+&amp;=n-x+1
+\end{aligned}
+\]</span></p>
+<p>Hereby the formula for computing the private exponent becomes</p>
+<p><span class="math display">\[
+\begin{aligned}
+d&amp;≡e^{-1}\pmod{\varphi(n)}\\
+&amp;≡e^{-1}\pmod{(n-x+1)}
+\end{aligned}
+\]</span></p>
+<p>Now that <span class="math inline">\(n\)</span> and <span class="math inline">\(x\)</span> are readily available, this method does not require finding <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> first, and naturally there is no need for a square root operation. The Python code for this new solution is very concise</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">d1 = <span class="built_in">pow</span>(e, -<span class="number">1</span>, n - x + <span class="number">1</span>)</span><br><span class="line">FLAG = <span class="built_in">pow</span>(c, d1, n)</span><br><span class="line"><span class="built_in">print</span>(FLAG.to_bytes((FLAG.bit_length() + <span class="number">7</span>) // <span class="number">8</span>, <span class="string">&#x27;big&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;d = &quot;</span>, d)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;d1 = &quot;</span>, d1)</span><br><span class="line"><span class="keyword">assert</span>(d1&gt;d)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;d1/d = &quot;</span>, d1/d)</span><br></pre></td></tr></table></figure>
+<p>In order to compare these two solutions, 4 lines of print and assert statements are added at the end. The execution result of this code is</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;</span><br><span class="line">=============== RESTART: /Users/zixi/Downloads/Sum-O-Primes.py ==============</span><br><span class="line"><span class="string">b&#x27;picoCTF&#123;pl33z_n0_g1v3_c0ngru3nc3_0f_5qu4r35_92fe3557&#125;&#x27;</span></span><br><span class="line">d =  <span class="number">1590433953643304448870807755026766943237397482033766155980367645454600169745357277163199312196609495875891431590581528929277583062406061101224041553945564552302546648687338536694903918084325519368961617691238793972703013656395301935576994660878296156727353260699130612675943209520489312860964899655070852366584778594425834982623831654304915478835573020874834723387183369976749895237126850604587166433366381884290402338703266523462767765540527102747754912478720160791675179128443712374832507705614160658601242723842366612805686436771142338154848447759947887908800687914418476358484536216953925324788380823429735298973</span></span><br><span class="line">d1 =  <span class="number">11901952834426939436403812982514571575614906347331071933175950931208083895179963694981295931167346168378938101218143770786299673201984563299831132533757316974157649670783507276616478666261648674806749337918514985951832847720617452268824430679672778783943236259522437088812130196067329355430038927225825521934485847159262037514154059696664148362902872186817856316128403800463106817000251243818717005827615275821709043532925457271839955998044684537152992871171338447136672661193487297988293156428071068861346467230927990425182893890027896377626007826573834588309038513191969376781172191621785853174152547091371818954913</span></span><br><span class="line">d1/d =  <span class="number">7.483462489694971</span></span><br></pre></td></tr></table></figure>
+<p>As shown above, this solution also succeeds in capturing the flag. The <span class="math inline">\(d\)</span> value (<code>d1</code>) calculated by the new solution is more than 7 times that of the conventional solution.</p>
+<p>Click here to download all the code of this article: <a href="Sum-O-Primes.py.gz">Sum-O-Primes.py.gz</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Zixi
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://www.packetmania.net/en/2022/08/20/picoCTF-Sum-O-Primes/" title="Solve picoCTF&#39;s RSA challenge Sum-O-Primes">https://www.packetmania.net/en/2022/08/20/picoCTF-Sum-O-Primes/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/en/tags/Python-Programming/" rel="tag"><i class="fa fa-tag"></i> Python Programming</a>
+              <a href="/en/tags/Cryptography/" rel="tag"><i class="fa fa-tag"></i> Cryptography</a>
+              <a href="/en/tags/CTF/" rel="tag"><i class="fa fa-tag"></i> CTF</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/2022/04/22/ASAN-intro/" rel="prev" title="AddressSanitizer - A Tool for Programmers to Detect Memory Access Errors">
+                  <i class="fa fa-chevron-left"></i> AddressSanitizer - A Tool for Programmers to Detect Memory Access Errors
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Gitalk Comments</a></li>
+            <li class="tab"><a href="#comment-utterances">Utterances Comments</a></li>
+            <li class="tab"><a href="#comment-disqus">Disqus Comments</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+            <div class="tab-pane disqus" id="comment-disqus">
+              
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zixi</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>Symbols count total: </span>
+    <span title="Symbols count total">128k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>Reading time total &asymp;</span>
+    <span title="Reading time total">1:56</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5fc1fd29017282c7" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/en/js/comments.js"></script><script src="/en/js/utils.js"></script><script src="/en/js/motion.js"></script><script src="/en/js/next-boot.js"></script><script src="/en/js/bookmark.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/en/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"forest","dark":"forest"},"js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.13.4/dist/mermaid.min.js","integrity":"sha256-96rwDGMWIQYB0yKGp1sKi1yrjrLPj2oT39IpbCsIrsg="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/en/js/third-party/fancybox.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/en/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"packetmania-github-io","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/en/js/third-party/comments/disqus.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"packetmania","repo":"en","client_id":"a45f6ae3f97c1a467856","client_secret":"7d81b74f952b388f93dcb5a8c44cd12f657969fa","admin_user":"packetmania","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"e184aaa3ddaf48462705d671c170978e"}</script>
+<script src="/en/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"packetmania/en","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/en/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

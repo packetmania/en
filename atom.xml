@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2022-04-24T02:00:35.349Z</updated>
+  <updated>2022-08-21T02:35:39.263Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Solve picoCTF&#39;s RSA challenge Sum-O-Primes</title>
+    <link href="https://www.packetmania.net/en/2022/08/20/picoCTF-Sum-O-Primes/"/>
+    <id>https://www.packetmania.net/en/2022/08/20/picoCTF-Sum-O-Primes/</id>
+    <published>2022-08-20T21:31:09.000Z</published>
+    <updated>2022-08-21T02:35:39.263Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;By chance, I came across a picoCTF RSA challenge called Sum-O-Primes. This problem is not difficult, you can do it by knowing the basics of RSA algorithm. In addition, if you are familiar with the history of the evolution of RSA algorithm, you can find a second ingenious fast solution.</summary>
+    
+    
+    
+    <category term="Technology Knowhow" scheme="https://www.packetmania.net/en/categories/Technology-Knowhow/"/>
+    
+    
+    <category term="Python Programming" scheme="https://www.packetmania.net/en/tags/Python-Programming/"/>
+    
+    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
+    
+    <category term="CTF" scheme="https://www.packetmania.net/en/tags/CTF/"/>
+    
+  </entry>
   
   <entry>
     <title>AddressSanitizer - A Tool for Programmers to Detect Memory Access Errors</title>
