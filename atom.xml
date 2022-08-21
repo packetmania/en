@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2022-08-21T02:35:39.263Z</updated>
+  <updated>2022-08-21T03:22:49.165Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -21,10 +21,10 @@
     <link href="https://www.packetmania.net/en/2022/08/20/picoCTF-Sum-O-Primes/"/>
     <id>https://www.packetmania.net/en/2022/08/20/picoCTF-Sum-O-Primes/</id>
     <published>2022-08-20T21:31:09.000Z</published>
-    <updated>2022-08-21T02:35:39.263Z</updated>
+    <updated>2022-08-21T03:22:49.165Z</updated>
     
     
-    <summary type="html">&lt;p&gt;By chance, I came across a picoCTF RSA challenge called Sum-O-Primes. This problem is not difficult, you can do it by knowing the basics of RSA algorithm. In addition, if you are familiar with the history of the evolution of RSA algorithm, you can find a second ingenious fast solution.</summary>
+    <summary type="html">&lt;p&gt;By chance, I came across a picoCTF RSA challenge called Sum-O-Primes. This problem is not difficult, you can do it by knowing the basics of the RSA algorithm. In addition, if you are familiar with the history of the evolution of the RSA algorithm, you can find a second ingenious fast solution.</summary>
     
     
     
