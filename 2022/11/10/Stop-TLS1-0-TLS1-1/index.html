@@ -24,26 +24,34 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.packetmania.net","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk | utterances | disqus","storage":true,"lazyload":false,"nav":{"disqus":{"text":"Disqus Comments","order":-1},"utterances":{"text":"Utterances Comments","order":-2},"gitalk":{"text":"Gitalk Comments","order":-3}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/en/js/config.js"></script>
-<meta name="description" content="Computer Networking and Software Design &amp; Implementation">
-<meta property="og:type" content="website">
-<meta property="og:title" content="PacketMania">
-<meta property="og:url" content="https://www.packetmania.net/en/index.html">
+<meta name="description" content="One single vulnerability is all an attacker needs. — Window Snyder (American computer security expert, former Senior Security Strategist at Microsoft, and has been a top security officer at Apple, In">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Please Stop Using TLS 1.0 and TLS 1.1 Now!">
+<meta property="og:url" content="https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/index.html">
 <meta property="og:site_name" content="PacketMania">
-<meta property="og:description" content="Computer Networking and Software Design &amp; Implementation">
+<meta property="og:description" content="One single vulnerability is all an attacker needs. — Window Snyder (American computer security expert, former Senior Security Strategist at Microsoft, and has been a top security officer at Apple, In">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/SSL-Pulse-2022-11.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/SSL-Report-Conf.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/Firefox-TLS-MIN-VER.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/TLS-V1-1-BADSSL.png">
+<meta property="article:published_time" content="2022-11-11T07:56:28.000Z">
+<meta property="article:modified_time" content="2022-11-13T02:00:19.974Z">
 <meta property="article:author" content="Zixi">
-<meta property="article:tag" content="TCP&#x2F;IP, Wi-Fi, Routing and Switching, Network Security, Cryptography, System Programming, Data Structure and Algorithm, Cisco Products">
+<meta property="article:tag" content="Cryptography">
+<meta property="article:tag" content="Network Security">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/SSL-Pulse-2022-11.png">
 
 
-<link rel="canonical" href="https://www.packetmania.net/en/">
+<link rel="canonical" href="https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"en","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/","path":"2022/11/10/Stop-TLS1-0-TLS1-1/","title":"Please Stop Using TLS 1.0 and TLS 1.1 Now!"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>PacketMania - Technology | Knowledge | Sharing</title>
+<title>Please Stop Using TLS 1.0 and TLS 1.1 Now! | PacketMania</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YKBP0QK7Z"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-9YKBP0QK7Z","only_pageview":false}</script>
@@ -76,7 +84,7 @@
 
     <a href="/en/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">PacketMania</h1>
+      <p class="site-title">PacketMania</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">Technology | Knowledge | Sharing</p>
@@ -144,7 +152,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -157,6 +165,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#rfc-interpretation"><span class="nav-number">1.</span> <span class="nav-text">RFC Interpretation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#industry-responses"><span class="nav-number">2.</span> <span class="nav-text">Industry Responses</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#protocol-test"><span class="nav-number">3.</span> <span class="nav-text">Protocol Test</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ssl-lab-test"><span class="nav-number">3.1.</span> <span class="nav-text">SSL Lab Test</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#user-selftest"><span class="nav-number">3.2.</span> <span class="nav-text">User Selftest</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#browser-test"><span class="nav-number">3.3.</span> <span class="nav-text">Browser Test</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -229,16 +238,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -251,9 +261,9 @@
       <meta itemprop="name" content="PacketMania">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/en/2022/11/10/Stop-TLS1-0-TLS1-1/" class="post-title-link" itemprop="url">Please Stop Using TLS 1.0 and TLS 1.1 Now!</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Please Stop Using TLS 1.0 and TLS 1.1 Now!
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -283,6 +293,13 @@
     </span>
 
   
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
     <span class="post-meta-break"></span>
     <span class="post-meta-item" title="Symbols count in article">
       <span class="post-meta-item-icon">
@@ -307,7 +324,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <span id="more"></span>
+        <span id="more"></span>
 <div class="note success no-icon"><p><strong>One single vulnerability is all an attacker needs.</strong><br> <strong>— <em>Window Snyder</em> (American computer security expert, former Senior Security Strategist at Microsoft, and has been a top security officer at Apple, Intel and other companies)</strong></p>
 </div>
 <h3 id="rfc-interpretation">RFC Interpretation</h3>
@@ -508,7 +525,6 @@
 <p>This bold red page tells you that the browser you are currently using does not have TLS 1.1 disabled and is a security risk, so try not to use it if you can.</p>
 <p>Finally, don't forget to restore the default TLS minimum version setting (3) for Firefox.</p>
 
-      
     </div>
 
     
@@ -516,308 +532,39 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Zixi
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/" title="Please Stop Using TLS 1.0 and TLS 1.1 Now!">https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> unless stating additionally.
+  </li>
+</ul>
 </div>
 
+          <div class="post-tags">
+              <a href="/en/tags/Cryptography/" rel="tag"><i class="fa fa-tag"></i> Cryptography</a>
+              <a href="/en/tags/Network-Security/" rel="tag"><i class="fa fa-tag"></i> Network Security</a>
+          </div>
 
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.packetmania.net/en/2022/08/20/picoCTF-Sum-O-Primes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/en/images/ccie_emeritus.jpg">
-      <meta itemprop="name" content="Zixi">
-      <meta itemprop="description" content="Computer Networking and Software Design & Implementation">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PacketMania">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/en/2022/08/20/picoCTF-Sum-O-Primes/" class="post-title-link" itemprop="url">Solve picoCTF's RSA challenge Sum-O-Primes</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-08-20 14:31:09 / Modified: 20:22:49" itemprop="dateCreated datePublished" datetime="2022-08-20T14:31:09-07:00">2022-08-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/en/categories/Technology-Knowhow/" itemprop="url" rel="index"><span itemprop="name">Technology Knowhow</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Symbols count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>10k</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>9 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>By chance, I came across a picoCTF RSA challenge called Sum-O-Primes. This problem is not difficult, you can do it by knowing the basics of the RSA algorithm. In addition, if you are familiar with the history of the evolution of the RSA algorithm, you can find a second ingenious fast solution.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/en/2022/08/20/picoCTF-Sum-O-Primes/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.packetmania.net/en/2022/04/22/ASAN-intro/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/en/images/ccie_emeritus.jpg">
-      <meta itemprop="name" content="Zixi">
-      <meta itemprop="description" content="Computer Networking and Software Design & Implementation">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PacketMania">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/en/2022/04/22/ASAN-intro/" class="post-title-link" itemprop="url">AddressSanitizer - A Tool for Programmers to Detect Memory Access Errors</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-04-22 22:35:17" itemprop="dateCreated datePublished" datetime="2022-04-22T22:35:17-07:00">2022-04-22</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-04-23 19:00:35" itemprop="dateModified" datetime="2022-04-23T19:00:35-07:00">2022-04-23</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/en/categories/Tool-Guide/" itemprop="url" rel="index"><span itemprop="name">Tool Guide</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Symbols count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>28k</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>25 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Memory access errors are the most common software errors that often cause program crashes. The AddressSanitizer tool, developed by Google engineers in 2012, has become the first choice of C/C++ programmers for its wide coverage, high efficiency, and low overhead. Here is a brief introduction to its principle and usage.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/en/2022/04/22/ASAN-intro/#more" rel="contents">
-                Read more &raquo;
-              </a>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/2022/08/20/picoCTF-Sum-O-Primes/" rel="prev" title="Solve picoCTF's RSA challenge Sum-O-Primes">
+                  <i class="fa fa-chevron-left"></i> Solve picoCTF's RSA challenge Sum-O-Primes
+                </a>
             </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.packetmania.net/en/2022/03/13/IPv6-Addressing/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/en/images/ccie_emeritus.jpg">
-      <meta itemprop="name" content="Zixi">
-      <meta itemprop="description" content="Computer Networking and Software Design & Implementation">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PacketMania">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/en/2022/03/13/IPv6-Addressing/" class="post-title-link" itemprop="url">IPv6 Dynamic Address Allocation Mechanism Illustrated</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-03-13 22:14:48" itemprop="dateCreated datePublished" datetime="2022-03-13T22:14:48-07:00">2022-03-13</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-23 23:52:16" itemprop="dateModified" datetime="2022-03-23T23:52:16-07:00">2022-03-23</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/en/categories/Study-Notes/" itemprop="url" rel="index"><span itemprop="name">Study Notes</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Symbols count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>25k</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>23 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>IPv6 supports multiple addresses, making address assignments more flexible and convenient. Unlike IPv4, which relied solely on the DHCP protocol for address assignment, IPv6 incorporates a native <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc4862">Stateless Address AutoConfiguration</a> SLAAC) protocol. SLAAC can either work alone to provide IPv6 addresses to hosts, or it can work with <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc8415">DHCPv6</a> to generate new assignment schemes. Here is a comprehensive analysis of the dynamic address allocation mechanism for IPv6.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/en/2022/03/13/IPv6-Addressing/#more" rel="contents">
-                Read more &raquo;
-              </a>
+            <div class="post-nav-item">
             </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          </div>
     </footer>
   </article>
 </div>
@@ -825,316 +572,30 @@
 
 
 
-    
 
 
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.packetmania.net/en/2022/01/22/Python-Textbook-RSA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/en/images/ccie_emeritus.jpg">
-      <meta itemprop="name" content="Zixi">
-      <meta itemprop="description" content="Computer Networking and Software Design & Implementation">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PacketMania">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/en/2022/01/22/Python-Textbook-RSA/" class="post-title-link" itemprop="url">Implement Textbook RSA in Python</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-01-22 16:09:23" itemprop="dateCreated datePublished" datetime="2022-01-22T16:09:23-08:00">2022-01-22</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-02-20 16:54:17" itemprop="dateModified" datetime="2022-02-20T16:54:17-08:00">2022-02-20</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/en/categories/Technology-Knowhow/" itemprop="url" rel="index"><span itemprop="name">Technology Knowhow</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Symbols count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>19k</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>17 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>RSA encryption algorithm is one of the core technologies of modern public-key cryptography and is widely used on the Internet. As a classical algorithm of public-key cryptography, the programming implementation of textbook RSA can help us quickly grasp its mathematical mechanism and design ideas, and accumulate important experience in the software implementation of cryptography. Here is a detailed example of textbook RSA implementation in Python 3.8 programming environment.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/en/2022/01/22/Python-Textbook-RSA/#more" rel="contents">
-                Read more &raquo;
-              </a>
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Gitalk Comments</a></li>
+            <li class="tab"><a href="#comment-utterances">Utterances Comments</a></li>
+            <li class="tab"><a href="#comment-disqus">Disqus Comments</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
             </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.packetmania.net/en/2021/12/29/RPi-NAS-Plex/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/en/images/ccie_emeritus.jpg">
-      <meta itemprop="name" content="Zixi">
-      <meta itemprop="description" content="Computer Networking and Software Design & Implementation">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PacketMania">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/en/2021/12/29/RPi-NAS-Plex/" class="post-title-link" itemprop="url">Build an Awesome Raspberry Pi NAS for Home Media Streaming</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-12-29 10:53:08" itemprop="dateCreated datePublished" datetime="2021-12-29T10:53:08-08:00">2021-12-29</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-02-20 16:50:34" itemprop="dateModified" datetime="2022-02-20T16:50:34-08:00">2022-02-20</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/en/categories/DIY-Projects/" itemprop="url" rel="index"><span itemprop="name">DIY Projects</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Symbols count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>33k</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>30 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Network Attached Storage (NAS) provides data access to a heterogeneous group of clients over computer networks. As hard drive prices continue to drop, NAS devices have made their way into the homes of the masses. Leading brands in the SMB and home NAS market, such as Synology, have their products range in price from as low as $300 to $700 for the high models. But if you are a Raspberry Pi player, you can build a very nice home NAS and streaming service for only about half the cost of the lowest price.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/en/2021/12/29/RPi-NAS-Plex/#more" rel="contents">
-                Read more &raquo;
-              </a>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
             </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
+            <div class="tab-pane disqus" id="comment-disqus">
+              
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
   
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.packetmania.net/en/2021/12/26/IPv4-IPv6-checksum/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/en/images/ccie_emeritus.jpg">
-      <meta itemprop="name" content="Zixi">
-      <meta itemprop="description" content="Computer Networking and Software Design & Implementation">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PacketMania">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/en/2021/12/26/IPv4-IPv6-checksum/" class="post-title-link" itemprop="url">IPv4 and IPv6 Header Checksum Algorithm Explained</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-12-26 20:52:03" itemprop="dateCreated datePublished" datetime="2021-12-26T20:52:03-08:00">2021-12-26</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-02-20 16:57:05" itemprop="dateModified" datetime="2022-02-20T16:57:05-08:00">2022-02-20</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/en/categories/Study-Notes/" itemprop="url" rel="index"><span itemprop="name">Study Notes</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Symbols count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>9.1k</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>8 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>About the IP packet header checksum algorithm, simply put, it is 16-bit ones' complement of the ones' complement sum of all 16-bit words in the header. However, not many sources show exactly how this is done.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/en/2021/12/26/IPv4-IPv6-checksum/#more" rel="contents">
-                Read more &raquo;
-              </a>
             </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/en/page/2/">2</a><a class="extend next" rel="next" href="/en/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
-
+        </div>
+      </div>
 </div>
   </main>
 
@@ -1226,7 +687,7 @@
 <script src="/en/js/third-party/comments/disqus.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"packetmania","repo":"en","client_id":"a45f6ae3f97c1a467856","client_secret":"7d81b74f952b388f93dcb5a8c44cd12f657969fa","admin_user":"packetmania","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"7ca1683270c6b093ba99d39d2ca45567"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"packetmania","repo":"en","client_id":"a45f6ae3f97c1a467856","client_secret":"7d81b74f952b388f93dcb5a8c44cd12f657969fa","admin_user":"packetmania","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"a1a1242727f591fcc79d44b87a485d8b"}</script>
 <script src="/en/js/third-party/comments/gitalk.js"></script>
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"packetmania/en","issue_term":"pathname","theme":"github-light"}</script>
 <script src="/en/js/third-party/comments/utterances.js"></script>

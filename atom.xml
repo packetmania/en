@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2022-08-21T03:22:49.165Z</updated>
+  <updated>2022-11-13T02:00:19.974Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Please Stop Using TLS 1.0 and TLS 1.1 Now!</title>
+    <link href="https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/"/>
+    <id>https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/</id>
+    <published>2022-11-11T07:56:28.000Z</published>
+    <updated>2022-11-13T02:00:19.974Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+&lt;div class=&quot;note success no-icon&quot;&gt;&lt;p&gt;&lt;strong&gt;One single vulnerability is all an attacker needs.&lt;/strong&gt;&lt;br&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="Technology Review" scheme="https://www.packetmania.net/en/categories/Technology-Review/"/>
+    
+    
+    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
+    
+    <category term="Network Security" scheme="https://www.packetmania.net/en/tags/Network-Security/"/>
+    
+  </entry>
   
   <entry>
     <title>Solve picoCTF&#39;s RSA challenge Sum-O-Primes</title>
@@ -54,9 +82,9 @@
     <category term="Tool Guide" scheme="https://www.packetmania.net/en/categories/Tool-Guide/"/>
     
     
-    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
-    
     <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
+    
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
     
   </entry>
   
@@ -159,13 +187,13 @@
     <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
     
     
-    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
-    
-    <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
-    
     <category term="Computer Architecture" scheme="https://www.packetmania.net/en/tags/Computer-Architecture/"/>
     
     <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
+    
+    <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
+    
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
     
   </entry>
   
