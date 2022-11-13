@@ -32,11 +32,12 @@
 <meta property="og:description" content="In March 2021, the Internet Engineering Task Force (IETF) released RFC 8996, classified as a current best practice, officially announcing the deprecation of the TLS 1.0 and TLS 1.1 protocols. If your">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/SSL-Pulse-2022-11.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/SSL-Report-Sum.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/SSL-Report-Conf.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/Firefox-TLS-MIN-VER.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/TLS-V1-1-BADSSL.png">
 <meta property="article:published_time" content="2022-11-11T07:56:28.000Z">
-<meta property="article:modified_time" content="2022-11-13T02:16:06.621Z">
+<meta property="article:modified_time" content="2022-11-13T02:24:42.812Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="Cryptography">
 <meta property="article:tag" content="Network Security">
@@ -280,7 +281,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-11-12 18:16:06" itemprop="dateModified" datetime="2022-11-12T18:16:06-08:00">2022-11-12</time>
+        <time title="Modified: 2022-11-12 18:24:42" itemprop="dateModified" datetime="2022-11-12T18:24:42-08:00">2022-11-12</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -313,7 +314,7 @@
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>16 mins.</span>
+      <span>17 mins.</span>
     </span>
 </div>
 
@@ -324,7 +325,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>In March 2021, the Internet Engineering Task Force (IETF) released <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc8996">RFC 8996</a>, classified as a current best practice, officially announcing the deprecation of the TLS 1.0 and TLS 1.1 protocols. If your applications and web services are still using these protocols, please stop immediately and update to TLS 1.2 or TLS 1.3 protocol versions to eliminate any possible security risks. <span id="more"></span></p>
+        <p>In March 2021, the Internet Engineering Task Force (IETF) released <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc8996">RFC 8996</a>, classified as a current best practice, officially announcing the deprecation of the TLS 1.0 and TLS 1.1 protocols. If your applications and web services are still using these protocols, please stop immediately and update to TLS 1.2 or TLS 1.3 protocol versions as soon as possible to eliminate any possible security risks. <span id="more"></span></p>
 <div class="note success no-icon"><p><strong>One single vulnerability is all an attacker needs.</strong><br> <strong>— <em>Window Snyder</em> (American computer security expert, former Senior Security Strategist at Microsoft, and has been a top security officer at Apple, Intel and other companies)</strong></p>
 </div>
 <h3 id="rfc-interpretation">RFC Interpretation</h3>
@@ -337,7 +338,6 @@
 </blockquote>
 <p>The information given here is clear, the reasons for deprecating them are purely technical. TLS 1.0 and TLS 1.1 cannot support stronger encryption algorithms and mechanisms, and cannot meet the high-security requirements of various network applications in the new era. TLS is TCP-based. Corresponding to the UDP-based DTLS protocol, RFC 8996 also announced the deprecation of the DTLS 1.0 protocol.</p>
 <p>The Introduction section lists some details of the technical reasons:</p>
-<blockquote>
 <ol type="1">
 <li>They require the implementation of older cipher suites that are no longer desirable for cryptographic reasons, e.g., TLS 1.0 makes TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA mandatory to implement.</li>
 <li>There is a lack of support for current recommended cipher suites, especially <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Authenticated_encryption">authenticated encryption with associated Data (AEAD)</a>, which were not supported prior to TLS 1.2.</li>
@@ -346,7 +346,6 @@
 <li>Support for four TLS protocol versions increases the likelihood of misconfiguration.</li>
 <li>At least one widely used library has plans to drop TLS 1.1 and TLS 1.0 support in upcoming releases.</li>
 </ol>
-</blockquote>
 <p>Clauses 5 and 6 above are clear and need no further explanation.</p>
 <p>For 3DES mentioned in Clause 1, although it uses three independent keys with a total length of 168 bits, considering the possible <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Meet-in-the-middle_attack">meet-in-the-middle_attack</a> attack, its effective key strength is only 112 bits. Also, the 3DES encryption block length is still 64 bits, which makes it extremely vulnerable to <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Birthday_attack">birthday attack</a> (see <a target="_blank" rel="noopener" href="https://sweet32.info/">Sweet32</a>). NIST stipulates that a single 3DES key group can only be used for encrypting <span class="math inline">\(2^{20}\)</span> data blocks (ie 8MB). This was of course too small, and eventually, NIST decided in 2017 to deprecate 3DES in the IPSec and TLS protocols.</p>
 <p>3DES is just one example, another category that has been phased out earlier is cipher suites that use RC4 stream ciphers, see <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc7465">RFC 7465</a> for details. In addition, there are various problems in the implementation of block cipher CBC mode, which are often exploited by attackers to crack TLS sessions. A summary of various attacks and countermeasures of TLS 1.0 and TLS 1.1 is described in detail in <a target="_blank" rel="noopener" href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-52r2.pdf">NIST800-52r2</a> and <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc7457">RFC7457</a>. These two reference documents provide the key rationale for deprecation. Obviously, any protocol that mandates the implementation of insecure cipher suites should be on the list to be eliminated.</p>
@@ -478,6 +477,9 @@
 </table>
 <p>As you can see, almost 100% of sites are running TLS 1.2, and the percentage of TLS 1.3 support is close to 60%. This is very encouraging data. While very few sites are still running SSL 2.0/3.0 and TLS 1.0/1.1 are both still supported at around 35%, overall their percentages are continuing to decline and this good trend should continue.</p>
 <p>This blog site is served by GitHub Page, enter the URL to <a target="_blank" rel="noopener" href="https://www.ssllabs.com/ssltest/">SSL Server Test</a> page and submit it to get a summary of the test results as follows.</p>
+<p><img src="SSL-Report-Sum.png" /></p>
+<p>The site achieved the highest overall security rating of A+. It got a perfect score for certificate and protocol support, and a 90 for both key exchange and password strength. This shows that GitHub fulfills its security promises to users and deserves the trust of programmers.</p>
+<p>The configuration section of the report gives details of the test results for protocol support and cipher suites as follows.</p>
 <p><img src="SSL-Report-Conf.png" /></p>
 <p>This further confirms that the GitHub Page only supports TLS 1.2/1.3, as required by <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc8996">RFC 8996</a>. It can also be seen that under the "Cipher Suites" subheading, TLS 1.3 shows two GCMs and one ChaCha20-Poly1305, which are all cipher suites based on the AEAD algorithms. Three cipher suites of the same type are the preferred TLS 1.2 cipher suites for the server as well. This is exactly the current commonly adopted configuration of secure cryptographic algorithms.</p>
 <h4 id="user-selftest">User Selftest</h4>
