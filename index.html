@@ -270,7 +270,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-11-12 18:00:19" itemprop="dateModified" datetime="2022-11-12T18:00:19-08:00">2022-11-12</time>
+        <time title="Modified: 2022-11-12 18:16:06" itemprop="dateModified" datetime="2022-11-12T18:16:06-08:00">2022-11-12</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -307,207 +307,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <span id="more"></span>
-<div class="note success no-icon"><p><strong>One single vulnerability is all an attacker needs.</strong><br> <strong>— <em>Window Snyder</em> (American computer security expert, former Senior Security Strategist at Microsoft, and has been a top security officer at Apple, Intel and other companies)</strong></p>
-</div>
-<h3 id="rfc-interpretation">RFC Interpretation</h3>
-<p>The document title of <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc8996">RFC 8996</a> is quite straightforward, "Deprecating TLS 1.0 and TLS 1.1". So what is the rationale it gives? Here is a simple interpretation.</p>
-<p>First, take a look at its abstract:</p>
-<blockquote>
-<p><em>This document formally deprecates Transport Layer Security (TLS) versions 1.0 (RFC 2246) and 1.1 (RFC 4346). Accordingly, those documents have been moved to Historic status. These versions lack support for current and recommended cryptographic algorithms and mechanisms, and various government and industry profiles of applications using TLS now mandate avoiding these old TLS versions. TLS version 1.2 became the recommended version for IETF protocols in 2008 (subsequently being obsoleted by TLS version 1.3 in 2018), providing sufficient time to transition away from older versions. Removing support for older versions from implementations reduces the attack surface, reduces opportunity for misconfiguration, and streamlines library and product maintenance.</em></p>
-<p><em>This document also deprecates Datagram TLS (DTLS) version 1.0 (RFC 4347) but not DTLS version 1.2, and there is no DTLS version 1.1.</em></p>
-<p><em>This document updates many RFCs that normatively refer to TLS version 1.0 or TLS version 1.1, as described herein. This document also updates the best practices for TLS usage in RFC 7525; hence, it is part of BCP 195.</em></p>
-</blockquote>
-<p>The information given here is clear, the reasons for deprecating them are purely technical. TLS 1.0 and TLS 1.1 cannot support stronger encryption algorithms and mechanisms, and cannot meet the high-security requirements of various network applications in the new era. TLS is TCP-based. Corresponding to the UDP-based DTLS protocol, RFC 8996 also announced the deprecation of the DTLS 1.0 protocol.</p>
-<p>The Introduction section lists some details of the technical reasons:</p>
-<blockquote>
-<ol type="1">
-<li>They require the implementation of older cipher suites that are no longer desirable for cryptographic reasons, e.g., TLS 1.0 makes TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA mandatory to implement.</li>
-<li>There is a lack of support for current recommended cipher suites, especially <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Authenticated_encryption">authenticated encryption with associated Data (AEAD)</a>, which were not supported prior to TLS 1.2.</li>
-<li>The integrity of the handshake depends on SHA-1 hash.</li>
-<li>The authentication of the peers depends on SHA-1 signatures.</li>
-<li>Support for four TLS protocol versions increases the likelihood of misconfiguration.</li>
-<li>At least one widely used library has plans to drop TLS 1.1 and TLS 1.0 support in upcoming releases.</li>
-</ol>
-</blockquote>
-<p>Clauses 5 and 6 above are clear and need no further explanation.</p>
-<p>For 3DES mentioned in Clause 1, although it uses three independent keys with a total length of 168 bits, considering the possible <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Meet-in-the-middle_attack">meet-in-the-middle_attack</a> attack, its effective key strength is only 112 bits. Also, the 3DES encryption block length is still 64 bits, which makes it extremely vulnerable to <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Birthday_attack">birthday attack</a> (see <a target="_blank" rel="noopener" href="https://sweet32.info/">Sweet32</a>). NIST stipulates that a single 3DES key group can only be used for encrypting <span class="math inline">\(2^{20}\)</span> data blocks (ie 8MB). This was of course too small, and eventually, NIST decided in 2017 to deprecate 3DES in the IPSec and TLS protocols.</p>
-<p>3DES is just one example, another category that has been phased out earlier is cipher suites that use RC4 stream ciphers, see <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc7465">RFC 7465</a> for details. In addition, there are various problems in the implementation of block cipher CBC mode, which are often exploited by attackers to crack TLS sessions. A summary of various attacks and countermeasures of TLS 1.0 and TLS 1.1 is described in detail in <a target="_blank" rel="noopener" href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-52r2.pdf">NIST800-52r2</a> and <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc7457">RFC7457</a>. These two reference documents provide the key rationale for deprecation. Obviously, any protocol that mandates the implementation of insecure cipher suites should be on the list to be eliminated.</p>
-<p>In the second section of the document, the content in Section 1.1 "The History of TLS" of NIST800-52r2 is directly quoted (abbreviated as shown in the following table):</p>
-<table>
-<colgroup>
-<col style="width: 36%" />
-<col style="width: 36%" />
-<col style="width: 28%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">TLS Version</th>
-<th style="text-align: center;">Protocol Document</th>
-<th style="text-align: left;">Key Feature Update</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1.1</td>
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc4346">RFC 4346</a></td>
-<td style="text-align: left;">Improved initialization vector selection and padding error processing to address weaknesses discovered on the CBC mode of operation defined in TLS 1.0.</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">1.2</td>
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc5246">RFC 5246</a></td>
-<td style="text-align: left;">Enhanced encryption algorithms, particularly in the area of hash functions, can support SHA-2 series algorithms for hashing, MAC, and pseudorandom function computations, also added AEAD cipher suite.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">1.3</td>
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc8446">RFC 8446</a></td>
-<td style="text-align: left;">A significant change to TLS that aims to address threats that have arisen over the years. Among the changes are a new handshake protocol, a new key derivation process that uses the HMAC-based Extract-and-Expand Key Derivation Function (HKDF), and the removal of cipher suites that use RSA key transport or static Diffie-Hellman key exchanges, the CBC mode of operation, or SHA-1.</td>
-</tr>
-</tbody>
-</table>
-<p>AEAD is an encryption mode that can guarantee the confidentiality, integrity, and authenticity of data at the same time, typically such as CCM and GCM. TLS 1.2 introduced a range of AEAD cipher suites, and its high security made it the exclusive choice for TLS 1.3. These annotate Clause 2 of technical reasons.</p>
-<p>Clauses 3 and 4 of technical reasons call out SHA-1, so what is the problem with SHA-1? Section 3 of the document cites a paper by two French researchers, Karthikeyan Bhargavan and Gaetan Leurent .</p>
-<p>As a cryptographic hash function, SHA-1 was designed by the National Security Agency (NSA) and then published as a Federal Information Processing Standard (FIPS) by the National Institute of Standards and Technology (NIST). SHA-1 can process a message up to <span class="math inline">\(2^{64}\)</span> bits and generate a 160-bit (20-byte) hash value known as the message digest. Therefore, the complexity of brute force cracking based on birthday attack is <span class="math inline">\(2^{80}\)</span> operations. In 2005, Chinese cryptographer Wang Xiaoyun and her research team made a breakthrough in this field. The high-efficiency SHA-1 attack method they published can be used to find a hash collision within a computational complexity of <span class="math inline">\(2^{63}\)</span>. This has brought a huge impact on the security of SHA-1, but it does not mean that the cracking method can enter the practical stage.</p>
-<p>Network security protocols (such as TLS, IKE, and SSH, etc.) rely on the second preimage resistance of cryptographic hash functions, that is, it is computationally impossible to find any secondary input value that has the same output as a specific input value. For example, for a cryptographic hash function <span class="math inline">\(h(x)\)</span> and given input <span class="math inline">\(x\)</span>, it is difficult to find a sub-preimage <span class="math inline">\(x^′ ≠ x\)</span> that is satisfying <span class="math inline">\(h(x) = h(x^′)\)</span>. Because finding a hash collision does not mean that a sub-preimage can be located, in practice, it was once thought that continuing to use SHA-1 is not a problem.</p>
-<p>However, in 2016, Bhargavan and Leurent (who implemented the aforementioned Sweet32 attack against 64-bit block ciphers) discovered a new class of methods to attack key exchange protocols that shattered this perception. These methods are based on the principle of the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Collision_attack#Chosen-prefix_collision_attack">chosen prefix collision attack</a>. That is, given two different prefixes <span class="math inline">\(p_1\)</span> and <span class="math inline">\(p_2\)</span>, the attack finds two appendages <span class="math inline">\(m_1\)</span> and <span class="math inline">\(m_2\)</span> such that <span class="math inline">\(h(p_1 ∥ m_1) = hash(p_2 ∥ m_2)\)</span>. Using this approach, they demonstrated a man-in-the-middle attack against TLS clients and servers to steal sensitive data, and also showed that the attack could be used to masquerade and downgrade during TLS 1.1, IKEv2, and SSH-2 session handshakes. In particular, they proved that with only <span class="math inline">\(2^{77}\)</span> operations the handshake protocol using SHA-1 or MD5 and SHA-1 concatenated hash values ​​could be cracked.</p>
-<p>Since neither TLS 1.0 nor TLS 1.1 allows the peers to choose a stronger cryptographic hash function for signatures in the ServerKeyExchange or CertificateVerify messages, the IETF confirmed that using a newer protocol version is the only upgrade path.</p>
-<p>Sections 4 and 5 of the document again clarify that TLS 1.0 and TLS 1.1 must not be used, and negotiation to TLS 1.0 or TLS 1.1 from any TLS version is not allowed. This means that ClientHello.client_version and ServerHello.server_version issued by the TLS client and server, respectively, must not be {03,01} (TLS 1.0) or {03,02} (TLS 1.1). If the protocol version number in the Hello message sent by the other party is {03,01} or {03,02}, the local must respond with a "protocol_version" alert message and close the connection.</p>
-<p>It is worth noting that due to historical reasons, the TLS specification does not specify the value of the record layer version number (TLSPlaintext.version) when the client sends the ClientHello message. So to maximize interoperability, TLS servers MUST accept any value {03,XX} (including {03,00}) as the record layer version number for ClientHello messages, but they MUST NOT negotiate TLS 1.0 or 1.1.</p>
-<p>Section 6 of the document declares a textual revision to the previously published RFC 7525 (Recommendations for the Secure Use of TLS and DTLS). Three places in this RFC change implementation-time negotiations of TLS 1.0, TLS 1.1, and DTLS 1.0 from "SHOULD NOT" to "MUST NOT". The last section is a summary of standard RFC operations and security considerations.</p>
-<h3 id="industry-responses">Industry Responses</h3>
-<p>In the industry of large public online services, GitHub was the first to act. They started disabling TLS 1.0 and TLS 1.1 in all HTTPS connections back in February 2018, while also phasing out insecure <code>diffie-hellman-group1-sha1</code> and <code>diffie-hellman-group14-sha1</code> key exchange algorithms in the SSH connection service. In August 2018, Eric Rescorla, CTO of Mozilla Firefox, published the TLS 1.3 technical specification <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc8996">RFC 8446</a>. Two months later, Mozilla issued a statement together with the three giants of Apple, Google, and Microsoft, and put the deprecation of TLS 1.0 and TLS 1.1 on the agenda.</p>
-<p>The following is a brief summary of the actions of several related well-known companies:</p>
-<ul>
-<li><strong>Microsoft:</strong> For Office 365 services, TLS 1.0 and 1.1 disabling for commercial customers was temporarily suspended due to COVID-19. The mandatory rollout of TLS 1.2 was restarted on October 15, 2020. Users of SharePoint and OneDrive will need to update and configure .NET to support TLS 1.2. Users of Teams Rooms recommend upgrading the app to version 4.0.64.0. The Surface Hub released support for TLS 1.2 in May 2019. The Edge browser version 84 does not use TLS 1.0/1.1 by default, while the Azure cloud computing service will permanently obsolete TLS 1.0/1.1 from March 31, 2022.</li>
-<li><strong>Google:</strong> As early as 2018, TLS 1.3 was added to Chrome 70. Starting with Chrome 84, support for TLS 1.0 and TLS 1.1 is completely removed. After running TLS 1.3 in Search Engine, Gmail, YouTube, and various other Google services for some time, TLS 1.3 was officially rolled out in 2020 as the default configuration for all new and existing Cloud CDN and Global Load Balancing customers.</li>
-<li><strong>Apple:</strong> Announced in September 2021 that TLS 1.0 and TLS 1.1 will be deprecated in iOS 15, iPadOS 15, macOS 12, watchOS 8, and tvOS 15, and support for them be completely removed in future releases. If the user's application activates the App Transport Security (ATS) feature on all connections, no changes are required. Users are also notified to ensure that the web server supports newer TLS versions and to remove the following deprecated <code>Security.framework</code> symbols from the app
-<ul>
-<li>tls_protocol_version_t.TLSv10</li>
-<li>tls_protocol_version_t.TLSv11</li>
-<li>tls_protocol_version_t.DTLSv10</li>
-</ul></li>
-<li><strong>Mozilla:</strong> Starting with Firefox version 78, the minimum TLS version configured by default is TLS 1.2. In early 2020, Mozilla briefly removed TLS 1.0 and TLS 1.1 from Firefox completely, but this caused many users to be unable to open some COVID-19 outbreak public information sites, so the related functionality had to be restored. Following this, Mozilla provides helpful information on its technical support page, instructing users to modify the minimum TLS version number in the default configuration as needed.</li>
-<li><strong>Cisco:</strong> The Cisco Umbrella (renamed from OpenDNS) service discontinued support for all versions of TLS prior to 1.2 on March 31, 2020. After this, only TLS 1.2 compliant clients will be able to connect. In the router and switch product lines, web management has basically been implemented around 2020 to allow only TLS 1.2 or subsequent versions.
-<ul>
-<li>The CAPWAP connection between Cisco's Wireless Access Point (AP) and Wireless LAN Controller (WLC) is established over DTLS. All 802.11ac Wave 2 and 802.11ax APs from 2015 to the most recent release support DTLS 1.2. The AireOS WLC added DTLS 1.2 functionality in version 8.3.11x.0, and the next-generation C9800 WLC running IOS-XE supports DTLS 1.2 from the start. Note that because of the large number of existing network deployments using older equipment and software versions, DTLS 1.0 support cannot be removed immediately from APs and WLCs at this time to protect user investments. However, DTLS 1.2 is already the default optimal choice for APs and WLCs.</li>
-</ul></li>
-</ul>
-<h3 id="protocol-test">Protocol Test</h3>
-<p>Both TLS/DTLS clients and servers need to be tested to verify that their implementations follow the current best practices of <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc8996">RFC 8996</a>.</p>
-<h4 id="ssl-lab-test">SSL Lab Test</h4>
-<p>Qualys originated as a non-commercial <a target="_blank" rel="noopener" href="https://www.ssllabs.com/index.html">SSL Lab project</a>. They offer a free and simple client and server testing service, as well as a <a target="_blank" rel="noopener" href="https://www.ssllabs.com/ssl-pulse/">monitoring panel</a> reporting TLS/SSL security scan statistics for the most popular Internet sites. Below is the most recent chart of protocol support statistics for November 2022.</p>
-<p><img src="SSL-Pulse-2022-11.png" style="width:70.0%;height:70.0%" /></p>
-<table>
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 21%" />
-<col style="width: 19%" />
-<col style="width: 19%" />
-<col style="width: 17%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Protocol Version</th>
-<th style="text-align: center;">Security</th>
-<th style="text-align: center;">Supporting Sites (Oct. 2022)</th>
-<th style="text-align: center;">Supporting Site (Nov. 2022)</th>
-<th style="text-align: center;">% Change</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">SSL 2.0</td>
-<td style="text-align: center;">Insecure</td>
-<td style="text-align: center;">316（0.2%）</td>
-<td style="text-align: center;">303（0.2%)</td>
-<td style="text-align: center;">-0.0%</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">SSL 3.0</td>
-<td style="text-align: center;">Insecure</td>
-<td style="text-align: center;">3,015（2.2%）</td>
-<td style="text-align: center;">2,930（2.2%)</td>
-<td style="text-align: center;">-0.0%</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">TLS 1.0</td>
-<td style="text-align: center;">Deprecated</td>
-<td style="text-align: center;">47,450（34.9%）</td>
-<td style="text-align: center;">46,691（34.4)</td>
-<td style="text-align: center;">-0.5%</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">TLS 1.1</td>
-<td style="text-align: center;">Deprecated</td>
-<td style="text-align: center;">51,674（38.1%）</td>
-<td style="text-align: center;">50,816（37.5%)</td>
-<td style="text-align: center;">-0.6%</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">TLS 1.2</td>
-<td style="text-align: center;">Depending on the Cipher Suite and the Client</td>
-<td style="text-align: center;">135,557（99.8）</td>
-<td style="text-align: center;">135,445（99.9)</td>
-<td style="text-align: center;">+0.1%</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">TLS 1.3</td>
-<td style="text-align: center;">Secure</td>
-<td style="text-align: center;">78,479（57.8%）</td>
-<td style="text-align: center;">79,163（58.4%)</td>
-<td style="text-align: center;">+0.6%</td>
-</tr>
-</tbody>
-</table>
-<p>As you can see, almost 100% of sites are running TLS 1.2, and the percentage of TLS 1.3 support is close to 60%. This is very encouraging data. While very few sites are still running SSL 2.0/3.0 and TLS 1.0/1.1 are both still supported at around 35%, overall their percentages are continuing to decline and this good trend should continue.</p>
-<p>This blog site is served by GitHub Page, enter the URL to <a target="_blank" rel="noopener" href="https://www.ssllabs.com/ssltest/">SSL Server Test</a> page and submit it to get a summary of the test results as follows.</p>
-<p><img src="SSL-Report-Conf.png" /></p>
-<p>This further confirms that the GitHub Page only supports TLS 1.2/1.3, as required by <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc8996">RFC 8996</a>. It can also be seen that under the "Cipher Suites" subheading, TLS 1.3 shows two GCMs and one ChaCha20-Poly1305, which are all cipher suites based on the AEAD algorithms. Three cipher suites of the same type are the preferred TLS 1.2 cipher suites for the server as well. This is exactly the current commonly adopted configuration of secure cryptographic algorithms.</p>
-<h4 id="user-selftest">User Selftest</h4>
-<p>If you suspect that a private server is still using the outdated TLS/SSL protocol, you can do a simple test with the command line tool <code>curl</code>, an example of which is as follows.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">❯ curl https://www.cisco.com -svo /dev/null --tls-max 1.1</span><br><span class="line">*   Trying 104.108.67.95:443...</span><br><span class="line">* Connected to www.cisco.com (104.108.67.95) port 443 (<span class="comment">#0)</span></span><br><span class="line">* ALPN, offering h2</span><br><span class="line">* ALPN, offering http/1.1</span><br><span class="line">* successfully <span class="built_in">set</span> certificate verify locations:</span><br><span class="line">*  CAfile: /etc/ssl/cert.pem</span><br><span class="line">*  CApath: none</span><br><span class="line">* (304) (OUT), TLS handshake, Client hello (1):</span><br><span class="line">&#125; [151 bytes data]</span><br><span class="line">* error:1404B42E:SSL routines:ST_CONNECT:tlsv1 alert protocol version</span><br><span class="line">* Closing connection 0</span><br></pre></td></tr></table></figure>
-<p>Here enter the command line option <code>-tls-max 1.1</code> to set the highest protocol version 1.1 and connect to the Cisco home page. The output shows that the connection failed and that a "protocol version" alert message was received. This indicates that the server has rejected the TLS 1.1 connection request, and the response is exactly what is required by <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc8996">RFC 8996</a>.</p>
-<p>The <code>openssl</code> command line tool provided by the general purpose open source cryptography and secure communication toolkit <a target="_blank" rel="noopener" href="https://www.openssl.org">OpenSSL</a> can also do the same test. To test whether the server supports the TLS 1.2 protocol, use the option <code>s_client</code> to emulate a TLS/SSL client and also enter <code>-tls1_2</code> to specify that only TLS 1.2 is used. The command line runs as follows.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">❯ openssl s_client -connect www.cisco.com:443 -tls1_2</span><br><span class="line">CONNECTED(00000005)</span><br><span class="line">depth=2 C = US, O = IdenTrust, CN = IdenTrust Commercial Root CA 1</span><br><span class="line">verify <span class="built_in">return</span>:1</span><br><span class="line">depth=1 C = US, O = IdenTrust, OU = HydrantID Trusted Certificate Service, CN = HydrantID Server CA O1</span><br><span class="line">verify <span class="built_in">return</span>:1</span><br><span class="line">depth=0 CN = www.cisco.com, O = Cisco Systems Inc., L = San Jose, ST = California, C = US</span><br><span class="line">verify <span class="built_in">return</span>:1</span><br><span class="line">---</span><br><span class="line">Certificate chain</span><br><span class="line"> 0 s:/CN=www.cisco.com/O=Cisco Systems Inc./L=San Jose/ST=California/C=US</span><br><span class="line">   i:/C=US/O=IdenTrust/OU=HydrantID Trusted Certificate Service/CN=HydrantID Server CA O1</span><br><span class="line"> 1 s:/C=US/O=IdenTrust/OU=HydrantID Trusted Certificate Service/CN=HydrantID Server CA O1</span><br><span class="line">   i:/C=US/O=IdenTrust/CN=IdenTrust Commercial Root CA 1</span><br><span class="line"> 2 s:/C=US/O=IdenTrust/CN=IdenTrust Commercial Root CA 1</span><br><span class="line">   i:/C=US/O=IdenTrust/CN=IdenTrust Commercial Root CA 1</span><br><span class="line">---</span><br><span class="line">Server certificate</span><br><span class="line">-----BEGIN CERTIFICATE-----</span><br><span class="line">MIIHrzCCBpegAwIBAgIQQAF9KqwAKOKNhDf17h+WazANBgkqhkiG9w0BAQsFADBy</span><br><span class="line">...</span><br><span class="line">4TY7</span><br><span class="line">-----END CERTIFICATE-----</span><br><span class="line">subject=/CN=www.cisco.com/O=Cisco Systems Inc./L=San Jose/ST=California/C=US</span><br><span class="line">issuer=/C=US/O=IdenTrust/OU=HydrantID Trusted Certificate Service/CN=HydrantID Server CA O1</span><br><span class="line">---</span><br><span class="line">No client certificate CA names sent</span><br><span class="line">Server Temp Key: ECDH, P-256, 256 bits</span><br><span class="line">---</span><br><span class="line">SSL handshake has <span class="built_in">read</span> 5765 bytes and written 322 bytes</span><br><span class="line">---</span><br><span class="line">New, TLSv1/SSLv3, Cipher is ECDHE-RSA-AES128-GCM-SHA256</span><br><span class="line">Server public key is 2048 bit</span><br><span class="line">Secure Renegotiation IS supported</span><br><span class="line">Compression: NONE</span><br><span class="line">Expansion: NONE</span><br><span class="line">No ALPN negotiated</span><br><span class="line">SSL-Session:</span><br><span class="line">    Protocol  : TLSv1.2</span><br><span class="line">    Cipher    : ECDHE-RSA-AES128-GCM-SHA256</span><br><span class="line">    Session-ID: 1656D7D14447C1D5E68943F614A697455E60A036957D8D8C18F3B198DF42969F</span><br><span class="line">    Session-ID-ctx:</span><br><span class="line">    Master-Key: BB1209155344C55792077A4337964661FCA4F3F5BBF3185112F5E235BD07AD63838D24F5CF97161E696CB57398CAF478</span><br><span class="line">    TLS session ticket lifetime hint: 83100 (seconds)</span><br><span class="line">    TLS session ticket:</span><br><span class="line">    0000 - 00 00 0b 33 d4 56 15 3d-64 e8 fa 1d cf c1 1c 04   ...3.V.=d.......</span><br><span class="line">    ...</span><br><span class="line">    0090 - 1b 96 9c 25 82 70 a8 ed-24 1d 70 c9 28 56 84 59   ...%.p..$.p.(V.Y</span><br><span class="line"></span><br><span class="line">    Start Time: 1653265585</span><br><span class="line">    Timeout   : 7200 (sec)</span><br><span class="line">    Verify <span class="built_in">return</span> code: 0 (ok)</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>This record is very detailed and the format is very readable. From the output, it can be understood that the digital certificate of the Cisco home page server is digitally signed and certified by the root certificate authority IdenTrust. The client-server session is built on the TLS 1.2 protocol, and the selected cipher suite is ECDHE-RSA-AES128-GCM-SHA256 of type AEAD, which is identical to the preferences provided by the GitHub Page.</p>
-<h4 id="browser-test">Browser Test</h4>
-<p>If you are not sure about the security of your browser and want to test whether it still supports the pre-TLS 1.2 protocols, you can enter the following URL in your browser's address bar.</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://tls-v1-0.badssl.com">https://tls-v1-0.badssl.com</a> (Only support TLS 1.0)</li>
-<li><a target="_blank" rel="noopener" href="https://tls-v1-1.badssl.com">https://tls-v1-1.badssl.com</a> (Only support TLS 1.1)</li>
-</ul>
-<p>After connecting to the second URL with the default configuration of Firefox, the page shows the following</p>
-<blockquote>
-<p><strong>Secure Connection Failed</strong></p>
-<p>An error occurred during a connection to tls-v1-1.badssl.com:1011. Peer using unsupported version of security protocol.</p>
-<p>Error code: SSL_ERROR_UNSUPPORTED_VERSION</p>
-<ul>
-<li>The page you are trying to view cannot be shown because the authenticity of the received data could not be verified.</li>
-<li>Please contact the website owners to inform them of this problem.</li>
-</ul>
-<p><mark>This website might not support the TLS 1.2 protocol, which is the minimum version supported by Firefox.</mark></p>
-</blockquote>
-<p>This error message clearly indicates that Firefox is running a minimum TLS protocol version of 1.2 in this configuration, and since the other side is only running TLS 1.1, the two sides cannot establish a connection.</p>
-<p>So what is the result of the connection when the browser does still retain TLS 1.0/1.1 functionality?</p>
-<p>For testing purposes, you can first change the default TLS preference value of Firefox to 1.1 by following the steps below (refer to the figure below).</p>
-<ol type="1">
-<li>Open a new tab, type <strong>about:config</strong> in the address bar, and press Enter/Return.</li>
-<li>The page prompts "Proceed with Caution", click the <strong>Accept the Risk and Continue</strong> button.</li>
-<li>In the search box at the top of the page, type TLS to display the filtered list.</li>
-<li>Find the <strong>security.tls.version.min</strong> preference option and click the <strong>Edit</strong> icon to change the minimum TLS version.
-<ul>
-<li>TLS 1.0 =&gt; 1</li>
-<li>TLS 1.1 =&gt; 2</li>
-<li>TLS 1.2 =&gt; 3</li>
-<li>TLS 1.3 =&gt; 4</li>
-</ul></li>
-</ol>
-<p><img src="Firefox-TLS-MIN-VER.png" style="width:80.0%;height:80.0%" /></p>
-<p>At this point, then connect to <a target="_blank" rel="noopener" href="https://tls-v1-1.badssl.com">https://tls-v1-1.badssl.com</a>, the result is</p>
-<p><img src="TLS-V1-1-BADSSL.png" style="width:80.0%;height:80.0%" /></p>
-<p>This bold red page tells you that the browser you are currently using does not have TLS 1.1 disabled and is a security risk, so try not to use it if you can.</p>
-<p>Finally, don't forget to restore the default TLS minimum version setting (3) for Firefox.</p>
-
+          <p>In March 2021, the Internet Engineering Task Force (IETF) released <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc8996">RFC 8996</a>, classified as a current best practice, officially announcing the deprecation of the TLS 1.0 and TLS 1.1 protocols. If your applications and web services are still using these protocols, please stop immediately and update to TLS 1.2 or TLS 1.3 protocol versions to eliminate any possible security risks.
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/en/2022/11/10/Stop-TLS1-0-TLS1-1/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1163,7 +971,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span>Reading time total &asymp;</span>
-    <span title="Reading time total">2:12</span>
+    <span title="Reading time total">2:13</span>
   </span>
 </div>
 <div class="busuanzi-count">
