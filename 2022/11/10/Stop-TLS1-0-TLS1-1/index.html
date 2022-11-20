@@ -36,8 +36,11 @@
 <meta property="og:image" content="https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/SSL-Report-Conf.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/Firefox-TLS-MIN-VER.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/TLS-V1-1-BADSSL.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/SSL-TLS.jpg">
+<meta property="og:image" content="https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/Implement-TLS.jpg">
+<meta property="og:image" content="https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/Bulletproof-TLS.jpg">
 <meta property="article:published_time" content="2022-11-11T07:56:28.000Z">
-<meta property="article:modified_time" content="2022-11-13T02:24:42.812Z">
+<meta property="article:modified_time" content="2022-11-20T03:21:42.580Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="Cryptography">
 <meta property="article:tag" content="Network Security">
@@ -166,7 +169,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#rfc-interpretation"><span class="nav-number">1.</span> <span class="nav-text">RFC Interpretation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#industry-responses"><span class="nav-number">2.</span> <span class="nav-text">Industry Responses</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#protocol-test"><span class="nav-number">3.</span> <span class="nav-text">Protocol Test</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ssl-lab-test"><span class="nav-number">3.1.</span> <span class="nav-text">SSL Lab Test</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#user-selftest"><span class="nav-number">3.2.</span> <span class="nav-text">User Selftest</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#browser-test"><span class="nav-number">3.3.</span> <span class="nav-text">Browser Test</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#rfc-interpretation"><span class="nav-number">1.</span> <span class="nav-text">RFC Interpretation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#industry-responses"><span class="nav-number">2.</span> <span class="nav-text">Industry Responses</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#protocol-test"><span class="nav-number">3.</span> <span class="nav-text">Protocol Test</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ssl-lab-test"><span class="nav-number">3.1.</span> <span class="nav-text">SSL Lab Test</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#user-selftest"><span class="nav-number">3.2.</span> <span class="nav-text">User Selftest</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#browser-test"><span class="nav-number">3.3.</span> <span class="nav-text">Browser Test</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#references"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -281,7 +284,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-11-12 18:24:42" itemprop="dateModified" datetime="2022-11-12T18:24:42-08:00">2022-11-12</time>
+        <time title="Modified: 2022-11-19 19:21:42" itemprop="dateModified" datetime="2022-11-19T19:21:42-08:00">2022-11-19</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -307,14 +310,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>18k</span>
+      <span>20k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>17 mins.</span>
+      <span>18 mins.</span>
     </span>
 </div>
 
@@ -525,7 +528,18 @@
 <p>At this point, then connect to <a target="_blank" rel="noopener" href="https://tls-v1-1.badssl.com">https://tls-v1-1.badssl.com</a>, the result is</p>
 <p><img src="TLS-V1-1-BADSSL.png" style="width:80.0%;height:80.0%" /></p>
 <p>This bold red page tells you that the browser you are currently using does not have TLS 1.1 disabled and is a security risk, so try not to use it if you can.</p>
-<p>Finally, don't forget to restore the default TLS minimum version setting (3) for Firefox.</p>
+<p>After testing, don't forget to restore the default TLS minimum version setting (3) for Firefox.</p>
+<h3 id="references">References</h3>
+<blockquote>
+<p><strong><em>Disclosure</em></strong>: <em>This blog site is reader-supported. When you buy through the affiliate links below, we may earn a tiny commission. Thank you.</em></p>
+</blockquote>
+<p>Besides NIST and RFC documents, For an in-depth study of the TLS protocol specification, system implementation, and application deployment, a careful reading of the following three books is recommended.</p>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img src="SSL-TLS.jpg" /></div><div class="group-picture-column"><img src="Implement-TLS.jpg" /></div><div class="group-picture-column"><img src="Bulletproof-TLS.jpg" /></div></div></div>
+<ol type="1">
+<li><a target="_blank" rel="noopener" href="https://amzn.to/3EIfeo0">SSL and TLS: Theory and Practice, Second Edition</a> (2016) - This book provides a comprehensive discussion of the SSL, TLS, and DTLS protocols. It has complete details on the theory and practice of the protocols, offering readers a solid understanding of their design principles and modes of operation. The book also presents the advantages and disadvantages of the protocols compared to other Internet security protocols and provides the details necessary to correctly implement the protocols while saving time on the security practitioner’s side.</li>
+<li><a target="_blank" rel="noopener" href="https://amzn.to/3tGCfBx">Implementing SSL/TLS Using Cryptography and PKI</a> (2011) - For a network professional who knows C programming, this book is a hands-on, practical guide to implementing SSL and TLS protocols for Internet security. Focused on how to implement SSL and TLS, it walks you through all the necessary steps, whether or not you have a working knowledge of cryptography. The book covers TLS 1.2, including implementations of the relevant cryptographic protocols, secure hashing, certificate parsing, certificate generation, and more.</li>
+<li><a target="_blank" rel="noopener" href="https://amzn.to/3tLhaG6">Bulletproof TLS and PKI, Second Edition: Understanding and Deploying SSL/TLS and PKI to Secure Servers and Web</a> (2022) - This book is a complete guide to using TLS encryption and PKI to deploy secure servers and web applications. Written by Ivan Ristić, founder of the popular SSL Labs website, it will teach you everything you need to know to protect your systems from eavesdropping and impersonation attacks. You can also find just the right mix of theory, protocol detail, vulnerability and weakness information, and deployment advice to get the work done.</li>
+</ol>
 
     </div>
 
@@ -619,14 +633,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>Symbols count total: </span>
-    <span title="Symbols count total">146k</span>
+    <span title="Symbols count total">148k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>Reading time total &asymp;</span>
-    <span title="Reading time total">2:13</span>
+    <span title="Reading time total">2:14</span>
   </span>
 </div>
 <div class="busuanzi-count">

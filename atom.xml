@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2022-11-13T02:24:42.812Z</updated>
+  <updated>2022-11-20T03:21:42.580Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/"/>
     <id>https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/</id>
     <published>2022-11-11T07:56:28.000Z</published>
-    <updated>2022-11-13T02:24:42.812Z</updated>
+    <updated>2022-11-20T03:21:42.580Z</updated>
     
     
     <summary type="html">&lt;p&gt;In March 2021, the Internet Engineering Task Force (IETF) released &lt;a href=&quot;https://tools.ietf.org/html/rfc8996&quot;&gt;RFC 8996&lt;/a&gt;, classified as a current best practice, officially announcing the deprecation of the TLS 1.0 and TLS 1.1 protocols. If your applications and web services are still using these protocols, please stop immediately and update to TLS 1.2 or TLS 1.3 protocol versions as soon as possible to eliminate any possible security risks.</summary>
