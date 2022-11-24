@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.0.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/en/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="piAnQ_mnwkhV_qh4_Se1yLzM1IwOvuq-vmYfXBkWRXU">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=EB+Garamond:300,300italic,400,400italic,700,700italic%7CNoto+Serif+SC:300,300italic,400,400italic,700,700italic%7CRoboto+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.packetmania.net","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk | utterances | disqus","storage":true,"lazyload":false,"nav":{"disqus":{"text":"Disqus Comments","order":-1},"utterances":{"text":"Utterances Comments","order":-2},"gitalk":{"text":"Gitalk Comments","order":-3}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/en/js/config.js"></script>
+<meta name="description" content="Recently, at a WPA3 technology introduction meeting within the R&amp;D team, the speaker mentioned that the OWE technology for encrypted wireless open networks is based on Diffie-Hellman key exchange,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Does the Diffie-Hellman key exchange use a technique similar to RSA?">
+<meta property="og:url" content="https://www.packetmania.net/en/2022/11/21/DH-and-RSA/index.html">
+<meta property="og:site_name" content="PacketMania">
+<meta property="og:description" content="Recently, at a WPA3 technology introduction meeting within the R&amp;D team, the speaker mentioned that the OWE technology for encrypted wireless open networks is based on Diffie-Hellman key exchange,">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.packetmania.net/en/2022/11/21/DH-and-RSA/acm-turing-2015.jpeg">
+<meta property="og:image" content="https://www.packetmania.net/en/2022/11/21/DH-and-RSA/acm-turing-2002.jpeg">
+<meta property="article:published_time" content="2022-11-22T06:38:45.000Z">
+<meta property="article:modified_time" content="2022-11-24T20:59:09.830Z">
+<meta property="article:author" content="Zixi">
+<meta property="article:tag" content="Cryptography">
+<meta property="article:tag" content="Network Security">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.packetmania.net/en/2022/11/21/DH-and-RSA/acm-turing-2015.jpeg">
+
+
+<link rel="canonical" href="https://www.packetmania.net/en/2022/11/21/DH-and-RSA/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.packetmania.net/en/2022/11/21/DH-and-RSA/","path":"2022/11/21/DH-and-RSA/","title":"Does the Diffie-Hellman key exchange use a technique similar to RSA?"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Does the Diffie-Hellman key exchange use a technique similar to RSA? | PacketMania</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YKBP0QK7Z"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-9YKBP0QK7Z","only_pageview":false}</script>
+  <script src="/en/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PacketMania" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PacketMania</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Technology | Knowledge | Sharing</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/en/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/en/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+        <li class="menu-item menu-item-rss"><a href="/en/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+        <li class="menu-item menu-item-language"><a href="https://www.packetmania.net/" rel="section"><i class="fa fa-language fa-fw"></i>中文</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#diffie-hellman-key-exchange"><span class="nav-number">1.</span> <span class="nav-text">Diffie-Hellman Key Exchange</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rsa-encryption-algorithm"><span class="nav-number">2.</span> <span class="nav-text">RSA Encryption Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#difference-and-connection"><span class="nav-number">3.</span> <span class="nav-text">Difference and Connection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dhe-rsa-cipher-suite"><span class="nav-number">4.</span> <span class="nav-text">DHE-RSA Cipher Suite</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zixi"
+      src="/en/images/ccie.gif">
+  <p class="site-author-name" itemprop="name">Zixi</p>
+  <div class="site-description" itemprop="description">Computer Networking and Software Design & Implementation</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/packetmania" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;packetmania" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zixiruoxue@gmail.com" title="E-Mail → mailto:zixiruoxue@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/zixisean" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zixisean" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/15140531" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;15140531" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_nd.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.packetmania.net/en/2022/11/21/DH-and-RSA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/ccie.gif">
+      <meta itemprop="name" content="Zixi">
+      <meta itemprop="description" content="Computer Networking and Software Design & Implementation">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PacketMania">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Does the Diffie-Hellman key exchange use a technique similar to RSA?
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-21 22:38:45" itemprop="dateCreated datePublished" datetime="2022-11-21T22:38:45-08:00">2022-11-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-24 12:59:09" itemprop="dateModified" datetime="2022-11-24T12:59:09-08:00">2022-11-24</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/Study-Notes/" itemprop="url" rel="index"><span itemprop="name">Study Notes</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>25k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>23 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Recently, at a WPA3 technology introduction meeting within the R&amp;D team, the speaker mentioned that the OWE technology for encrypted wireless open networks is based on Diffie-Hellman key exchange, and casually said that Diffie-Hellman key exchange is using technology similar to RSA. This statement is wrong!<span id="more"></span> Although Diffie-Hellman key exchange and RSA encryption algorithms belong to public key cryptography, their working mechanisms and application scenarios are different. As a research and development engineer and technician supporting network security, it is necessary to clearly understand the working mechanism and mathematical principles of the two, as well as the differences and connections between them.</p>
+<div class="note success no-icon"><p><strong>A cryptographic system should be secure even if everything about the system, except the key, is public knowledge.</strong><br> <strong>— <em>Auguste Kerckhoffs</em> (Dutch linguist and cryptographer, best known for his “Kerckhoffs's principle” of cryptography) </strong></p>
+</div>
+<h2 id="diffie-hellman-key-exchange">Diffie-Hellman Key Exchange</h2>
+<p>Diffie-Hellman key exchange (DH for short) is a secure communication protocol that allows two communicating parties to exchange messages over an insecure public channel to create a shared secret without any foreknowledge. This secret can be used to generate keys for subsequent communications between the two parties using symmetric encryption techniques (e.g. AES).</p>
+<p>The idea of ​​this kind of public key distribution to achieve shared secrets was first proposed by Ralph Merkle, a doctoral student of Stanford University professor Martin Hellman, and then Professor Hellman's research assistant Whitfield Diffie and Professor Herman jointly invented a practical key exchange protocol. In 1976, Diffie and Hellman were invited to publish their paper "New Directions in Cryptography" in IEEE Transactions on Information Theory, which laid the foundation for the public key cryptography system and officially announced the birth of the new Diffie-Herman key exchange technology.</p>
+<p>The working principle of Diffie-Hellman key exchange is based on the modular exponentiation operation with the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Multiplicative_group_of_integers_modulo_n">multiplicative group of integers modulo <em>n</em></a> and <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Primitive_root_modulo_n">its primitive root modulo <em>n</em></a> in number theory. The following is a simple and specific example to describe:</p>
+<ol type="1">
+<li>Alice chooses a prime number <span class="math inline">\(p=71\)</span>, and then a primitive root <span class="math inline">\(g=7\)</span> of the multiplicative group of integers modulo <span class="math inline">\(p\)</span></li>
+<li>Alice chooses a random number <span class="math inline">\(a=17\)</span> that is less than <span class="math inline">\(p\)</span>, calculate <span class="math inline">\(A=g^a\bmod\;p=7^{17}\bmod\;71 = 62\)</span></li>
+<li>Alice sends all <span class="math inline">\((p,g,A)\)</span> to Bob</li>
+<li>Bob also chooses a random number <span class="math inline">\(b=39\)</span> that is less than <span class="math inline">\(p\)</span>, calculate <span class="math inline">\(B=g^b\bmod\;p=7^{39}\bmod\;71 = 13\)</span></li>
+<li>Bob sends <span class="math inline">\(B\)</span> back to Alice</li>
+<li>Alice calculates <span class="math inline">\(s=B^a\bmod\;p=13^{17}\bmod\;71 = 42\)</span></li>
+<li>Bob calculate <span class="math inline">\(s=A^b\bmod\;p=62^{39}\bmod\;71 = 42\)</span></li>
+</ol>
+<details class="note primary"><summary><p><strong>Is it troublesome calculating <span class="math inline">\(\color{#93F}{\bf62^{39}\bmod\;71}\)</span>? It is actually very easy……</strong></p>
+</summary>
+<p>Remember that modular arithmetic has the property of preserving primitive operations: <span class="math display">\[(a⋅b)\bmod\;m = [(a\bmod\;m)⋅(b\bmod\;m)]\bmod\;m\]</span> Combining with the principle of <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Exponentiation_by_squaring">Exponentiation by Squaring</a>, and applying the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Modular_exponentiation#Right-to-left_binary_method">right-to-left binary method</a> to do fast calculation: <span class="math display">\[\begin{align}
+62^{39}\bmod\;71 &amp; = (62^{2^0}⋅62^{2^1}⋅62^{2^2}⋅62^{2^5})\bmod\;71\\
+&amp; = (62⋅10⋅(62^{2^1}⋅62^{2^1})⋅(62^{2^4}⋅62^{2^4}))\bmod\;71\\
+&amp; = (62⋅10⋅(10⋅10)⋅(62^{2^3}⋅62^{2^3}⋅62^{2^4}))\bmod\;71\\
+&amp; = (62⋅10⋅29⋅(29⋅29⋅62^{2^3}⋅62^{2^4}))\bmod\;71\\
+&amp; = (62⋅10⋅29⋅(60⋅60⋅62^{2^4}))\bmod\;71\\
+&amp; = (62⋅10⋅29⋅(50⋅50))\bmod\;71\\
+&amp; = (62⋅10⋅29⋅15)\bmod\;71\\
+&amp; = 42
+\end{align}\]</span></p>
+
+</details>
+<p>As if by magic, both Alice and Bob get the same <span class="math inline">\(s\)</span> value of <span class="math inline">\(42\)</span>. This is the shared secret of two people! After this, Alice and Bob can use the hash value of <span class="math inline">\(s\)</span> as a symmetric key for encrypted communication, which is unknown to any third party.</p>
+<p>Why? Because of the nature of the modular exponentiation of the multiplicative group, <span class="math inline">\(g^{ab}\)</span> and <span class="math inline">\(g^{ba}\)</span> are equal with the modulo <span class="math inline">\(p\)</span>:</p>
+<p><span class="math display">\[A^b\bmod\;p=g^{ab}\bmod\;p=g^{ba}\bmod\;p=B^a\bmod\;p\]</span></p>
+<p>So calculated <span class="math inline">\(s\)</span> values ​​must be the same. Of course, real applications would use much larger <span class="math inline">\(p\)</span>, otherwise the attacker can exhaust all the remainder to try to crack the ciphertext encrypted by the symmetric key.</p>
+<p>Notice <span class="math inline">\((p,g,A,B)\)</span> is public and <span class="math inline">\((a,b,s)\)</span> is secret. Now suppose an eavesdropper Eve can see all the messages between Alice and Bob, can she deduce <span class="math inline">\(s\)</span>? The answer is that this is only practically possible if the values of <span class="math inline">\((p,a,b)\)</span> are very small. Eve must first invert <span class="math inline">\((a,b)\)</span> from what she knows about <span class="math inline">\((p,g,A,B)\)</span>:</p>
+<ul>
+<li><span class="math inline">\(A=g^a\bmod\;p\Rightarrow \color{fuchsia}{a = log_g A\bmod\;p}\)</span></li>
+<li><span class="math inline">\(B=g^b\bmod\;p\Rightarrow \color{fuchsia}{b = log_g B\bmod\;p}\)</span></li>
+</ul>
+<p>This is the famous <strong>discrete logarithm problem</strong>. It is a recognized computational challenge and no polynomial-time efficient algorithm is currently found to compute the discrete logarithm. So this protocol is considered eavesdropping-safe as long as the appropriate <span class="math inline">\((p,a,b)\)</span> is chosen. <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc3526">RFC 3526</a> recommends 6 Modular Exponential (MODP) DH groups of large prime numbers for practical applications, the smallest of which has 1536 bits!</p>
+<p>It should also be emphasized that Diffie-Hellman key exchange itself does not require authentication of both communicating parties, so it is vulnerable to man-in-the-middle attacks. If an attacker can tamper with the messages sent and received by both sides in the middle of the channel, he can complete Diffie-Hellman key exchange twice by pretending to be an identity. The attacker can then decrypt the entire message. Therefore, usually practical applications need to incorporate authentication mechanisms to prevent such attacks.</p>
+<p>Diffie-Hellman key exchange technique is a crucial contribution to modern cryptography. In 2015, 39 years after the announcement of this invention, Diffie and Hellman jointly won the ACM Turing Award, known as the "Nobel Prize of Computing". The ACM award poster directly stated that they "invented public key cryptography".</p>
+<p><img src="acm-turing-2015.jpeg" /></p>
+<h2 id="rsa-encryption-algorithm">RSA Encryption Algorithm</h2>
+<p>RSA is a public key encryption algorithm. The public key encryption system with the same name as the core technology is widely used in secure data transmission. Today, the comprehensive development of the Internet has provided great convenience to the public in all aspects of society. Whether you are surfing, gaming, entertaining, shopping, instant messaging with friends and family, managing a bank account, investing in financial securities, or simply sending and receiving email, RSA is working behind the scenes to protect your privacy and data security.</p>
+<p>RSA is actually an acronym for the last names of three people: American cryptographer Ronald <strong>R</strong>ivest, Israeli cryptographer Adi <strong>S</strong>hamir, and American computer scientist Leonard Max <strong>A</strong>dleman. In 1977, Levister, Shamir and Adleman collaborated at the Massachusetts Institute of Technology (MIT) to invent the RSA encryption algorithm. The algorithm was first published in a public technical report at MIT, and later compiled and published in the February 1978 issue of <em>ACM Communications</em> under the title "<a target="_blank" rel="noopener" href="https://dl.acm.org/doi/10.1145/359340.359342">A Method for Obtaining Digital Signatures and Public Key Cryptosystems</a>".</p>
+<p>The basic idea of RSA is that the user creates a key pair consisting of a public key and a private key. The public key is freely distributed and the private key must be kept secret. Anyone can encrypt a message with the public key, and the resulting ciphertext can only be deciphered by the private key holder. On the other hand, any message encrypted with the private key can be decrypted by the public key. Since we assume that the private key can only be held by a specific object, encrypting with the private key is equivalent to generating a digital signature, and decrypting with the public key is equivalent to verifying the signature.</p>
+<p>The RSA encryption algorithm consists of a four-step operational process: key generation, key distribution, encryption, and decryption. A simple and concrete example is also given below to illustrate.</p>
+<ol type="1">
+<li>Alice randomly chooses two prime numbers <span class="math inline">\(p=127\)</span> and <span class="math inline">\(q=5867\)</span>, computes <span class="math inline">\(N=pq=745109\)</span></li>
+<li>Alice computes <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Carmichael_function">Carmichael's totient function</a> <span class="math inline">\(\lambda(N)=\lambda(745109)=52794\)</span>
+<ul>
+<li>When <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> are both primes, <span class="math inline">\(\lambda(pq)=\mathrm{lcm}(p − 1, q − 1)\)</span></li>
+<li><span class="math inline">\(\mathrm{lcm}\)</span> represents the function for the least common multiple, which may be calculated through the Euclidean algorithm</li>
+<li><span class="math inline">\(\mathrm{lcm}(126,5866)=52794\)</span></li>
+</ul></li>
+<li>Alice chooses an integer <span class="math inline">\(e=5\)</span> less than <span class="math inline">\(\lambda(N)\)</span> but also coprime with <span class="math inline">\(\lambda(N)\)</span>, and calculates the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Modular_multiplicative_inverse">modular multiplicative inverse</a> of <span class="math inline">\(e\)</span> modulo <span class="math inline">\(\lambda(N)\)</span>. That is <span class="math inline">\(d\equiv e^{-1}\pmod {\lambda(N)}\)</span>, <span class="math inline">\(d=10559\)</span>
+<ul>
+<li>The definition of modular multiplicative inverse is, determine <span class="math inline">\(d\)</span> such that <span class="math inline">\((d⋅e)\;\bmod\;\lambda(N)=1\)</span></li>
+<li><span class="math inline">\(d=10559\equiv 5^{-1}\pmod {52794}\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\pmb{(N,e)}\)</span> <strong>is Alice's public key</strong>，<span class="math inline">\(\pmb{(N,d)}\)</span> <strong>is her private key</strong>
+<ul>
+<li>Alice sends her public key <span class="math inline">\((745109,5)\)</span> to Bob</li>
+<li>Alice saves her private key <span class="math inline">\((745109,10559)\)</span> in a secret place</li>
+<li>Alice distroies all records of <span class="math inline">\(p,q,\lambda(N)\)</span></li>
+</ul></li>
+<li>When Bob wants to send Alice a message <span class="math inline">\(M\)</span>, according to the encoding format agreed upon by both parties, he first translates <span class="math inline">\(M\)</span> to one or more positive integers <span class="math inline">\(m\)</span> that are all less than <span class="math inline">\(N\)</span>, and then uses Alice's public key to compute the ciphertext <span class="math inline">\(c\)</span> one by one. The calculation formula is <span class="math inline">\(\pmb{c\equiv m^e\pmod N}\)</span>
+<ul>
+<li>Assume <span class="math inline">\(M\)</span> is "<em>CACC 9678</em>", and the encoding scheme is 0 for spaces, 1-26 for a-z/A-Z (ignoring case), and 27-36 for 0-9</li>
+<li>Encoding yields the positive integer string "030103 030036 333435". Note that each integer is less than 745109</li>
+<li>After encryption, it becomes ciphertext integer string "184539 741303 358095"
+<ul>
+<li><span class="math inline">\(184539 \equiv 30103^5\pmod {745109}\)</span></li>
+<li><span class="math inline">\(741303 \equiv 30036^5\pmod {745109}\)</span></li>
+<li><span class="math inline">\(358095 \equiv 333435^5\pmod {745109}\)</span></li>
+</ul></li>
+</ul></li>
+<li>After Alice receives the ciphertext integer string, she uses her private key to compute the plaintext one by one, the calculation formula is <span class="math inline">\(\pmb{m\equiv c^d\pmod N}\)</span>
+<ul>
+<li><span class="math inline">\(30103 \equiv 184539^{10559}\pmod {745109}\)</span></li>
+<li><span class="math inline">\(30036 \equiv 741303^{10559}\pmod {745109}\)</span></li>
+<li><span class="math inline">\(333435 \equiv 358095^{10559}\pmod {745109}\)</span></li>
+</ul></li>
+</ol>
+<details class="note primary"><summary><p><strong>The third step above works out <span class="math inline">\(d\)</span> from <span class="math inline">\(\color{#93F}{\bf(d\cdot 5)\;mod\;52794=1}\)</span>, here's how</strong></p>
+</summary>
+<p>The modular multiplicative invers can be solved quickly by applying the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm">Extended Euclidean algorithm</a>. Referring to this Wiki page, with the precondition of coprime, the following equation can be written (<span class="math inline">\(gcd\)</span> is the function for the greatest common divisor function):</p>
+<p><span class="math display">\[52794s+5t=\mathrm{gcd}(5, 52794)=1\]</span></p>
+<p>The goal is to find the smallest positive integer <span class="math inline">\(t\)</span> that satisfies the above equation. The following table shows the iterative process of the algorithm:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Index <span class="math inline">\(i\)</span></th>
+<th style="text-align: left;">Quotient <span class="math inline">\(q_{i-1}\)</span></th>
+<th style="text-align: left;">Remainder <span class="math inline">\(r_i\)</span></th>
+<th style="text-align: left;"><span class="math inline">\(s_i\)</span></th>
+<th style="text-align: left;"><span class="math inline">\(t_i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="math inline">\(52794\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="math inline">\(5\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(0\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(1\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: left;"><span class="math inline">\(52794 \div5 = 10558\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(4\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(1 - 10558\times 0 = 1\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(0 - 10558\times 1 = -10558\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: left;"><span class="math inline">\(5 \div4 = 1\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(0-1\times1 = -1\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(1 - 1\times (-10558) = \bf10559\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>It only takes two iterations to get the remainder <span class="math inline">\(1\)</span> and the algorithm ends. The final <span class="math inline">\(t\)</span> is the <span class="math inline">\(5^{-1}\pmod {52794}\)</span> we want.</p>
+
+</details>
+<p>String together after decoding to get the same information "<em>CACC 9678</em>". Why does Alice's decrypted message match exactly the one sent by Bob? The reason lies in the modular exponentiation operation. First of all, because <span class="math inline">\(c\equiv m^e\pmod N\)</span>, we can get <span class="math inline">\(c^d\equiv (m^e)^d \equiv m^{ed} \pmod N\)</span>. Since <span class="math inline">\((d⋅e)\;mod\;\lambda(N)=1\)</span>, it is deduced that <span class="math inline">\(ed = 1 + h\lambda(N)\)</span> (<span class="math inline">\(h\)</span> is a non-negative integer为非负整数). Combine these two</p>
+<p><span class="math display">\[\Rightarrow m^{ed} = m^{(1+h\lambda(N))} = \color{fuchsia}{m(m^{\lambda(N)})^h \equiv m(1)^h}\equiv m\pmod N\]</span></p>
+<p>The penultimate congruence above (symbol <span class="math inline">\(\equiv\)</span>) is based on <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Euler%27s_theorem">Euler's theorem</a>). This proves the correctness of the decryption formula <span class="math inline">\({m\equiv c^d\pmod N}\)</span>! You can also see that the order of <span class="math inline">\(e\)</span> and <span class="math inline">\(d\)</span> is irrelevant for the result of <span class="math inline">\(m^{ed}\pmod N\)</span>, so the message that Alice encrypted with her private key can be decrypted by Bob with Alice's public key. This also proves the feasibility of digital signatures.</p>
+<p>In terms of security, if a third party can derive <span class="math inline">\(d\)</span> from Alice's public key <span class="math inline">\((N,e)\)</span>, then the algorithm is broken. But the prerequisite for cracking is to first identify <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> from <span class="math inline">\(N\)</span>, which is very difficult when <span class="math inline">\(N\)</span> is big. In fact, this is the famous <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Integer_factorization"><strong>Prime-factor decomposition problem for large numbers</strong></a>, another recognized computational challenge. So far, "the best-known algorithms are faster than exponential order of magnitude times and slower than polynomial order of magnitude times." The latest record, published on the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/RSA_Factoring_Challenge">RSA Large Number Decomposition Challenge</a> website, is the February 2020 crack of <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/RSA_%20numbers#RSA-250">RSA-250</a>, a large number of 829 bits. This development indicates that the security of 1024-bit <span class="math inline">\(N\)</span>-valued public keys is already in jeopardy. In view of this, National Institute of Standards and Technology (NIST) recommends that RSA keys be at least 2048 bits in length for real-world applications.</p>
+<p>On the other hand, although the public key does not need to be transmitted confidentially, it is required to be reliably distributed. Otherwise, Eve could pretend to be Alice and send her own public key to Bob. If Bob believes it, Eve can intercept all messages passed from Bob to Alice and decrypt them with her own private key. Eve will then encrypt this message with Alice's public key and pass it to her. Alice and Bob cannot detect such a man-in-the-middle attack. The solution to this problem is to establish a trusted third-party authority to issue certificates to ensure the reliability of public keys. This is the origin of the Public Key Infrastructure (PKI).</p>
+<p>The RSA public key encryption algorithm is the genius creation of three cryptographers and computer scientists. Its invention is a new milestone in public key cryptography and has become the cornerstone of modern secure Internet communication. The outstanding contribution of Levister, Shamir, and Adelman earned them the ACM Turing Award in 2002, a full 13 years before Diffie and Herman!</p>
+<p><img src="acm-turing-2002.jpeg" /></p>
+<h2 id="difference-and-connection">Difference and Connection</h2>
+<p>The following table summarizes the comparison of Diffie-Hellman key exchange and RSA public key encryption algorithm:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Cryptographic Technology</th>
+<th style="text-align: center;">Diffie-Hellman Key Exchange</th>
+<th style="text-align: center;">RSA Encryption Algorithm</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Technology Category</td>
+<td style="text-align: center;">Asymmetric, Public Key Technology</td>
+<td style="text-align: center;">Asymmetric, Public Key Technology</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Mathematical Principles</td>
+<td style="text-align: center;">Integer modulo <span class="math inline">\(n\)</span> multiplicative groups, primitive roots</td>
+<td style="text-align: center;">Carmichael function, modular multiplicative inverse, Euler's theorem</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Mathematical Operations</td>
+<td style="text-align: center;">Modular exponentiation, exponentiation by squaring</td>
+<td style="text-align: center;">Modular exponentiation, exponentiation by squaring, extended Euclidean algorithms</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Public Key</td>
+<td style="text-align: center;"><span class="math inline">\((p,g,A,B)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\((N,e)\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Private Key</td>
+<td style="text-align: center;"><span class="math inline">\((a,b,s)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\((N,d)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Security</td>
+<td style="text-align: center;">Discrete logarithm problem</td>
+<td style="text-align: center;">Large number prime factorization problem</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Typical Applications</td>
+<td style="text-align: center;">Key Exchange</td>
+<td style="text-align: center;">Encryption/Decryption, Digital Signature</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Key Kength</td>
+<td style="text-align: center;"><span class="math inline">\(\ge2048\)</span> bits</td>
+<td style="text-align: center;"><span class="math inline">\(\ge2048\)</span> bits</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Authentication</td>
+<td style="text-align: center;">Requires external support</td>
+<td style="text-align: center;">Requires PKI support for public key distribution</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Forward Secrecy</td>
+<td style="text-align: center;">Support</td>
+<td style="text-align: center;">Not support</td>
+</tr>
+</tbody>
+</table>
+<p>As can be seen, both are asymmetric public key techniques, and both have a public and private key pair. They both use Modular exponentiation and exponentiation by squaring mathematical operations, and the RSA public-key encryption algorithm also requires the application of the extended Euclidean algorithm to solve the modular multiplicative inverse. Despite these similarities, the mathematical principles underlying them are different, and the computational challenges corresponding to their security are different in nature. These characteristics determine that the Diffie-Hellman key exchange can be used for key exchange, but not for encryption/decryption, while the RSA public key encryption algorithm can not only encrypt/decrypt but also support digital signatures. Therefore, the argument that the two use similar technologies cannot be established in general.</p>
+<div class="note info"><p>ElGamal encryption based on the evolution of the Diffie-Hellman key exchange can be used to encrypt/decrypt messages, but due to some historical reasons and the great commercial success of the RSA public key encryption algorithm, ElGamal encryption is not popular.</p>
+</div>
+<p>In modern cryptography, key length is defined as the number of bits of a key used by an encryption algorithm. Theoretically, since all algorithms may be cracked by brute force, the key length determines an upper limit on the security of an encryption algorithm. Cryptanalytic study shows that the key strengths of Diffie-Hellman key exchange and RSA public key encryption algorithm are about the same. The computational intensities for breaking discrete logarithms and factoring large numbers are comparable. Therefore, the recommended key length for both cryptographic technologies in practical applications is at least 2048 bits.</p>
+<p>For authentication, Diffie-Hellman key exchange requires external support, otherwise it is not resistant to man-in-the-middle attacks. RSA public key encryption algorithm can be used to verify digital signatures, but only if there is a PKI supporting reliable public key distribution. The current system of PKI is quite mature, and there is a special Certificate Authority (CA) that undertakes the responsibility of public key legitimacy checking in the public key system, as well as issues and manages public key digital certificates in X.509 format.</p>
+<p>One problem with the RSA public key encryption algorithm in practice is that it does not have <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Forward_secrecy">Forward Secrecy</a>. Forward Secrecy, sometimes referred to as Perfect Forward Secrecy, is a security property of confidential communication protocols, meaning that the leakage of the long-term used master key does not result in the leakage of past session information. If the system has forward secrecy, it can protect the historical communication records in case of private key leakage. Imagine a situation where, although Eve cannot decrypt the RSA-encrypted messages between Alice and Bob, Eve can archive the entire past message ciphertext. One day in the future, Alice's private key for some reason was leaked, then Eve can decrypt all the message records.</p>
+<p>The solution to this problem is Diffie-Hellman key exchange! Remember that the <span class="math inline">\((A,B)\)</span> in the public key of the Diffie-Hellman key exchange is generated by both parties from their respective private keys <span class="math inline">\((a,b)\)</span>, so if a random <span class="math inline">\((a,b)\)</span> value is generated at each session, future key leaks will not crack the previous session key. This shows that Diffie-Hellman key exchange supports forward secrecy! If we combine the forward secrecy of Diffie-Hellman key exchange with the digital signature feature of the RSA public key encryption algorithm, we can implement a key exchange with authentication protection. This process can be simplified by the following example.</p>
+<ol type="1">
+<li>Alice and Bob exchange authenticated RSA public key certificates</li>
+<li>Alice and Bob each generate a random <span class="math inline">\((a,b)\)</span> value and compute <span class="math inline">\((A,B)\)</span> using the shared Diffie-Hellman <span class="math inline">\((p,g)\)</span>.</li>
+<li>Alice encrypts <span class="math inline">\(A\)</span> with her RSA private key to generate a digital signature, which she sends to Bob along with <span class="math inline">\(A\)</span></li>
+<li>Bob encrypts <span class="math inline">\(B\)</span> with his own RSA private key to generate a digital signature and sends it to Alice along with <span class="math inline">\(B\)</span>.</li>
+<li>Alice verifies the signature with Bob's RSA public key, confirms that <span class="math inline">\(B\)</span> came from Bob, and computes <span class="math inline">\(s\)</span> using <span class="math inline">\((p,a,B)\)</span>. 6.</li>
+<li>Bob verifies the signature with Alice's RSA public key, confirms that <span class="math inline">\(A\)</span> came from Alice, and computes <span class="math inline">\(s\)</span> using <span class="math inline">\((p,b,A)\)</span></li>
+<li>Alice and Bob agree to share a secret and generate a subsequent symmetric encryption (AES) session key for confidential communication</li>
+</ol>
+<p>Here the RSA digital signature safeguards the key exchange from man-in-the-middle attacks. Also in the second step above, if a new random number is generated for each session, then even if Alice's or Bob's RSA private keys are leaked one day, it does not threaten the security of previous sessions because the eavesdropper still has to solve the discrete logarithm puzzle. We have also achieved forward secrecy. In fact, this is the working mechanism of the DHE-RSA cipher suite as defined by the ubiquitous Transport Layer Security (TLS) protocol.</p>
+<h2 id="dhe-rsa-cipher-suite">DHE-RSA Cipher Suite</h2>
+<p>Transport Layer Security (TLS) and its predecessor Secure Sockets Layer (SSL) is a security protocol that provides security and data integrity for Internet communications. TLS is widely used in applications such as browsers, email, instant messaging, VoIP, and virtual private networks (VPNs), and has become the de facto industry standard for secure Internet communications. Currently, <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc5246">TLS 1.2</a> is the commonly supported version of the protocol, supporting secure connections over TCP. Datagram Transport Layer Security (DTLS) protocol is also defined for UDP applications. DTLS is much the same as TLS, with some extensions for connectionless UDP transport in terms of reliability and security. <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc6347">DTLS 1.2</a> matches the functionality of TLS 1.2.</p>
+<p>The TLS protocol uses a client-server architectural model. It works by using X.509 authentication and asymmetric encryption algorithms to authenticate the communicating parties, after which keys are exchanged to generate a symmetric encryption session key. This session key is then used to encrypt the data exchanged between the two communicating parties, ensuring the confidentiality and reliability of the information without fear of attack or eavesdropping by third parties. For identification purposes, the TLS 1.2 protocol combines the <em>authentication, key exchange, bulk encryption, and message authentication code algorithms</em> used into the <strong>Cipher Suite</strong> name. Each Cipher Suite is given a double-byte encoding. The <a target="_blank" rel="noopener" href="https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#tls-parameters-4">TLS Cipher Suite Registry</a> provides a reference table of all registered Cipher Suite names, sorted by encoding value from small to large.</p>
+<div class="note info"><p>Since the computation intensity of asymmetric encryption algorithms (RSA, etc.) is much higher than that of symmetric encryption algorithms (AES, etc.), practical applications almost always use symmetric encryption algorithms to encrypt messages in batches in terms of performance.</p>
+</div>
+<p>TLS 1.2 protocol supports a series of cipher suites that combine the Diffie-Hellman key exchange with the RSA public key encryption algorithm. They all start with <code>TLS_DH_RSA</code> or <code>TLS_DHE_RSA</code>. The "E" in DHE stands for "Ephemeral", which means that a random <span class="math inline">\((a,b)\)</span> value is required to be generated for each session. So <code>TLS_DHE_RSA</code> cipher suite can provide forward secrecy, while <code>TLS_DH_RSA</code> cannot, and the former should be preferred in practical applications.</p>
+<p>Here we take a typical <code>TLS_DHE_RSA_WITH_AES_128_CBC_SHA</code> (encoding 0x00,0x33) cipher suite as an example to explain the process of Diffie-Hellman working with RSA to establish a DTLS session. First, explain the composition of the cipher suite.</p>
+<ul>
+<li><code>DHE</code>: ephemeral DH to implement key exchange</li>
+<li><code>RSA</code>: public key for signing and certifying the DHE</li>
+<li><code>AES_128_CBC</code>: 128-bit CBC mode AES encryption</li>
+<li><code>SHA</code>: 160-bit <code>HMAC-SHA1</code> hash message authentication code</li>
+</ul>
+<p>Referring to the packet file <a href="dtls-dhe-rsa.pcap">dtls-dhe-rsa.pcap</a> captured from the network port, the following handshake protocol message sequence chart can be obtained</p>
+<pre class="mermaid">
+sequenceDiagram
+
+autonumber
+participant C as Client
+participant S as Server
+Note over C,S: Handshake Protocol
+rect rgb(230, 250, 255)
+C-&gt;&gt;S: Client Hello (Cr, Cipher Suites))
+S--&gt;&gt;C: Hello Verify Request (Cookie)
+C-&gt;&gt;S: Client Hello (Cr, Cookie, Cipher Suites)
+S--&gt;&gt;C: Server Hello (Sr, Cipher Suite), Certificate (Sn, Se)
+S--&gt;&gt;C: Server Key Exchange (p,g,A,Ss)
+S--&gt;&gt;C: Certificate Request, Server Hello Done
+C-&gt;&gt;S: Certificate (Cn, Ce)
+C-&gt;&gt;S: Client Key Exchange (B)
+C-&gt;&gt;S: Certificate Verify (Cs)
+end
+Note over C,S: Establish Secure Channel
+rect rgb(239, 252, 202)
+C-&gt;&gt;S: Change Cipher Spec, Encrypted Handshake Message
+S--&gt;&gt;C: Change Cipher Spec, Encrypted Handshake Message
+C-&gt;&gt;S: Application Data
+S--&gt;&gt;C: Application Data
+end
+ 
+</pre>
+<p>Below is the analysis with regard to the data package numbers in the message sequence chart:</p>
+<ul>
+<li>Packets <span class="math inline">\(\require{enclose}\enclose{circle}{1}-\enclose{circle}{3}\)</span> present the initial handshake message exchange.
+<ul>
+<li>The client first sends a Hello message containing a random number <span class="math inline">\(C_r\)</span> and a list of supported cipher suites</li>
+<li>The server responds with a Hello Verify Request message containing a block of information (cookie)</li>
+<li>The client receives the Hello Verify Request and resends the Hello message with the entire contents of the previous message plus a copy of the cookie</li>
+</ul></li>
+</ul>
+<div class="note info"><p>Hello verification is specific to DTLS to prevent denial of service attacks. The protocol stipulates that the server will not continue to serve the client until it receives a hello message containing the copied cookie.</p>
+</div>
+<ul>
+<li>Packets <span class="math inline">\(\require{enclose}\enclose{circle}{4}-\enclose{circle}{6}\)</span> shows the server enters verification and key exchange stage:
+<ul>
+<li>The server responds with a Hello message first, which contains the random number <span class="math inline">\(S_r\)</span> and the selected cipher suite
+<ul>
+<li>As shown below, the server selects <code>TLS_DHE_RSA_WITH_AES_128_CBC_SHA</code>! <a href="dtls-server-hello.png"></a></li>
+</ul></li>
+<li>The same packet also contains the Server Certificate message, which is typically large and divided into multiple fragments</li>
+<li>The server certificate provides the RSA public key <span class="math inline">\((S_N,\;S_e)\)</span> that verifies its signature</li>
+<li>Next, the server sends a Key Exchange message containing its DH public key <span class="math inline">\((p,g,A)\)</span> and signature <span class="math inline">\(Ss\)</span>
+<ul>
+<li>The length of <span class="math inline">\(p\)</span> in the figure below is 256 bytes, which means that the key length is 2048 bits and <span class="math inline">\(Pubkey\)</span> is <span class="math inline">\(A\)</span>.</li>
+<li>You can also see in the figure that the algorithms chosen for the signature are SHA512 and RSA.</li>
+<li>The operation is to first compute <span class="math inline">\(SHA512(Cr,Sr,p,g,A)\)</span> and then encrypt it with the server RSA private key! <a href="dtls-server-key.png"></a></li>
+</ul></li>
+<li>After that, the server sends a Certificate Request message and a Hello Done message
+<ul>
+<li>The server requests the client to send an RSA public key certificate that verifies its signature</li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="note warning"><p><strong>Note:</strong> If DH-RSA cipher suite is used, the server-side DH public key parameters <span class="math inline">\((p,g,A)\)</span> are unchanged and will be included directly in its certificate message. At this time, the server will not issue a Key Exchange message <span class="math inline">\(\require{enclose}\enclose{circle}{5}\)</span>. For DHE-RSA, the <span class="math inline">\(A\)</span> value is different for each session.</p>
+</div>
+<ul>
+<li>Packets <span class="math inline">\(\require{enclose}\enclose{circle}{7}-\enclose{circle}{9}\)</span> shows the client enters verification and key echange stage:
+<ul>
+<li>The client first sends a Certificate message, which contains the RSA public key <span class="math inline">\((C_N,\;C_e)\)</span> and also splits into multiple fragments</li>
+<li>The client then sends a Key Exchange message, which contains its DH public key <span class="math inline">\(B\)</span>
+<ul>
+<li>The <span class="math inline">\(Pubkey\)</span> in the following figure is <span class="math inline">\(B\)</span>! <a href="dtls-client-key.png"></a></li>
+</ul></li>
+<li>The client finally sends a Certificate Verify message, which contains the signature <span class="math inline">\(Cs\)</span>
+<ul>
+<li>The signature covers all previous messages except for the initial Client Hello <span class="math inline">\(\require{enclose}\enclose{circle}{1}\)</span> and the Hello Verify Request <span class="math inline">\(\require{enclose}\enclose{circle}{2}\)</span></li>
+<li>The signature operation also computes <span class="math inline">\(SHA512\)</span> and encrypts it with the client's RSA private key</li>
+</ul></li>
+</ul></li>
+<li>Packets <span class="math inline">\(\require{enclose}\enclose{circle}{10}-\enclose{circle}{11}\)</span> completes handshake and establishs the secure channel:
+<ul>
+<li>Each side first verifies the signature sent by the other side</li>
+<li>After successful verification, DH algorithm is run to generate the same premaster key (<code>pre_master_secret</code>)</li>
+<li>Both parties call <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc5246#page-14">pseudo-random function (PRF)</a> to generate a 48-byte master key (<code>master_secret</code>) from the premaster key. <span class="math display">\[master\_secret = PRF(pre\_master\_secret,\unicode{x201C}master\;secret\unicode{x201D},Cr+Sr)[0..47]\]</span></li>
+<li>Both parties call PRF again to generate a 72-byte key block (<code>key_block</code>) from the master key. <span class="math display">\[key\_block = PRF(master\_secret,\unicode{x201C}key\;expand\unicode{x201D},Sr+Cr)[0,71]\]</span></li>
+<li>Key blocks are assigned to <code>HMAC-SHA1</code> and <code>AES_128_CBC</code> function blocks.
+<ul>
+<li>Client Write Message Authentication Code (MAC) key: 20 bytes</li>
+<li>Server Write Message Authentication Code (MAC) key: 20 bytes</li>
+<li>Client Write Encryption Key: 16 bytes</li>
+<li>Server write encryption key: 16 bytes</li>
+</ul>
+Note that TLS/DTLS 1.2 specifies that this cipher suite uses an explicit initial vector (IV) and does not require the allocation of a key block</li>
+<li>The client generates a Change Cipher Spec message indicating the start of the encryption and MAC modules</li>
+<li>The client invokes PRF a third time to generate the 12-byte end-of-handshake authentication code used for master key and handshake message authentication, which is packaged into an end-of-handshake message and entered into the encryption and MAC modules <span class="math display">\[PRF(master\_secret,finished\_label,SHA256(handshake\_messages)[0,11]\]</span></li>
+<li>The client sends the Change Cipher Spec message and the encrypted end-of-handshake message to the server</li>
+<li>The server verifies the received client end-of-handshake message and repeats the above three steps to generate its own Change Cipher Spec message and encrypted an end-of-handshake message, then send them to the client</li>
+<li>The client completes the handshake by verifying the received server end-of-handshake message. Now the encrypted secure channel is established</li>
+</ul></li>
+<li>Packets <span class="math inline">\(\require{enclose}\enclose{circle}{12}-\enclose{circle}{13}\)</span> shows that the encrypted application data exchange has officially started</li>
+</ul>
+<p>This is the complete process of establishing a secure message channel using the <code>TLS_DHE_RSA_WITH_AES_128_CBC_SHA</code> (encoding 0x00,0x33) cipher suite, where DHE implements a key exchange with forward secrecy protection and RSA digital signature provides authentication for DHE, creating a solution for secure communication. With a clear understanding of this, we will better grasp the working mechanism of Diffie-Hellman and RSA, effectively apply them in practice and avoid unnecessary mistakes.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Zixi
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://www.packetmania.net/en/2022/11/21/DH-and-RSA/" title="Does the Diffie-Hellman key exchange use a technique similar to RSA?">https://www.packetmania.net/en/2022/11/21/DH-and-RSA/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/en/tags/Cryptography/" rel="tag"><i class="fa fa-tag"></i> Cryptography</a>
+              <a href="/en/tags/Network-Security/" rel="tag"><i class="fa fa-tag"></i> Network Security</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/2022/11/10/Stop-TLS1-0-TLS1-1/" rel="prev" title="Please Stop Using TLS 1.0 and TLS 1.1 Now!">
+                  <i class="fa fa-chevron-left"></i> Please Stop Using TLS 1.0 and TLS 1.1 Now!
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Gitalk Comments</a></li>
+            <li class="tab"><a href="#comment-utterances">Utterances Comments</a></li>
+            <li class="tab"><a href="#comment-disqus">Disqus Comments</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+            <div class="tab-pane disqus" id="comment-disqus">
+              
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zixi</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>Symbols count total: </span>
+    <span title="Symbols count total">173k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>Reading time total &asymp;</span>
+    <span title="Reading time total">2:38</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5fc1fd29017282c7" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/en/js/comments.js"></script><script src="/en/js/utils.js"></script><script src="/en/js/motion.js"></script><script src="/en/js/next-boot.js"></script><script src="/en/js/bookmark.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/en/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"forest","dark":"forest"},"js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.13.4/dist/mermaid.min.js","integrity":"sha256-96rwDGMWIQYB0yKGp1sKi1yrjrLPj2oT39IpbCsIrsg="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/en/js/third-party/fancybox.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/en/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"packetmania-github-io","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/en/js/third-party/comments/disqus.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"packetmania","repo":"en","client_id":"a45f6ae3f97c1a467856","client_secret":"7d81b74f952b388f93dcb5a8c44cd12f657969fa","admin_user":"packetmania","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"1c821a94cbee2c3d1754f9a623dbcab4"}</script>
+<script src="/en/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"packetmania/en","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/en/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

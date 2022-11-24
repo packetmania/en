@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2022-11-20T03:21:42.580Z</updated>
+  <updated>2022-11-24T20:59:09.830Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Does the Diffie-Hellman key exchange use a technique similar to RSA?</title>
+    <link href="https://www.packetmania.net/en/2022/11/21/DH-and-RSA/"/>
+    <id>https://www.packetmania.net/en/2022/11/21/DH-and-RSA/</id>
+    <published>2022-11-22T06:38:45.000Z</published>
+    <updated>2022-11-24T20:59:09.830Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Recently, at a WPA3 technology introduction meeting within the R&amp;amp;D team, the speaker mentioned that the OWE technology for encrypted wireless open networks is based on Diffie-Hellman key exchange, and casually said that Diffie-Hellman key exchange is using technology similar to RSA. This statement is wrong!</summary>
+    
+    
+    
+    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
+    
+    
+    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
+    
+    <category term="Network Security" scheme="https://www.packetmania.net/en/tags/Network-Security/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Please Stop Using TLS 1.0 and TLS 1.1 Now!</title>
     <link href="https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/"/>
     <id>https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/</id>
     <published>2022-11-11T07:56:28.000Z</published>
-    <updated>2022-11-20T03:21:42.580Z</updated>
+    <updated>2022-11-22T06:41:19.794Z</updated>
     
     
     <summary type="html">&lt;p&gt;In March 2021, the Internet Engineering Task Force (IETF) released &lt;a href=&quot;https://tools.ietf.org/html/rfc8996&quot;&gt;RFC 8996&lt;/a&gt;, classified as a current best practice, officially announcing the deprecation of the TLS 1.0 and TLS 1.1 protocols. If your applications and web services are still using these protocols, please stop immediately and update to TLS 1.2 or TLS 1.3 protocol versions as soon as possible to eliminate any possible security risks.</summary>
@@ -52,9 +73,9 @@
     <category term="Technology Knowhow" scheme="https://www.packetmania.net/en/categories/Technology-Knowhow/"/>
     
     
-    <category term="Python Programming" scheme="https://www.packetmania.net/en/tags/Python-Programming/"/>
-    
     <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
+    
+    <category term="Python Programming" scheme="https://www.packetmania.net/en/tags/Python-Programming/"/>
     
     <category term="CTF" scheme="https://www.packetmania.net/en/tags/CTF/"/>
     
@@ -117,9 +138,9 @@
     <category term="Technology Knowhow" scheme="https://www.packetmania.net/en/categories/Technology-Knowhow/"/>
     
     
-    <category term="Python Programming" scheme="https://www.packetmania.net/en/tags/Python-Programming/"/>
-    
     <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
+    
+    <category term="Python Programming" scheme="https://www.packetmania.net/en/tags/Python-Programming/"/>
     
   </entry>
   
