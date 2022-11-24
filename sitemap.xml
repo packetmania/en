@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.packetmania.net/en/2022/08/20/picoCTF-Sum-O-Primes/</loc>
+    
+    <lastmod>2022-11-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.packetmania.net/en/2022/11/21/DH-and-RSA/</loc>
     
     <lastmod>2022-11-24</lastmod>
@@ -14,15 +23,6 @@
     <loc>https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/</loc>
     
     <lastmod>2022-11-22</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.packetmania.net/en/2022/08/20/picoCTF-Sum-O-Primes/</loc>
-    
-    <lastmod>2022-08-21</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -217,14 +217,14 @@
   </url>
   
   <url>
-    <loc>https://www.packetmania.net/en/categories/DIY-Projects/</loc>
+    <loc>https://www.packetmania.net/en/categories/Technology-Review/</loc>
     <lastmod>2022-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.packetmania.net/en/categories/Technology-Review/</loc>
+    <loc>https://www.packetmania.net/en/categories/DIY-Projects/</loc>
     <lastmod>2022-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

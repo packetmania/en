@@ -26,14 +26,14 @@
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.packetmania.net","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk | utterances | disqus","storage":true,"lazyload":false,"nav":{"disqus":{"text":"Disqus Comments","order":-1},"utterances":{"text":"Utterances Comments","order":-2},"gitalk":{"text":"Gitalk Comments","order":-3}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/en/js/config.js"></script>
 <meta name="description" content="By chance, I came across a picoCTF RSA challenge called Sum-O-Primes. This problem is not difficult, you can do it by knowing the basics of the RSA algorithm. In addition, if you are familiar with the">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solve picoCTF&#39;s RSA challenge Sum-O-Primes">
+<meta property="og:title" content="Solve picoCTF&#39;s RSA Challenge Sum-O-Primes">
 <meta property="og:url" content="https://www.packetmania.net/en/2022/08/20/picoCTF-Sum-O-Primes/index.html">
 <meta property="og:site_name" content="PacketMania">
 <meta property="og:description" content="By chance, I came across a picoCTF RSA challenge called Sum-O-Primes. This problem is not difficult, you can do it by knowing the basics of the RSA algorithm. In addition, if you are familiar with the">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.packetmania.net/en/2022/08/20/picoCTF-Sum-O-Primes/picoGym.png">
 <meta property="article:published_time" content="2022-08-20T21:31:09.000Z">
-<meta property="article:modified_time" content="2022-08-21T03:22:49.165Z">
+<meta property="article:modified_time" content="2022-11-24T21:22:20.863Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="Cryptography">
 <meta property="article:tag" content="Python Programming">
@@ -46,10 +46,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.packetmania.net/en/2022/08/20/picoCTF-Sum-O-Primes/","path":"2022/08/20/picoCTF-Sum-O-Primes/","title":"Solve picoCTF's RSA challenge Sum-O-Primes"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.packetmania.net/en/2022/08/20/picoCTF-Sum-O-Primes/","path":"2022/08/20/picoCTF-Sum-O-Primes/","title":"Solve picoCTF's RSA Challenge Sum-O-Primes"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Solve picoCTF's RSA challenge Sum-O-Primes | PacketMania</title>
+<title>Solve picoCTF's RSA Challenge Sum-O-Primes | PacketMania</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YKBP0QK7Z"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-9YKBP0QK7Z","only_pageview":false}</script>
@@ -259,7 +259,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Solve picoCTF's RSA challenge Sum-O-Primes
+          Solve picoCTF's RSA Challenge Sum-O-Primes
         </h1>
 
         <div class="post-meta-container">
@@ -269,10 +269,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-08-20 14:31:09 / Modified: 20:22:49" itemprop="dateCreated datePublished" datetime="2022-08-20T14:31:09-07:00">2022-08-20</time>
+      <time title="Created: 2022-08-20 14:31:09" itemprop="dateCreated datePublished" datetime="2022-08-20T14:31:09-07:00">2022-08-20</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-24 13:22:20" itemprop="dateModified" datetime="2022-11-24T13:22:20-08:00">2022-11-24</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -413,7 +419,7 @@ d&amp;≡e^{-1}\pmod{\varphi(n)}\\
   </li>
   <li class="post-copyright-link">
       <strong>Post link: </strong>
-      <a href="https://www.packetmania.net/en/2022/08/20/picoCTF-Sum-O-Primes/" title="Solve picoCTF&#39;s RSA challenge Sum-O-Primes">https://www.packetmania.net/en/2022/08/20/picoCTF-Sum-O-Primes/</a>
+      <a href="https://www.packetmania.net/en/2022/08/20/picoCTF-Sum-O-Primes/" title="Solve picoCTF&#39;s RSA Challenge Sum-O-Primes">https://www.packetmania.net/en/2022/08/20/picoCTF-Sum-O-Primes/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> unless stating additionally.
