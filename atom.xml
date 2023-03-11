@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2023-03-11T08:16:00.507Z</updated>
+  <updated>2023-03-11T08:28:33.619Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.packetmania.net/en/2023/03/10/uClibc-tips/"/>
     <id>https://www.packetmania.net/en/2023/03/10/uClibc-tips/</id>
     <published>2023-03-11T07:38:37.000Z</published>
-    <updated>2023-03-11T08:16:00.507Z</updated>
+    <updated>2023-03-11T08:28:33.619Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;a href=&quot;https://www.uclibc.org&quot;&gt;uClibc&lt;/a&gt; is a small and exquisite C standard library for embedded Linux systems. It is widely used in the development of low-end embedded systems and Internet of Things devices. Here are some recent experiences to provide convenience for engineers who need to solve similar problems or meet corresponding requirements.</summary>

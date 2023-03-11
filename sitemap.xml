@@ -182,13 +182,6 @@
   </url>
   
   <url>
-    <loc>https://www.packetmania.net/en/tags/CTF/</loc>
-    <lastmod>2023-03-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.packetmania.net/en/tags/Raspberry-Pi/</loc>
     <lastmod>2023-03-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -197,6 +190,13 @@
   
   <url>
     <loc>https://www.packetmania.net/en/tags/NAS/</loc>
+    <lastmod>2023-03-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/tags/CTF/</loc>
     <lastmod>2023-03-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -226,14 +226,14 @@
   </url>
   
   <url>
-    <loc>https://www.packetmania.net/en/categories/Technology-Review/</loc>
+    <loc>https://www.packetmania.net/en/categories/DIY-Projects/</loc>
     <lastmod>2023-03-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.packetmania.net/en/categories/DIY-Projects/</loc>
+    <loc>https://www.packetmania.net/en/categories/Technology-Review/</loc>
     <lastmod>2023-03-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
