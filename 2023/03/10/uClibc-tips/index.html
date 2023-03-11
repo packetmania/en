@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.0.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/en/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="piAnQ_mnwkhV_qh4_Se1yLzM1IwOvuq-vmYfXBkWRXU">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=EB+Garamond:300,300italic,400,400italic,700,700italic%7CNoto+Serif+SC:300,300italic,400,400italic,700,700italic%7CRoboto+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.packetmania.net","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk | utterances | disqus","storage":true,"lazyload":false,"nav":{"disqus":{"text":"Disqus Comments","order":-1},"utterances":{"text":"Utterances Comments","order":-2},"gitalk":{"text":"Gitalk Comments","order":-3}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/en/js/config.js"></script>
+<meta name="description" content="uClibc is a small and exquisite C standard library for embedded Linux systems. It is widely used in the development of low-end embedded systems and Internet of Things devices. Here are some recent exp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Notes on Using uClibc Standard Library in Embedded Linux System">
+<meta property="og:url" content="https://www.packetmania.net/en/2023/03/10/uClibc-tips/index.html">
+<meta property="og:site_name" content="PacketMania">
+<meta property="og:description" content="uClibc is a small and exquisite C standard library for embedded Linux systems. It is widely used in the development of low-end embedded systems and Internet of Things devices. Here are some recent exp">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.packetmania.net/en/2023/03/10/uClibc-tips/crypt-glibc-features.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2023/03/10/uClibc-tips/CVE-2022-30295.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2023/03/10/uClibc-tips/uClibc-DNS-cve.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2023/03/10/uClibc-tips/uClibc-DNS-fix.png">
+<meta property="article:published_time" content="2023-03-11T07:38:37.000Z">
+<meta property="article:modified_time" content="2023-03-11T08:16:00.507Z">
+<meta property="article:author" content="Zixi">
+<meta property="article:tag" content="C&#x2F;C++ Programming">
+<meta property="article:tag" content="System Programming">
+<meta property="article:tag" content="Cryptography">
+<meta property="article:tag" content="Computer Communications">
+<meta property="article:tag" content="TCP&#x2F;IP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.packetmania.net/en/2023/03/10/uClibc-tips/crypt-glibc-features.png">
+
+
+<link rel="canonical" href="https://www.packetmania.net/en/2023/03/10/uClibc-tips/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.packetmania.net/en/2023/03/10/uClibc-tips/","path":"2023/03/10/uClibc-tips/","title":"Notes on Using uClibc Standard Library in Embedded Linux System"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Notes on Using uClibc Standard Library in Embedded Linux System | PacketMania</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YKBP0QK7Z"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-9YKBP0QK7Z","only_pageview":false}</script>
+  <script src="/en/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PacketMania" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PacketMania</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Technology | Knowledge | Sharing</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/en/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/en/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+        <li class="menu-item menu-item-rss"><a href="/en/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+        <li class="menu-item menu-item-language"><a href="https://www.packetmania.net/" rel="section"><i class="fa fa-language fa-fw"></i>中文</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#introduction-to-uclibc"><span class="nav-number">1.</span> <span class="nav-text">Introduction to uClibc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ipv6-and-interface-api"><span class="nav-number">2.</span> <span class="nav-text">IPv6 and Interface API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sha-2-hash-function"><span class="nav-number">3.</span> <span class="nav-text">SHA-2 Hash Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dns-security-patch"><span class="nav-number">4.</span> <span class="nav-text">DNS Security Patch</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zixi"
+      src="/en/images/ccie.gif">
+  <p class="site-author-name" itemprop="name">Zixi</p>
+  <div class="site-description" itemprop="description">Computer Networking and Software Design & Implementation</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/packetmania" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;packetmania" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zixiruoxue@gmail.com" title="E-Mail → mailto:zixiruoxue@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/zixisean" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zixisean" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/15140531" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;15140531" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_nd.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.packetmania.net/en/2023/03/10/uClibc-tips/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/ccie.gif">
+      <meta itemprop="name" content="Zixi">
+      <meta itemprop="description" content="Computer Networking and Software Design & Implementation">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PacketMania">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Notes on Using uClibc Standard Library in Embedded Linux System
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-03-10 23:38:37" itemprop="dateCreated datePublished" datetime="2023-03-10T23:38:37-08:00">2023-03-10</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2023-03-11 00:16:00" itemprop="dateModified" datetime="2023-03-11T00:16:00-08:00">2023-03-11</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/Technical-Knowhow/" itemprop="url" rel="index"><span itemprop="name">Technical Knowhow</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>15k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>14 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><a target="_blank" rel="noopener" href="https://www.uclibc.org">uClibc</a> is a small and exquisite C standard library for embedded Linux systems. It is widely used in the development of low-end embedded systems and Internet of Things devices. Here are some recent experiences to provide convenience for engineers who need to solve similar problems or meet corresponding requirements.<span id="more"></span></p>
+<div class="note success no-icon"><p><strong>Low-level programming is good for the programmer's soul.</strong><br> <strong>— <em>John Carmack</em> (American computer programmer and video game developer, co-founder of the video game company id Software)</strong></p>
+</div>
+<h3 id="introduction-to-uclibc">Introduction to uClibc</h3>
+<p>uClibc (sometimes written as μClibc) is a small C standard library designed to provide support for embedded systems and mobile devices using operating systems based on the Linux kernel. uClibc was originally developed to support μClinux, a version of Linux not requiring a memory management unit thus especially suited for microcontroller systems. The "uC" in its name is the abbreviation of microcontroller in English, where "u" is a Latin script typographical approximation of the Greek letter μ that stands for "micro".</p>
+<p>uClibc is a free and open-source software licensed under the GNU Lesser GPL, and its library functions encapsulate the system calls of the Linux kernel. It can run on standard or MMU-less Linux systems and supports many processors such as i386, x86-64, ARM, MIPS, and PowerPC. Development of uClibc started in 1999 and was written mostly from scratch, but also absorbed code from glibc and other projects. uClibc is much smaller than glibc. While glibc aims to fully support all relevant C standards on a wide range of hardware and kernel platforms, uClibc focuses on embedded Linux systems. It also allows developers to enable or disable some features according to the memory space design requirements.</p>
+<p>The following records show the list of C standard library files in two similar embedded systems. The first uses glibc-2.23 version, and the second integrates uClibc-0.9.33.2 version. The total size of glibc library files is more than 2MB, while the uClibc library files add up to less than 1MB. It can be seen that using uClibc does save a lot of storage space.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">STM1:/<span class="comment"># find . -name &quot;*lib*2.23*&quot; | xargs ls -alh</span></span><br><span class="line">-rwxr-xr-x    1 root     root        9.6K Jan  1  1970 ./lib/libanl-2.23.so</span><br><span class="line">-rwxr-xr-x    1 root     root        1.1M Jan  1  1970 ./lib/libc-2.23.so</span><br><span class="line">-rwxr-xr-x    1 root     root      177.5K Jan  1  1970 ./lib/libcidn-2.23.so</span><br><span class="line">-rwxr-xr-x    1 root     root       29.5K Jan  1  1970 ./lib/libcrypt-2.23.so</span><br><span class="line">-rwxr-xr-x    1 root     root        9.5K Jan  1  1970 ./lib/libdl-2.23.so</span><br><span class="line">-rwxr-xr-x    1 root     root      429.4K Jan  1  1970 ./lib/libm-2.23.so</span><br><span class="line">-rwxr-xr-x    1 root     root       65.8K Jan  1  1970 ./lib/libnsl-2.23.so</span><br><span class="line">-rwxr-xr-x    1 root     root       17.5K Jan  1  1970 ./lib/libnss_dns-2.23.so</span><br><span class="line">-rwxr-xr-x    1 root     root       33.6K Jan  1  1970 ./lib/libnss_files-2.23.so</span><br><span class="line">-rwxr-xr-x    1 root     root       90.5K Jan  1  1970 ./lib/libpthread-2.23.so</span><br><span class="line">-rwxr-xr-x    1 root     root       65.7K Jan  1  1970 ./lib/libresolv-2.23.so</span><br><span class="line">-rwxr-xr-x    1 root     root       25.9K Jan  1  1970 ./lib/librt-2.23.so</span><br><span class="line">-rwxr-xr-x    1 root     root        9.5K Jan  1  1970 ./lib/libutil-2.23.so</span><br><span class="line"></span><br><span class="line">STM2:/<span class="comment"># find . -name &quot;*lib*0.9.33*&quot; | xargs ls -alh</span></span><br><span class="line">-rwxr-xr-x    1 root     root       28.0K Jan  1  1970 ./lib/ld-uClibc-0.9.33.2.so</span><br><span class="line">-rwxr-xr-x    1 root     root       36.1K Jan  1  1970 ./lib/libcrypt-0.9.33.2.so</span><br><span class="line">-rwxr-xr-x    1 root     root       16.2K Jan  1  1970 ./lib/libdl-0.9.33.2.so</span><br><span class="line">-rwxr-xr-x    1 root     root       72.1K Jan  1  1970 ./lib/libm-0.9.33.2.so</span><br><span class="line">-rwxr-xr-x    1 root     root      116.4K Jan  1  1970 ./lib/libpthread-0.9.33.2.so</span><br><span class="line">-rwxr-xr-x    1 root     root       16.2K Jan  1  1970 ./lib/librt-0.9.33.2.so</span><br><span class="line">-rwxr-xr-x    1 root     root       28.3K Jan  1  1970 ./lib/libthread_db-0.9.33.2.so</span><br><span class="line">-rwxr-xr-x    1 root     root      621.4K Jan  1  1970 ./lib/libuClibc-0.9.33.2.so</span><br><span class="line">-rwxr-xr-x    1 root     root        8.1K Jan  1  1970 ./lib/libubacktrace-0.9.33.2.so</span><br><span class="line">-rwxr-xr-x    1 root     root        4.1K Jan  1  1970 ./lib/libutil-0.9.33.2.so</span><br></pre></td></tr></table></figure>
+<h3 id="ipv6-and-interface-api">IPv6 and Interface API</h3>
+<p>With the steady growth of IPv6 deployment, adding IPv6 protocol stack support for embedded systems has become necessary. In a software project that adds IPv4/IPv6 dual-stack function to devices using uClibc, it is found that there is an application link error - <code>undefined reference to getifaddrs</code>. <code>getifaddrs()</code> is a very useful function, we can call it to get the address information of all the network interfaces of the system. Query the Linux programming manual:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">SYNOPSIS</span><br><span class="line">       <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line">       <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ifaddrs.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">int</span> <span class="title">getifaddrs</span><span class="params">(struct ifaddrs **ifap)</span></span>;</span><br><span class="line">       ...</span><br><span class="line"> 	 </span><br><span class="line"> <span class="function">DESCRIPTION</span></span><br><span class="line"><span class="function">       The <span class="title">getifaddrs</span><span class="params">()</span> function creates a linked <span class="built_in">list</span> of structures</span></span><br><span class="line"><span class="function">       describing the network interfaces of the local system, <span class="keyword">and</span> stores</span></span><br><span class="line"><span class="function">       the address of the first item of the <span class="built_in">list</span> in *ifap.</span></span><br><span class="line"><span class="function">       ...</span></span><br><span class="line"><span class="function">  </span></span><br><span class="line"><span class="function"> VERSIONS</span></span><br><span class="line"><span class="function">       The <span class="title">getifaddrs</span><span class="params">()</span> function first appeared in glibc 2.3, but before</span></span><br><span class="line"><span class="function">       glibc 2.3.3, the implementation supported only IPv4 addresses</span>;</span><br><span class="line">       IPv6 support was added in glibc <span class="number">2.3</span><span class="number">.3</span>.  Support of address</span><br><span class="line">       families other than IPv4 is available only on kernels that</span><br><span class="line">       support netlink.</span><br><span class="line">       ...</span><br></pre></td></tr></table></figure>
+<p>The last sentence above is key: <strong>only kernels supporting netlink can support address families other than IPv4</strong>. The Linux kernel version running on this system is 3.x, which supports netlink. So, could there be a problem with uClibc's support for netlink that causes getifaddrs() not to get compiled?</p>
+<p>With this question in mind, search the source code directory of uClibc and find the C file that implements the function <code>getifaddrs()</code>:</p>
+<figure class="highlight c"><figcaption><span>libc/inet/ifaddrs.c</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> __ASSUME_NETLINK_SUPPORT</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __UCLIBC_SUPPORT_AI_ADDRCONFIG__</span></span><br><span class="line"><span class="comment">/* struct to hold the data for one ifaddrs entry, so we can allocate</span></span><br><span class="line"><span class="comment">   everything at once.  */</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ifaddrs_storage</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">ifaddrs</span> <span class="title">ifa</span>;</span></span><br><span class="line">  <span class="class"><span class="keyword">union</span></span></span><br><span class="line"><span class="class">  &#123;</span></span><br><span class="line">    <span class="comment">/* Save space for the biggest of the four used sockaddr types and</span></span><br><span class="line"><span class="comment">       avoid a lot of casts.  */</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr</span> <span class="title">sa</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_ll</span> <span class="title">sl</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">s4</span>;</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __UCLIBC_HAS_IPV6__</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in6</span> <span class="title">s6</span>;</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">  &#125; addr, netmask, broadaddr;</span><br><span class="line">  <span class="keyword">char</span> name[IF_NAMESIZE + <span class="number">1</span>];</span><br><span class="line">&#125;;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* __UCLIBC_SUPPORT_AI_ADDRCONFIG__ */</span></span></span><br><span class="line">...</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __UCLIBC_SUPPORT_AI_ADDRCONFIG__</span></span><br><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">int</span></span></span><br><span class="line"><span class="function"><span class="title">getifaddrs</span> <span class="params">(struct ifaddrs **ifap)</span></span></span><br><span class="line"><span class="function">...</span></span><br><span class="line"><span class="function"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* __UCLIBC_SUPPORT_AI_ADDRCONFIG__ */</span></span></span></span><br><span class="line"><span class="function">...</span></span><br><span class="line"><span class="function"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* __ASSUME_NETLINK_SUPPORT */</span></span></span></span><br></pre></td></tr></table></figure>
+<p>Just as expected! The implementation of the entire function and the definition of the associated data structure ifaddrs_storageare are placed under three nested conditional compilation directives with macros defined as</p>
+<ol type="1">
+<li>__ASSUME_NETLINK_SUPPORT</li>
+<li>__UCLIBC_SUPPORT_AI_ADDRCONFIG__</li>
+<li>__UCLIBC_HAS_IPV6__</li>
+</ol>
+<p>Therefore, as long as their corresponding configuration lines are opened, the problem should be solved. After changing the configuration file of uClibc as follows, rebuild the dynamic link library of uClibc, then the application can be made successfully:</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--- a/toolchain/uClibc/config-0.9.33.2/common</span></span><br><span class="line"><span class="comment">+++ b/toolchain/uClibc/config-0.9.33.2/common</span></span><br><span class="line"><span class="meta">@@ -147,7 +147,8 @@</span> UCLIBC_HAS_RPC=y</span><br><span class="line"> UCLIBC_HAS_FULL_RPC=y</span><br><span class="line"><span class="deletion">-# UCLIBC_HAS_IPV6 is not set</span></span><br><span class="line"><span class="addition">+UCLIBC_HAS_IPV6=y</span></span><br><span class="line"><span class="deletion">-# UCLIBC_USE_NETLINK is not set</span></span><br><span class="line"><span class="addition">+UCLIBC_USE_NETLINK=y</span></span><br><span class="line"><span class="addition">+UCLIBC_SUPPORT_AI_ADDRCONFIG=y</span></span><br><span class="line"> UCLIBC_HAS_BSD_RES_CLOSE=y</span><br></pre></td></tr></table></figure>
+<h3 id="sha-2-hash-function">SHA-2 Hash Function</h3>
+<p>Embedded systems often need to provide remote SSH login services for system administrators, which requires the creation of system users and their passwords. Linux saves the user name and the hashed password in the /etc/shadow file. The storage format of the hash value follows a de facto standard called the Modular Crypt Format (MCF for short), and its format is as follows:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&lt;id&gt;[$&lt;param&gt;=&lt;value&gt;(,&lt;param&gt;=&lt;value&gt;)*][$&lt;salt&gt;[$&lt;<span class="built_in">hash</span>&gt;]]</span><br></pre></td></tr></table></figure>
+<p>Here</p>
+<ul>
+<li>id: indicates the identifier of the hash algorithm (eg 1 for MD5, 5 for SHA-256, 6 for SHA-512)</li>
+<li>param=value: Hash complexity parameters (such as the number of rounds/iterations) and their values</li>
+<li>salt: radix-64 (charset [+/a-zA-Z0-9]) encoded salt</li>
+<li>hash: the radix-64 encoded hash result of the password and salt</li>
+</ul>
+<p>With the rapid increase of computing power following Moore's Law, the previously commonly used MD5-based hashing scheme has become obsolete because it is too vulnerable to attack. Newly designed systems are now switched to the SHA-512 hashing scheme, corresponding to <code>$6$</code> seen in the /etc/shadow file.</p>
+<p>Both generation and verification of user password hash values ​​can be implemented with the POSIX C library function named <code>crypt</code>. This function is defined as follows:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">crypt</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *key, <span class="keyword">const</span> <span class="keyword">char</span> *salt)</span></span></span><br></pre></td></tr></table></figure>
+<p>The input parameter <code>key</code> points to the string containing the user's password, and <code>salt</code> points to a string in the format <span class="math inline">\(&lt;id&gt;\)</span><salt> indicating the hash algorithm and salt to be used. Most Linux distributions use the <code>crypt</code> function provided by the glibc library. The following figure summarizes the augmented <code>crypt</code> function in Glibc:</p>
+<p><img src="crypt-glibc-features.png" style="width:60.0%;height:60.0%" /></p>
+<p>In an embedded Linux system integrating uClibc, uClibc provides support for the <code>crypt</code> function. But the test found that it returned a null pointer for the correct <span class="math inline">\(6\)</span><salt> input! What's going on here?</p>
+<p>The answer lies in the uClibc's implementation of the <code>crypt</code> function. Find the corresponding C source code:</p>
+<figure class="highlight c"><figcaption><span>libcrypt/crypt.c</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;crypt.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;libcrypt.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">crypt</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *key, <span class="keyword">const</span> <span class="keyword">char</span> *salt)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> *ukey = (<span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> *)key;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> *usalt = (<span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> *)salt;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (salt[<span class="number">0</span>] == <span class="string">&#x27;$&#x27;</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (salt[<span class="number">1</span>] &amp;&amp; salt[<span class="number">2</span>] == <span class="string">&#x27;$&#x27;</span>) &#123; <span class="comment">/* no blowfish &#x27;2X&#x27; here ATM */</span></span><br><span class="line">                        <span class="keyword">if</span> (*++salt == <span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">                                <span class="keyword">return</span> __md5_crypt(ukey, usalt);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __UCLIBC_HAS_SHA256_CRYPT_IMPL__</span></span><br><span class="line">                        <span class="keyword">else</span> <span class="keyword">if</span> (*salt == <span class="string">&#x27;5&#x27;</span>)</span><br><span class="line">                                <span class="keyword">return</span> __sha256_crypt(ukey, usalt);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __UCLIBC_HAS_SHA512_CRYPT_IMPL__</span></span><br><span class="line">                        <span class="keyword">else</span> <span class="keyword">if</span> (*salt == <span class="string">&#x27;6&#x27;</span>)</span><br><span class="line">                                <span class="keyword">return</span> __sha512_crypt(ukey, usalt);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">/* __set_errno(EINVAL);*/</span> <span class="comment">/* ENOSYS might be misleading */</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> __des_crypt(ukey, usalt);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Aha! It turns out that it only does MD5 hashing by default, and the codes of SHA-256 and SHA-512 need their own conditional compilation macro definitions. This is easy to handle, just edit the configuration file of uClibc and open the latter two.</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--- a/toolchain/uClibc/config-0.9.33.2/common</span></span><br><span class="line"><span class="comment">+++ b/toolchain/uClibc/config-0.9.33.2/common</span></span><br><span class="line"><span class="meta">@@ -151,8 +151,8 @@</span> UCLIBC_HAS_REGEX_OLD=y</span><br><span class="line"> UCLIBC_HAS_RESOLVER_SUPPORT=y</span><br><span class="line"><span class="deletion">-# UCLIBC_HAS_SHA256_CRYPT_IMPL is not set</span></span><br><span class="line"><span class="deletion">-# UCLIBC_HAS_SHA512_CRYPT_IMPL is not set</span></span><br><span class="line"><span class="addition">+UCLIBC_HAS_SHA256_CRYPT_IMPL=y</span></span><br><span class="line"><span class="addition">+UCLIBC_HAS_SHA512_CRYPT_IMPL=y</span></span><br><span class="line"> UCLIBC_HAS_SHADOW=y</span><br></pre></td></tr></table></figure>
+<p>Finally, take a look at the program that comes with uClibc to test the SHA-512 hash algorithm. It clearly lists the data structures defined by the test code, including the salt, the input password, and the expected output, as well as several test vectors:</p>
+<figure class="highlight c"><figcaption><span>test/crypt/sha512c-test.c</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">char</span> *salt;</span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">char</span> *input;</span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">char</span> *expected;</span><br><span class="line">&#125; tests[] =</span><br><span class="line">&#123;</span><br><span class="line">  &#123; <span class="string">&quot;$6$saltstring&quot;</span>, <span class="string">&quot;Hello world!&quot;</span>,</span><br><span class="line">    <span class="string">&quot;$6$saltstring$svn8UoSVapNtMuq1ukKS4tPQd8iKwSMHWjl/O817G3uBnIFNjnQJu&quot;</span></span><br><span class="line">    <span class="string">&quot;esI68u4OTLiBFdcbYEdFCoEOfaS35inz1&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="string">&quot;$6$rounds=10000$saltstringsaltstring&quot;</span>, <span class="string">&quot;Hello world!&quot;</span>,</span><br><span class="line">    <span class="string">&quot;$6$rounds=10000$saltstringsaltst$OW1/O6BYHV6BcXZu8QVeXbDWra3Oeqh0sb&quot;</span></span><br><span class="line">    <span class="string">&quot;HbbMCVNSnCM/UrjmM0Dp8vOuZeHBy/YTBmSK6H9qs/y3RnOaw5v.&quot;</span> &#125;,</span><br><span class="line">  ...</span><br><span class="line">  &#123; <span class="string">&quot;$6$rounds=10$roundstoolow&quot;</span>, <span class="string">&quot;the minimum number is still observed&quot;</span>,</span><br><span class="line">    <span class="string">&quot;$6$rounds=1000$roundstoolow$kUMsbe306n21p9R.FRkW3IGn.S9NPN0x50YhH1x&quot;</span></span><br><span class="line">    <span class="string">&quot;hLsPuWGsUSklZt58jaTfF4ZEQpyUNGc0dqbpBYYBaHHrsX.&quot;</span> &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>It can be seen that the last test case defines the round value 10 (<code>$6$rounds=10$roundstoolow</code>), while the output shows that the round is 1000 (<code>rounds=1000</code>). This confirms that the <code>crypt</code> function implementation of uClibc matches the augmented function of Glibc - in order to ensure security, if the input specified round is too small, <code>crypt</code> will automatically set to the minimum round of 1000.</p>
+<h3 id="dns-security-patch">DNS Security Patch</h3>
+<p>In early May 2022, <a target="_blank" rel="noopener" href="https://www.nozominetworks.com/blog/nozomi-networks-discovers-unpatched-dns-bug-in-popular-c-standard-library-putting-iot-at-risk/">Nozomi Networks</a>, a company focused on providing security solutions for industrial and critical infrastructure environments, released a newly discovered uClibc security vulnerability <a target="_blank" rel="noopener" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-30295">CVE-2022-30295</a>. This vulnerability exists in the Domain Name System (DNS) implementation of all versions of uClibc and its fork <a target="_blank" rel="noopener" href="https://www.uclibc-ng.org">uClibc-ng</a> (prior to version 1.0.41). Since the implementation uses predictable transaction IDs when making DNS requests, there is a risk of DNS cache poisoning attacks.</p>
+<p>Specifically, applications often call <code>gethostbyname</code> library functions to resolve a network address for a given hostname. uClibc/uClibc-ng internally implements a <code>__dns_lookup</code> function for the actual DNS domain name request and response processing. Taking the last version 0.9.33.2 of uClibc as an example, the screenshot below shows the problematic code in the function <code>__dns_lookup</code>:</p>
+<p><img src="CVE-2022-30295.png" style="width:65.0%;height:65.0%" /></p>
+<p>Referring to line 1308, at the first DNS request, the variable <code>local_id</code> is initialized to the transaction ID value of the last DNS request (stored in a static variable <code>last_id</code>). Line 1319 is the actual culprit, it simply updates the old <code>local_id</code> value by incrementing it by 1. This new value is stored back into the variable <code>last_id</code>, as shown on line 1322. Finally, on line 1334, the value of <code>local_id</code> is copied into the structure variable <code>h</code>, which represents the actual content of the DNS request header. This code works pretty much in all available versions of uClibc and uClibc-ng prior to version 1.0.41.</p>
+<p>This implementation makes the transaction ID in the DNS request predictable, because the attacker can estimate the value of the transaction ID in the next request as long as he/she detects the current transaction ID. By exploiting this vulnerability, an attacker can disrupt/poison the host's DNS cache by crafting a DNS response containing the correct source port and winning the competition with the legitimate response returned by the DNS server, making the network data of the application in the host system be directed to a trap site set by the attacker.</p>
+<p>The maintainers of uClibc-ng responded quickly to the announcement of this security vulnerability. They submitted a <a target="_blank" rel="noopener" href="https://cgit.uclibc-ng.org/cgi/cgit/uclibc-ng.git/commit/?id=f73fcb3d067e22817189077c9b7bd2417c930d34">fix</a> in mid-May 2022, and released version 1.0.41 including this patch at the end of that month. For uClibc, since this C standard library has stopped releasing any new versions since 2012, it is currently in an unmaintained state, so system R&amp;D engineers need to come up with their repair. The following uClibc patches are available for reference:</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">diff --git a/libc/inet/resolv.c b/libc/inet/resolv.c</span></span><br><span class="line"><span class="comment">index 31e63810b..c2a8e2be4 100644</span></span><br><span class="line"><span class="comment">--- a/libc/inet/resolv.c</span></span><br><span class="line"><span class="comment">+++ b/libc/inet/resolv.c</span></span><br><span class="line"><span class="meta">@@ -315,6 +315,7 @@</span> Domain name in a message can be represented as either:</span><br><span class="line"> #include &lt;sys/utsname.h&gt;</span><br><span class="line"> #include &lt;sys/un.h&gt;</span><br><span class="line"> #include &lt;sys/stat.h&gt;</span><br><span class="line"><span class="addition">+#include &lt;fcntl.h&gt;</span></span><br><span class="line"> #include &lt;sys/param.h&gt;</span><br><span class="line"> #include &lt;bits/uClibc_mutex.h&gt;</span><br><span class="line"> #include &quot;internal/parse_config.h&quot;</span><br><span class="line"><span class="meta">@@ -1212,6 +1213,20 @@</span> static int __decode_answer(const unsigned char *message, /* packet */</span><br><span class="line">        return i + RRFIXEDSZ + a-&gt;rdlength;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"><span class="addition">+uint16_t dnsrand_next(int urand_fd, int def_value) &#123;</span></span><br><span class="line"><span class="addition">+   if (urand_fd == -1) return def_value;</span></span><br><span class="line"><span class="addition">+   uint16_t val;</span></span><br><span class="line"><span class="addition">+   if(read(urand_fd, &amp;val, 2) != 2) return def_value;</span></span><br><span class="line"><span class="addition">+   return val;</span></span><br><span class="line"><span class="addition">+&#125;</span></span><br><span class="line"><span class="addition">+</span></span><br><span class="line"><span class="addition">+int dnsrand_setup(int *urand_fd, int def_value) &#123;</span></span><br><span class="line"><span class="addition">+   if (*urand_fd &gt; 0) return dnsrand_next(*urand_fd, def_value);</span></span><br><span class="line"><span class="addition">+   *urand_fd = open(&quot;/dev/urandom&quot;, O_RDONLY);</span></span><br><span class="line"><span class="addition">+   if (*urand_fd == -1) return def_value;</span></span><br><span class="line"><span class="addition">+   return dnsrand_next(*urand_fd, def_value);</span></span><br><span class="line"><span class="addition">+&#125;</span></span><br><span class="line"><span class="addition">+</span></span><br><span class="line"> /* On entry:</span><br><span class="line">  *  a.buf(len) = auxiliary buffer for IP addresses after first one</span><br><span class="line">  *  a.add_count = how many additional addresses are there already</span><br><span class="line"><span class="meta">@@ -1237,6 +1252,7 @@</span> int __dns_lookup(const char *name,</span><br><span class="line">        /* Protected by __resolv_lock: */</span><br><span class="line">        static int last_ns_num = 0;</span><br><span class="line">        static uint16_t last_id = 1;</span><br><span class="line"><span class="addition">+       static int urand_fd = -1;</span></span><br><span class="line"></span><br><span class="line">        int i, j, fd, rc;</span><br><span class="line">        int packet_len;</span><br><span class="line"><span class="meta">@@ -1305,7 +1321,7 @@</span> int __dns_lookup(const char *name,</span><br><span class="line">                &#125;</span><br><span class="line">                /* first time? pick starting server etc */</span><br><span class="line">                if (local_ns_num &lt; 0) &#123;</span><br><span class="line"><span class="deletion">-                       local_id = last_id;</span></span><br><span class="line"><span class="addition">+                       local_id = dnsrand_setup(&amp;urand_fd, last_id);</span></span><br><span class="line"> /*TODO: implement /etc/resolv.conf&#x27;s &quot;options rotate&quot;</span><br><span class="line">  (a.k.a. RES_ROTATE bit in _res.options)</span><br><span class="line">                        local_ns_num = 0;</span><br><span class="line"><span class="meta">@@ -1316,8 +1332,9 @@</span> int __dns_lookup(const char *name,</span><br><span class="line">                retries_left--;</span><br><span class="line">                if (local_ns_num &gt;= __nameservers)</span><br><span class="line">                        local_ns_num = 0;</span><br><span class="line"><span class="deletion">-               local_id++;</span></span><br><span class="line"><span class="addition">+               local_id = dnsrand_next(urand_fd, local_id++);</span></span><br><span class="line">                local_id &amp;= 0xffff;</span><br><span class="line"><span class="addition">+               DPRINTF(&quot;local_id:0x%hx\n&quot;, local_id);</span></span><br><span class="line">                /* write new values back while still under lock */</span><br><span class="line">                last_id = local_id;</span><br><span class="line">                last_ns_num = local_ns_num;</span><br></pre></td></tr></table></figure>
+<p>This uClibc patch is a simplified version of the uClibc-ng official patch. Its core is to read a double-byte random number from the system <code>/dev/urandom</code> file, and then use it to set the original <code>local_id</code>, the transaction ID of the DNS request. <code>/dev/urandom</code> is a special device file of the Linux system. It can be used as a non-blocking random number generator, which will reuse the data in the entropy pool to generate pseudo-random data.</p>
+<p>Note that in the above patch, the function <code>dnsrand_setup</code> must first check <code>urand_fd</code> whether it is positive, and only open <code>/dev/urandom</code> when it is not true. Otherwise, the file will be reopened every time the application does a DNS lookup, the system will quickly hit the maximum number of file descriptors allowed, and the system will crash because it cannot open any more files.</p>
+<p>Finally, a comparison of an embedded system using uClibc before and after adding DNS security patches is given. The following are the DNS packets intercepted by two sniffers. In the first unpatched system, the transaction ID of the DNS request is incremented in sequence, which is an obvious security hole; the second is after the patch is added, the transaction ID of each DNS request is a random value, and the loophole has been filled.</p>
+<p><img src="uClibc-DNS-cve.png" style="width:75.0%;height:75.0%" /> <img src="uClibc-DNS-fix.png" style="width:75.0%;height:75.0%" /></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Zixi
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://www.packetmania.net/en/2023/03/10/uClibc-tips/" title="Notes on Using uClibc Standard Library in Embedded Linux System">https://www.packetmania.net/en/2023/03/10/uClibc-tips/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/en/tags/C-C-Programming/" rel="tag"><i class="fa fa-tag"></i> C/C++ Programming</a>
+              <a href="/en/tags/System-Programming/" rel="tag"><i class="fa fa-tag"></i> System Programming</a>
+              <a href="/en/tags/Cryptography/" rel="tag"><i class="fa fa-tag"></i> Cryptography</a>
+              <a href="/en/tags/Computer-Communications/" rel="tag"><i class="fa fa-tag"></i> Computer Communications</a>
+              <a href="/en/tags/TCP-IP/" rel="tag"><i class="fa fa-tag"></i> TCP/IP</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/2022/11/21/DH-and-RSA/" rel="prev" title="Does Diffie-Hellman Key Exchange Use a Technology Similar to RSA?">
+                  <i class="fa fa-chevron-left"></i> Does Diffie-Hellman Key Exchange Use a Technology Similar to RSA?
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Gitalk Comments</a></li>
+            <li class="tab"><a href="#comment-utterances">Utterances Comments</a></li>
+            <li class="tab"><a href="#comment-disqus">Disqus Comments</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+            <div class="tab-pane disqus" id="comment-disqus">
+              
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zixi</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>Symbols count total: </span>
+    <span title="Symbols count total">189k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>Reading time total &asymp;</span>
+    <span title="Reading time total">2:52</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5fc1fd29017282c7" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/en/js/comments.js"></script><script src="/en/js/utils.js"></script><script src="/en/js/motion.js"></script><script src="/en/js/next-boot.js"></script><script src="/en/js/bookmark.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/en/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"forest","dark":"forest"},"js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.13.4/dist/mermaid.min.js","integrity":"sha256-96rwDGMWIQYB0yKGp1sKi1yrjrLPj2oT39IpbCsIrsg="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/en/js/third-party/fancybox.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/en/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"packetmania-github-io","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/en/js/third-party/comments/disqus.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"packetmania","repo":"en","client_id":"a45f6ae3f97c1a467856","client_secret":"7d81b74f952b388f93dcb5a8c44cd12f657969fa","admin_user":"packetmania","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"29b3377fb580bc80013bae02538c495f"}</script>
+<script src="/en/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"packetmania/en","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/en/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

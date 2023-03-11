@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2023-01-16T06:02:28.612Z</updated>
+  <updated>2023-03-11T08:16:00.507Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Notes on Using uClibc Standard Library in Embedded Linux System</title>
+    <link href="https://www.packetmania.net/en/2023/03/10/uClibc-tips/"/>
+    <id>https://www.packetmania.net/en/2023/03/10/uClibc-tips/</id>
+    <published>2023-03-11T07:38:37.000Z</published>
+    <updated>2023-03-11T08:16:00.507Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://www.uclibc.org&quot;&gt;uClibc&lt;/a&gt; is a small and exquisite C standard library for embedded Linux systems. It is widely used in the development of low-end embedded systems and Internet of Things devices. Here are some recent experiences to provide convenience for engineers who need to solve similar problems or meet corresponding requirements.</summary>
+    
+    
+    
+    <category term="Technical Knowhow" scheme="https://www.packetmania.net/en/categories/Technical-Knowhow/"/>
+    
+    
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
+    
+    <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
+    
+    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
+    
+    <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
+    
+    <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
+    
+  </entry>
   
   <entry>
     <title>Does Diffie-Hellman Key Exchange Use a Technology Similar to RSA?</title>
@@ -63,14 +90,14 @@
     <link href="https://www.packetmania.net/en/2022/08/20/picoCTF-Sum-O-Primes/"/>
     <id>https://www.packetmania.net/en/2022/08/20/picoCTF-Sum-O-Primes/</id>
     <published>2022-08-20T21:31:09.000Z</published>
-    <updated>2022-11-24T21:22:20.863Z</updated>
+    <updated>2023-03-11T08:13:30.587Z</updated>
     
     
     <summary type="html">&lt;p&gt;By chance, I came across a picoCTF RSA challenge called Sum-O-Primes. This problem is not difficult, you can do it by knowing the basics of the RSA algorithm. In addition, if you are familiar with the history of the evolution of the RSA algorithm, you can find a second ingenious fast solution.</summary>
     
     
     
-    <category term="Technology Knowhow" scheme="https://www.packetmania.net/en/categories/Technology-Knowhow/"/>
+    <category term="Technical Knowhow" scheme="https://www.packetmania.net/en/categories/Technical-Knowhow/"/>
     
     
     <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
@@ -128,14 +155,14 @@
     <link href="https://www.packetmania.net/en/2022/01/22/Python-Textbook-RSA/"/>
     <id>https://www.packetmania.net/en/2022/01/22/Python-Textbook-RSA/</id>
     <published>2022-01-23T00:09:23.000Z</published>
-    <updated>2022-02-21T00:54:17.568Z</updated>
+    <updated>2023-03-11T08:13:05.402Z</updated>
     
     
     <summary type="html">&lt;p&gt;RSA encryption algorithm is one of the core technologies of modern public-key cryptography and is widely used on the Internet. As a classical algorithm of public-key cryptography, the programming implementation of textbook RSA can help us quickly grasp its mathematical mechanism and design ideas, and accumulate important experience in the software implementation of cryptography. Here is a detailed example of textbook RSA implementation in Python 3.8 programming environment.</summary>
     
     
     
-    <category term="Technology Knowhow" scheme="https://www.packetmania.net/en/categories/Technology-Knowhow/"/>
+    <category term="Technical Knowhow" scheme="https://www.packetmania.net/en/categories/Technical-Knowhow/"/>
     
     
     <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
