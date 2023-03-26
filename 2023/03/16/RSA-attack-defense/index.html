@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.0.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/en/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="piAnQ_mnwkhV_qh4_Se1yLzM1IwOvuq-vmYfXBkWRXU">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=EB+Garamond:300,300italic,400,400italic,700,700italic%7CNoto+Serif+SC:300,300italic,400,400italic,700,700italic%7CRoboto+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.packetmania.net","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk | utterances | disqus","storage":true,"lazyload":false,"nav":{"disqus":{"text":"Disqus Comments","order":-1},"utterances":{"text":"Utterances Comments","order":-2},"gitalk":{"text":"Gitalk Comments","order":-3}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/en/js/config.js"></script>
+<meta name="description" content="RSA is a public-key cryptosystem built on top of an asymmetric encryption algorithm, which was jointly invented by three cryptographers and computer scientists at the Massachusetts Institute of Techno">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RSA: Attack and Defense (1)">
+<meta property="og:url" content="https://www.packetmania.net/en/2023/03/16/RSA-attack-defense/index.html">
+<meta property="og:site_name" content="PacketMania">
+<meta property="og:description" content="RSA is a public-key cryptosystem built on top of an asymmetric encryption algorithm, which was jointly invented by three cryptographers and computer scientists at the Massachusetts Institute of Techno">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-17T04:00:32.000Z">
+<meta property="article:modified_time" content="2023-03-26T05:20:56.435Z">
+<meta property="article:author" content="Zixi">
+<meta property="article:tag" content="Cryptography">
+<meta property="article:tag" content="Network Security">
+<meta property="article:tag" content="Python Programming">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.packetmania.net/en/2023/03/16/RSA-attack-defense/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.packetmania.net/en/2023/03/16/RSA-attack-defense/","path":"2023/03/16/RSA-attack-defense/","title":"RSA: Attack and Defense (1)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>RSA: Attack and Defense (1) | PacketMania</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YKBP0QK7Z"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-9YKBP0QK7Z","only_pageview":false}</script>
+  <script src="/en/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PacketMania" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PacketMania</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Technology | Knowledge | Sharing</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/en/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/en/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+        <li class="menu-item menu-item-rss"><a href="/en/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+        <li class="menu-item menu-item-language"><a href="https://www.packetmania.net/" rel="section"><i class="fa fa-language fa-fw"></i>中文</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#integer-factorization"><span class="nav-number">1.</span> <span class="nav-text">Integer Factorization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#elementary-attacks"><span class="nav-number">2.</span> <span class="nav-text">Elementary Attacks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#low-public-exponent-attacks"><span class="nav-number">3.</span> <span class="nav-text">Low Public Exponent Attacks</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#broadcast-attack"><span class="nav-number">3.1.</span> <span class="nav-text">Broadcast Attack</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zixi"
+      src="/en/images/ccie.gif">
+  <p class="site-author-name" itemprop="name">Zixi</p>
+  <div class="site-description" itemprop="description">Computer Networking and Software Design & Implementation</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/packetmania" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;packetmania" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zixiruoxue@gmail.com" title="E-Mail → mailto:zixiruoxue@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/zixisean" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zixisean" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/15140531" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;15140531" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_nd.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.packetmania.net/en/2023/03/16/RSA-attack-defense/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/ccie.gif">
+      <meta itemprop="name" content="Zixi">
+      <meta itemprop="description" content="Computer Networking and Software Design & Implementation">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PacketMania">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          RSA: Attack and Defense (1)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-03-16 21:00:32" itemprop="dateCreated datePublished" datetime="2023-03-16T21:00:32-07:00">2023-03-16</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2023-03-25 22:20:56" itemprop="dateModified" datetime="2023-03-25T22:20:56-07:00">2023-03-25</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/Technical-Knowhow/" itemprop="url" rel="index"><span itemprop="name">Technical Knowhow</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>22k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>20 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>RSA is a public-key cryptosystem built on top of an asymmetric encryption algorithm, which was jointly invented by three cryptographers and computer scientists at the Massachusetts Institute of Technology in 1977. The RSA public-key encryption algorithm and cryptosystem provide data confidentiality and signature verification functions widely used on the Internet. Since its birth, RSA has become a major research object of modern cryptography. Many cryptanalysts and information security experts have been studying its possible theoretical flaws and technical loopholes to ensure security and reliability in practical applications.<span id="more"></span></p>
+<div class="note success no-icon"><p><strong>There are certain things whose number is unknown. If we count them by threes, we have two left over; by fives, we have three left over; and by sevens, two are left over. How many things are there?</strong><br> <strong>— <em>Sunzi Suanjing, Volume 2.26</em></strong></p>
+</div>
+<p>Fortunately, after more than 40 years of extensive research and practical application tests, although many sophisticated attack methods have been discovered, RSA is generally safe. These attack methods all take advantage of the improper use of RSA or the vulnerability of software and hardware implementations, and cannot shake the security foundation of its encryption algorithm. On the other hand, the research on these attack methods shows that implementing a safe and robust RSA application is not a simple task. A consensus in cryptography and network security hardware and software engineering practice is: <strong>never roll your own cryptography!</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> The appropriate solution is to use an existing, well-tested, and reliably maintained library or API to implement the RSA algorithm and protocol application.</p>
+<p>Here is a brief survey of the common means of attacking RSA, the mathematical mechanism on which the attack is based, and the corresponding protective measures. Referring to <a href="https://www.packetmania.net/en/2022/11/21/DH-and-RSA/">the previous article</a>, let’s start by reviewing the working mechanism and process of RSA:</p>
+<ol type="1">
+<li>Choose two large prime numbers <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>, compute <span class="math inline">\(N=pq\)</span></li>
+<li>Compute <span class="math inline">\(\lambda(N)\)</span>, where <span class="math inline">\(\lambda\)</span> is <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Carmichael_function">Carmichael's totient function</a>
+<ul>
+<li>When both <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> are prime, <span class="math inline">\(\lambda(pq)=\operatorname {lcm}(p − 1, q − 1)\)</span></li>
+<li><span class="math inline">\(\operatorname{lcm}\)</span> is a function to find the least common multiple, which can be calculated by the Euclidean algorithm</li>
+</ul></li>
+<li>Choose a number <span class="math inline">\(e\)</span> that is less than <span class="math inline">\(\lambda(N)\)</span> and also coprime with it, then calculate the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Modular_multiplicative_inverse">modular multiplicative inverse</a> of <span class="math inline">\(e\)</span> with respect to the modulus <span class="math inline">\(\lambda(N)\)</span>. That is <span class="math inline">\(d\equiv e^{-1}\pmod {\lambda(N)}\)</span>
+<ul>
+<li>Per the definition of modular multiplicative inverse, find <span class="math inline">\(d\)</span> such that <span class="math inline">\((d⋅e)\bmod\lambda(N)=1\)</span></li>
+<li>A modular multiplicative inverse can be found by using the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm">extended Euclidean algorithm</a></li>
+</ul></li>
+<li><span class="math inline">\(\pmb{(N,e)}\)</span> is <strong>the public key</strong>，<span class="math inline">\(\pmb{(N,d)}\)</span> is <strong>the private key</strong>
+<ul>
+<li>The public key can be known by everyone, but the private key must be kept secret</li>
+<li>The records of <span class="math inline">\(p,q,\lambda(N)\)</span> can all be discarded</li>
+</ul></li>
+<li>The sender first converts the message into a positive integer less than <span class="math inline">\(N\)</span> according to the agreed encoding format, then use the receiver's public key to compute the ciphertext with the formula <span class="math inline">\(\pmb{c\equiv m^e\pmod N}\)</span></li>
+<li>After receiving the ciphertext, the receiver uses its private key to compute the plaintext <span class="math inline">\(m\)</span> with the formula <span class="math inline">\(\pmb{m\equiv c^d\pmod N}\)</span>, then decodes it into the original message</li>
+<li>A message encrypted with the private key can also be decrypted by the public key, i.e. if <span class="math inline">\(\pmb{s\equiv m^d\pmod N}\)</span>, <span class="math inline">\(\pmb{m\equiv s^e\pmod N}\)</span>. This is the supported digital signature feature</li>
+</ol>
+<p>Note that the second and third steps in <a target="_blank" rel="noopener" href="http://people.csail.mit.edu/rivest/Rsapaper.pdf">the original RSA paper</a> use <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Euler%27s_totient_function">Euler's totient function</a> <span class="math inline">\(\varphi(N)\)</span> instead of <span class="math inline">\(\lambda(N)\)</span>. The relationship between these two functions is: <span class="math display">\[\varphi(N)=\lambda(N)⋅\operatorname{gcd}(p-1,d-1)\]</span> Here <span class="math inline">\(\operatorname{gcd}\)</span> is the greatest common divisor function. Using <span class="math inline">\(\lambda(N)\)</span> can yield the minimum workable private exponent <span class="math inline">\(d\)</span>, which is conducive to efficient decryption and signature operations. Implementations that follow the above procedure, whether using Euler's or Carmichael's functions, are often referred to as "textbook RSA ".</p>
+<p>Textbook RSA is insecure, and there are many simple and effective means of attack. Before discussing the security holes of the textbook RSA in detail, it is necessary to review the first known attack method - integer factorization!</p>
+<h3 id="integer-factorization">Integer Factorization</h3>
+<p>The theoretical cornerstone of the security of the RSA encryption algorithm is the problem of <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Integer_factorization">factoring large numbers</a>. If we can separate <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> from the known <span class="math inline">\(N\)</span>, we can immediately derive the private exponent <span class="math inline">\(d\)</span> and thus completely crack RSA. Factoring large numbers is a presumed difficult computational problem. The best-known asymptotic running time algorithm is <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/General_number_field_sieve">General Number Field Sieve</a>, and its time complexity is <span class="math inline">\({\displaystyle \exp \left(\left(c+o(1)\right)(\ln N)^{\frac {1}{3}}(\ln \ln N)^{\frac {2}{3}}\right)}\)</span>, where the constant <span class="math inline">\(c = 4/\sqrt[3]{9}\)</span>，<span class="math inline">\(\displaystyle \exp\)</span> and <span class="math inline">\(\displaystyle \exp\)</span> is the exponential function of Euler's number (2.718).</p>
+<p>For a given large number, it is difficult to accurately estimate the actual complexity of applying the GNFS algorithm. However, based on the heuristic complexity empirical estimation, we can roughly see the increasing trend of computational time complexity:</p>
+<ul>
+<li>For a large number of 1024 bits, there are two prime factors of about 500 bits each, and the decomposition requires basic arithmetic operations of order <span class="math inline">\(2^{70}\)</span></li>
+<li>For a large number of 2048 bits, there are two prime factors of about 1000 bits each, and the decomposition requires basic arithmetic operations of order <span class="math inline">\(2^{90}\)</span>, a million times slower than the 1024-bit number</li>
+</ul>
+<p>The rapid development of computer software and hardware technology has made many tasks that seemed impossible in the past become a reality. Check the latest record released by the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/RSA_Factoring_Challenge">RSA Factoring Challenge</a> website. In February 2020, a team led by French computational mathematician Paul Zimmermann successfully decomposed the large number RSA-250 with 250 decimal digits (829 bits):</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RSA-250 = 6413528947707158027879019017057738908482501474294344720811685963202453234463</span><br><span class="line">          0238623598752668347708737661925585694639798853367</span><br><span class="line">        × 3337202759497815655622601060535511422794076034476755466678452098702384172921</span><br><span class="line">          0037080257448673296881877565718986258036932062711</span><br></pre></td></tr></table></figure>
+<p>announcement</p>
+<p>According to the announcement of the factorization released by Zimmerman, using a 2.1GHz Intel Xeon Gold 6130 processor, the total computing time to complete this task is about 2700 CPU core-years. This number may seem large, but in today's era of cluster computing, grid computing, and cloud computing for the masses, it's not a stretch to think that organizations with strong financial backing can reduce computing time to hours or even minutes. As an example, go to the online tool website of the free open-source mathematical software system <a target="_blank" rel="noopener" href="https://sagecell.sagemath.org">SageMath</a> and enter the following first 5 lines of Sage Python code:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">p=random_prime(<span class="number">2</span>**<span class="number">120</span>)</span><br><span class="line">q=random_prime(<span class="number">2</span>**<span class="number">120</span>)</span><br><span class="line">n=p*q</span><br><span class="line"><span class="built_in">print</span>(n)</span><br><span class="line">factor(n)</span><br><span class="line"><span class="comment"># The output</span></span><br><span class="line"><span class="number">28912520751034191277571809785701738245635791077300278534278526509273423</span></span><br><span class="line"><span class="number">38293227899687810929829874029597363</span> * <span class="number">755029605411506802434801930237797621</span></span><br></pre></td></tr></table></figure>
+<p>The result was obtained within minutes, and a large number of 72 decimal digits (240 bits) was decomposed. You know, in the 1977 RSA paper, it is mentioned that it takes about 104 days to decompose a 75-digit decimal number. The technological progress of mankind is so amazing!</p>
+<p>As the attacker's spear becomes sharper and sharper, the defender's shield must become thicker and thicker. Therefore, 1024-bit RSA is no longer secure, and applications should not use public key <span class="math inline">\(N\)</span> values that are less than 2048 bits. And when high security is required, choose 4096-bit RSA.</p>
+<h3 id="elementary-attacks">Elementary Attacks</h3>
+<p>Although the decomposition of large numbers is an attack method known to everyone, the security vulnerabilities caused by some low-level errors commonly found in RSA applications make it possible to use simple attacks to succeed, and some typical ones are explained below.</p>
+<ul>
+<li><p>In the early development of RSA, finding large prime numbers took quite a bit of time based on the backward computing power of the time. Therefore, some system implementations tried to share the modulus <span class="math inline">\(N\)</span>. The idea was to generate only one set <span class="math inline">\((p,q)\)</span>, and then all users would use the same <span class="math inline">\(N=pq\)</span> values, with a central authority that everyone trusted assigning key pairs <span class="math inline">\((e_i,d_i)\)</span> to each user <span class="math inline">\(i\)</span>, and nothing would go wrong as long as the respective private keys <span class="math inline">\(d_i\)</span> were kept. Unfortunately, this is a catastrophic mistake! This implementation has two huge security holes：</p>
+<ol type="1">
+<li><p>The user <span class="math inline">\(i\)</span> can decompose <span class="math inline">\(N\)</span> using his own key pair <span class="math inline">\((e_i,d_i)\)</span>. Whether <span class="math inline">\(d\)</span> is generated using the Euler function <span class="math inline">\(\varphi(N)\)</span> or the Carmichael function <span class="math inline">\(\lambda(N)\)</span>, there are algorithms that quickly derive the prime factors <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> from a given <span class="math inline">\(d\)</span> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. And once <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> are known, user <span class="math inline">\(i\)</span> can compute any other user's private key <span class="math inline">\(d_j\)</span> with one's public key <span class="math inline">\((N,e_j)\)</span>. At this point, the other users have no secrets from user <span class="math inline">\(i\)</span>.</p></li>
+<li><p>Even if all users do not have the knowledge and skill to decompose <span class="math inline">\(N\)</span>, or are "nice" enough not to know the other users' private keys, a hacker can still perform a <mark>common modulus attack</mark> to break the users' messages. If the public keys of two users, Alice and Bob, are <span class="math inline">\(e_1\)</span> and <span class="math inline">\(e_2\)</span>, and <span class="math inline">\(e_1\)</span> and <span class="math inline">\(e_2\)</span> happen to be mutually prime (which is very likely), then by <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/B%C3%A9zout%27s_identity">Bézout's identity</a>, the eavesdropper Eve can find that <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span> satisfy: <span class="math display">\[e_{1}s+e_{2}t=gcd(e_1,e_2)=1\]</span> At this point, if someone sends the same message <span class="math inline">\(m\)</span> to Alice and Bob, Eve can decrypt <span class="math inline">\(m\)</span> after recording the two ciphertexts <span class="math inline">\(c_1\)</span> and <span class="math inline">\(c_2\)</span> and performing the following operation: <span class="math display">\[c_1^s⋅c_2^t\equiv(m^{e _1})^s⋅(m^{e_2})^t\equiv m^{e_{1}s+e_{2}t}\equiv m\pmod N\]</span> The corresponding Python function code is shown below.</p>
+<p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">common_modulus</span>(<span class="params">e1, e2, N, c1, c2</span>):</span></span><br><span class="line">    <span class="comment"># Call the extended Euclidean algorithm function</span></span><br><span class="line">    g, s, t = gymp2.gcdext(e1, e2)</span><br><span class="line">    <span class="keyword">assert</span> g == <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> s &lt; <span class="number">0</span>:</span><br><span class="line">        <span class="comment"># Find c1&#x27;s modular multiplicative inverse		        re = int(gmpy2.invert(c1, N))</span></span><br><span class="line">        c1 = <span class="built_in">pow</span>(re, s*(-<span class="number">1</span>), N)</span><br><span class="line">        c2 = <span class="built_in">pow</span>(c2, t, N)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># t is negative, find c2&#x27;s modular multiplicative inverse</span></span><br><span class="line">        re = <span class="built_in">int</span>(gmpy2.invert(c2, N))</span><br><span class="line">        c2 = <span class="built_in">pow</span>(re, t*(-<span class="number">1</span>), N)</span><br><span class="line">        c1 = <span class="built_in">pow</span>(c1, a, N)</span><br><span class="line">    <span class="keyword">return</span> (c1*c2) % N</span><br></pre></td></tr></table></figure> Two library functions of gmpy2<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> are called here: gcdext() to implement the extended Euclidean algorithm, and invert() to find the modular multiplicative inverse element. Note that Python's exponential function pow() supports modular exponentiation, but the exponent must not be negative. Since one of <span class="math inline">\(s\)</span> or <span class="math inline">\(t\)</span> must be negative, you have to first call invert() to convert <span class="math inline">\(c_1\)</span> or <span class="math inline">\(c_2\)</span> to the corresponding modular multiplicative inverse, then invert the negative number to calculate the modular exponent. For example, lines 7 and 8 above implement <span class="math inline">\(c_1^s=(c_1^{-1})^{-s}\bmod N\)</span>.</p></li>
+</ol></li>
+<li><p>Is it possible to reuse only <span class="math inline">\(p\)</span> or <span class="math inline">\(q\)</span> since the shared modulus <span class="math inline">\(N\)</span> is proven to be insecure? This seems to avoid the common-modulus attack and ensure that each user's public key <span class="math inline">\(N\)</span> value is unique. Big mistake! This is an even worse idea! The attacker gets the public <span class="math inline">\(N\)</span> values of all users and simply combines <span class="math inline">\((N_1,N_2)\)</span> pairwise to solve Euclid's algorithm for the great common divisor, and a successful solution gives a prime factor <span class="math inline">\(p\)</span>, and a simple division gives the other prime factor <span class="math inline">\(q\)</span>. With <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>, the attacker can immediately compute the user's private key <span class="math inline">\(d\)</span>. This is the <mark>non-coprime modulus attack</mark>.</p></li>
+<li><p>When applying textbook RSA, if both the public exponent <span class="math inline">\(e\)</span> and the plaintext <span class="math inline">\(m\)</span> are small, such that <span class="math inline">\(c=m^e&lt;N\)</span>, the plaintext <span class="math inline">\(m\)</span> can be obtained by directly calculating the <span class="math inline">\(e\)</span>th root of the ciphertext <span class="math inline">\(c\)</span>. Even if <span class="math inline">\(m^e&gt;N\)</span> but not large enough, then since <span class="math inline">\(m^e=c+k⋅N\)</span>, you can loop through the small <span class="math inline">\(k\)</span> values to perform <mark>brute-force root extraction cracking</mark>. Here is the Python routine:</p>
+<p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">crack_small</span>(<span class="params">c, e, N, repeat</span>)</span></span><br><span class="line"><span class="function">    <span class="title">times</span> = 0</span></span><br><span class="line"><span class="function">    <span class="title">msg</span> = 0</span></span><br><span class="line"><span class="function">    <span class="title">for</span> <span class="title">k</span> <span class="title">in</span> <span class="title">range</span>(<span class="params">repeat</span>):</span></span><br><span class="line">        m, is_exact = gmpy2.iroot(c + times, e)</span><br><span class="line">        <span class="keyword">if</span> is_exact <span class="keyword">and</span> <span class="built_in">pow</span>(m, e, N) == c:</span><br><span class="line">            msg = <span class="built_in">int</span>(m)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        times += N</span><br><span class="line">    <span class="keyword">return</span> msg</span><br></pre></td></tr></table></figure> Here the gmpy2 library function iroot() is called to find the <span class="math inline">\(e\)</span>th root.</p></li>
+<li><p>Textbook RSA is <strong>deterministic</strong>, meaning that the same plaintext <span class="math inline">\(m\)</span> always generates the same ciphertext <span class="math inline">\(c\)</span>. This makes <mark>codebook attack</mark> possible: the attacker precomputes all or part of the <span class="math inline">\(m\to c\)</span> mapping table and saves, then simply searches the intercepted ciphertext for a match. Determinism also means that textbook RSA is not semantically secure and that the ciphertext can reveal some information about the plaintext. Repeated occurrences of the ciphertext indicate that the sender is sending the same message over and over again.</p></li>
+<li><p>Textbook RSA is <strong>malleable</strong>, where a particular form of algebraic operation is performed on the ciphertext and the result is reflected in the decrypted plaintext. For example, if there are two plaintexts <span class="math inline">\(m_1\)</span> and <span class="math inline">\(m_2\)</span>, and encryption yields <span class="math inline">\(c_1=m_1^e\bmod N\)</span> and <span class="math inline">\(c_2=m_2^e\bmod N\)</span>, what does <span class="math inline">\((c_1⋅c_2)\)</span> decryption yield? Look at the following equation: <span class="math display">\[(c_1⋅c_2)^d\equiv m_1^{ed}⋅m_2^{ed}\equiv m_1⋅m_2\pmod N\]</span> So the plaintext obtained after decrypting the product of the two ciphertexts is equal to the product of the two plaintexts. This feature is detrimental to RSA encryption systems in general and provides an opportunity for <mark>chosen-ciphertext attack</mark>. The following are two examples of attack scenarios:</p>
+<ol type="1">
+<li><p>Imagine that there is an RSA decryption machine that can decrypt messages with an internally saved private key <span class="math inline">\((N,d)\)</span>. For security reasons, the decryptor will reject repeated input of the same ciphertext. An attacker, Marvin, finds a piece of ciphertext <span class="math inline">\(c\)</span> that is rejected by the decryptor when he enters it directly because the ciphertext <span class="math inline">\(c\)</span> has been decrypted before. Marvin finds a way to crack it. He prepares a plaintext <span class="math inline">\(r\)</span> himself, encrypts it with the public key <span class="math inline">\((N,e)\)</span> to generate a new ciphertext <span class="math inline">\(c&#39;={r^e}c\bmod N\)</span>, and then feeds the ciphertext <span class="math inline">\(c&#39;\)</span> to the decryptor. The decryption machine has not decrypted this new ciphertext, so it will not reject it. The result of the decryption is <span class="math display">\[m&#39;\equiv (c&#39;)^d\equiv r^{ed}c^d\equiv rm\pmod N\]</span> Now that Marvin has <span class="math inline">\(m&#39;\)</span>, he can calculate <span class="math inline">\(m\)</span> using the formula <span class="math inline">\(m\equiv m&#39;r^{-1}\pmod N\)</span>.</p></li>
+<li><p>Suppose Marvin wants Bob to sign a message <span class="math inline">\(m\)</span>, but Bob refuses to do so after reading the message content. Marvin can achieve his goal by using an attack called <mark>blinding</mark><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. He picks a random message <span class="math inline">\(r\)</span>, generates <span class="math inline">\(m&#39;={r^e}m\bmod N\)</span>, and then takes <span class="math inline">\(m&#39;\)</span> to Bob to sign. Bob probably thinks <span class="math inline">\(m&#39;\)</span> is irrelevant and signs it. The result of Bob's signature is <span class="math inline">\(s&#39;=(m&#39;)^d\bmod N\)</span>. Now Marvin has Bob's signature on the original message <span class="math inline">\(m\)</span> using the formula <span class="math inline">\(s=s&#39;r^{-1}\bmod N\)</span>. Why? The reason is that <span class="math display">\[s^e\equiv (s&#39;)^er^{-e}\equiv (m&#39;)^{ed}r^{-e}\equiv m&#39;r^{-e}\equiv m\pmod N\]</span></p></li>
+</ol></li>
+</ul>
+<p>The above is by no means a complete list of elementary attack methods, but they are illustrative. In practical RSA applications, we must be very careful and should do the following:</p>
+<ul>
+<li>generate a unique public key modulus <span class="math inline">\(N\)</span> for each user individually to prevent common-mode attacks</li>
+<li>not reuse the prime factor to generate the public key modulus <span class="math inline">\(N\)</span>, to eliminate the non-coprime modulus attack</li>
+</ul>
+<p>For the textbook RSA deterministic and malleable flaws, and possible brute-force root extraction cracking vulnerabilities, the padding with random elements method can be used to protect against them, and the protection is valid due to the followings:</p>
+<ul>
+<li>Padding ensures that the number of bits in the encrypted message is close to <span class="math inline">\(N\)</span>, while not using small <span class="math inline">\(e\)</span> values, making possible brute-force root extraction cracking ineffective</li>
+<li>Random padding makes the same plaintext produce different ciphertexts, guaranteeing semantic security and making ciphertext attacks impossible</li>
+<li>Strictly format-defined padding destroys malleability and reduces the possibility of ciphertext selection attacks. For example, if the first few bytes after padding must be a given value, the decrypted data will most likely not conform to the predefined format after the algebraic operation on the corresponding ciphertext, which disrupts the ciphertext selection attack.</li>
+</ul>
+<h3 id="low-public-exponent-attacks">Low Public Exponent Attacks</h3>
+<p>Using low public exponent is dangerous, and there are advanced attacks in the case of non-padding or improper padding, even if brute-force root extraction cracking does not succeed.</p>
+<h4 id="broadcast-attack">Broadcast Attack</h4>
+<p>Discovered by Swedish theoretical computer scientist Johan Håstad <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>, hence the name <mark>Håstad's Broadcast Attack</mark>. Consider this simplified scenario, assuming that Alice needs to send the same message <span class="math inline">\(m\)</span> to Bob, Carol, and Dave. The public keys of the three recipients are <span class="math inline">\((N_1,3)\)</span>, <span class="math inline">\((N_2,3)\)</span>, and <span class="math inline">\((N_3,3)\)</span>, i.e., the public exponent is all 3 and the public key modulus is different for each. The messages are not padded and Alice directly encrypts and sends three ciphertexts <span class="math inline">\(c_1,c_2,c_3\)</span> using the public keys of the other three:</p>
+<p><span class="math display">\[\begin{cases}
+c_1=m^3\bmod N_1\\
+c_2=m^3\bmod N_2\\
+c_3=m^3\bmod N_3
+\end{cases}\]</span></p>
+<p>At this point Eve secretly writes down the three ciphertexts, marking <span class="math inline">\(M=m^3\)</span>, and if she can recover <span class="math inline">\(M\)</span>, running a cube root naturally yields the plaintext <span class="math inline">\(m\)</span>. Obviously, the common modulus attack does not hold here, and we can also assume that the moduli are pairwise coprime, or else decomposing the modulus using the non-coprime modulus attack will work. So does Eve have a way to compute <span class="math inline">\(M\)</span>? The answer is yes.</p>
+<p>In fact, the equivalent problem for solving <span class="math inline">\(M\)</span> here is: Is there an efficient algorithm for solving a number that has known remainders of the Euclidean division by several integers, under the condition that the divisors are pairwise coprime? This efficient algorithm is <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Chinese_remainder_theorem"><strong>Chinese Remainder Theorem</strong></a>!</p>
+<p>The Chinese remainder theorem gives the criterion that a system of one-element linear congruence equations has a solution and the method to solve it. For the following system of one-element linear congruence equations (be careful not to confuse it with the mathematical notation used to describe the attack scenario above):</p>
+<p><span class="math display">\[(S) : \quad \left\{ 
+\begin{matrix} x \equiv a_1 \pmod {m_1} \\
+x \equiv a_2 \pmod {m_2} \\
+\vdots \qquad\qquad\qquad \\
+x \equiv a_n \pmod {m_n} \end
+{matrix} \right.\]</span></p>
+<p>Suppose that the integers <span class="math inline">\(m_1,m_2,\ldots,m_n\)</span> are pairwise coprime, then the system of equations <span class="math inline">\((S)\)</span> has a solution for any integer <span class="math inline">\(a_1,a_2,\ldots,a_n\)</span> and the general solution can be constructed in four steps as follows:</p>
+<p><span class="math display">\[\begin{align}
+M &amp;= m_1 \times m_2 \times \cdots \times m_n = \prod_{i=1}^n m_i \tag{1}\label{eq1}\\
+M_i &amp;= M/m_i, \; \; \forall i \in \{1, 2, \cdots , n\}\tag{2}\label{eq2}\\
+t_i M_i &amp;\equiv 1\pmod {m_i},  \; \; \forall i \in \{1, 2, \cdots , n\}\tag{3}\label{eq3}\\
+x &amp;=kM+\sum_{i=1}^n a_i t_i M_i\tag{4}\label{eq4}
+\end{align}\]</span></p>
+<p>The last line above, Eq. (4) gives the formula of the general solution. In the sense of modulus <span class="math inline">\(M\)</span>, the unique solution is <span class="math inline">\(\sum_{i=1}^n a_i t_i M_i \bmod M\)</span>.</p>
+<details class="note primary"><summary><p>Try to solve the things whose number is unknown problem at the beginning of this article by using the Chinese remainder theorem</p>
+</summary>
+<p>First, correspond the variable symbols to the values: <span class="math display">\[m_1=3,a_1=2;\quad m_2=5,a_2=3;\quad m_3=7,a_3=2\]</span> Then calculate <span class="math inline">\(M=3\times5\times7=105\)</span>, which in turn leads to the derivation of： <span class="math display">\[\begin{align}
+M_1 &amp;=M/m_1=105/3=35,\quad t_1=35^{-1}\bmod 3 = 2\\
+M_2 &amp;=M/m_2=105/5=21,\quad t_2=21^{-1}\bmod 5 = 1\\
+M_3 &amp;=M/m_3=105/7=15,\quad t_3=15^{-1}\bmod 7 = 1\\
+\end{align}\]</span> Finally, take these into the general solution formula: <span class="math display">\[x=k⋅105+(2⋅35⋅2+3⋅21⋅1+2⋅15⋅1)=k⋅105+233\]</span> So the smallest positive integer solution with regard to modulus 105 is <span class="math inline">\(233\bmod 105=23\)</span>。</p>
+<p>In his mathematical text "Suanfa Tongzong", Cheng Dawei, a mathematician of the Ming Dynasty in the 16th century, compiled the solutions recorded by the mathematician Qin Jiushao of the Song Dynasty in the "Mathematical Treatise in Nine Sections" into a catchy "Sun Tzu's Song":</p>
+<blockquote>
+<p>Three friends set out with seventy rare<br />
+Twenty-one blossoms on five trees of plums<br />
+Seven men reunited at the half-month<br />
+All be known once divided by one hundred and five</p>
+</blockquote>
+<p>Here we must admire the wisdom of the ancient Chinese who, in the absence of a modern mathematical symbol system, were able to derive and summarize such an ingenious solution, contributing an important mathematical theorem to mankind.</p>
+
+</details>
+<p>So Eve just applies the solution of the Chinese Remainder Theorem, computes <span class="math inline">\(M\)</span>, and then finds its cube root to get the plaintext <span class="math inline">\(m\)</span>, and the attack succeeds. More generally, setting the number of receivers to <span class="math inline">\(k\)</span>, if all receivers use the same <span class="math inline">\(e\)</span>, then this broadcast attack is feasible as long as <span class="math inline">\(k\ge e\)</span>.</p>
+<p>Håstad further proves that even if padding is used to prevent broadcast attacks, if the messages generated by the padding scheme are linearly related to each other, such as using the formula <span class="math inline">\(m_i=i2^b+m\)</span> (<span class="math inline">\(b\)</span> is the number of bits of <span class="math inline">\(m\)</span>) to generate the message sent to the receiver <span class="math inline">\(i\)</span>, then the broadcast attack can still recover the plaintext <span class="math inline">\(m\)</span> as long as <span class="math inline">\(k&gt;e\)</span>. The broadcast attack in this case is still based on the Chinese remainder theorem, but the specific cracking method depends on the information of the linear relationship.</p>
+<p>To summarize the above analysis, in order to prevent the broadcast attack, we must use a higher public exponent <span class="math inline">\(e\)</span> and apply random padding at the same time. Nowadays, the common public key exponent <span class="math inline">\(e\)</span> is $65537 (<span class="math inline">\(2^{16}+1\)</span>), which can balance the efficiency and security of message encryption or signature verification operations.</p>
+<p>Last, Python routines for simulating broadcast attacks are given as follows:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solve_crt</span>(<span class="params">ai: <span class="built_in">list</span>, mi: <span class="built_in">list</span></span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;mi and ai are the list of modulus and remainders. </span></span><br><span class="line"><span class="string">       The precondition of the function is that the modulus </span></span><br><span class="line"><span class="string">       in the mi list are pairwise coprime.&#x27;&#x27;&#x27;</span></span><br><span class="line">    M = reduce(<span class="keyword">lambda</span> x, y: x * y, mi)</span><br><span class="line">    ti = [a * (M//m) * <span class="built_in">int</span>(gmpy2.invert(M//m, m)) <span class="keyword">for</span> (m, a) <span class="keyword">in</span> <span class="built_in">zip</span>(mi, ai)]</span><br><span class="line">    <span class="keyword">return</span> reduce(<span class="keyword">lambda</span> x, y: x + y, ti) % M</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rsa_broadcast_attack</span>(<span class="params">ctexts: <span class="built_in">list</span>, moduli: <span class="built_in">list</span></span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;RSA broadcast attack: applying CRT to crasck e=3&#x27;&#x27;&#x27;</span></span><br><span class="line">    c0, c1, c2 = ctexts[<span class="number">0</span>], ctexts[<span class="number">1</span>], ctexts[<span class="number">2</span>]</span><br><span class="line">    n0, n1, n2 = moduli[<span class="number">0</span>], moduli[<span class="number">1</span>], moduli[<span class="number">2</span>]</span><br><span class="line">    m0, m1, m2 = n1 * n2, n0 * n2, n0 * n1</span><br><span class="line">    t0 = (c0 * m0 * <span class="built_in">int</span>(gmpy2.invert(m0, n0)))</span><br><span class="line">    t1 = (c1 * m1 * <span class="built_in">int</span>(gmpy2.invert(m1, n1)))</span><br><span class="line">    t2 = (c2 * m2 * <span class="built_in">int</span>(gmpy2.invert(m2, n2)))</span><br><span class="line">    c = (t0 + t1 + t2) % (n0 * n1 * n2)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">int</span>(gmpy2.iroot(c, <span class="number">3</span>)[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">uint_to_bytes</span>(<span class="params">x: <span class="built_in">int</span></span>) -&gt; <span class="built_in">bytes</span>:</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;convert unsigned integer to byte array&#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">if</span> x == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">bytes</span>(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> x.to_bytes((x.bit_length() + <span class="number">7</span>) // <span class="number">8</span>, <span class="string">&#x27;big&#x27;</span>)</span><br><span class="line"></span><br><span class="line">quote = <span class="string">b&#x27;The cosmos is within us. We are made of star stuff. - Carl Sagan&#x27;</span></span><br><span class="line">bob = RSA(<span class="number">1024</span>, <span class="number">3</span>)</span><br><span class="line">carol = RSA(<span class="number">1024</span>, <span class="number">3</span>)</span><br><span class="line">dave = RSA(<span class="number">1024</span>, <span class="number">3</span>)</span><br><span class="line">cipher_list = [bob.encrypt(quote), carol.encrypt(quote), dave.encrypt(quote)]</span><br><span class="line">modulus_list = [bob.n, carol.n, dave.n]</span><br><span class="line"></span><br><span class="line">cracked_cipher = solve_crt(cipher_list, modulus_list)</span><br><span class="line">cracked_int = <span class="built_in">int</span>(gmpy2.iroot(cracked_cipher, <span class="number">3</span>)[<span class="number">0</span>])</span><br><span class="line"><span class="keyword">assert</span> cracked_int == rsa_broadcast_attack(cipher_list, modulus_list)</span><br><span class="line"></span><br><span class="line">hacked_quote = uint_to_bytes(cracked_int)</span><br><span class="line"><span class="keyword">assert</span> hacked_quote == quote</span><br></pre></td></tr></table></figure>
+<p>This code uses two methods to simulate the broadcast attack. One calls the generic Chinese remainder theorem solver function <code>solve_crt()</code> and then gets the cube root of the result; the other calls the special broadcast attack function <code>rsa_broadcast_attack()</code> for the public key index <span class="math inline">\(e=3\)</span>, which directly outputs the cracked plaintext value. The internal implementation of these two functions is based on the generalized formula of the Chinese remainder theorem, and the output results should be identical. The cracked plaintext value is then input to the <code>uint_to_bytes()</code> function, which is converted into a byte array to compare with the original <code>quote</code>. Note that the program uses objects generated by the RSA class to simulate the receivers Bob, Carroll, and Dave, and the implementation of the RSA class is omitted here in view of the limitation of space.</p>
+<blockquote>
+<p>To be continued, please look forward to the next part: RSA: Attack and Defense (2)</p>
+</blockquote>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>American computer scientist and security expert Gary McGraw has a famous piece of advice for software developers - "<a target="_blank" rel="noopener" href="http://web.archive.org/web/20030629085904/http://www-106.ibm.com/developerworks/library/s-everything.html#author1">never roll your own cryptography</a>"<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>The original RSA paper (Part IX, Section C) did mention <a target="_blank" rel="noopener" href="https://www.cs.cmu.edu/~glmiller/Publications/Papers/Mi76.pdf">Miller's algorithm</a> for factoring <span class="math inline">\(N\)</span> with a known <span class="math inline">\(d\)</span>. This algorithm also applies to <span class="math inline">\(d\)</span> generated by the Carmichael function <span class="math inline">\(\lambda(N)\)</span>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>gmpy2 is a Python extension module written in C that supports multi-precision arithmetic.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>On some special occasions, blinding can be used for effective privacy protection. For example, in cryptographic election systems and digital cash applications, the signer and the message author can be different.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>Johan Håstad, a Swedish theoretical computer scientist, a professor at the KTH Royal Institute of Technology, and a Fellow of the American Mathematical Society (AMS) and an Association for Computing Machinery (ACM) fellow.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Zixi
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://www.packetmania.net/en/2023/03/16/RSA-attack-defense/" title="RSA: Attack and Defense (1)">https://www.packetmania.net/en/2023/03/16/RSA-attack-defense/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/en/tags/Cryptography/" rel="tag"><i class="fa fa-tag"></i> Cryptography</a>
+              <a href="/en/tags/Network-Security/" rel="tag"><i class="fa fa-tag"></i> Network Security</a>
+              <a href="/en/tags/Python-Programming/" rel="tag"><i class="fa fa-tag"></i> Python Programming</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/2023/03/10/uClibc-tips/" rel="prev" title="Notes on Using uClibc Standard Library in Embedded Linux System">
+                  <i class="fa fa-chevron-left"></i> Notes on Using uClibc Standard Library in Embedded Linux System
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Gitalk Comments</a></li>
+            <li class="tab"><a href="#comment-utterances">Utterances Comments</a></li>
+            <li class="tab"><a href="#comment-disqus">Disqus Comments</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+            <div class="tab-pane disqus" id="comment-disqus">
+              
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zixi</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>Symbols count total: </span>
+    <span title="Symbols count total">210k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>Reading time total &asymp;</span>
+    <span title="Reading time total">3:11</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5fc1fd29017282c7" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/en/js/comments.js"></script><script src="/en/js/utils.js"></script><script src="/en/js/motion.js"></script><script src="/en/js/next-boot.js"></script><script src="/en/js/bookmark.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/en/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"forest","dark":"forest"},"js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.13.4/dist/mermaid.min.js","integrity":"sha256-96rwDGMWIQYB0yKGp1sKi1yrjrLPj2oT39IpbCsIrsg="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/en/js/third-party/fancybox.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/en/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"packetmania-github-io","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/en/js/third-party/comments/disqus.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"packetmania","repo":"en","client_id":"a45f6ae3f97c1a467856","client_secret":"7d81b74f952b388f93dcb5a8c44cd12f657969fa","admin_user":"packetmania","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"e079a5edc5a16195281968c8897f34d6"}</script>
+<script src="/en/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"packetmania/en","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/en/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

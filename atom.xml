@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2023-03-11T08:28:33.619Z</updated>
+  <updated>2023-03-26T05:20:56.435Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>RSA: Attack and Defense (1)</title>
+    <link href="https://www.packetmania.net/en/2023/03/16/RSA-attack-defense/"/>
+    <id>https://www.packetmania.net/en/2023/03/16/RSA-attack-defense/</id>
+    <published>2023-03-17T04:00:32.000Z</published>
+    <updated>2023-03-26T05:20:56.435Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;RSA is a public-key cryptosystem built on top of an asymmetric encryption algorithm, which was jointly invented by three cryptographers and computer scientists at the Massachusetts Institute of Technology in 1977. The RSA public-key encryption algorithm and cryptosystem provide data confidentiality and signature verification functions widely used on the Internet. Since its birth, RSA has become a major research object of modern cryptography. Many cryptanalysts and information security experts have been studying its possible theoretical flaws and technical loopholes to ensure security and reliability in practical applications.</summary>
+    
+    
+    
+    <category term="Technical Knowhow" scheme="https://www.packetmania.net/en/categories/Technical-Knowhow/"/>
+    
+    
+    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
+    
+    <category term="Network Security" scheme="https://www.packetmania.net/en/tags/Network-Security/"/>
+    
+    <category term="Python Programming" scheme="https://www.packetmania.net/en/tags/Python-Programming/"/>
+    
+  </entry>
   
   <entry>
     <title>Notes on Using uClibc Standard Library in Embedded Linux System</title>
