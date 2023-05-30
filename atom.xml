@@ -58,9 +58,9 @@
     
     <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
     
-    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
-    
     <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
+    
+    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
     
     <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
     
@@ -71,7 +71,7 @@
     <link href="https://www.packetmania.net/en/2022/11/21/DH-and-RSA/"/>
     <id>https://www.packetmania.net/en/2022/11/21/DH-and-RSA/</id>
     <published>2022-11-22T06:38:45.000Z</published>
-    <updated>2023-05-29T23:58:11.894Z</updated>
+    <updated>2023-05-30T04:19:46.561Z</updated>
     
     
     <summary type="html">&lt;p&gt;Recently, at a WPA3 technology introduction meeting within the R&amp;amp;D team, the speaker mentioned that the OWE technology for encrypted wireless open networks is based on Diffie-Hellman key exchange, and casually said that Diffie-Hellman key exchange is using technology similar to RSA. This statement is wrong!</summary>

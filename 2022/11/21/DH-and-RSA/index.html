@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://www.packetmania.net/en/2022/11/21/DH-and-RSA/acm-turing-2015.jpeg">
 <meta property="og:image" content="https://www.packetmania.net/en/2022/11/21/DH-and-RSA/acm-turing-2002.jpeg">
 <meta property="article:published_time" content="2022-11-22T06:38:45.000Z">
-<meta property="article:modified_time" content="2023-05-29T23:58:11.894Z">
+<meta property="article:modified_time" content="2023-05-30T04:19:46.561Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="Cryptography">
 <meta property="article:tag" content="Network Security">
@@ -277,7 +277,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2023-05-29 16:58:11" itemprop="dateModified" datetime="2023-05-29T16:58:11-07:00">2023-05-29</time>
+        <time title="Modified: 2023-05-29 21:19:46" itemprop="dateModified" datetime="2023-05-29T21:19:46-07:00">2023-05-29</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -552,13 +552,13 @@
 <p>The TLS protocol uses a client-server architectural model. It works by using X.509 authentication and asymmetric encryption algorithms to authenticate the communicating parties, after which keys are exchanged to generate a symmetric encryption session key. This session key is then used to encrypt the data exchanged between the two communicating parties, ensuring the confidentiality and reliability of the information without fear of attack or eavesdropping by third parties. For identification purposes, the TLS 1.2 protocol combines the <em>authentication, key exchange, bulk encryption, and message authentication code algorithms</em> used into the <strong>Cipher Suite</strong> name. Each Cipher Suite is given a double-byte encoding. The <a target="_blank" rel="noopener" href="https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#tls-parameters-4">TLS Cipher Suite Registry</a> provides a reference table of all registered Cipher Suite names, sorted by encoding value from small to large.</p>
 <div class="note info"><p>Since the computation intensity of asymmetric encryption algorithms (RSA, etc.) is much higher than that of symmetric encryption algorithms (AES, etc.), practical applications almost always use symmetric encryption algorithms to encrypt messages in batches in terms of performance.</p>
 </div>
-<p>TLS 1.2 protocol supports a series of cipher suites that combine the Diffie-Hellman key exchange with the RSA public key encryption algorithm. They all start with <code>TLS_DH_RSA</code> or <code>TLS_DHE_RSA</code>. The "E" in DHE stands for "Ephemeral", which means that a random <span class="math inline">\((a,b)\)</span> value is required to be generated for each session. So <code>TLS_DHE_RSA</code> cipher suite can provide forward secrecy, while <code>TLS_DH_RSA</code> cannot, and the former should be preferred in practical applications.</p>
-<p>Here we take a typical <code>TLS_DHE_RSA_WITH_AES_128_CBC_SHA</code> (encoding 0x00,0x33) cipher suite as an example to explain the process of Diffie-Hellman working with RSA to establish a DTLS session. First, explain the composition of the cipher suite.</p>
+<p>TLS 1.2 protocol supports a series of cipher suites that combine the Diffie-Hellman key exchange with the RSA public key encryption algorithm. They all start with TLS_DH_RSA or TLS_DHE_RSA`. The "E" in DHE stands for "Ephemeral", which means that a random <span class="math inline">\((a,b)\)</span> value is required to be generated for each session. So TLS_DHE_RSA cipher suite can provide forward secrecy, while TLS_DH_RSA cannot, and the former should be preferred in practical applications.</p>
+<p>Here we take a typical TLS_DHE_RSA_WITH_AES_128_CBC_SHA (encoding 0x00,0x33) cipher suite as an example to explain the process of Diffie-Hellman working with RSA to establish a DTLS session. First, explain the composition of the cipher suite.</p>
 <ul>
-<li><code>DHE</code>: ephemeral DH to implement key exchange</li>
-<li><code>RSA</code>: public key for signing and certifying the DHE</li>
-<li><code>AES_128_CBC</code>: 128-bit CBC mode AES encryption</li>
-<li><code>SHA</code>: 160-bit <code>HMAC-SHA1</code> hash message authentication code</li>
+<li>DHE: ephemeral DH to implement key exchange</li>
+<li>RSA: public key for signing and certifying the DHE</li>
+<li>AES_128_CBC: 128-bit CBC mode AES encryption</li>
+<li>SHA: 160-bit HMAC-SHA1 hash message authentication code</li>
 </ul>
 <p>Referring to the packet file <a href="dtls-dhe-rsa.pcap">dtls-dhe-rsa.pcap</a> captured from the network port, the following handshake protocol message sequence chart can be obtained</p>
 <pre class="mermaid">
@@ -604,7 +604,7 @@ end
 <ul>
 <li>The server responds with a Hello message first, which contains the random number <span class="math inline">\(S_r\)</span> and the selected cipher suite
 <ul>
-<li>As shown below, the server selects <code>TLS_DHE_RSA_WITH_AES_128_CBC_SHA</code>! <a href="dtls-server-hello.png"></a></li>
+<li>As shown below, the server selects TLS_DHE_RSA_WITH_AES_128_CBC_SHA! <a href="dtls-server-hello.png"></a></li>
 </ul></li>
 <li>The same packet also contains the Server Certificate message, which is typically large and divided into multiple fragments</li>
 <li>The server certificate provides the RSA public key <span class="math inline">\((S_N,\;S_e)\)</span> that verifies its signature</li>
@@ -612,7 +612,7 @@ end
 <ul>
 <li>The length of <span class="math inline">\(p\)</span> in the figure below is 256 bytes, which means that the key length is 2048 bits and <span class="math inline">\(Pubkey\)</span> is <span class="math inline">\(A\)</span>.</li>
 <li>You can also see in the figure that the algorithms chosen for the signature are SHA512 and RSA.</li>
-<li>The operation is to first compute <span class="math inline">\(SHA512(Cr,Sr,p,g,A)\)</span> and then encrypt it with the server RSA private key! <a href="dtls-server-key.png"></a></li>
+<li>The operation is to first compute <span class="math inline">\(\operatorname{SHA512}(Cr,Sr,p,g,A)\)</span> and then encrypt it with the server RSA private key! <a href="dtls-server-key.png"></a></li>
 </ul></li>
 <li>After that, the server sends a Certificate Request message and a Hello Done message
 <ul>
@@ -633,16 +633,16 @@ end
 <li>The client finally sends a Certificate Verify message, which contains the signature <span class="math inline">\(Cs\)</span>
 <ul>
 <li>The signature covers all previous messages except for the initial Client Hello <span class="math inline">\(\require{enclose}\enclose{circle}{1}\)</span> and the Hello Verify Request <span class="math inline">\(\require{enclose}\enclose{circle}{2}\)</span></li>
-<li>The signature operation also computes <span class="math inline">\(SHA512\)</span> and encrypts it with the client's RSA private key</li>
+<li>The signature operation also computes SHA512 and encrypts it with the client's RSA private key</li>
 </ul></li>
 </ul></li>
 <li>Packets <span class="math inline">\(\require{enclose}\enclose{circle}{10}-\enclose{circle}{11}\)</span> completes handshake and establishs the secure channel:
 <ul>
 <li>Each side first verifies the signature sent by the other side</li>
-<li>After successful verification, DH algorithm is run to generate the same premaster key (<code>pre_master_secret</code>)</li>
-<li>Both parties call <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc5246#page-14">pseudo-random function (PRF)</a> to generate a 48-byte master key (<code>master_secret</code>) from the premaster key. <span class="math display">\[master\_secret = \operatorname{PRF}(pre\_master\_secret,{\rm &quot;}master\;secret{\rm &quot;},Cr+Sr)[0..47]\]</span></li>
-<li>Both parties call PRF again to generate a 72-byte key block (<code>key_block</code>) from the master key. <span class="math display">\[key\_block = \operatorname{PRF}(master\_secret,{\rm &quot;}key\;expand{\rm &quot;},Sr+Cr)[0,71]\]</span></li>
-<li>Key blocks are assigned to <code>HMAC-SHA1</code> and <code>AES_128_CBC</code> function blocks.
+<li>After successful verification, DH algorithm is run to generate the same premaster key</li>
+<li>Both parties call <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc5246#page-14">pseudo-random function (PRF)</a> to generate a 48-byte master key from the premaster key <span class="math display">\[master\_secret = \operatorname{PRF}(pre\_master\_secret,\unicode{x201C}master\;secret\unicode{x201D},Cr+Sr)[0..47]\]</span></li>
+<li>Both parties call PRF again to generate a 72-byte key block from the master key <span class="math display">\[key\_block = \operatorname{PRF}(master\_secret,\unicode{x201C}key\;expand\unicode{x201D},Sr+Cr)[0..71]\]</span></li>
+<li>Key blocks are assigned to HMAC-SHA1 and AES_128_CBC function blocks.
 <ul>
 <li>Client Write Message Authentication Code (MAC) key: 20 bytes</li>
 <li>Server Write Message Authentication Code (MAC) key: 20 bytes</li>
@@ -651,14 +651,14 @@ end
 </ul>
 Note that TLS/DTLS 1.2 specifies that this cipher suite uses an explicit initial vector (IV) and does not require the allocation of a key block</li>
 <li>The client generates a Change Cipher Spec message indicating the start of the encryption and MAC modules</li>
-<li>The client invokes PRF a third time to generate the 12-byte end-of-handshake authentication code used for master key and handshake message authentication, which is packaged into an end-of-handshake message and entered into the encryption and MAC modules <span class="math display">\[\operatorname{PRF}(master\_secret,finished\_label,\operatorname{SHA256}(handshake\_messages))[0,11]\]</span></li>
+<li>The client invokes PRF a third time to generate the 12-byte end-of-handshake authentication code used for master key and handshake message authentication, which is packaged into an end-of-handshake message and entered into the encryption and MAC modules <span class="math display">\[\operatorname{PRF}(master\_secret,finished\_label,\operatorname{SHA256}(handshake\_messages))[0..11]\]</span></li>
 <li>The client sends the Change Cipher Spec message and the encrypted end-of-handshake message to the server</li>
 <li>The server verifies the received client end-of-handshake message and repeats the above three steps to generate its own Change Cipher Spec message and encrypted an end-of-handshake message, then send them to the client</li>
 <li>The client completes the handshake by verifying the received server end-of-handshake message. Now the encrypted secure channel is established</li>
 </ul></li>
 <li>Packets <span class="math inline">\(\require{enclose}\enclose{circle}{12}-\enclose{circle}{13}\)</span> shows that the encrypted application data exchange has officially started</li>
 </ul>
-<p>This is the complete process of establishing a secure message channel using the <code>TLS_DHE_RSA_WITH_AES_128_CBC_SHA</code> (encoding 0x00,0x33) cipher suite, where DHE implements a key exchange with forward secrecy protection and RSA digital signature provides authentication for DHE, creating a solution for secure communication. With a clear understanding of this, we will better grasp the working mechanism of Diffie-Hellman and RSA, effectively apply them in practice and avoid unnecessary mistakes.</p>
+<p>This is the complete process of establishing a secure message channel using the TLS_DHE_RSA_WITH_AES_128_CBC_SHA (encoding 0x00,0x33) cipher suite, where DHE implements a key exchange with forward secrecy protection and RSA digital signature provides authentication for DHE, creating a solution for secure communication. With a clear understanding of this, we will better grasp the working mechanism of Diffie-Hellman and RSA, effectively apply them in practice and avoid unnecessary mistakes.</p>
 
     </div>
 
