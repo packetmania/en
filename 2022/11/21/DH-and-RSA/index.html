@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://www.packetmania.net/en/2022/11/21/DH-and-RSA/acm-turing-2015.jpeg">
 <meta property="og:image" content="https://www.packetmania.net/en/2022/11/21/DH-and-RSA/acm-turing-2002.jpeg">
 <meta property="article:published_time" content="2022-11-22T06:38:45.000Z">
-<meta property="article:modified_time" content="2023-01-16T06:02:28.612Z">
+<meta property="article:modified_time" content="2023-05-29T23:58:11.894Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="Cryptography">
 <meta property="article:tag" content="Network Security">
@@ -277,7 +277,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2023-01-15 22:02:28" itemprop="dateModified" datetime="2023-01-15T22:02:28-08:00">2023-01-15</time>
+        <time title="Modified: 2023-05-29 16:58:11" itemprop="dateModified" datetime="2023-05-29T16:58:11-07:00">2023-05-29</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -640,8 +640,8 @@ end
 <ul>
 <li>Each side first verifies the signature sent by the other side</li>
 <li>After successful verification, DH algorithm is run to generate the same premaster key (<code>pre_master_secret</code>)</li>
-<li>Both parties call <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc5246#page-14">pseudo-random function (PRF)</a> to generate a 48-byte master key (<code>master_secret</code>) from the premaster key. <span class="math display">\[master\_secret = PRF(pre\_master\_secret,\unicode{x201C}master\;secret\unicode{x201D},Cr+Sr)[0..47]\]</span></li>
-<li>Both parties call PRF again to generate a 72-byte key block (<code>key_block</code>) from the master key. <span class="math display">\[key\_block = PRF(master\_secret,\unicode{x201C}key\;expand\unicode{x201D},Sr+Cr)[0,71]\]</span></li>
+<li>Both parties call <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc5246#page-14">pseudo-random function (PRF)</a> to generate a 48-byte master key (<code>master_secret</code>) from the premaster key. <span class="math display">\[master\_secret = \operatorname{PRF}(pre\_master\_secret,{\rm &quot;}master\;secret{\rm &quot;},Cr+Sr)[0..47]\]</span></li>
+<li>Both parties call PRF again to generate a 72-byte key block (<code>key_block</code>) from the master key. <span class="math display">\[key\_block = \operatorname{PRF}(master\_secret,{\rm &quot;}key\;expand{\rm &quot;},Sr+Cr)[0,71]\]</span></li>
 <li>Key blocks are assigned to <code>HMAC-SHA1</code> and <code>AES_128_CBC</code> function blocks.
 <ul>
 <li>Client Write Message Authentication Code (MAC) key: 20 bytes</li>
@@ -651,7 +651,7 @@ end
 </ul>
 Note that TLS/DTLS 1.2 specifies that this cipher suite uses an explicit initial vector (IV) and does not require the allocation of a key block</li>
 <li>The client generates a Change Cipher Spec message indicating the start of the encryption and MAC modules</li>
-<li>The client invokes PRF a third time to generate the 12-byte end-of-handshake authentication code used for master key and handshake message authentication, which is packaged into an end-of-handshake message and entered into the encryption and MAC modules <span class="math display">\[PRF(master\_secret,finished\_label,SHA256(handshake\_messages)[0,11]\]</span></li>
+<li>The client invokes PRF a third time to generate the 12-byte end-of-handshake authentication code used for master key and handshake message authentication, which is packaged into an end-of-handshake message and entered into the encryption and MAC modules <span class="math display">\[\operatorname{PRF}(master\_secret,finished\_label,\operatorname{SHA256}(handshake\_messages))[0,11]\]</span></li>
 <li>The client sends the Change Cipher Spec message and the encrypted end-of-handshake message to the server</li>
 <li>The server verifies the received client end-of-handshake message and repeats the above three steps to generate its own Change Cipher Spec message and encrypted an end-of-handshake message, then send them to the client</li>
 <li>The client completes the handshake by verifying the received server end-of-handshake message. Now the encrypted secure channel is established</li>
