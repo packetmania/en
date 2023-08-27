@@ -33,9 +33,10 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.packetmania.net/en/2023/08/21/TLS1-3-intro/TLS1_2vs1_3-handshake.jpg">
 <meta property="og:image" content="https://www.packetmania.net/en/2023/08/21/TLS1-3-intro/TLS1_3-0-RTT.jpg">
+<meta property="og:image" content="https://www.packetmania.net/en/2023/08/21/TLS1-3-intro/TLS1_3-clienthello.jpg">
 <meta property="og:image" content="https://www.packetmania.net/en/2023/08/21/TLS1-3-intro/TLS1_3-stats.png">
 <meta property="article:published_time" content="2023-08-22T02:50:26.000Z">
-<meta property="article:modified_time" content="2023-08-27T01:40:52.337Z">
+<meta property="article:modified_time" content="2023-08-27T01:48:41.521Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="C&#x2F;C++ Programming">
 <meta property="article:tag" content="Cryptography">
@@ -279,7 +280,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2023-08-26 18:40:52" itemprop="dateModified" datetime="2023-08-26T18:40:52-07:00">2023-08-26</time>
+        <time title="Modified: 2023-08-26 18:48:41" itemprop="dateModified" datetime="2023-08-26T18:48:41-07:00">2023-08-26</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -324,7 +325,7 @@
     
     <div class="post-body" itemprop="articleBody">
         <p>TLS (Transport Layer Security) is a cryptographic protocol to secure network communication. TLS 1.3 is the latest version of the TLS protocol, succeeding TLS 1.2. TLS 1.3 aims to provide more robust security, higher privacy protection, as well as better performance than previous versions. Here is a brief introduction to TLS 1.3. Also, we discuss NIST's requirement for TLS 1.3 readiness and give examples of enabling TLS 1.3 in some commonly used web servers. <span id="more"></span></p>
-<div class="note success no-icon"><p><strong>It takes 20 years to build a reputation and a few minutes of cyber-incident to ruin it.</strong><br> <strong>— <em>Stéphane Nappo</em>（Vice President and Global Chief Information Security Officer of Groupe SEB, France, 2018 Global CISO of the year）</strong> ** <strong><br> </strong>— * *（ ）**</p>
+<div class="note success no-icon"><p><strong>It takes 20 years to build a reputation and a few minutes of cyber-incident to ruin it.</strong><br> <strong>— <em>Stéphane Nappo</em> (Vice President and Global Chief Information Security Officer of Groupe SEB, France, 2018 Global CISO of the year)</strong></p>
 </div>
 <h2 id="introduction-to-tls-1.3">Introduction to TLS 1.3</h2>
 <p>TLS 1.3 is the latest recommended cryptographic protocol for protecting a wide variety of network communications, including web browsing, email, online trading, instant messaging, mobile payments, and many other applications. By using TLS 1.3, more secure and reliable communication connections can be established, ensuring confidentiality, authenticity, and data integrity. It was standardized by the Internet Engineering Task Force (IETF) in August 2018, and published as <a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc8446">RFC 8446</a>.</p>
@@ -422,7 +423,7 @@
 <h4 id="simplified-handshake">Simplified Handshake</h4>
 <p>The general trend towards high-speed mobile Internet requires the use of HTTPS/TLS to protect the privacy of all traffic as much as possible. The downside of this is that new connections can become a bit slower. For the client and web server to agree on a shared key, both parties need to exchange security attributes and related parameters through the TLS "handshake process". In TLS 1.2 and all protocols before it, the initial handshake process required at least two round-trip message transfers. Compared to pure HTTP, the extra latency introduced by the TLS handshake process of HTTPS can be very detrimental to performance-conscious applications.</p>
 <p>TLS 1.3 greatly simplifies the handshake process, requiring only one round trip in most cases, resulting in faster connection establishment and lower latency. Every TLS 1.3 connection will use (EC)DHE-based key exchange, and the parameters supported by the server may be easy to guess (such as ECDHE + x25519 or P-256). Since the options are limited, the client can directly send the (EC)DHE key share information in the first message without waiting for the server to confirm which key exchange it is willing to support. This way, the server can derive the shared secret one round in advance and send encrypted data.</p>
-<p>The following diagram compares the message sequences of the handshake process of TLS 1.2 and TLS 1.3. Both operate with public key based authentication. The TLS 1.3 handshake shown below uses the symbols borrowed from the RFC 8446 specification: '+' indicates a noteworthy extension; '*' indicates an optional message or extension; '[]', '()', and '{}' represent encrypted messages, where the keys used for encryption are different.</p>
+<p>The following diagram compares the message sequences of the handshake process of TLS 1.2 and TLS 1.3. Both operate with public key-based authentication. The TLS 1.3 handshake shown below uses the symbols borrowed from the RFC 8446 specification: '+' indicates a noteworthy extension; '*' indicates an optional message or extension; '[]', '()', and '{}' represent encrypted messages, where the keys used for encryption are different.</p>
 <figure>
 <img src="TLS1_2vs1_3-handshake.jpg" alt="TLS 1.2 handshake (left) vs. TLS 1.3 handshake (right)" /><figcaption aria-hidden="true">TLS 1.2 handshake (left) vs. TLS 1.3 handshake (right)</figcaption>
 </figure>
@@ -465,7 +466,8 @@
 <blockquote>
 <p>A TLS 1.3 client who wishes to negotiate with servers that do not support TLS 1.3 will send a normal TLS 1.3 ClientHello containing 0x0303 (TLS 1.2) in ClientHello.legacy_version but with the correct version(s) in the "supported_versions" extension. If the server does not support TLS 1.3, it will respond with a ServerHello containing an older version number. If the client agrees to use this version, the negotiation will proceed as appropriate for the negotiated protocol.</p>
 </blockquote>
-<p>The following screenshot of a TLS 1.3 <code>ClientHello</code> message decode clearly demonstrates this. The version number of the handshake message displayed on the left is "Version: TLS 1.2 (0x0303)". At the same time, it can be seen that the cipher suite section first lists 3 TLS 1.3 AEAD cipher suites, followed by 14 TLS 1.2 regular cipher suites. On the right, there are 4 extensions - <code>key_share</code>, <code>signature_algorithms</code>, <code>supported_groups</code>, and <code>support_versions</code>. The <code>support_versions</code> extension includes both TLS 1.3 and TLS 1.2 version numbers. This is the TLS version list for the server to choose from. Additionally, the <code>key_share</code> extension includes the client's preferred key-sharing method as x25519 and secp256r1(i.e. NIST P-256)</p></li>
+<p>The following screenshot of a TLS 1.3 <code>ClientHello</code> message decode clearly demonstrates this. The version number of the handshake message displayed on the left is "Version: TLS 1.2 (0x0303)". At the same time, it can be seen that the cipher suite section first lists 3 TLS 1.3 AEAD cipher suites, followed by 14 TLS 1.2 regular cipher suites. On the right, there are 4 extensions - <code>key_share</code>, <code>signature_algorithms</code>, <code>supported_groups</code>, and <code>support_versions</code>. The <code>support_versions</code> extension includes both TLS 1.3 and TLS 1.2 version numbers. This is the TLS version list for the server to choose from. Additionally, the <code>key_share</code> extension includes the client's preferred key-sharing method as x25519 and secp256r1(i.e. NIST P-256)</p>
+<p><img src="TLS1_3-clienthello.jpg" /></p></li>
 <li><p><strong>Does the TLS 1.3 protocol work with UDP and EAP?</strong></p>
 <p>TLS was originally designed for TCP connections, and a variant DTLS (Datagram Transport Layer Security) for UDP was introduced later. Based on TLS 1.3, IETF has released the corresponding upgraded version of DTLS 1.3 protocol <a target="_blank" rel="noopener" href="https://www.rfc-editor.org/rfc/rfc9147">RFC 9147</a>. The design goal of DTLS 1.3 is to provide "equivalent security guarantees with the exception of order protection / non-replayability". This protocol was released in April 2022, and currently, there are not many software libraries supporting it.</p>
 <p>TLS can also be used as an authentication and encryption protocol in various EAP types, such as EAP-TLS, EAP-FAST, and PEAP. Corresponding to TLS 1.3, IETF also published two technical standard documents:</p>
@@ -478,7 +480,7 @@
 <h2 id="nist-mandate">NIST Mandate</h2>
 <p>TLS 1.3 brings new security features and a faster TLS handshake. Since its release in 2018, many Internet services have migrated to this latest version. Nevertheless, widespread adoption across websites takes time. The non-commercial <a target="_blank" rel="noopener" href="https://www.ssllabs.com/index.html">SSL Labs Projects</a> has a dashboard called <a target="_blank" rel="noopener" href="https://www.ssllabs.com/ssl-pulse/">SSL Pulse</a> that reports TLS/SSL security scan statistics for the most popular Internet sites. Below is the most recent chart of protocol support statistics by July 2023.</p>
 <figure>
-<img src="TLS1_3-stats.png" alt="Source: SSL Pulse - 07/03/2023" /><figcaption aria-hidden="true">Source: SSL Pulse - 07/03/2023</figcaption>
+<img src="TLS1_3-stats.png" style="width:75.0%;height:75.0%" alt="Source: SSL Pulse - 07/03/2023" /><figcaption aria-hidden="true">Source: SSL Pulse - 07/03/2023</figcaption>
 </figure>
 <p>As can be seen, of all 135,000+ probed sites the percentage of TLS 1.3 support is about 63.5%. That means there are still close to 50 thousand sites that do not leverage the security and performance benefits of TLS 1.3. Why? The decision to migrate a website to a new protocol version like TLS 1.3 can be complex and influenced by various factors. The top 3 common reasons hindering TLS 1.3 migration are</p>
 <ul>
