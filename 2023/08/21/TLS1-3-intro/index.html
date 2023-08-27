@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.0.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/en/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="piAnQ_mnwkhV_qh4_Se1yLzM1IwOvuq-vmYfXBkWRXU">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=EB+Garamond:300,300italic,400,400italic,700,700italic%7CNoto+Serif+SC:300,300italic,400,400italic,700,700italic%7CRoboto+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.packetmania.net","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk | utterances | disqus","storage":true,"lazyload":false,"nav":{"disqus":{"text":"Disqus Comments","order":-1},"utterances":{"text":"Utterances Comments","order":-2},"gitalk":{"text":"Gitalk Comments","order":-3}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/en/js/config.js"></script>
+<meta name="description" content="TLS (Transport Layer Security) is a cryptographic protocol to secure network communication. TLS 1.3 is the latest version of the TLS protocol, succeeding TLS 1.2. TLS 1.3 aims to provide more robust s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TLS 1.3 and the Coming NIST Mandate">
+<meta property="og:url" content="https://www.packetmania.net/en/2023/08/21/TLS1-3-intro/index.html">
+<meta property="og:site_name" content="PacketMania">
+<meta property="og:description" content="TLS (Transport Layer Security) is a cryptographic protocol to secure network communication. TLS 1.3 is the latest version of the TLS protocol, succeeding TLS 1.2. TLS 1.3 aims to provide more robust s">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.packetmania.net/en/2023/08/21/TLS1-3-intro/TLS1_2vs1_3-handshake.jpg">
+<meta property="og:image" content="https://www.packetmania.net/en/2023/08/21/TLS1-3-intro/TLS1_3-0-RTT.jpg">
+<meta property="og:image" content="https://www.packetmania.net/en/2023/08/21/TLS1-3-intro/TLS1_3-stats.png">
+<meta property="article:published_time" content="2023-08-22T02:50:26.000Z">
+<meta property="article:modified_time" content="2023-08-27T01:40:52.337Z">
+<meta property="article:author" content="Zixi">
+<meta property="article:tag" content="C&#x2F;C++ Programming">
+<meta property="article:tag" content="Cryptography">
+<meta property="article:tag" content="Network Security">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.packetmania.net/en/2023/08/21/TLS1-3-intro/TLS1_2vs1_3-handshake.jpg">
+
+
+<link rel="canonical" href="https://www.packetmania.net/en/2023/08/21/TLS1-3-intro/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.packetmania.net/en/2023/08/21/TLS1-3-intro/","path":"2023/08/21/TLS1-3-intro/","title":"TLS 1.3 and the Coming NIST Mandate"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>TLS 1.3 and the Coming NIST Mandate | PacketMania</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YKBP0QK7Z"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-9YKBP0QK7Z","only_pageview":false}</script>
+  <script src="/en/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PacketMania" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PacketMania</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Technology | Knowledge | Sharing</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/en/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/en/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+        <li class="menu-item menu-item-rss"><a href="/en/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+        <li class="menu-item menu-item-language"><a href="https://www.packetmania.net/" rel="section"><i class="fa fa-language fa-fw"></i>中文</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-to-tls-1.3"><span class="nav-number">1.</span> <span class="nav-text">Introduction to TLS 1.3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#security-hardening"><span class="nav-number">1.1.</span> <span class="nav-text">Security Hardening</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cipher-suites"><span class="nav-number">1.1.1.</span> <span class="nav-text">Cipher Suites</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#key-exchange"><span class="nav-number">1.1.2.</span> <span class="nav-text">Key Exchange</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#signature-verification"><span class="nav-number">1.1.3.</span> <span class="nav-text">Signature Verification</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#other-improvements"><span class="nav-number">1.1.4.</span> <span class="nav-text">Other Improvements</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#performance-improvement"><span class="nav-number">1.2.</span> <span class="nav-text">Performance Improvement</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#simplified-handshake"><span class="nav-number">1.2.1.</span> <span class="nav-text">Simplified Handshake</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rtt-session-resumption"><span class="nav-number">1.2.2.</span> <span class="nav-text">0-RTT Session Resumption</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#faq"><span class="nav-number">1.3.</span> <span class="nav-text">FAQ</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nist-mandate"><span class="nav-number">2.</span> <span class="nav-text">NIST Mandate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#enabling-tls-1.3"><span class="nav-number">3.</span> <span class="nav-text">Enabling TLS 1.3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#apache-http-server"><span class="nav-number">3.1.</span> <span class="nav-text">Apache HTTP Server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx-web-server"><span class="nav-number">3.2.</span> <span class="nav-text">Nginx Web Server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lighttpd-web-server"><span class="nav-number">3.3.</span> <span class="nav-text">Lighttpd Web Server</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zixi"
+      src="/en/images/ccie.gif">
+  <p class="site-author-name" itemprop="name">Zixi</p>
+  <div class="site-description" itemprop="description">Computer Networking and Software Design & Implementation</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/packetmania" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;packetmania" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zixiruoxue@gmail.com" title="E-Mail → mailto:zixiruoxue@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/zixisean" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zixisean" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/15140531" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;15140531" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_nd.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.packetmania.net/en/2023/08/21/TLS1-3-intro/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/ccie.gif">
+      <meta itemprop="name" content="Zixi">
+      <meta itemprop="description" content="Computer Networking and Software Design & Implementation">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PacketMania">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          TLS 1.3 and the Coming NIST Mandate
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-08-21 19:50:26" itemprop="dateCreated datePublished" datetime="2023-08-21T19:50:26-07:00">2023-08-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2023-08-26 18:40:52" itemprop="dateModified" datetime="2023-08-26T18:40:52-07:00">2023-08-26</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/Technology-Knowhow/" itemprop="url" rel="index"><span itemprop="name">Technology Knowhow</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>25k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>22 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>TLS (Transport Layer Security) is a cryptographic protocol to secure network communication. TLS 1.3 is the latest version of the TLS protocol, succeeding TLS 1.2. TLS 1.3 aims to provide more robust security, higher privacy protection, as well as better performance than previous versions. Here is a brief introduction to TLS 1.3. Also, we discuss NIST's requirement for TLS 1.3 readiness and give examples of enabling TLS 1.3 in some commonly used web servers. <span id="more"></span></p>
+<div class="note success no-icon"><p><strong>It takes 20 years to build a reputation and a few minutes of cyber-incident to ruin it.</strong><br> <strong>— <em>Stéphane Nappo</em>（Vice President and Global Chief Information Security Officer of Groupe SEB, France, 2018 Global CISO of the year）</strong> ** <strong><br> </strong>— * *（ ）**</p>
+</div>
+<h2 id="introduction-to-tls-1.3">Introduction to TLS 1.3</h2>
+<p>TLS 1.3 is the latest recommended cryptographic protocol for protecting a wide variety of network communications, including web browsing, email, online trading, instant messaging, mobile payments, and many other applications. By using TLS 1.3, more secure and reliable communication connections can be established, ensuring confidentiality, authenticity, and data integrity. It was standardized by the Internet Engineering Task Force (IETF) in August 2018, and published as <a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc8446">RFC 8446</a>.</p>
+<p>TLS 1.3 introduces some important improvements over TLS 1.2. The table below presents a quick comparison of the two:</p>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Aspect</th>
+<th style="text-align: left;">TLS 1.2</th>
+<th style="text-align: left;">TLS 1.3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Protocol Design</td>
+<td style="text-align: left;">Request-response model</td>
+<td style="text-align: left;">Reduced round trips</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Handshake</td>
+<td style="text-align: left;">Multiple round trips</td>
+<td style="text-align: left;">Single round trip</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cipher Suites</td>
+<td style="text-align: left;">Supports wide range, including insecure ones</td>
+<td style="text-align: left;">Focuses on stronger algorithms</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Security</td>
+<td style="text-align: left;">Known vulnerabilities, e.g., CBC vulnerabilities</td>
+<td style="text-align: left;">Addresses previous issues, stronger security</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Performance</td>
+<td style="text-align: left;">Higher latency due to more round trips</td>
+<td style="text-align: left;">Faster connection establishment</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Resilience to Attacks</td>
+<td style="text-align: left;">Vulnerable to downgrade attacks and padding oracle attacks</td>
+<td style="text-align: left;">Additional protections against attacks</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Compatibility</td>
+<td style="text-align: left;">Widely supported across platforms</td>
+<td style="text-align: left;">Increasing support, may not be available on older systems</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Implementation Supports</td>
+<td style="text-align: left;">Available in many cryptographic libraries</td>
+<td style="text-align: left;">Supported in various libraries</td>
+</tr>
+</tbody>
+</table>
+<p>It can be seen that enhanced security and performance improvements are the most notable features of TLS 1.3, and we can explore more into these in the following sections.</p>
+<h3 id="security-hardening">Security Hardening</h3>
+<h4 id="cipher-suites">Cipher Suites</h4>
+<p>The protocol design principle of TLS 1.3 has enhanced security as its primary goal. As a result, TLS 1.3 drastically reduces the number of supported cipher suites. It removes insecure and weak cipher suites, leaving only more secure and modern cipher suites. This helps to increase the security of communications and avoids the use of outdated or vulnerable cipher suites.</p>
+<p>Specifically, TLS 1.3 removes various cipher suites that use static RSA key transport, static Diffie-Hellman key exchange, CBC mode of operation, or SHA-1. It adopts only a limited number of Authenticated Encryption with Associated Data (AEAD) cipher suites. AEAD can guarantee the confidentiality, integrity, and authenticity of data at the same time, and its high security makes it the exclusive choice for TLS 1.3.</p>
+<p>On the other hand, the name string of the cipher suite used in previous TLS versions included all algorithms for key exchange, digital signatures, encryption, and message authentication. Each cipher suite is assigned a 2-byte code point in the TLS Cipher Suites registry managed by the Internet Assigned Numbers Authority (IANA). Every time a new cryptographic algorithm is introduced, a series of new combinations need to be added to the list. This has led to an explosion of code points representing every valid choice of these parameters. This situation also makes the selection of cipher suites complicated and confusing.</p>
+<p>The design of TLS 1.3 changed the concept of the cipher suite. It separates the authentication and key exchange mechanisms from the record protection algorithm (including secret key length) and a hash to be used with both the key derivation function and handshake message authentication code (MAC). The new cipher suite naming convention is <code>TLS_&lt;AEAD&gt;_&lt;Hash&gt;</code>, where the hash algorithm is used for the newly defined key derivation function <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/HKDF">HKDF</a> of TLS 1.3 and the MAC generation in the handshake phase. The cipher suites defined by the TLS 1.3 protocol are:</p>
+<figure class="highlight c"><figcaption><span>RFC 8446 - Appendix B.4. Cipher Suites</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">+------------------------------+-------------+</span><br><span class="line">| Description                  | Value       |</span><br><span class="line">+------------------------------+-------------+</span><br><span class="line">| TLS_AES_128_GCM_SHA256       | &#123;<span class="number">0x13</span>,<span class="number">0x01</span>&#125; |</span><br><span class="line">|                              |             |</span><br><span class="line">| TLS_AES_256_GCM_SHA384       | &#123;<span class="number">0x13</span>,<span class="number">0x02</span>&#125; |</span><br><span class="line">|                              |             |</span><br><span class="line">| TLS_CHACHA20_POLY1305_SHA256 | &#123;<span class="number">0x13</span>,<span class="number">0x03</span>&#125; |</span><br><span class="line">|                              |             |</span><br><span class="line">| TLS_AES_128_CCM_SHA256       | &#123;<span class="number">0x13</span>,<span class="number">0x04</span>&#125; |</span><br><span class="line">|                              |             |</span><br><span class="line">| TLS_AES_128_CCM_8_SHA256     | &#123;<span class="number">0x13</span>,<span class="number">0x05</span>&#125; |</span><br><span class="line">+------------------------------+-------------+</span><br></pre></td></tr></table></figure>
+<p>This simplified cipher suite definition and greatly reduced set of negotiation parameters also speed up TLS 1.3 handshake, improving overall performance.</p>
+<h4 id="key-exchange">Key Exchange</h4>
+<p>TLS 1.3 emphasizes forward secrecy, ensuring that the confidentiality of communications is protected even if long-term secrets used in the session key exchange are compromised. It only allows key exchange based on ephemeral Diffie-Hellman key exchange (DHE) or ephemeral elliptic curve Diffie-Hellman key exchange (ECDHE). Both have the property of forward secrecy. Also, the protocol explicitly restricts the use of secure elliptic curve groups and finite field groups for key exchange:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Elliptic Curve Groups (ECDHE) */</span></span><br><span class="line">secp256r1(<span class="number">0x0017</span>), secp384r1(<span class="number">0x0018</span>), secp521r1(<span class="number">0x0019</span>),</span><br><span class="line">x25519(<span class="number">0x001D</span>), x448(<span class="number">0x001E</span>),</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Finite Field Groups (DHE) */</span></span><br><span class="line">ffdhe2048(<span class="number">0x0100</span>), ffdhe3072(<span class="number">0x0101</span>), ffdhe4096(<span class="number">0x0102</span>),</span><br><span class="line">ffdhe6144(<span class="number">0x0103</span>), ffdhe8192(<span class="number">0x0104</span>),</span><br></pre></td></tr></table></figure>
+<p>The above elliptic curve groups for ECDHE are specified by <a target="_blank" rel="noopener" href="https://www.rfc-editor.org/rfc/rfc8422">RFC 8422</a>. The first three are defined by the FIPS.186-4 specification and the corresponding NIST names are P-256/P-384/P-512, while the next two (x25519/x448) are recommended by ANSI.X9-62.2005. <a target="_blank" rel="noopener" href="https://www.rfc-editor.org/rfc/rfc7919">RFC 7919</a> specifies four finite field groups (ffdhe####) for DHE. The primes in these finite field groups are all safe primes.</p>
+<div class="note info"><p>In number theory, a prime number <span class="math inline">\(p\)</span> is a safe prime if <span class="math inline">\((p-1)/2\)</span> is also prime.</p>
+</div>
+<h4 id="signature-verification">Signature Verification</h4>
+<p>For signature verification in the key exchange phase, TLS 1.3 introduces more signature algorithms to meet different security requirements:</p>
+<ul>
+<li><strong>RSA signature algorithm</strong>: TLS 1.3 still supports RSA-based signature algorithms, including RSA-PKCS1-SHA256, RSA-PKCS1-SHA384, etc. These algorithms use RSA keys for digital signatures.</li>
+<li><strong>ECDSA signature algorithm</strong>: TLS 1.3 introduces more signature algorithms based on elliptic curve cryptography (ECC), such as ECDSA-SHA256, ECDSA-SHA384, etc. These algorithms use elliptic curve keys for digital signatures and are generally superior to RSA in terms of security and performance.</li>
+<li><strong>EdDSA signature algorithm</strong>: TLS 1.3 also introduces the EdDSA (Edwards-curve Digital Signature Algorithm) signature algorithm based on the Edwards curve. It features efficient performance and strong security for mobile devices and resource-constrained environments.</li>
+<li><strong>RSASSA-PSS signature algorithm</strong>: In addition to the traditional RSA-PKCS1 signature algorithm, TLS 1.3 also introduces the RSASSA-PSS signature algorithm, which is a more secure signature method based on RSA and has better attack resistance.</li>
+<li><strong>PSK signature algorithm</strong>: TLS 1.3 supports the signature algorithm based on the pre-shared key (PSK), which applies to the PSK handshake mode. This approach does not involve a digital certificate but uses a pre-shared key for verification.</li>
+</ul>
+<p>TLS 1.3 stops using the DSA (Digital Signature Algorithm) signature algorithm. This is also a notable difference from TLS 1.2. DSA has some security and performance limitations and is rarely used in practice, so TLS 1.3 removed support for DSA certificates.</p>
+<h4 id="other-improvements">Other Improvements</h4>
+<p>Additionally, TLS 1.3 includes the following improvements to enhance security</p>
+<ul>
+<li>TLS 1.3 does not allow data compression. The data compression feature in earlier versions of TLS could lead to security issues such as <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/CRIME">CRIME</a> attacks. To avoid this risk, TLS 1.3 removed support for data compression entirely.</li>
+<li>Unlike earlier versions of TLS, TLS 1.3 prohibits renegotiation after the connection has been established. This helps reduce security risk and complexity. Renegotiation may introduce new security holes, and frequent negotiations during the connection process may also cause performance problems.</li>
+<li>All handshake messages following the <code>ServerHello</code> message during the TLS 1.3 handshake are now encrypted. The newly introduced <code>EncryptedExtensions</code> message enables encryption protection of various extensions previously sent in plain text.</li>
+<li>TLS 1.3 adds asymmetric cryptographic protection of the <code>Certificate</code> messages sent from the server to the client. This encryption prevents threats such as man-in-the-middle attacks, information leakage, and certificate forgery, further fortifying the security and privacy of the connection.</li>
+</ul>
+<h3 id="performance-improvement">Performance Improvement</h3>
+<h4 id="simplified-handshake">Simplified Handshake</h4>
+<p>The general trend towards high-speed mobile Internet requires the use of HTTPS/TLS to protect the privacy of all traffic as much as possible. The downside of this is that new connections can become a bit slower. For the client and web server to agree on a shared key, both parties need to exchange security attributes and related parameters through the TLS "handshake process". In TLS 1.2 and all protocols before it, the initial handshake process required at least two round-trip message transfers. Compared to pure HTTP, the extra latency introduced by the TLS handshake process of HTTPS can be very detrimental to performance-conscious applications.</p>
+<p>TLS 1.3 greatly simplifies the handshake process, requiring only one round trip in most cases, resulting in faster connection establishment and lower latency. Every TLS 1.3 connection will use (EC)DHE-based key exchange, and the parameters supported by the server may be easy to guess (such as ECDHE + x25519 or P-256). Since the options are limited, the client can directly send the (EC)DHE key share information in the first message without waiting for the server to confirm which key exchange it is willing to support. This way, the server can derive the shared secret one round in advance and send encrypted data.</p>
+<p>The following diagram compares the message sequences of the handshake process of TLS 1.2 and TLS 1.3. Both operate with public key based authentication. The TLS 1.3 handshake shown below uses the symbols borrowed from the RFC 8446 specification: '+' indicates a noteworthy extension; '*' indicates an optional message or extension; '[]', '()', and '{}' represent encrypted messages, where the keys used for encryption are different.</p>
+<figure>
+<img src="TLS1_2vs1_3-handshake.jpg" alt="TLS 1.2 handshake (left) vs. TLS 1.3 handshake (right)" /><figcaption aria-hidden="true">TLS 1.2 handshake (left) vs. TLS 1.3 handshake (right)</figcaption>
+</figure>
+<p>This figure illustrates the following points:</p>
+<ul>
+<li>TLS 1.3 removes several messages used by TLS 1.2: <code>ServerHelloDone</code>, <code>ChangeCipherSpec</code>, <code>ServerKeyExchange</code>, and <code>ClientKeyExchange</code>. The contents of TLS 1.2's <code>ServerKeyExchange</code> and <code>ClientKeyExchange</code> messages vary depending on the authentication and key-sharing method being negotiated. In TLS 1.3, this information was moved to the extensions of <code>ClientHello</code> and <code>ServerHello</code> messages. TLS 1.3 completely deprecates <code>ServerHelloDone</code> and <code>ChangeCipherSpec</code> messages, there is no replacement.</li>
+<li>For TLS 1.3 the public key based authentication mode is probably the most important. It always uses (EC)DHE to achieve forward secrecy. The figure shows that the <code>ClientHello</code> message carries four extensions that are must-haves in this mode: <code>key_share</code>, <code>signature_algorithms</code>, <code>supported_groups</code>, and <code>support_versions</code>.</li>
+<li>During the TLS 1.2 handshake, the exchange of control data requires multiple round trips between the client and server. TLS 1.2's <code>ClientKeyExchange</code> and <code>ChangeCipherSpec</code> messages are carried in separate packets, and the <code>Finished</code> message is the first (and only) encrypted handshake message. The whole process needs to transmit 5-7 data packets.</li>
+<li>During the TLS 1.3 handshake, encrypted <code>Application Data</code> is already sent by the client after the first round trip. As mentioned earlier, the <code>EncryptedExtension</code> message provides privacy protection for <code>ServerHello</code> extensions in earlier versions of TLS. If mutual authentication is required (which is common in IoT deployments), the server will send a <code>CertificateRequest</code> message.</li>
+<li>The <code>Certificate</code>, <code>CertificateVerify</code>, and <code>Finished</code> messages in TLS 1.3 retain the semantics of earlier TLS versions, but they are all asymmetrically encrypted now. Echoing the description in last section, by encrypting <code>Certificate</code> and <code>CertificateVerify</code> messages, TLS 1.3 better protects against man-in-the-middle and certificate forgery attacks while enhancing the privacy of connections. This is also an important security feature in the design of TLS 1.3.</li>
+</ul>
+<p>In rare cases, when the server does not support a certain key-sharing method sent by the client, the server can send a new <code>HelloRetryRequest</code> message letting the client know which groups it supports. As the group list has shrunk significantly, this is not expected to happen very often.</p>
+<h4 id="rtt-session-resumption">0-RTT Session Resumption</h4>
+<p>0-RTT (Zero Round Trip Time) in TLS 1.3 is a special handshake mode. It allows clients to send encrypted data during the handshake phase, reducing the number of round trips required for connection establishment and enabling faster session resumption. The following is a brief explanation of the 0-RTT working mode:</p>
+<ol type="1">
+<li><strong>Store session tickets</strong>: During the normal TLS 1.3 handshake, the client and server generate a data structure called a "session ticket" during the handshake. Session tickets contain information about the connection, including key parameters and cipher suites. The server stores the session ticket provided by the client.</li>
+<li><strong>0-RTT handshake</strong>: When the client reconnects to the server, it includes the previously saved session ticket in the <code>early_data</code> extension of the <code>ClientHello</code> message, along with encrypted <code>Application Data</code>. The client encrypts 0-RTT data using a pre-shared key (PSK) obtained from a previous connection.</li>
+<li><strong>Server Response</strong>: After the server receives this message, if it supports 0-RTT mode and can recognize and verify the session ticket, it sends an <code>EncryptedExtensions</code> message, and then confirms the connection in the <code>Finished</code> message. This way, the server can quickly establish a secure connection with 0 round trips. It can also immediately send data to the client to achieve 0-RTT data transmission.</li>
+</ol>
+<p>The message sequence of the 0-RTT session resumption and data transmission process of TLS 1.3 is as follows:</p>
+<figure>
+<img src="TLS1_3-0-RTT.jpg" style="width:50.0%;height:50.0%" alt="TLS 1.3 0-RTT" /><figcaption aria-hidden="true">TLS 1.3 0-RTT</figcaption>
+</figure>
+<h3 id="faq">FAQ</h3>
+<ul>
+<li><p><strong>Does the TLS 1.3 protocol allow the use of RSA digital certificates?</strong></p>
+<p>A common misconception is that "TLS 1.3 is not compatible with RSA digital certificates". The description in the "Signature Verification" section above shows that this is wrong. TLS 1.3 still supports the use of RSA for key exchange and authentication. However, considering the limitations of RSA, it is recommended that when building and deploying new TLS 1.3 applications, ECDHE key exchange algorithms and ECC digital certificates are preferred to achieve higher security and performance.</p></li>
+<li><p><strong>During the TLS 1.3 handshake, how does the server request the client to provide a certificate?</strong></p>
+<p>In some scenarios, the server also needs to verify the identity of the client to ensure that only legitimate clients can access server resources. This is the case with mTLS (mutual TLS). During the TLS 1.3 handshake, the server can specify that the client is required to provide a certificate by sending a special <code>CertificateRequest</code> extension. When the server decides to ask the client for a certificate, it sends a <code>CertificateRequest</code> extension message after the <code>ServerHello</code> message. This extended message contains some necessary parameters, such as a list of supported certificate types, a list of acceptable certificate authorities, and so on. When the client receives it, it knows that the server asked it for a certificate, and it can optionally respond to the request. If the client is also configured to support mTLS and decides to provide a certificate, it provides its certificate chain by sending a <code>Certificate</code> message.</p></li>
+<li><p><strong>Is 0-RTT vulnerable to replay attacks?</strong></p>
+<p>TLS 1.3's 0-RTT session resumption mode is non-interactive and does risk replay attacks in some cases. An attacker may repeat previously sent data to simulate a legitimate request. To avoid and reduce the risk of replay attacks to the greatest extent, TLS 1.3 provides some protection measures and suggestions:</p>
+<ol type="1">
+<li>The simplest anti-replay method is that the server only allows each session ticket to be used once. For example, the server may maintain a database of all valid tickets that have not been used, deleting each ticket from the database as it is used. If an unknown ticket is received, the server falls back to a full handshake.</li>
+<li>The server may limit the time window in which session tickets are accepted, that is, the time range in which 0-RTT data is allowed to be valid. This reduces the chance of an attacker successfully replaying.</li>
+<li>Clients and servers should also use 0-RTT data only for stateless requests, that is, requests that do not affect the state of the server such as HTTP GET. For requests that need to modify the state of the server or have an impact, restrict the use of normal handshake patterns only.</li>
+<li>Another way to prevent replay is to store the unique value (usually a random value or a PSK bundled value) derived from the <code>ClientHello</code> message, and reject duplicates. Logging all <code>ClientHello</code>s would cause the state to grow without bound, but combined with #2 above, the server can log <code>ClientHello</code>s within a given time window and use <code>obfuscated_ticket_age</code> to ensure that tickets are not duplicated outside the window use.</li>
+</ol></li>
+<li><p><strong>If the client does not know whether the server supports TLS 1.3, how could it do negotiation via TLS handshake?</strong></p>
+<p>The TLS protocol provides a built-in mechanism for negotiating the running version between endpoints. TLS 1.3 continues this tradition. RFC 8446 Appendix D.1 "Negotiating with an Older Server" gives specific instructions:</p>
+<blockquote>
+<p>A TLS 1.3 client who wishes to negotiate with servers that do not support TLS 1.3 will send a normal TLS 1.3 ClientHello containing 0x0303 (TLS 1.2) in ClientHello.legacy_version but with the correct version(s) in the "supported_versions" extension. If the server does not support TLS 1.3, it will respond with a ServerHello containing an older version number. If the client agrees to use this version, the negotiation will proceed as appropriate for the negotiated protocol.</p>
+</blockquote>
+<p>The following screenshot of a TLS 1.3 <code>ClientHello</code> message decode clearly demonstrates this. The version number of the handshake message displayed on the left is "Version: TLS 1.2 (0x0303)". At the same time, it can be seen that the cipher suite section first lists 3 TLS 1.3 AEAD cipher suites, followed by 14 TLS 1.2 regular cipher suites. On the right, there are 4 extensions - <code>key_share</code>, <code>signature_algorithms</code>, <code>supported_groups</code>, and <code>support_versions</code>. The <code>support_versions</code> extension includes both TLS 1.3 and TLS 1.2 version numbers. This is the TLS version list for the server to choose from. Additionally, the <code>key_share</code> extension includes the client's preferred key-sharing method as x25519 and secp256r1(i.e. NIST P-256)</p></li>
+<li><p><strong>Does the TLS 1.3 protocol work with UDP and EAP?</strong></p>
+<p>TLS was originally designed for TCP connections, and a variant DTLS (Datagram Transport Layer Security) for UDP was introduced later. Based on TLS 1.3, IETF has released the corresponding upgraded version of DTLS 1.3 protocol <a target="_blank" rel="noopener" href="https://www.rfc-editor.org/rfc/rfc9147">RFC 9147</a>. The design goal of DTLS 1.3 is to provide "equivalent security guarantees with the exception of order protection / non-replayability". This protocol was released in April 2022, and currently, there are not many software libraries supporting it.</p>
+<p>TLS can also be used as an authentication and encryption protocol in various EAP types, such as EAP-TLS, EAP-FAST, and PEAP. Corresponding to TLS 1.3, IETF also published two technical standard documents:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.rfc-editor.org/rfc/rfc9190">RFC 9190</a>: EAP-TLS 1.3: Using the Extensible Authentication Protocol with TLS 1.3 (Feb. 2022)</li>
+<li><a target="_blank" rel="noopener" href="https://www.rfc-editor.org/rfc/rfc9427">RFC 9427</a>: TLS-Based Extensible Authentication Protocol (EAP) Types for Use with TLS 1.3 (Jun. 2023)</li>
+</ul>
+<p>Both protocols are also quite new, and the software library updates supporting them are still some time away.</p></li>
+</ul>
+<h2 id="nist-mandate">NIST Mandate</h2>
+<p>TLS 1.3 brings new security features and a faster TLS handshake. Since its release in 2018, many Internet services have migrated to this latest version. Nevertheless, widespread adoption across websites takes time. The non-commercial <a target="_blank" rel="noopener" href="https://www.ssllabs.com/index.html">SSL Labs Projects</a> has a dashboard called <a target="_blank" rel="noopener" href="https://www.ssllabs.com/ssl-pulse/">SSL Pulse</a> that reports TLS/SSL security scan statistics for the most popular Internet sites. Below is the most recent chart of protocol support statistics by July 2023.</p>
+<figure>
+<img src="TLS1_3-stats.png" alt="Source: SSL Pulse - 07/03/2023" /><figcaption aria-hidden="true">Source: SSL Pulse - 07/03/2023</figcaption>
+</figure>
+<p>As can be seen, of all 135,000+ probed sites the percentage of TLS 1.3 support is about 63.5%. That means there are still close to 50 thousand sites that do not leverage the security and performance benefits of TLS 1.3. Why? The decision to migrate a website to a new protocol version like TLS 1.3 can be complex and influenced by various factors. The top 3 common reasons hindering TLS 1.3 migration are</p>
+<ul>
+<li><strong>Compatibility Concerns</strong>: Some websites might have users who are still using outdated browsers or operating systems that do not support TLS 1.3. These websites need to maintain backward compatibility to ensure that all users can access their content securely.</li>
+<li><strong>Resource Constraints</strong>: Migration involves technical updates, configuration changes, and testing. Smaller websites or those with limited resources might face challenges in allocating the necessary time and effort to make these changes.</li>
+<li><strong>Third-Party Dependencies</strong>: Many websites rely on third-party services, content delivery networks, or other components. If these services do not yet support TLS 1.3, the website might delay migration to avoid disruptions or compatibility issues with these dependencies.</li>
+</ul>
+<p>However, for network hardware/software vendors who want their products on the procurement list of any US public sector organization, there is a coming NIST mandate to make TLS 1.3 available by January 2024. This is stipulated in the National Institute of Standards and Technology Special Publication 800-52 Rev. 2: <strong>Guidelines for the Selection, Configuration, and Use of Transport Layer Security (TLS) Implementations</strong>. Quoted from <a target="_blank" rel="noopener" href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-52r2.pdf">NIST SP 800-52 Rev. 2</a></p>
+<blockquote>
+<p><strong>3.1 Protocol Version Support</strong></p>
+<p>Servers that support government-only applications8 <strong>shall</strong> be configured to use TLS 1.2 and <strong>should</strong> be configured to use TLS 1.3 as well. ...</p>
+<p>Servers that support citizen or business-facing applications (i.e., the client may not be part of a government IT system)10 <strong>shall</strong> be configured to negotiate TLS 1.2 and <strong>should</strong> be configured to negotiate TLS 1.3. ...</p>
+<p>Agencies <strong>shall</strong> support TLS 1.3 by January 1, 2024. After this date, servers <strong>shall</strong> support TLS 1.3 for both government-only and citizen or business-facing applications. In general, servers that support TLS 1.3 <strong>should</strong> be configured to use TLS 1.2 as well. However, TLS 1.2 may be disabled on servers that support TLS 1.3 if it has been determined that TLS 1.2 is not needed for interoperability.</p>
+</blockquote>
+<p>As in the RFC documents, "shall" above is a strong keyword that means that the definition is an absolute requirement of the specification. So this NIST publication requires all servers owned by the US government agencies to be able to support TLS 1.3 by 01/01/2024. They must run a minimum TLS version 1.2 by default and can be configured to do TLS 1.3 only if desired.</p>
+<p>It is worth pointing out that this is not an official FIPS requirement, so not required for the FIPS 140-3 certificate for now. Besides, this NIPS document has a clear scope statement: "The scope is further limited to TLS when used in conjunction with TCP/IP. For example, Datagram TLS (DTLS), which operates over datagram protocols, is outside the scope of these guidelines. NIST may issue separate guidelines for DTLS at a later date." Based on this, we can infer that DTLS and EAP are out of consideration for this mandate.</p>
+<h2 id="enabling-tls-1.3">Enabling TLS 1.3</h2>
+<p>The enhanced security and optimized performance of TLS 1.3 make it the first choice for securing communication of various network applications. Now we demonstrate how to enable TLS 1.3 function in three commonly used web server software Apache, Nginx, and Lighttpd.</p>
+<div class="note warning"><p><strong>NOTE:</strong>The implementation of many secure network communication applications relies on third-party SSL/TLS software libraries, such as wolfSSL, GnuTLS, NSS, and OpenSSL. Therefore, to enable the TLS 1.3 function of these applications, you need to ensure that the libraries they link with support TLS 1.3. For example, in September 2018, the popular OpenSSL project released version 1.1.1 of the library, with support for TLS 1.3 as its "top new feature".</p>
+</div>
+<h3 id="apache-http-server">Apache HTTP Server</h3>
+<p>The Apache HTTP Server is an open-source web server software from the Apache Software Foundation. Apache HTTP server is widely used and is one of the most popular web server software due to its cross-platform and security. Apache supports a variety of features, many of which extend core functionality through compiled modules, such as authentication schemes, proxy servers, URL rewriting, SSL/TLS support, and compiling interpreters such as Perl/Python into the server.</p>
+<p>Apache HTTP Server has built-in support for TLS 1.3 since version 2.4.36, no need to install any additional modules or patches. The following command can be used to verify the version of the server</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ apache2ctl -v </span><br><span class="line">Server version: Apache/2.4.41 (Ubuntu)</span><br><span class="line">Server built:   2020-04-13T17:19:17</span><br></pre></td></tr></table></figure>
+<p>Once the version is verified, the <code>SSLProtocol</code> line of the configuration file can be updated. The following will enable the Apache HTTP server to only support the TLS 1.3 protocol</p>
+<figure class="highlight nginx"><figcaption><span>/etc/apache2/mods-available/ssl.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Only enable TLS 1.3</span></span><br><span class="line"><span class="attribute">SSLProtocol</span> -all +TLSv1.<span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>If you need to be compatible with clients that support TLS 1.2, you can add <code>+TLSv1.2</code>. After updating the configuration, restart the service</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service apache2 restart</span><br></pre></td></tr></table></figure>
+<h3 id="nginx-web-server">Nginx Web Server</h3>
+<p>Nginx is a high-performance web server based on an asynchronous framework and modular design. It can also be used for reverse proxy, load balancer, and HTTP caching applications. It is free and open-source software released under the terms of a BSD-like license. Nginx uses an asynchronous event-driven approach to request processing, which can provide more predictable performance under high load. The current market share of Nginx is almost equal to that of the Apache HTTP server.</p>
+<p>Nginx supports TLS 1.3 from version 1.13.0. The following command can be used to verify its version</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ nginx -v</span><br><span class="line">nginx version: nginx/1.17.10 (Ubuntu)</span><br></pre></td></tr></table></figure>
+<p>In the Nginx configuration file, find the server block and modify the <code>ssl_protocols</code> line to enable TLS 1.3:</p>
+<figure class="highlight nginx"><figcaption><span>/etc/nginx/nginx.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">443</span> ssl http2;</span><br><span class="line">    <span class="attribute">listen</span> [::]:<span class="number">443</span> ssl http2;</span><br><span class="line">    <span class="attribute">server_name</span> example.com;</span><br><span class="line">    <span class="attribute">root</span> /var/www/example.com/public;</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">ssl_certificate</span> /path/to/your/certificate.crt;</span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /path/to/your/private-key.key;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># support TLS 1.2 and TLS 1.3 </span></span><br><span class="line">    <span class="attribute">ssl_protocols</span> TLSv1.<span class="number">2</span> TLSv1.<span class="number">3</span>;</span><br><span class="line">    </span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>If you don't need to continue to support TLS 1.2, delete the <code>TLSv1.2</code> there. After the modification is complete, you can run the following command to test the configuration of Nginx, and then restart the service</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ sudo nginx -t</span><br><span class="line">nginx: the configuration file /etc/nginx/nginx.conf syntax is ok</span><br><span class="line">nginx: configuration file /etc/nginx/nginx.conf <span class="built_in">test</span> is successful</span><br><span class="line"></span><br><span class="line">$ sudo service nginx restart</span><br></pre></td></tr></table></figure>
+<h3 id="lighttpd-web-server">Lighttpd Web Server</h3>
+<p>Lighttpd is a lightweight open-source web server software. It focuses on high performance, low memory footprint and fast responsiveness. Lighttpd is suitable for serving web applications and static content of all sizes. Its design goal is to provide an efficient, flexible, and scalable web server, especially suitable for high-load and resource-constrained (such as embedded systems) environments.</p>
+<p>The first Lighttpd release to support TLS 1.3 is version 1.4.56. Starting with this version, the minimum version of TLS that Lighttpd supports by default is TLS 1.2. That is to say, Lighttpd supports TLS 1.2 and TLS 1.3 if no corresponding configuration file modification is made.</p>
+<p>To limit the use of Lighttpd to only the TLS 1.3 feature, first make sure the mod_openssl module is loaded. Then in the configuration file lighttpd.conf, find the <code>server.modules</code> section, add the following <code>ssl.openssl.ssl-conf-cmd</code> line:</p>
+<figure class="highlight nginx"><figcaption><span>/etc/lighttpd/lighttpd.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">server.<span class="attribute">modules</span> += (<span class="string">&quot;mod_openssl&quot;</span>)</span><br><span class="line">$SERVER[<span class="string">&quot;socket&quot;</span>] == <span class="string">&quot;:443&quot;</span> &#123;</span><br><span class="line">    ssl.<span class="attribute">engine</span> = <span class="string">&quot;enable&quot;</span> </span><br><span class="line">    ssl.pemfile = <span class="string">&quot;/path/to/your/cert.pem&quot;</span></span><br><span class="line">    ssl.privkey = <span class="string">&quot;/path/to/your/privkey.pem&quot;</span></span><br><span class="line">    ssl.openssl.ssl-conf-cmd = (<span class="string">&quot;MinProtocol&quot;</span> =&gt; <span class="string">&quot;TLSv1.3&quot;</span>,</span><br><span class="line">                                <span class="string">&quot;Options&quot;</span> =&gt; <span class="string">&quot;-ServerPreference&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This will set the minimum version supported by Lighttpd to be TLS 1.3. Finally, save and reload the Lighttpd configuration for the changes to take effect:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo lighttpd -t -f /etc/lighttpd/lighttpd.conf <span class="comment"># check configuration</span></span><br><span class="line">sudo systemctl reload lighttpd</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Zixi
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://www.packetmania.net/en/2023/08/21/TLS1-3-intro/" title="TLS 1.3 and the Coming NIST Mandate">https://www.packetmania.net/en/2023/08/21/TLS1-3-intro/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/en/tags/C-C-Programming/" rel="tag"><i class="fa fa-tag"></i> C/C++ Programming</a>
+              <a href="/en/tags/Cryptography/" rel="tag"><i class="fa fa-tag"></i> Cryptography</a>
+              <a href="/en/tags/Network-Security/" rel="tag"><i class="fa fa-tag"></i> Network Security</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/2023/03/16/RSA-attack-defense/" rel="prev" title="RSA: Attack and Defense (1)">
+                  <i class="fa fa-chevron-left"></i> RSA: Attack and Defense (1)
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Gitalk Comments</a></li>
+            <li class="tab"><a href="#comment-utterances">Utterances Comments</a></li>
+            <li class="tab"><a href="#comment-disqus">Disqus Comments</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+            <div class="tab-pane disqus" id="comment-disqus">
+              
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zixi</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>Symbols count total: </span>
+    <span title="Symbols count total">235k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>Reading time total &asymp;</span>
+    <span title="Reading time total">3:34</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5fc1fd29017282c7" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/en/js/comments.js"></script><script src="/en/js/utils.js"></script><script src="/en/js/motion.js"></script><script src="/en/js/next-boot.js"></script><script src="/en/js/bookmark.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/en/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"forest","dark":"forest"},"js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.13.4/dist/mermaid.min.js","integrity":"sha256-96rwDGMWIQYB0yKGp1sKi1yrjrLPj2oT39IpbCsIrsg="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/en/js/third-party/fancybox.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/en/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"packetmania-github-io","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/en/js/third-party/comments/disqus.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"packetmania","repo":"en","client_id":"a45f6ae3f97c1a467856","client_secret":"7d81b74f952b388f93dcb5a8c44cd12f657969fa","admin_user":"packetmania","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"492ed6e59b961677b9c57616e81d0f66"}</script>
+<script src="/en/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"packetmania/en","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/en/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
