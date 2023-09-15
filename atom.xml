@@ -44,7 +44,7 @@
     <link href="https://www.packetmania.net/en/2023/03/16/RSA-attack-defense/"/>
     <id>https://www.packetmania.net/en/2023/03/16/RSA-attack-defense/</id>
     <published>2023-03-17T04:00:32.000Z</published>
-    <updated>2023-03-26T05:20:56.435Z</updated>
+    <updated>2023-09-15T17:28:14.630Z</updated>
     
     
     <summary type="html">&lt;p&gt;RSA is a public-key cryptosystem built on top of an asymmetric encryption algorithm, which was jointly invented by three cryptographers and computer scientists at the Massachusetts Institute of Technology in 1977. The RSA public-key encryption algorithm and cryptosystem provide data confidentiality and signature verification functions widely used on the Internet. Since its birth, RSA has become a major research object of modern cryptography. Many cryptanalysts and information security experts have been studying its possible theoretical flaws and technical loopholes to ensure security and reliability in practical applications.</summary>
@@ -94,7 +94,7 @@
     <link href="https://www.packetmania.net/en/2022/11/21/DH-and-RSA/"/>
     <id>https://www.packetmania.net/en/2022/11/21/DH-and-RSA/</id>
     <published>2022-11-22T06:38:45.000Z</published>
-    <updated>2023-05-30T04:19:46.561Z</updated>
+    <updated>2023-09-15T06:24:26.018Z</updated>
     
     
     <summary type="html">&lt;p&gt;Recently, at a WPA3 technology introduction meeting within the R&amp;amp;D team, the speaker mentioned that the OWE technology for encrypted wireless open networks is based on Diffie-Hellman key exchange, and casually said that Diffie-Hellman key exchange is using technology similar to RSA. This statement is wrong!</summary>
