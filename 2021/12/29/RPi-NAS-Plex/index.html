@@ -52,7 +52,7 @@
 <meta property="og:image" content="https://www.packetmania.net/en/2021/12/29/RPi-NAS-Plex/ADM-HDD.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2021/12/29/RPi-NAS-Plex/NASPi-final.jpg">
 <meta property="article:published_time" content="2021-12-29T18:53:08.000Z">
-<meta property="article:modified_time" content="2023-09-15T22:00:50.737Z">
+<meta property="article:modified_time" content="2023-09-18T06:51:53.722Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="Raspberry Pi">
 <meta property="article:tag" content="NAS">
@@ -295,7 +295,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2023-09-15 15:00:50" itemprop="dateModified" datetime="2023-09-15T15:00:50-07:00">2023-09-15</time>
+        <time title="Modified: 2023-09-17 23:51:53" itemprop="dateModified" datetime="2023-09-17T23:51:53-07:00">2023-09-17</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -453,7 +453,7 @@
 <p>In addition, the following pi-temp.sh script, which reads out the GPU and CPU temperatures, is also useful</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">pi@raspberrypi:~ $ cat ./pi-temp.sh</span><br><span class="line"><span class="comment">#!/bin/bash</span></span><br><span class="line"><span class="comment"># Script: pi-temp.sh</span></span><br><span class="line"><span class="comment"># Purpose: Display the ARM CPU and GPU  temperature of Raspberry Pi</span></span><br><span class="line"><span class="comment"># -------------------------------------------------------</span></span><br><span class="line">cpu=$(&lt;/sys/class/thermal/thermal_zone0/temp)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;<span class="subst">$(date)</span> @ <span class="subst">$(hostname)</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;-------------------------------------------&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;GPU =&gt; <span class="subst">$(vcgencmd measure_temp)</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;CPU =&gt; temp=<span class="subst">$((cpu/1000)</span>)’C&quot;</span></span><br><span class="line"></span><br><span class="line">pi@raspberrypi:~ $ ./pi-temp.sh</span><br><span class="line">Mon 29 Nov 06:59:17 GMT 2021 @ raspberrypi</span><br><span class="line">-------------------------------------------</span><br><span class="line">GPU =&gt; temp=33.1<span class="string">&#x27;C</span></span><br><span class="line"><span class="string">CPU =&gt; temp=32’C</span></span><br></pre></td></tr></table></figure>
 <h4 id="hardware-assembly-process">Hardware Assembly Process</h4>
-<p>Below is a snapshot of the Geekwork NASPi parts out of the box (except for the Raspberry Pi 4B on the far right of the second row and the screwdriver in the lower right corner)</p>
+<p>Below is a snapshot of the Geekworm NASPi parts out of the box (except for the Raspberry Pi 4B on the far right of the second row and the screwdriver in the lower right corner)</p>
 <p><img src="NASPi-unbox.jpg" style="width:80.0%;height:80.0%" /> The three key components in the second row, from left to right, are</p>
 <ul>
 <li>X-C1 V1.3 adapter board provides power management, interface adaptation, and security shutdown functions</li>
