@@ -33,8 +33,11 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.packetmania.net/en/2022/11/21/DH-and-RSA/acm-turing-2015.jpeg">
 <meta property="og:image" content="https://www.packetmania.net/en/2022/11/21/DH-and-RSA/acm-turing-2002.jpeg">
+<meta property="og:image" content="https://www.packetmania.net/en/2022/11/21/DH-and-RSA/dtls-server-hello.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2022/11/21/DH-and-RSA/dtls-server-key.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2022/11/21/DH-and-RSA/dtls-client-key.png">
 <meta property="article:published_time" content="2022-11-22T06:38:45.000Z">
-<meta property="article:modified_time" content="2023-09-15T06:24:26.018Z">
+<meta property="article:modified_time" content="2023-11-10T22:04:06.277Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="Cryptography">
 <meta property="article:tag" content="Network Security">
@@ -277,7 +280,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2023-09-14 23:24:26" itemprop="dateModified" datetime="2023-09-14T23:24:26-07:00">2023-09-14</time>
+        <time title="Modified: 2023-11-10 14:04:06" itemprop="dateModified" datetime="2023-11-10T14:04:06-08:00">2023-11-10</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -604,7 +607,7 @@ end
 <ul>
 <li>The server responds with a Hello message first, which contains the random number <span class="math inline">\(S_r\)</span> and the selected cipher suite
 <ul>
-<li>As shown below, the server selects TLS_DHE_RSA_WITH_AES_128_CBC_SHA! <a href="dtls-server-hello.png"></a></li>
+<li>As shown below, the server selects TLS_DHE_RSA_WITH_AES_128_CBC_SHA! <img src="dtls-server-hello.png" /></li>
 </ul></li>
 <li>The same packet also contains the Server Certificate message, which is typically large and divided into multiple fragments</li>
 <li>The server certificate provides the RSA public key <span class="math inline">\((S_N,\;S_e)\)</span> that verifies its signature</li>
@@ -612,7 +615,7 @@ end
 <ul>
 <li>The length of <span class="math inline">\(p\)</span> in the figure below is 256 bytes, which means that the key length is 2048 bits and <span class="math inline">\(Pubkey\)</span> is <span class="math inline">\(A\)</span>.</li>
 <li>You can also see in the figure that the algorithms chosen for the signature are SHA512 and RSA.</li>
-<li>The operation is to first compute <span class="math inline">\(\operatorname{SHA512}(Cr,Sr,p,g,A)\)</span> and then encrypt it with the server RSA private key! <a href="dtls-server-key.png"></a></li>
+<li>The operation is to first compute <span class="math inline">\(\operatorname{SHA512}(Cr,Sr,p,g,A)\)</span> and then encrypt it with the server RSA private key<img src="dtls-server-key.png" /></li>
 </ul></li>
 <li>After that, the server sends a Certificate Request message and a Hello Done message
 <ul>
@@ -628,7 +631,7 @@ end
 <li>The client first sends a Certificate message, which contains the RSA public key <span class="math inline">\((C_N,\;C_e)\)</span> and also splits into multiple fragments</li>
 <li>The client then sends a Key Exchange message, which contains its DH public key <span class="math inline">\(B\)</span>
 <ul>
-<li>The <span class="math inline">\(Pubkey\)</span> in the following figure is <span class="math inline">\(B\)</span>! <a href="dtls-client-key.png"></a></li>
+<li>The <span class="math inline">\(Pubkey\)</span> in the following figure is <span class="math inline">\(B\)</span><img src="dtls-client-key.png" /></li>
 </ul></li>
 <li>The client finally sends a Certificate Verify message, which contains the signature <span class="math inline">\(Cs\)</span>
 <ul>

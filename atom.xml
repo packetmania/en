@@ -81,11 +81,11 @@
     
     <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
     
-    <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
-    
     <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
     
     <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
+    
+    <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
     
   </entry>
   
@@ -94,7 +94,7 @@
     <link href="https://www.packetmania.net/en/2022/11/21/DH-and-RSA/"/>
     <id>https://www.packetmania.net/en/2022/11/21/DH-and-RSA/</id>
     <published>2022-11-22T06:38:45.000Z</published>
-    <updated>2023-09-15T06:24:26.018Z</updated>
+    <updated>2023-11-10T22:04:06.277Z</updated>
     
     
     <summary type="html">&lt;p&gt;Recently, at a WPA3 technology introduction meeting within the R&amp;amp;D team, the speaker mentioned that the OWE technology for encrypted wireless open networks is based on Diffie-Hellman key exchange, and casually said that Diffie-Hellman key exchange is using technology similar to RSA. This statement is wrong!</summary>
@@ -115,7 +115,7 @@
     <link href="https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/"/>
     <id>https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/</id>
     <published>2022-11-11T07:56:28.000Z</published>
-    <updated>2022-11-22T06:41:19.794Z</updated>
+    <updated>2023-11-10T23:14:17.853Z</updated>
     
     
     <summary type="html">&lt;p&gt;In March 2021, the Internet Engineering Task Force (IETF) released &lt;a href=&quot;https://tools.ietf.org/html/rfc8996&quot;&gt;RFC 8996&lt;/a&gt;, classified as a current best practice, officially announcing the deprecation of the TLS 1.0 and TLS 1.1 protocols. If your applications and web services are still using these protocols, please stop immediately and update to TLS 1.2 or TLS 1.3 protocol versions as soon as possible to eliminate any possible security risks.</summary>
@@ -222,7 +222,7 @@
     <link href="https://www.packetmania.net/en/2021/12/29/RPi-NAS-Plex/"/>
     <id>https://www.packetmania.net/en/2021/12/29/RPi-NAS-Plex/</id>
     <published>2021-12-29T18:53:08.000Z</published>
-    <updated>2023-09-18T06:51:53.722Z</updated>
+    <updated>2023-11-10T23:06:51.314Z</updated>
     
     
     <summary type="html">&lt;p&gt;Network Attached Storage (NAS) provides data access to a heterogeneous group of clients over computer networks. As hard drive prices continue to drop, NAS devices have made their way into the homes of the masses. Leading brands in the SMB and home NAS market, such as Synology, have their products range in price from as low as $300 to $700 for the high models. But if you are a Raspberry Pi player, you can build a very nice home NAS and streaming service for only about half the cost of the lowest price.</summary>
