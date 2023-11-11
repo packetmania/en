@@ -31,11 +31,11 @@
     <category term="Technical Know-how" scheme="https://www.packetmania.net/en/categories/Technical-Know-how/"/>
     
     
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
+    
     <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
     
     <category term="Network Security" scheme="https://www.packetmania.net/en/tags/Network-Security/"/>
-    
-    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
     
   </entry>
   
@@ -77,13 +77,13 @@
     <category term="Technical Know-how" scheme="https://www.packetmania.net/en/categories/Technical-Know-how/"/>
     
     
-    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
-    
-    <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
     
     <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
     
-    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
+    <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
+    
+    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
     
     <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
     
@@ -169,9 +169,9 @@
     <category term="Tool Guide" scheme="https://www.packetmania.net/en/categories/Tool-Guide/"/>
     
     
-    <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
-    
     <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
+    
+    <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
     
   </entry>
   
@@ -222,10 +222,10 @@
     <link href="https://www.packetmania.net/en/2021/12/29/RPi-NAS-Plex/"/>
     <id>https://www.packetmania.net/en/2021/12/29/RPi-NAS-Plex/</id>
     <published>2021-12-29T18:53:08.000Z</published>
-    <updated>2023-11-11T02:04:45.435Z</updated>
+    <updated>2023-11-11T02:10:14.447Z</updated>
     
     
-    <summary type="html">&lt;p&gt;Network Attached Storage (NAS) provides data access to a heterogeneous group of clients over computer networks. As hard drive prices continue to drop, NAS devices have made their way into the homes of the masses. Leading brands in the SMB and home NAS market, such as Synology, have their products range in price from as low as $ 300 to $ 700 for the high models. But if you are a Raspberry Pi player, you can build a very nice home NAS and streaming service for only about half the cost of the lowest price.</summary>
+    <summary type="html">&lt;p&gt;Network Attached Storage (NAS) provides data access to a heterogeneous group of clients over computer networks. As hard drive prices continue to drop, NAS devices have made their way into the homes of the masses. Leading brands in the SMB and home NAS market, such as Synology, have their products range in price from as low as $300 to $ 700 for the high models. But if you are a Raspberry Pi player, you can build a very nice home NAS and streaming service for only about half the cost of the lowest price.</summary>
     
     
     
@@ -274,13 +274,13 @@
     <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
     
     
-    <category term="Computer Architecture" scheme="https://www.packetmania.net/en/tags/Computer-Architecture/"/>
-    
-    <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
     
     <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
     
-    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
+    <category term="Computer Architecture" scheme="https://www.packetmania.net/en/tags/Computer-Architecture/"/>
+    
+    <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
     
   </entry>
   
