@@ -151,20 +151,6 @@
   </url>
   
   <url>
-    <loc>https://www.packetmania.net/en/tags/Computer-Architecture/</loc>
-    <lastmod>2023-11-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.packetmania.net/en/tags/Computer-Communications/</loc>
-    <lastmod>2023-11-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.packetmania.net/en/tags/Cryptography/</loc>
     <lastmod>2023-11-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -179,6 +165,20 @@
   </url>
   
   <url>
+    <loc>https://www.packetmania.net/en/tags/Computer-Architecture/</loc>
+    <lastmod>2023-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/tags/Computer-Communications/</loc>
+    <lastmod>2023-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.packetmania.net/en/tags/TCP-IP/</loc>
     <lastmod>2023-11-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -186,14 +186,14 @@
   </url>
   
   <url>
-    <loc>https://www.packetmania.net/en/tags/Cisco-Technology/</loc>
+    <loc>https://www.packetmania.net/en/tags/Python-Programming/</loc>
     <lastmod>2023-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.packetmania.net/en/tags/Python-Programming/</loc>
+    <loc>https://www.packetmania.net/en/tags/Cisco-Technology/</loc>
     <lastmod>2023-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
