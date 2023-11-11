@@ -81,9 +81,9 @@
     
     <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
     
-    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
-    
     <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
+    
+    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
     
     <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
     
@@ -222,10 +222,10 @@
     <link href="https://www.packetmania.net/en/2021/12/29/RPi-NAS-Plex/"/>
     <id>https://www.packetmania.net/en/2021/12/29/RPi-NAS-Plex/</id>
     <published>2021-12-29T18:53:08.000Z</published>
-    <updated>2023-11-11T00:04:04.547Z</updated>
+    <updated>2023-11-11T00:46:28.024Z</updated>
     
     
-    <summary type="html">&lt;p&gt;Network Attached Storage (NAS) provides data access to a heterogeneous group of clients over computer networks. As hard drive prices continue to drop, NAS devices have made their way into the homes of the masses. Leading brands in the SMB and home NAS market, such as Synology, have their products range in price from as low as &lt;span class=&quot;tex2jax_ignore&quot;&gt;&lt;span class=&quot;math inline&quot;&gt;\(&amp;lt;/span&amp;gt;300 to &amp;lt;span class=&amp;quot;tex2jax_ignore&amp;quot;&amp;gt;\)&lt;/span&gt;&lt;/span&gt;700 for the high models. But if you are a Raspberry Pi player, you can build a very nice home NAS and streaming service for only about half the cost of the lowest price.</summary>
+    <summary type="html">&lt;p&gt;Network Attached Storage (NAS) provides data access to a heterogeneous group of clients over computer networks. As hard drive prices continue to drop, NAS devices have made their way into the homes of the masses. Leading brands in the SMB and home NAS market, such as Synology, have their products range in price from as low as \$300 to $700 for the high models. But if you are a Raspberry Pi player, you can build a very nice home NAS and streaming service for only about half the cost of the lowest price.</summary>
     
     
     
