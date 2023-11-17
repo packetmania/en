@@ -160,20 +160,6 @@
   </url>
   
   <url>
-    <loc>https://www.packetmania.net/en/tags/Computer-Architecture/</loc>
-    <lastmod>2023-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.packetmania.net/en/tags/Computer-Communications/</loc>
-    <lastmod>2023-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.packetmania.net/en/tags/Cryptography/</loc>
     <lastmod>2023-11-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -182,6 +168,20 @@
   
   <url>
     <loc>https://www.packetmania.net/en/tags/Network-Security/</loc>
+    <lastmod>2023-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/tags/Computer-Architecture/</loc>
+    <lastmod>2023-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/tags/Computer-Communications/</loc>
     <lastmod>2023-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

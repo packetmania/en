@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.packetmania.net/en/2023/11/14/Fermats-Little-Theorem/Fermat-on-stamp.jpg">
 <meta property="article:published_time" content="2023-11-15T07:52:56.000Z">
-<meta property="article:modified_time" content="2023-11-17T06:50:37.741Z">
+<meta property="article:modified_time" content="2023-11-17T07:19:32.762Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="Cryptography">
 <meta name="twitter:card" content="summary">
@@ -275,7 +275,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2023-11-16 22:50:37" itemprop="dateModified" datetime="2023-11-16T22:50:37-08:00">2023-11-16</time>
+        <time title="Modified: 2023-11-16 23:19:32" itemprop="dateModified" datetime="2023-11-16T23:19:32-08:00">2023-11-16</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -328,7 +328,7 @@
 </figure>
 <p>In contrast, there is also a little theorem of Fermat. In October 1640, Fermat first wrote down words equivalent to the following in a letter to a friend:</p>
 <blockquote>
-<p>If <span class="math inline">\(p\)</span> is a prime and <span class="math inline">\(a\)</span> is any integer not divisible by <span class="math inline">\(p\)</span>, then <span class="math inline">\(a^{p-1}-1\)</span> is divisible by <span class="math inline">\(p\)</span>.</p>
+<p><em>If <span class="math inline">\(p\)</span> is a prime and <span class="math inline">\(a\)</span> is any integer not divisible by <span class="math inline">\(p\)</span>, then <span class="math inline">\(a^{p-1}-1\)</span> is divisible by <span class="math inline">\(p\)</span>.</em></p>
 </blockquote>
 <p>Similarly, Fermat did not give proof in the letter. Nearly a hundred years later, the complete proof was first published by the great mathematician Euler in 1736. Later, people found in the unpublished manuscripts of another great mathematician Leibniz that he had obtained almost the same proof before 1683.</p>
 <p>Fermat's little theorem is one of the fundamental results of elementary number theory. This theorem can be used to generate primality testing rules and corresponding verification algorithms. In the late 1970s, public key cryptography emerged, and Fermat's little theorem helped prove the correctness of RSA. Afterward, researchers combined it with the Chinese remainder theorem and also discovered an optimized method for RSA decryption and signing. The following further introduces these applications.</p>
@@ -360,7 +360,7 @@
 <p>These lead to <span class="math inline">\(n = 144\)</span> or <span class="math inline">\(n\geq 174\)</span>. Obviously, 174 is too big. It can be concluded that n can only be 144.</p>
 <p>This question actually appeared in the 1989 American Invitational Mathematics Examination (AIME), which is a math competition for high school students. Interestingly, the solution to the question happens to disprove <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Euler%27s_sum_of_powers_conjecture">Euler's conjecture</a>.</p>
 <h4 id="primality-testing">Primality Testing</h4>
-<p>Many encryption algorithm applications require "random" large prime numbers. The common method to generate large primes is to randomly generate an integer and then test for primality. Since Fermat’s little theorem holds on the premise that p is a prime number, this provides a prime test method called Fermat primality test. The test algorithm is:</p>
+<p>Many encryption algorithm applications require "random" large prime numbers. The common method to generate large primes is to randomly generate an integer and then test for primality. Since Fermat’s little theorem holds on the premise that p is a prime number, this provides a prime test method called the Fermat primality test. The test algorithm is:</p>
 <blockquote>
 <p><strong>Input:</strong> <span class="math inline">\(n\)</span> - the number to be tested, <span class="math inline">\(n&gt;3\)</span>; <span class="math inline">\(k\)</span> - the number of iterations <strong>Output:</strong> <span class="math inline">\(n\)</span> is <u>composite</u>, otherwise <u>may be prime</u> Repeat k times: <span class="math inline">\(\quad\quad\)</span>Randomly select an integer <span class="math inline">\(a\)</span> between <span class="math inline">\([2, n-2]\)</span> <span class="math inline">\(\quad\quad\)</span>If <span class="math inline">\(a^{n-1}\not \equiv 1{\pmod n}\)</span>, return <u><span class="math inline">\(n\)</span> is composite</u> Return <u><span class="math inline">\(n\)</span> may be prime</u></p>
 </blockquote>
