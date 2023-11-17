@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.3.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/en/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="piAnQ_mnwkhV_qh4_Se1yLzM1IwOvuq-vmYfXBkWRXU">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=EB+Garamond:300,300italic,400,400italic,700,700italic%7CNoto+Serif+SC:300,300italic,400,400italic,700,700italic%7CRoboto+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.packetmania.net","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk | utterances | disqus","storage":true,"lazyload":false,"nav":{"disqus":{"text":"Disqus Comments","order":-1},"utterances":{"text":"Utterances Comments","order":-2},"gitalk":{"text":"Gitalk Comments","order":-3}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/en/js/config.js"></script>
+<meta name="description" content="In the history of mathematics, Pierre de Fermat was a special figure. His formal occupation was as a lawyer, but he was exceptionally fond of mathematics. Although an amateur, Fermat’s achievements in">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Inductive Proof and Applications of Fermat&#39;s Little Theorem">
+<meta property="og:url" content="https://www.packetmania.net/en/2023/11/14/Fermats-Little-Theorem/index.html">
+<meta property="og:site_name" content="PacketMania">
+<meta property="og:description" content="In the history of mathematics, Pierre de Fermat was a special figure. His formal occupation was as a lawyer, but he was exceptionally fond of mathematics. Although an amateur, Fermat’s achievements in">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.packetmania.net/en/2023/11/14/Fermats-Little-Theorem/Fermat-on-stamp.jpg">
+<meta property="article:published_time" content="2023-11-15T07:52:56.000Z">
+<meta property="article:modified_time" content="2023-11-17T06:50:37.741Z">
+<meta property="article:author" content="Zixi">
+<meta property="article:tag" content="Cryptography">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.packetmania.net/en/2023/11/14/Fermats-Little-Theorem/Fermat-on-stamp.jpg">
+
+
+<link rel="canonical" href="https://www.packetmania.net/en/2023/11/14/Fermats-Little-Theorem/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.packetmania.net/en/2023/11/14/Fermats-Little-Theorem/","path":"2023/11/14/Fermats-Little-Theorem/","title":"The Inductive Proof and Applications of Fermat's Little Theorem"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>The Inductive Proof and Applications of Fermat's Little Theorem | PacketMania</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YKBP0QK7Z"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-9YKBP0QK7Z","only_pageview":false}</script>
+  <script src="/en/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PacketMania" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PacketMania</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Technology | Knowledge | Sharing</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/en/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/en/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+        <li class="menu-item menu-item-rss"><a href="/en/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+        <li class="menu-item menu-item-language"><a href="https://www.packetmania.net/" rel="section"><i class="fa fa-language fa-fw"></i>中文</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#theorems-and-corollaries"><span class="nav-number">1.</span> <span class="nav-text">Theorems and Corollaries</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#proof-by-induction"><span class="nav-number">2.</span> <span class="nav-text">Proof by Induction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#applications-of-the-theorem"><span class="nav-number">3.</span> <span class="nav-text">Applications of the Theorem</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#solution-to-math-competition-problems"><span class="nav-number">3.1.</span> <span class="nav-text">Solution to Math Competition Problems</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#primality-testing"><span class="nav-number">3.2.</span> <span class="nav-text">Primality Testing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#proofs-of-rsa-correctness"><span class="nav-number">3.3.</span> <span class="nav-text">Proofs of RSA Correctness</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#optimized-rsa-decryption"><span class="nav-number">3.4.</span> <span class="nav-text">Optimized RSA Decryption</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zixi"
+      src="/en/images/ccie.gif">
+  <p class="site-author-name" itemprop="name">Zixi</p>
+  <div class="site-description" itemprop="description">Computer Networking and Software Design & Implementation</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/packetmania" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;packetmania" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zixiruoxue@gmail.com" title="E-Mail → mailto:zixiruoxue@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/zixisean" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zixisean" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/15140531" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;15140531" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_nd.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.packetmania.net/en/2023/11/14/Fermats-Little-Theorem/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/ccie.gif">
+      <meta itemprop="name" content="Zixi">
+      <meta itemprop="description" content="Computer Networking and Software Design & Implementation">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PacketMania">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          The Inductive Proof and Applications of Fermat's Little Theorem
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-11-14 23:52:56" itemprop="dateCreated datePublished" datetime="2023-11-14T23:52:56-08:00">2023-11-14</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2023-11-16 22:50:37" itemprop="dateModified" datetime="2023-11-16T22:50:37-08:00">2023-11-16</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/Study-Notes/" itemprop="url" rel="index"><span itemprop="name">Study Notes</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>14k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>13 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>In the history of mathematics, Pierre de Fermat was a special figure. His formal occupation was as a lawyer, but he was exceptionally fond of mathematics. Although an amateur, Fermat’s achievements in mathematics were no less than those of professional mathematicians of the same era. He contributed to modern calculus, analytic geometry, probability, and number theory. Especially in the field of number theory, Fermat was most interested and achieved the most outstanding results.<span id="more"></span></p>
+<div class="note success no-icon"><p><strong>Logic is the foundation of the certainty of all the knowledge we acquire.</strong><br> <strong>— <em>Leonhard Euler</em> (Swiss mathematician, physicist, astronomer, geographer, logician, and engineer, one of the greatest mathematicians in history) </strong></p>
+</div>
+<p>As the "king of amateur mathematicians", Fermat proposed some famous conjectures in number theory but did not give strong proof. The most famous is Fermat's Last Theorem<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Although Fermat claimed he had found an ingenious proof, there was not enough space on the margin to write it down. But in fact, after more than 350 years of unremitting efforts by mathematicians, it was not until 1995 that British mathematician Andrew John Wiles and his student Richard Taylor published a widely recognized proof.</p>
+<figure>
+<img src="Fermat-on-stamp.jpg" alt="Ferma and Fermat&#39;s Last Theorem On Stamp" /><figcaption aria-hidden="true">Ferma and Fermat's Last Theorem On Stamp</figcaption>
+</figure>
+<p>In contrast, there is also a little theorem of Fermat. In October 1640, Fermat first wrote down words equivalent to the following in a letter to a friend:</p>
+<blockquote>
+<p>If <span class="math inline">\(p\)</span> is a prime and <span class="math inline">\(a\)</span> is any integer not divisible by <span class="math inline">\(p\)</span>, then <span class="math inline">\(a^{p-1}-1\)</span> is divisible by <span class="math inline">\(p\)</span>.</p>
+</blockquote>
+<p>Similarly, Fermat did not give proof in the letter. Nearly a hundred years later, the complete proof was first published by the great mathematician Euler in 1736. Later, people found in the unpublished manuscripts of another great mathematician Leibniz that he had obtained almost the same proof before 1683.</p>
+<p>Fermat's little theorem is one of the fundamental results of elementary number theory. This theorem can be used to generate primality testing rules and corresponding verification algorithms. In the late 1970s, public key cryptography emerged, and Fermat's little theorem helped prove the correctness of RSA. Afterward, researchers combined it with the Chinese remainder theorem and also discovered an optimized method for RSA decryption and signing. The following further introduces these applications.</p>
+<h3 id="theorems-and-corollaries">Theorems and Corollaries</h3>
+<p>The complete statement of Fermat's little theorem is: <strong>If <span class="math inline">\(\pmb{p}\)</span> is a prime number, then for any integer <span class="math inline">\(\pmb{a}\)</span>, the number <span class="math inline">\(\pmb{a^p−a}\)</span> is an integer multiple of <span class="math inline">\(\pmb{p}\)</span>. In the notation of modular arithmetic, this is expressed as <span class="math inline">\(\pmb{a^p\equiv a\pmod p}\)</span>. If <span class="math inline">\(\pmb{a}\)</span> is not divisible by <span class="math inline">\(\pmb{p}\)</span>, then <span class="math inline">\(\pmb{a^{p-1}\equiv 1\pmod p}\)</span>.</strong></p>
+<p>From <span class="math inline">\(a^{p-1}\equiv 1\pmod p\)</span> it can be deduced that <strong><span class="math inline">\(\pmb{a^{p-2}\equiv a^{-1}\pmod p}\)</span></strong>. This new congruence just gives a way to find the multiplicative inverse of <span class="math inline">\(a\)</span> modulo <span class="math inline">\(p\)</span>. This is a direct corollary of Fermat's little theorem.</p>
+<p>Another important corollary is: <strong>If <span class="math inline">\(\pmb{a}\)</span> is not a multiple of <span class="math inline">\(\pmb{p}\)</span> and <span class="math inline">\(\pmb{n=m\bmod {(p-1)}}\)</span>, then <span class="math inline">\(\pmb{a^n\equiv a^m\pmod p}\)</span>.</strong> This inference does not seem very intuitive, but the proof is simple:</p>
+<ol type="1">
+<li>Because <span class="math inline">\(n=m\bmod {(p-1)}\)</span>, it follows that <span class="math inline">\(m = k⋅(p-1)+n\)</span></li>
+<li>Substituting the result into the power operation, <span class="math inline">\(a^m=a^{k⋅(p-1)+n}=(a^{(p-1)})^k⋅a^n\)</span></li>
+<li>Then applying modular arithmetic and Fermat's little theorem, <span class="math inline">\(a^m=(a^{(p-1)})^k⋅a^n\equiv (1)^ka^n\equiv a^n\pmod p\)</span></li>
+<li>Therefore <span class="math inline">\(a^n\equiv a^m\pmod p\)</span>, Q.E.D.</li>
+</ol>
+<h3 id="proof-by-induction">Proof by Induction</h3>
+<p>There are many ways to prove Fermat's little theorem. Among them, mathematical induction based on the binomial theorem is the most intuitive one. First, for <span class="math inline">\(a=1\)</span>, it is obvious that <span class="math inline">\(1^p \equiv 1\pmod{p}\)</span> holds. Now assume that for an integer <span class="math inline">\(a\)</span>, <span class="math inline">\(a^p \equiv a \pmod{p}\)</span> is true. As long as it is proved under this condition that <span class="math inline">\((a+1)^p\equiv a+1\pmod{p}\)</span>, the proposition holds.</p>
+<p>According to the binomial theorem, <span class="math display">\[(a+1)^p = a^p + {p \choose 1} a^{p-1} + {p \choose 2} a^{p-2} + \cdots + {p \choose p-1} a + 1\]</span> Here the binomial coefficient is defined as <span class="math inline">\({p \choose k}= \frac{p!}{k! (p-k)!}\)</span>. Note that because <span class="math inline">\(p\)</span> is a prime number, for <span class="math inline">\(1≤k≤p-1\)</span>, each binomial coefficient <span class="math inline">\({p \choose k}\)</span>is a multiple of <span class="math inline">\(p\)</span>.</p>
+<p>Then taking <span class="math inline">\(\bmod p\)</span>, all the intermediate terms disappear, leaving only <span class="math inline">\(a^p+1\)</span> <span class="math display">\[(a+1)^p \equiv a^p + 1 \pmod{p}\]</span>Referring to the previous assumption <span class="math inline">\(a^p ≡ a \pmod p\)</span>, it infers that <span class="math inline">\((a+1)^p \equiv a+1 \pmod{p}\)</span>, the proof is complete.</p>
+<h3 id="applications-of-the-theorem">Applications of the Theorem</h3>
+<h4 id="solution-to-math-competition-problems">Solution to Math Competition Problems</h4>
+<p>Fermat's little theorem provides concise solutions to some seemingly complicated computational problems. First look at a simple example: If today is Sunday, what day will it be in <span class="math inline">\(2^{100}\)</span> days? There are 7 days in a week. According to Fermat's little theorem, we have <span class="math inline">\(2^{7−1}≡1\bmod 7\)</span>, from which we can get <span class="math display">\[2^{100}=2^{16×6+4} ≡ 1^{16}×2^4≡16≡2\pmod 7\]</span>So the answer is Tuesday. This actually repeats the proof process of the second corollary above with specific numbers. Applying this corollary can greatly speed up modular exponentiation. For example, to calculate <span class="math inline">\(49^{901}\bmod 151\)</span>, since <span class="math inline">\(901\bmod(151-1)=1\)</span>, it can be deduced immediately that <span class="math display">\[49^{901}\equiv 49^1\equiv 49\pmod {151}\]</span></p>
+<p>Now look at a question that seems a little more difficult: Given the equation <span class="math inline">\(133^5+110^5+84^5+27^5=n^{5}\)</span>, find the value of <span class="math inline">\(n\)</span>.</p>
+<p>At first glance, there seems to be no clue, so start with basic parity checking. The left side of the equation has two odd terms and two even terms, so the total is even, which also determines that <span class="math inline">\(n\)</span> must be even. Looking at the exponent 5 which is a prime number, and thinking of Fermat's little theorem, we get <span class="math inline">\(n^5≡n\pmod 5\)</span>, therefore <span class="math display">\[133^5+110^5+84^5+27^5≡n\pmod 5\]</span> <span class="math display">\[3+0+4+2≡4≡n\pmod 5\]</span> Continuing to take modulo 3, according to the corollary of Fermat's little theorem again, we have <span class="math inline">\(n^5≡n^{5\mod(3-1)}≡n\pmod 3\)</span>. So <span class="math display">\[133^5+110^5+84^5+27^5≡n\pmod 3\]</span> <span class="math display">\[1+2+0+0≡0≡n\pmod 3\]</span></p>
+<p>Okay, now summarize:</p>
+<ol type="1">
+<li><span class="math inline">\(n\)</span> should be greater than 27 and an even number</li>
+<li><span class="math inline">\(n\)</span> is a multiple of 3, so the sum of all digits is a multiple of 3</li>
+<li><span class="math inline">\(n\)</span> divided by 5 gives a remainder of 4, the ones place should be 4 (9 does not satisfy the condition of an even number)</li>
+</ol>
+<p>These lead to <span class="math inline">\(n = 144\)</span> or <span class="math inline">\(n\geq 174\)</span>. Obviously, 174 is too big. It can be concluded that n can only be 144.</p>
+<p>This question actually appeared in the 1989 American Invitational Mathematics Examination (AIME), which is a math competition for high school students. Interestingly, the solution to the question happens to disprove <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Euler%27s_sum_of_powers_conjecture">Euler's conjecture</a>.</p>
+<h4 id="primality-testing">Primality Testing</h4>
+<p>Many encryption algorithm applications require "random" large prime numbers. The common method to generate large primes is to randomly generate an integer and then test for primality. Since Fermat’s little theorem holds on the premise that p is a prime number, this provides a prime test method called Fermat primality test. The test algorithm is:</p>
+<blockquote>
+<p><strong>Input:</strong> <span class="math inline">\(n\)</span> - the number to be tested, <span class="math inline">\(n&gt;3\)</span>; <span class="math inline">\(k\)</span> - the number of iterations <strong>Output:</strong> <span class="math inline">\(n\)</span> is <u>composite</u>, otherwise <u>may be prime</u> Repeat k times: <span class="math inline">\(\quad\quad\)</span>Randomly select an integer <span class="math inline">\(a\)</span> between <span class="math inline">\([2, n-2]\)</span> <span class="math inline">\(\quad\quad\)</span>If <span class="math inline">\(a^{n-1}\not \equiv 1{\pmod n}\)</span>, return <u><span class="math inline">\(n\)</span> is composite</u> Return <u><span class="math inline">\(n\)</span> may be prime</u></p>
+</blockquote>
+<p>It can be seen that Fermat’s primality test is non-deterministic. It uses a probabilistic algorithm to determine whether a number is composite or probably prime. When the output is composite, the result is definitely correct; but those numbers tested to be probably prime may actually be composite, such numbers are called Fermat pseudoprimes. The smallest Fermat pseudoprime is 341, with <span class="math inline">\(2^{340}\equiv1\pmod {341}\)</span> but <span class="math inline">\(341=11×31\)</span>. So in fact, <strong>Fermat's little theorem provides a necessary but insufficient condition for determining prime numbers</strong>. It can only be said that the more iterations performed, the higher the probability that the tested number is prime.</p>
+<p>There is also a class of Fermat pseudoprimes <span class="math inline">\(n\)</span> which are composite numbers themselves, but for any integer <span class="math inline">\(x\)</span> that is coprime with <span class="math inline">\(n\)</span>, it holds <span class="math inline">\(x^{n-1}\equiv 1\pmod n\)</span>. In number theory, they are called Carmichael numbers. The smallest Carmichael number is 561, equal to <span class="math inline">\(3×11×17\)</span>. Carmichael numbers can fool Fermat’s primality test, making the test unreliable. Fortunately, such numbers are very rare. Statistics show that among the first <span class="math inline">\(10^{12}\)</span> natural numbers there are only 8241 Carmichael numbers.</p>
+<p>The PGP encryption communication program uses Fermat’s primality test in its algorithm. In network communication applications requiring large primes, Fermat’s primality test method is often used for pretesting, followed by calling the more efficient <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Miller–Rabin_primality_test">Miller-Rabin primality test</a> to ensure high accuracy.</p>
+<h4 id="proofs-of-rsa-correctness">Proofs of RSA Correctness</h4>
+<p>Fermat's little theorem can also be used to prove the correctness of the RSA algorithm, that is, the decryption formula can completely restore the plaintext <span class="math inline">\(m\)</span> from the ciphertext <span class="math inline">\(c\)</span> without errors: <span class="math display">\[c^d=(m^{e})^{d}\equiv m\pmod {pq}\]</span></p>
+<p>Here <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> are different prime numbers, <span class="math inline">\(e\)</span> and <span class="math inline">\(d\)</span> are positive integers that satisfy <span class="math inline">\(ed≡1\pmod {λ(pq)}\)</span>, where <span class="math inline">\(λ(pq)=\mathrm{lcm}(p−1,q−1)\)</span>. <span class="math inline">\(\mathrm{lcm}\)</span> is the least common multiple function.</p>
+<p>Before starting the proof, first introduce a corollary of the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Chinese_remainder_theorem">Chinese remainder theorem</a>: <strong>If integers <span class="math inline">\(\pmb{n_1,n_2,...,n_k}\)</span> are pairwise coprime and <span class="math inline">\(\pmb{n=n_{1}n_{2}...n_{k}}\)</span>, then for any integer <span class="math inline">\(\pmb x\)</span> and <span class="math inline">\(\pmb y\)</span>, <span class="math inline">\(\pmb{x≡y\pmod n}\)</span> holds if and only if <span class="math inline">\(\pmb{x≡y\pmod{n_i}}\)</span> for each <span class="math inline">\(\pmb{i=1,2,...k}\)</span>.</strong> This corollary is easy to prove, details are left as an exercise<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. According to this corollary, if <span class="math inline">\(m^{ed}≡m\pmod p\)</span> and <span class="math inline">\(m^{ed}≡m\pmod q\)</span> are both true, then <span class="math inline">\(m^{ed}≡m\pmod{pq}\)</span> must also hold.</p>
+<p>Now look at the first step of the proof. From the relationship between <span class="math inline">\(e\)</span> and <span class="math inline">\(d\)</span>, it follows <span class="math inline">\(ed-1\)</span> can be divided by both <span class="math inline">\(p-1\)</span> and <span class="math inline">\(q-1\)</span>, that is, there exist non-negative integers <span class="math inline">\(h\)</span> and <span class="math inline">\(k\)</span> satisfying: <span class="math display">\[ed-1=h(p-1)=k(q-1)\]</span></p>
+<p>The second step is to prove <span class="math inline">\(m^{ed}≡m\pmod p\)</span>. Consider two cases:</p>
+<ol type="1">
+<li>If <span class="math inline">\(m≡ 0\pmod p\)</span>, i.e. <span class="math inline">\(m\)</span> is an integer multiple of <span class="math inline">\(p\)</span>, then naturally <span class="math inline">\(m^{ed}≡0≡m\pmod p\)</span></li>
+<li>If <span class="math inline">\(m\not \equiv 0\pmod p\)</span>, it can be deduced that: <span class="math display">\[m^{ed}=m^{ed-1}m=m^{h(p-1)}m=(m^{p-1})^{h}m\equiv 1^{h}m\equiv m{\pmod {p}}\]</span>Here Fermat’s little theorem <span class="math inline">\(m^{p−1}≡1\pmod p\)</span> is applied.</li>
+</ol>
+<p>The third step has the goal of proving <span class="math inline">\(m^{ed}≡m\pmod q\)</span>. The deduction process is similar to the previous step, and it can also be deduced that m^ed ≡ m (mod q):</p>
+<ol type="1">
+<li>If <span class="math inline">\(m≡ 0\pmod p\)</span>, i.e. <span class="math inline">\(m\)</span> is an integer multiple of <span class="math inline">\(q\)</span>, then naturally <span class="math inline">\(m^{ed}≡0≡m\pmod q\)</span></li>
+<li>If <span class="math inline">\(m\not \equiv 0\pmod q\)</span>, it can be deduced that: <span class="math display">\[m^{ed}=m^{ed-1}m=m^{h(q-1)}m=(m^{q-1})^{h}m\equiv 1^{h}m\equiv m{\pmod {q}}\]</span></li>
+</ol>
+<p>Since both <span class="math inline">\(m^{ed}≡m\pmod p\)</span> and <span class="math inline">\(m^{ed}≡m\pmod q\)</span> have been proved, <span class="math inline">\(m^{ed}≡m\pmod{pq}\)</span> holds, Q.E.D.</p>
+<h4 id="optimized-rsa-decryption">Optimized RSA Decryption</h4>
+<p>Combining Fermat’s little theorem and the Chinese remainder theorem can not only verify the correctness of the RSA but also deduce an optimized decryption method.</p>
+<p>In the RSA encryption algorithm, the modulus <span class="math inline">\(N\)</span> is the product of two prime numbers <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>. Therefore, for any number <span class="math inline">\(m\)</span> less than <span class="math inline">\(N\)</span>, letting <span class="math inline">\(m_1=m\bmod p\)</span> and <span class="math inline">\(m_2=m\bmod q\)</span>, <span class="math inline">\(m\)</span> is uniquely determined by <span class="math inline">\((m_1,m_2)\)</span>. According to the Chinese remainder theorem, we can use the general solution formula to deduce <span class="math inline">\(m\)</span> from <span class="math inline">\((m_1,m_2)\)</span>. Since <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> each have only half the number of bits as <span class="math inline">\(N\)</span>, modular arithmetic will be more efficient than directly computing <span class="math inline">\(c^d\equiv m\pmod N\)</span>. And in the process of calculating <span class="math inline">\((m_1,m_2)\)</span>, applying the corollary of Fermat's little theorem yields: <span class="math display">\[\begin{align}
+m_1&amp;=m\bmod p=(c^d\bmod N)\bmod p\\
+&amp;=c^d\bmod p=c^{d\mod(p-1)}\bmod p\tag{1}\label{eq1}\\
+m_2&amp;=m\bmod q=(c^d\bmod N)\bmod q\\
+&amp;=c^d\bmod q=c^{d\mod(q-1)}\bmod q\tag{2}\label{eq2}\\
+\end{align}\]</span></p>
+<p>Obviously, in above <span class="math inline">\((1)\)</span> and <span class="math inline">\((2)\)</span> the exponent <span class="math inline">\(d\)</span> is reduced to <span class="math inline">\(d_P=d\bmod (p-1)\)</span> and <span class="math inline">\(d_Q=d\bmod (q-1)\)</span> respectively, which further speeds up the calculation. Finally, the step of calculating <span class="math inline">\(m\)</span> is further optimized using the Garner algorithm<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>: <span class="math display">\[\begin{align}
+q_{\text{inv}}&amp;=q^{-1}\pmod {p}\\
+h&amp;=q_{\text{inv}}(m_{1}-m_{2})\pmod {p}\\
+m&amp;=m_{2}+hq\pmod {pq}\tag{3}\label{eq3}
+\end{align}\]</span> Note that given <span class="math inline">\((p,q,d)\)</span>, the values of <span class="math inline">\((d_P,d_Q,q_\text{inv})\)</span> are determined. So they can be precomputed and stored. For decryption, only <span class="math inline">\((m_1,m_2,h)\)</span> are to be calculated and substituted into the above (3).</p>
+<p>This is actually the decryption algorithm specified in the RSA cryptography standard <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc8017">RFC 8017</a> (PKCS #1 v2.2). The ASN.1 formatted key data sequence described by this specification corresponds exactly to the above description (<span class="math inline">\(d_P\)</span> - exponent1，<span class="math inline">\(d_Q\)</span> - exponent2，<span class="math inline">\(q_{\text{inv}}\)</span> - coefficient):</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">RSAPrivateKey ::= SEQUENCE &#123;</span><br><span class="line">    version           Version,</span><br><span class="line">    modulus           INTEGER,  -- n</span><br><span class="line">    publicExponent    INTEGER,  -- e</span><br><span class="line">    privateExponent   INTEGER,  -- d</span><br><span class="line">    prime1            INTEGER,  -- p</span><br><span class="line">    prime2            INTEGER,  -- q</span><br><span class="line">    exponent1         INTEGER,  -- d mod (p-1)</span><br><span class="line">    exponent2         INTEGER,  -- d mod (q-1)</span><br><span class="line">    coefficient       INTEGER,  -- (inverse of q) mod p</span><br><span class="line">    otherPrimeInfos   OtherPrimeInfos OPTIONAL</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The widely used open-source library <a target="_blank" rel="noopener" href="https://www.openssl.org/">OpenSSL</a> implements this efficient and practical decryption algorithm. As shown below, the key data generated using the OpenSSL command line tool is consistent with the PKCS #1 standard:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Generate 512-bit RSA keys saved in PEM format file.</span></span><br><span class="line"><span class="comment"># For demo only, DON&#x27;T USE 512-bit KEYS IN PRODUCTION!</span></span><br><span class="line">$ openssl genrsa -out private-key.pem 512</span><br><span class="line">Generating RSA private key, 512 bit long modulus</span><br><span class="line">.++++++++++++</span><br><span class="line">......................++++++++++++</span><br><span class="line">e is 65537 (0x10001)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Inspect RSA keys saved in a PEM format file.</span></span><br><span class="line">$ openssl pkey -<span class="keyword">in</span> private-key.pem -text</span><br><span class="line">-----BEGIN PRIVATE KEY-----</span><br><span class="line">MIIBVAIBADANBgkqhkiG9w0BAQEFAASCAT4wggE6AgEAAkEA7HwgswSjqvDRPWj3</span><br><span class="line">vVIxMZDAtXJCa7Qx+2jFv7e7GXB8+fa3MTBL36YjIcAgLeCHAyIzWkPndxvTJE2l</span><br><span class="line">WvYzRQIDAQABAkBCUp2pF0f/jQJhwqqYQhDh4cLqIF1Yb3UFGWE8X37tpwCifAqg</span><br><span class="line">t8NEpaXWkct5M+YxqjKfdOKYy0TVcJRlyS+RAiEA9xujHmh+bOvl0xWDFoARDAHw</span><br><span class="line">v94qRCpeRNveHFpNvPsCIQD0/qFpeSjRWj/4vjCkIOv1RbbhDHVsgsF9HRJNW2Rc</span><br><span class="line">vwIgaGIAUcQKQ7CScMxRh5upl8zqCeKrMAhFsgi+lnN/CykCIDMdAL4Jmht7ccdK</span><br><span class="line">nslPWQs1/T6co878xLN+ojfjbl/vAiEAhmp4YDX1g8kFh6cVtTIDT5AGtzqwB2Jw</span><br><span class="line">cCq+IoKDYBc=</span><br><span class="line">-----END PRIVATE KEY-----</span><br><span class="line">Private-Key: (512 bit)</span><br><span class="line">modulus:</span><br><span class="line">    00:ec:7c:20:b3:04:a3:aa:f0:d1:3d:68:f7:bd:52:</span><br><span class="line">    31:31:90:c0:b5:72:42:6b:b4:31:fb:68:c5:bf:b7:</span><br><span class="line">    bb:19:70:7c:f9:f6:b7:31:30:4b:<span class="built_in">df</span>:a6:23:21:c0:</span><br><span class="line">    20:2d:e0:87:03:22:33:5a:43:e7:77:1b:d3:24:4d:</span><br><span class="line">    a5:5a:f6:33:45</span><br><span class="line">publicExponent: 65537 (0x10001)</span><br><span class="line">privateExponent:</span><br><span class="line">    42:52:9d:a9:17:47:ff:8d:02:61:c2:aa:98:42:10:</span><br><span class="line">    e1:e1:c2:ea:20:5d:58:6f:75:05:19:61:3c:5f:7e:</span><br><span class="line">    ed:a7:00:a2:7c:0a:a0:b7:c3:44:a5:a5:d6:91:cb:</span><br><span class="line">    79:33:e6:31:aa:32:9f:74:e2:98:cb:44:d5:70:94:</span><br><span class="line">    65:c9:2f:91</span><br><span class="line">prime1:</span><br><span class="line">    00:f7:1b:a3:1e:68:7e:6c:eb:e5:d3:15:83:16:80:</span><br><span class="line">    11:0c:01:f0:bf:de:2a:44:2a:5e:44:db:de:1c:5a:</span><br><span class="line">    4d:bc:fb</span><br><span class="line">prime2:</span><br><span class="line">    00:f4:fe:a1:69:79:28:d1:5a:3f:f8:be:30:a4:20:</span><br><span class="line">    eb:f5:45:b6:e1:0c:75:6c:82:c1:7d:1d:12:4d:5b:</span><br><span class="line">    64:5c:bf</span><br><span class="line">exponent1:</span><br><span class="line">    68:62:00:51:c4:0a:43:b0:92:70:cc:51:87:9b:a9:</span><br><span class="line">    97:cc:ea:09:e2:ab:30:08:45:b2:08:be:96:73:7f:</span><br><span class="line">    0b:29</span><br><span class="line">exponent2:</span><br><span class="line">    33:1d:00:be:09:9a:1b:7b:71:c7:4a:9e:c9:4f:59:</span><br><span class="line">    0b:35:fd:3e:9c:a3:ce:<span class="built_in">fc</span>:c4:b3:7e:a2:37:e3:6e:</span><br><span class="line">    5f:ef</span><br><span class="line">coefficient:</span><br><span class="line">    00:86:6a:78:60:35:f5:83:c9:05:87:a7:15:b5:32:</span><br><span class="line">    03:4f:90:06:b7:3a:b0:07:62:70:70:2a:be:22:82:</span><br><span class="line">    83:60:17</span><br></pre></td></tr></table></figure>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Also known as "Fermat's conjecture"，its gist is that, when <span class="math inline">\(n &gt; 2\)</span>, the equation <span class="math inline">\(x^{n}+y^{n}=z^{n}\)</span> has no positive integer solutions <span class="math inline">\((x, y, z)\)</span>. After it was finally proven correct in 1995, it became known as "Fermat's last theorem."<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Hint: If two integers are congruent modulo <span class="math inline">\(n\)</span>, then <span class="math inline">\(n\)</span> is a divisor of their difference.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>Garner, H., "<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/5219515">The Residue Number System</a>", IRE Transactions on Electronic Computers, Volume EC-8, Issue 2, pp.140-147, DOI 10.1109/TEC.1959.5219515, June 1959<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Zixi
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://www.packetmania.net/en/2023/11/14/Fermats-Little-Theorem/" title="The Inductive Proof and Applications of Fermat&#39;s Little Theorem">https://www.packetmania.net/en/2023/11/14/Fermats-Little-Theorem/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/en/tags/Cryptography/" rel="tag"><i class="fa fa-tag"></i> Cryptography</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/2023/08/21/TLS1-3-intro/" rel="prev" title="TLS 1.3 and the Coming NIST Mandate">
+                  <i class="fa fa-chevron-left"></i> TLS 1.3 and the Coming NIST Mandate
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Gitalk Comments</a></li>
+            <li class="tab"><a href="#comment-utterances">Utterances Comments</a></li>
+            <li class="tab"><a href="#comment-disqus">Disqus Comments</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+            <div class="tab-pane disqus" id="comment-disqus">
+              
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zixi</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>Symbols count total: </span>
+    <span title="Symbols count total">249k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>Reading time total &asymp;</span>
+    <span title="Reading time total">3:46</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5fc1fd29017282c7" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/en/js/comments.js"></script><script src="/en/js/utils.js"></script><script src="/en/js/motion.js"></script><script src="/en/js/next-boot.js"></script><script src="/en/js/bookmark.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/en/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"forest","dark":"forest"},"js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.13.4/dist/mermaid.min.js","integrity":"sha256-96rwDGMWIQYB0yKGp1sKi1yrjrLPj2oT39IpbCsIrsg="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/en/js/third-party/fancybox.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/en/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"packetmania-github-io","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/en/js/third-party/comments/disqus.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"packetmania","repo":"en","client_id":"a45f6ae3f97c1a467856","client_secret":"7d81b74f952b388f93dcb5a8c44cd12f657969fa","admin_user":"packetmania","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"b05cdc46cab4b24122c9a9ccb55340ae"}</script>
+<script src="/en/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"packetmania/en","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/en/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
