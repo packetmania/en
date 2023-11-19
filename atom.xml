@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2023-11-19T07:17:04.490Z</updated>
+  <updated>2023-11-19T21:07:00.761Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.packetmania.net/en/2023/11/17/RSA-attack-defense-2/"/>
     <id>https://www.packetmania.net/en/2023/11/17/RSA-attack-defense-2/</id>
     <published>2023-11-18T03:37:22.829Z</published>
-    <updated>2023-11-19T07:17:04.490Z</updated>
+    <updated>2023-11-19T21:07:00.761Z</updated>
     
     
     <summary type="html">&lt;p&gt;This article first supplements two specific integer factorization methods - Fermat&#39;s factorization method and Pollard&#39;s rho algorithm, explaining the essence of their algorithms and applicable scenarios, and provides a Python reference implementation. Next, it analyzes in detail a classic low private exponent attack - Wiener&#39;s attack, elaborating on the mathematical basis, the attack principle, and the attack procedure, with a complete Python program. The article also cites the latest research paper proposing a new upper bound for the private exponent when Wiener&#39;s attack is successful and verifies the correctness of this limit with a test case.</summary>
