@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2023-11-18T03:17:55.636Z</updated>
+  <updated>2023-11-19T07:06:39.908Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>RSA: Attack and Defense (II)</title>
+    <link href="https://www.packetmania.net/en/2023/11/17/RSA-attack-defense-2/"/>
+    <id>https://www.packetmania.net/en/2023/11/17/RSA-attack-defense-2/</id>
+    <published>2023-11-18T03:37:22.829Z</published>
+    <updated>2023-11-19T07:06:39.908Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;This article first supplements two specific integer factorization methods - Fermat&#39;s factorization method and Pollard&#39;s rho algorithm, explaining the essence of their algorithms and applicable scenarios, and provides a Python reference implementation. Next, it analyzes in detail a classic low private exponent attack - Wiener&#39;s attack, elaborating on the mathematical basis, the attack principle, and the attack procedure, with a complete Python program. The article also cites the latest research paper proposing a new upper bound for the private exponent when Wiener&#39;s attack is successful and verifies the correctness of this limit with a test case.</summary>
+    
+    
+    
+    <category term="Technical Know-how" scheme="https://www.packetmania.net/en/categories/Technical-Know-how/"/>
+    
+    
+    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
+    
+    <category term="Network Security" scheme="https://www.packetmania.net/en/tags/Network-Security/"/>
+    
+    <category term="Python Programming" scheme="https://www.packetmania.net/en/tags/Python-Programming/"/>
+    
+  </entry>
   
   <entry>
     <title>The Inductive Proof and Applications of Fermat&#39;s Little Theorem</title>
@@ -59,11 +82,11 @@
   </entry>
   
   <entry>
-    <title>RSA: Attack and Defense (1)</title>
+    <title>RSA: Attack and Defense (I)</title>
     <link href="https://www.packetmania.net/en/2023/03/16/RSA-attack-defense/"/>
     <id>https://www.packetmania.net/en/2023/03/16/RSA-attack-defense/</id>
     <published>2023-03-17T04:00:32.000Z</published>
-    <updated>2023-09-16T00:18:51.010Z</updated>
+    <updated>2023-11-19T07:09:28.150Z</updated>
     
     
     <summary type="html">&lt;p&gt;RSA is a public-key cryptosystem built on top of an asymmetric encryption algorithm, which was jointly invented by three cryptographers and computer scientists at the Massachusetts Institute of Technology in 1977. The RSA public-key encryption algorithm and cryptosystem provide data confidentiality and signature verification functions widely used on the Internet. Since its birth, RSA has become a major research object of modern cryptography. Many cryptanalysts and information security experts have been studying its possible theoretical flaws and technical loopholes to ensure security and reliability in practical applications.</summary>
