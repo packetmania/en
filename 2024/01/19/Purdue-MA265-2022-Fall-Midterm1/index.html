@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.3.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/en/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="piAnQ_mnwkhV_qh4_Se1yLzM1IwOvuq-vmYfXBkWRXU">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=EB+Garamond:300,300italic,400,400italic,700,700italic%7CNoto+Serif+SC:300,300italic,400,400italic,700,700italic%7CRoboto+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.packetmania.net","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk | utterances | disqus","storage":true,"lazyload":false,"nav":{"disqus":{"text":"Disqus Comments","order":-1},"utterances":{"text":"Utterances Comments","order":-2},"gitalk":{"text":"Gitalk Comments","order":-3}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/en/js/config.js"></script>
+<meta name="description" content="Linear algebra provides mathematical tools to represent and analyze data and models in higher dimensions. It is essential for machine learning, computer graphics, control theory, and other scientific">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Purdue MA 26500 Fall 2022 Midterm I Solutions">
+<meta property="og:url" content="https://www.packetmania.net/en/2024/01/19/Purdue-MA265-2022-Fall-Midterm1/index.html">
+<meta property="og:site_name" content="PacketMania">
+<meta property="og:description" content="Linear algebra provides mathematical tools to represent and analyze data and models in higher dimensions. It is essential for machine learning, computer graphics, control theory, and other scientific">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.packetmania.net/en/2024/01/19/Purdue-MA265-2022-Fall-Midterm1/Linear-Algebra-and-Its-Applications-6e.jpg">
+<meta property="og:image" content="https://www.packetmania.net/en/2024/01/19/Purdue-MA265-2022-Fall-Midterm1/Linear-Transformation.png">
+<meta property="article:published_time" content="2024-01-20T06:55:57.000Z">
+<meta property="article:modified_time" content="2024-01-23T04:30:32.579Z">
+<meta property="article:author" content="Zixi">
+<meta property="article:tag" content="Linear Algebra">
+<meta property="article:tag" content="Machine Learning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.packetmania.net/en/2024/01/19/Purdue-MA265-2022-Fall-Midterm1/Linear-Algebra-and-Its-Applications-6e.jpg">
+
+
+<link rel="canonical" href="https://www.packetmania.net/en/2024/01/19/Purdue-MA265-2022-Fall-Midterm1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.packetmania.net/en/2024/01/19/Purdue-MA265-2022-Fall-Midterm1/","path":"2024/01/19/Purdue-MA265-2022-Fall-Midterm1/","title":"Purdue MA 26500 Fall 2022 Midterm I Solutions"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Purdue MA 26500 Fall 2022 Midterm I Solutions | PacketMania</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YKBP0QK7Z"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-9YKBP0QK7Z","only_pageview":false}</script>
+  <script src="/en/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PacketMania" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PacketMania</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Technology | Knowledge | Sharing</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/en/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/en/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+        <li class="menu-item menu-item-rss"><a href="/en/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+        <li class="menu-item menu-item-language"><a href="https://www.packetmania.net/" rel="section"><i class="fa fa-language fa-fw"></i>中文</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-to-purdue-ma-26500"><span class="nav-number">1.</span> <span class="nav-text">Introduction to Purdue MA 26500</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#basic-information"><span class="nav-number">1.1.</span> <span class="nav-text">Basic Information</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#homeworks-and-exams"><span class="nav-number">1.2.</span> <span class="nav-text">Homeworks and Exams</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reference-links"><span class="nav-number">1.3.</span> <span class="nav-text">Reference Links</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fall-2022-midterm-i-solutions"><span class="nav-number">2.</span> <span class="nav-text">Fall 2022 Midterm I Solutions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem-1-10-points"><span class="nav-number">2.1.</span> <span class="nav-text">Problem 1 (10 points)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#problem-2-10-points"><span class="nav-number">2.2.</span> <span class="nav-text">Problem 2 (10 points)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#problem-3-10-points"><span class="nav-number">2.3.</span> <span class="nav-text">Problem 3 (10 points)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#problem-4-10-points"><span class="nav-number">2.4.</span> <span class="nav-text">Problem 4 (10 points)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#problem-5-10-points"><span class="nav-number">2.5.</span> <span class="nav-text">Problem 5 (10 points)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#problem-6-10-points"><span class="nav-number">2.6.</span> <span class="nav-text">Problem 6 (10 points)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#problem-7-10-points"><span class="nav-number">2.7.</span> <span class="nav-text">Problem 7 (10 points)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#problem-8-424-points"><span class="nav-number">2.8.</span> <span class="nav-text">Problem 8 (4+2+4 points)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#problem-9-4222-points"><span class="nav-number">2.9.</span> <span class="nav-text">Problem 9 (4+2+2+2 points)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#problem-10-55-points"><span class="nav-number">2.10.</span> <span class="nav-text">Problem 10 (5+5 points)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#summary"><span class="nav-number">3.</span> <span class="nav-text">Summary</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zixi"
+      src="/en/images/ccie.gif">
+  <p class="site-author-name" itemprop="name">Zixi</p>
+  <div class="site-description" itemprop="description">Computer Networking and Software Design & Implementation</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/packetmania" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;packetmania" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zixiruoxue@gmail.com" title="E-Mail → mailto:zixiruoxue@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/zixisean" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zixisean" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/15140531" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;15140531" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_nd.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.packetmania.net/en/2024/01/19/Purdue-MA265-2022-Fall-Midterm1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/ccie.gif">
+      <meta itemprop="name" content="Zixi">
+      <meta itemprop="description" content="Computer Networking and Software Design & Implementation">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PacketMania">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Purdue MA 26500 Fall 2022 Midterm I Solutions
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-01-19 22:55:57" itemprop="dateCreated datePublished" datetime="2024-01-19T22:55:57-08:00">2024-01-19</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2024-01-22 20:30:32" itemprop="dateModified" datetime="2024-01-22T20:30:32-08:00">2024-01-22</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/Study-Notes/" itemprop="url" rel="index"><span itemprop="name">Study Notes</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>17k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>15 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Linear algebra provides mathematical tools to represent and analyze data and models in higher dimensions. It is essential for machine learning, computer graphics, control theory, and other scientific and engineering fields. Starting from this post, I will provide study guides and solutions to Purdue MA26500 exams in last a few semesters.<span id="more"></span></p>
+<div class="note success no-icon"><p><strong>You can’t learn too much linear algebra</strong><br> <strong>— <em>Benedict Gross</em> (American mathematician, professor at the University of California San Diegom and Harvard University, member of the National Academy of Sciences)</strong></p>
+</div>
+<h2 id="introduction-to-purdue-ma-26500">Introduction to Purdue MA 26500</h2>
+<p>Purdue University is a world-renowned, public research university that advances discoveries in science, technology, engineering and math. Purdue Department of Mathmatics provides a linear algebra course MA 26500 every semester, as it is mandatory for undergraduate students of many science and engineering majors.</p>
+<blockquote>
+<p><strong><em>Disclosure</em></strong>: <em>This blog site is reader-supported. When you buy through the affiliate links below, as an Amazon Associate, I earn a tiny commission from qualifying purchases. Thank you.</em></p>
+</blockquote>
+<h3 id="basic-information">Basic Information</h3>
+<ul>
+<li><strong>Course Title</strong>: Introduction to Linear Algebra</li>
+<li><strong>Credit Hours</strong>: 3.00</li>
+<li><strong>Lectures</strong>: 50 minutes per session, 3 times a week, 16 weeks</li>
+<li><strong>Course Description</strong>: A computational introduction to linear algebra, which plays a fundamental role in science, engineering and the social sciences, and this course will provide the student a firm basis for the use of such.</li>
+<li><strong>Key Topics</strong>: systems of linear equations; matrix algebra; vector spaces; determinants; eigenvalues and eigenvectors; diagonalization of matrices; and applications</li>
+<li><strong>Textbook</strong>: <a target="_blank" rel="noopener" href="https://amzn.to/3Srz7qm"><em>Linear Algebra and its Applications</em></a> (6th Edition) by David C. Lay, Steven R. Lay, Judi J. McDonald <a target="_blank" rel="noopener" href="https://amzn.to/3Srz7qm"><img src="Linear-Algebra-and-Its-Applications-6e.jpg" style="width:50.0%;height:50.0%" /></a></li>
+</ul>
+<h3 id="homeworks-and-exams">Homeworks and Exams</h3>
+<ul>
+<li>35 online homework assignments using <a href="perrson.com/mylab/math">MyLab Math</a></li>
+<li>36 handwriting homework assignments (<a target="_blank" rel="noopener" href="https://www.math.purdue.edu/academic/courses/semester/202420/ma26500/resources/Assignment_SS2024.pdf">Spring 2024</a>)</li>
+<li><strong>Midterm I</strong> (Book Sections 1.1 – 3.3): 1 hour (6-week mark)</li>
+<li><strong>Midterm II</strong> (Book Sections 4.1 – 5.7): 1 hour (12-week mark)</li>
+<li>Midterm format: a combination of multiple-choice questions and short answer questions</li>
+<li><strong>Final</strong> (Comprehensive Common): 2 hour (16-week mark), all multiple-choice questions</li>
+</ul>
+<h3 id="reference-links">Reference Links</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.math.purdue.edu/academic/courses/semester/semesters">Purdue Department of Mathmatics Course Achive</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.math.purdue.edu/academic/courses/semester/202420/ma26500/index.html">Purdue MA 26500 Spring 2024</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.math.purdue.edu/academic/courses/oldexams.php?course=MA26500">Purdue MA 26500 Exam Archive</a></li>
+<li><a target="_blank" rel="noopener" href="https://amzn.to/428m5Bl">Study Guide for Linear Algebra and Its Applications 6th Edition</a></li>
+</ul>
+<h2 id="fall-2022-midterm-i-solutions">Fall 2022 Midterm I Solutions</h2>
+<h3 id="problem-1-10-points">Problem 1 (10 points)</h3>
+<p>Let <span class="math inline">\(A=\begin{bmatrix}1 &amp; 2\\3 &amp; 5\\\end{bmatrix}\)</span>，<span class="math inline">\(B=\begin{bmatrix}3 &amp; 1\\4 &amp; 1\\\end{bmatrix}\)</span>, and <span class="math inline">\(C=AB^{-1}= \begin{bmatrix}a &amp; b\\c &amp; d\\\end{bmatrix}\)</span>, then <span class="math inline">\(a+b+c+d=\)</span></p>
+<ul>
+<li>A. <span class="math inline">\(-7\)</span></li>
+<li>B. <span class="math inline">\(8\)</span></li>
+<li>C. <span class="math inline">\(7\)</span></li>
+<li>D. <span class="math inline">\(-8\)</span></li>
+<li>E. <span class="math inline">\(0\)</span></li>
+</ul>
+<details class="note success"><summary><p>Problem 1 Solution</p>
+</summary>
+<p>Because <span class="math inline">\(C=AB^{-1}\)</span>, we can multiple both sides by <span class="math inline">\(B\)</span> and obtain <span class="math inline">\(CB=AB^{-1}B=A\)</span>. So <span class="math display">\[
+\begin{bmatrix}a &amp; b\\c &amp; d\\\end{bmatrix}
+\begin{bmatrix}3 &amp; 1\\4 &amp; 1\\\end{bmatrix}=
+\begin{bmatrix}1 &amp; 2\\3 &amp; 5\\\end{bmatrix}
+\]</span> Further compute at the left side <span class="math display">\[
+\begin{bmatrix}3a+4b &amp; a+b\\3c+4d &amp; c+d\\\end{bmatrix}=
+\begin{bmatrix}1 &amp; 2\\3 &amp; 5\\\end{bmatrix}
+\]</span> From here we can directly see <span class="math inline">\(a+b=2\)</span> and <span class="math inline">\(c+d=5\)</span>, so <span class="math inline">\(a+b+c+d=7\)</span>. The answer is <mark><strong>C</strong></mark>.</p>
+<p><strong>⚠️Alert:</strong> There is no need to find the inverse of the matrix <span class="math inline">\(B\)</span> and multiply the result with <span class="math inline">\(A\)</span>. Even that can deduce the same answer, it is very inefficient and takes too much time.</p>
+
+</details>
+<h3 id="problem-2-10-points">Problem 2 (10 points)</h3>
+<p>Let <span class="math inline">\(\mathrm L\)</span> be a linear transformation from <span class="math inline">\(\mathbb R^3\)</span> to <span class="math inline">\(\mathbb R^3\)</span> whose standard matrix is <span class="math inline">\(\begin{bmatrix}1 &amp;2 &amp;3\\0 &amp;1 &amp;1\\2 &amp;3 &amp; k\\\end{bmatrix}\)</span> where <span class="math inline">\(k\)</span> is a real number. Find all values of <span class="math inline">\(k\)</span> such that <span class="math inline">\(\mathrm L\)</span> is one-to-one.</p>
+<ul>
+<li>A. <span class="math inline">\(k\neq 1\)</span></li>
+<li>B. <span class="math inline">\(k\neq 2\)</span></li>
+<li>C. <span class="math inline">\(k\neq 3\)</span></li>
+<li>D. <span class="math inline">\(k\neq 4\)</span></li>
+<li>E. <span class="math inline">\(k\neq 5\)</span></li>
+</ul>
+<details class="note success"><summary><p>Problem 2 Solution</p>
+</summary>
+<p>For this standard matrix, do elementary row operations below to achieve <strong>row echelon form</strong>.</p>
+<p>First add -2 times row 1 to row 3: <span class="math display">\[\begin{bmatrix}1 &amp;2 &amp;3\\0 &amp;1 &amp;1\\0 &amp;-1 &amp;k-6\\\end{bmatrix}\]</span> Then add row 2 to row 3: <span class="math display">\[\begin{bmatrix}1 &amp;2 &amp;3\\0 &amp;1 &amp;1\\0 &amp;0 &amp;k-5\\\end{bmatrix}\]</span> Obviously if <span class="math inline">\(k=5\)</span>, the equation <span class="math inline">\(A\mathbf x=\mathbf b\)</span> has a free variable <span class="math inline">\(x_3\)</span> and each <span class="math inline">\(\mathbf b\)</span> is the image of more than one <span class="math inline">\(\mathbf x\)</span>. That is, <span class="math inline">\(\mathrm L\)</span> is not one-to-one. So the answer is <mark><strong>E</strong></mark>.</p>
+
+</details>
+<h3 id="problem-3-10-points">Problem 3 (10 points)</h3>
+<p>Which of the following statements is/are always TRUE?</p>
+<ol type="i">
+<li><p>If <span class="math inline">\(A\)</span> is a singular <span class="math inline">\(8\times 8\)</span> matrix, then its last column must be a linear combination of the first seven columns.</p></li>
+<li><p>Let <span class="math inline">\(A\)</span> be a <span class="math inline">\(5\times 7\)</span> matrix such that <span class="math inline">\(A\cdot\pmb x=\pmb b\)</span> is consistent for any <span class="math inline">\(\pmb{b}∈\mathbb{R}^5\)</span>, and let <span class="math inline">\(B\)</span> be a <span class="math inline">\(7\times 11\)</span> matrix such that <span class="math inline">\(B\cdot\pmb x=\pmb c\)</span> is consistent for any <span class="math inline">\(\pmb{c}∈\mathbb{R}^7\)</span>. Then, the matrix equation <span class="math inline">\(AB\cdot \pmb x=\pmb b\)</span> is consistent for any <span class="math inline">\(\pmb{b}∈\mathbb{R}^5\)</span>.</p></li>
+<li><p>For any <span class="math inline">\(m\times n\)</span> matrix <span class="math inline">\(A\)</span>, the dimension of the null space of <span class="math inline">\(A\)</span> equals the dimension of the null space of its transpose <span class="math inline">\(A^T\)</span>.</p></li>
+<li><p>If <span class="math inline">\(A\)</span> is an <span class="math inline">\(m\times n\)</span> matrix, then the set <span class="math inline">\({A\cdot\pmb x|\pmb x∈\mathbb{R}^n}\)</span> is a subspace of <span class="math inline">\(\mathbb{R}^m\)</span>.</p></li>
+</ol>
+<ul>
+<li>A. (i) only</li>
+<li>B. (i) and (ii) only</li>
+<li>C. (iv) only</li>
+<li>D. (ii) and (iv) only</li>
+<li>E. (iii) and (iv) only</li>
+</ul>
+<details class="note success"><summary><p>Problem 3 Solution</p>
+</summary>
+<p>For (i), a singular matrix <span class="math inline">\(A\)</span> is noninvertible and has <span class="math inline">\(det(A)=0\)</span>. By Theorem 8 of Section 2.3, the columns of <span class="math inline">\(A\)</span> form a linearly dependent set. Denote <span class="math inline">\(A=[\pmb{v}_1\cdots\pmb{v}_8]\)</span>, then <span class="math display">\[
+c_1\pmb{v}_1+c_2\pmb{v}_2+\cdots+c_8\pmb{v}_8=\pmb{0}
+\]</span><br />
+Does this imply the statement (i) is true? No! If <span class="math inline">\(c_8\)</span> is 0, <span class="math inline">\(\pmb{v}_8\)</span> is NOT a linear combination of the columns <span class="math inline">\(\pmb{v}_1\)</span> to <span class="math inline">\(\pmb{v}_7\)</span>.</p>
+<p>For (ii), since <span class="math inline">\(AB\cdot\pmb x=A(B\pmb{x})=A\pmb c=\pmb b\)</span>. the consistency holds for the new <span class="math inline">\(5\times 11\)</span> matrix <span class="math inline">\(AB\)</span> as well. It is true.</p>
+<p>For (iii), since <span class="math inline">\(A\)</span> is a <span class="math inline">\(m\times n\)</span> matrix, <span class="math inline">\(A^T\)</span> is a <span class="math inline">\(n\times m\)</span> matrix. From Section 2.9 Dimension and Rank, we know that "If a matrix <span class="math inline">\(A\)</span> has <span class="math inline">\(n\)</span> columns, then <span class="math inline">\(\mathrm rank\,A+\mathrm{dim\,Nul}\,A= n\)</span>." From this, we can list <span class="math display">\[\begin{align}
+\mathrm{dim\,Nul}\,A&amp;=n-rank\,A\\
+\mathrm{dim\,Nul}\,A^T&amp;=m-rank\,A^T
+\end{align}\]</span> As these two dimension numbers are not necessary the same, (iii) is not true.</p>
+<p>For (iv), we can first review the definition of subspace. From Section 2.8 Subspaces of <span class="math inline">\(\mathbb R^n\)</span>, &gt;A subspace of <span class="math inline">\(\mathbb R^n\)</span> is any set <span class="math inline">\(H\)</span> in <span class="math inline">\(\mathbb R^n\)</span> that has three properties: a. The zero vector is in <span class="math inline">\(H\)</span>. b. For each <span class="math inline">\(\pmb u\)</span> and <span class="math inline">\(\pmb v\)</span> in <span class="math inline">\(H\)</span>, the sum <span class="math inline">\(\pmb u+\pmb v\)</span> is in <span class="math inline">\(H\)</span>. c. For each <span class="math inline">\(\pmb u\)</span> in <span class="math inline">\(H\)</span> and each scalar <span class="math inline">\(c\)</span>, the vector <span class="math inline">\(c\pmb u\)</span> is in H.</p>
+<p>Because <span class="math inline">\(A\cdot\pmb{0}=\pmb{0}\)</span>, <span class="math inline">\(A\pmb{x}+A\pmb{y}=A(\pmb{x}+\pmb{y})\)</span>, <span class="math inline">\(A\pmb{u}+A\pmb{v}=A(\pmb u+\pmb v)\)</span>, all the results on the right side are also in the set. This proves that (iv) is true.</p>
+<p>So the answer is <mark><strong>D</strong></mark>.</p>
+
+</details>
+<h3 id="problem-4-10-points">Problem 4 (10 points)</h3>
+<p>Compute the determinant of the given matrix <span class="math inline">\(\begin{bmatrix}5 &amp;7 &amp;2 &amp;2\\0 &amp;3 &amp;0 &amp;-4\\-5 &amp;-8 &amp;0 &amp;3\\0 &amp;5 &amp;0 &amp;-6\\\end{bmatrix}\)</span></p>
+<ul>
+<li>A. <span class="math inline">\(-20\)</span></li>
+<li>B. <span class="math inline">\(20\)</span></li>
+<li>C. <span class="math inline">\(18\)</span></li>
+<li>D. <span class="math inline">\(2\)</span></li>
+<li>E. <span class="math inline">\(0\)</span></li>
+</ul>
+<details class="note success"><summary><p>Problem 4 Solution</p>
+</summary>
+<p>Notice that the third column of the given matrix has all entries equal to zero except <span class="math inline">\(a_{13}\)</span>. Taking advantage of this, we can do a cofactor expansion down the third column, then continue to do cofactor expansion with the <span class="math inline">\(3\times3\)</span> submatrix <span class="math display">\[\begin{align}
+\begin{vmatrix}5 &amp;7 &amp;2 &amp;2\\0 &amp;3 &amp;0 &amp;-4\\-5 &amp;-8 &amp;0 &amp;3\\0 &amp;5 &amp;0 &amp;-6\\\end{vmatrix}&amp;=(-1)^{1+3}\cdot2\cdot\begin{vmatrix}0 &amp;3 &amp;-4\\-5 &amp;-8 &amp;3\\0 &amp;5 &amp;-6\\\end{vmatrix}\\
+&amp;=2\cdot(-1)^{2+1}\cdot(-5)\begin{vmatrix}3 &amp;-4\\5 &amp;-6\\\end{vmatrix}=20
+\end{align}\]</span> So the answer is <mark><strong>B</strong></mark>.</p>
+<p><strong>📝Notes:</strong>This problem is actually taken from the textbook. It is the Practice Problem of Section 3.1 Introduction to Determinants.</p>
+
+</details>
+<h3 id="problem-5-10-points">Problem 5 (10 points)</h3>
+<p>Which of the following statements is always TRUE</p>
+<p>A. If <span class="math inline">\(A\)</span> is an <span class="math inline">\(n\times n\)</span> matrix with all entries being positive, then <span class="math inline">\(\det(A)&gt;0\)</span>.</p>
+<p>B. If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are two <span class="math inline">\(n\times n\)</span> matrices with <span class="math inline">\(\det(A)&gt;0\)</span> and <span class="math inline">\(\det(B)&gt;0\)</span>, then also <span class="math inline">\(\det(A+B)&gt;0\)</span>.</p>
+<p>C. If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are two <span class="math inline">\(n\times n\)</span> matrices such that <span class="math inline">\(AB=0\)</span>, then both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are singular.</p>
+<p>D. If rows of an <span class="math inline">\(n\times n\)</span> matrix <span class="math inline">\(A\)</span> are linearly independent, then <span class="math inline">\(\det(A^{T}A)&gt;0\)</span>.</p>
+<p>E. If <span class="math inline">\(A\)</span> is an <span class="math inline">\(n\times n\)</span> matrix with <span class="math inline">\(A^2=I_n\)</span>, then <span class="math inline">\(\det(A)=1\)</span>.</p>
+<details class="note success no-icon"><summary><p>Problem 5 Solution</p>
+</summary>
+<p>Let's analyze the statements one by one.</p>
+<ul>
+<li><p>Obviouslty A is false. It is trivial to find a <span class="math inline">\(2\times 2\)</span> example to disprove it, such as <span class="math display">\[\begin{vmatrix}1 &amp;2\\3 &amp;4\\\end{vmatrix}=1\times 4-2\times 3=-2\]</span></p></li>
+<li><p>For B, as stated in the Section 3 Properties of Determinants "<span class="math inline">\(\det(A+B)\)</span> is <em>not</em> equal to <span class="math inline">\(\det(A)+\det(B)\)</span>, in general", this statement is no necessary true. On the contrary, we can have a simple case like <span class="math inline">\(A=\begin{bmatrix}1 &amp;0\\0 &amp;1\\\end{bmatrix}\)</span> and <span class="math inline">\(B=\begin{bmatrix}-1 &amp;0\\0 &amp;-1\\\end{bmatrix}\)</span>, then <span class="math inline">\(\det(A+B)=0\)</span>.</p></li>
+<li><p>C is also false since B could be zero matrix. If that is the case, A is not necessary singular.</p></li>
+<li><p>For D, first with the linearly independent property, we can see <span class="math inline">\(\det(A)\neq 0\)</span>. Secondary, the multiplicative property gives <span class="math inline">\(\det(A^{T}A)=\det(A^{T})\det(A)=(\det(A))^2\)</span>. So it is true that <span class="math inline">\(\det(A^{T}A) &gt; 0\)</span>.</p></li>
+<li><p>For E, from <span class="math inline">\(A^2=I_n\)</span>, we can deduce <span class="math inline">\(\det(A^{2})=(\det(A))^2=1\)</span>, so <span class="math inline">\(\det(A)=\pm 1\)</span>. For example, if <span class="math inline">\(A=\begin{bmatrix}1 &amp;0\\0 &amp;-1\\\end{bmatrix}\)</span>, then <span class="math inline">\(\det(A)=-1\)</span>. This statement is false.</p></li>
+</ul>
+<p>So we conclude that the answer is <mark><strong>D</strong></mark>.</p>
+
+</details>
+<h3 id="problem-6-10-points">Problem 6 (10 points)</h3>
+<p>Let <span class="math inline">\(A=\begin{bmatrix}1 &amp;2 &amp;6\\2 &amp;6 &amp;3\\3 &amp;8 &amp;10\\\end{bmatrix}\)</span> and let its inverse <span class="math inline">\(A^{-1}=[b_{ij}]\)</span>. Find <span class="math inline">\(b_{12}\)</span></p>
+<ul>
+<li>A. <span class="math inline">\(14\)</span></li>
+<li>B. <span class="math inline">\(-14\)</span></li>
+<li>C. <span class="math inline">\(1\)</span></li>
+<li>D. <span class="math inline">\(-1\)</span></li>
+<li>E. <span class="math inline">\(6\)</span></li>
+</ul>
+<details class="note success"><summary><p>Problem 6 Solution</p>
+</summary>
+<p>According to Theorem 8 of Section 3.3, <span class="math inline">\(A^{-1}=\frac{\large{1}}{\large{\mathrm{det}\,A}}\mathrm{adj}\,A\)</span>. Here the adjugate matrix <span class="math inline">\(\mathrm{adj}\,A\)</span> is the transpose of the matrix of cofactors. Hence <span class="math display">\[b_{12}=\frac{C_{21}}{\mathrm{det}\,A}\]</span></p>
+<p>First computer the cofacter <span class="math display">\[C_{21}=-\begin{vmatrix}2 &amp;6\\8 &amp;10\end{vmatrix}=28\]</span> Now computer the determinant efficiently with row operations (Theorem 3 of Section 3.2) for <span class="math inline">\(A\)</span> <span class="math display">\[
+{\mathrm{det}\,A}=
+\begin{vmatrix}1 &amp;2 &amp;6\\2 &amp;6 &amp;3\\3 &amp;8 &amp;10\\\end{vmatrix}=
+\begin{vmatrix}1 &amp;2 &amp;6\\0 &amp;2 &amp;-9\\0 &amp;2 &amp;-8\\\end{vmatrix}=
+\begin{vmatrix}1 &amp;2 &amp;6\\0 &amp;2 &amp;-9\\0 &amp;0 &amp;1\\\end{vmatrix}=2
+\]</span> So <span class="math inline">\(C_{21}=28/2=14\)</span>, the answer is <mark><strong>A</strong></mark>.</p>
+
+</details>
+<h3 id="problem-7-10-points">Problem 7 (10 points)</h3>
+<p>Let <span class="math inline">\(\pmb{v_1}=\begin{bmatrix}1\\2\\5\\\end{bmatrix}\)</span>, <span class="math inline">\(\pmb{v_2}=\begin{bmatrix}-2\\-3\\1\\\end{bmatrix}\)</span> and <span class="math inline">\(\pmb{x}=\begin{bmatrix}-4\\-5\\13\\\end{bmatrix}\)</span>, and <span class="math inline">\(\pmb{B}=\{\pmb{v_1},\pmb{v_2}\}\)</span>. Then <span class="math inline">\(\pmb B\)</span> is a basis for <span class="math inline">\(H=\mathrm{span}\{\mathbf{v_1,v_2}\}\)</span>. Determine if <span class="math inline">\(\pmb x\)</span> is in <span class="math inline">\(H\)</span>, and if it is, find the coordinate vector of <span class="math inline">\(\pmb x\)</span> relative to B.</p>
+<ul>
+<li>A. <span class="math inline">\([\pmb x]_B=\begin{bmatrix}1\\2\\\end{bmatrix}\)</span></li>
+<li>B. <span class="math inline">\([\pmb x]_B=\begin{bmatrix}2\\1\\\end{bmatrix}\)</span></li>
+<li>C. <span class="math inline">\([\pmb x]_B=\begin{bmatrix}2\\2\\\end{bmatrix}\)</span></li>
+<li>D. <span class="math inline">\([\pmb x]_B=\begin{bmatrix}3\\2\\\end{bmatrix}\)</span></li>
+<li>E. <span class="math inline">\([\pmb x]_B=\begin{bmatrix}2\\3\\\end{bmatrix}\)</span></li>
+</ul>
+<details class="note success no-icon"><summary><p>Problem 7 Solution</p>
+</summary>
+<p>By definition in Section 1.3, <span class="math inline">\(\mathrm{Span}\{\pmb{v_1,v_2}\}\)</span> is the collection of all vectorsthat can be written in the form <span class="math inline">\(c_1\mathbf{v_1}+c_2\mathbf{v_2}\)</span> with <span class="math inline">\(c_1,c_2\)</span> scalars. So asking whether a vector <span class="math inline">\(\pmb x\)</span> is in <span class="math inline">\(\mathrm{Span}\{\pmb{v_1,v_2}\}\)</span> amounts to asking whether thevector equation <span class="math display">\[c_1\pmb{v_1}+c_2\pmb{v_2}=\pmb{x}\]</span> has a soltion. To answer this, row reduce the <strong>augmented matrix</strong> <span class="math inline">\([\pmb{v_1}\,\pmb{v_2}\,\pmb{x}]\)</span>: <span class="math display">\[
+\begin{bmatrix}1 &amp;-2 &amp;-4\\2 &amp;-3 &amp;-5\\5 &amp;1 &amp;13\\\end{bmatrix}\sim
+\begin{bmatrix}1 &amp;-2 &amp;-4\\0 &amp;1 &amp;3\\0 &amp;11 &amp;33\\\end{bmatrix}\sim
+\begin{bmatrix}1 &amp;-2 &amp;-4\\0 &amp;1 &amp;3\\0 &amp;0 &amp;0\\\end{bmatrix}\sim
+\]</span> Clearly we have a unique solution <span class="math inline">\(c_1=2\)</span>, <span class="math inline">\(c_2=3\)</span>. So the answer is <mark><strong>E</strong></mark>.</p>
+<p><strong>📝Notes:</strong>This problem is similar to the Example 6 of Section 1.3 Vector Equations.</p>
+
+</details>
+<h3 id="problem-8-424-points">Problem 8 (4+2+4 points)</h3>
+<p>Let <span class="math inline">\(T: \mathbb R^2\to\mathbb R^3\)</span> be the linear tranformation for which <span class="math display">\[
+T\left(\begin{bmatrix}1\\1\\\end{bmatrix}\right)=
+\begin{bmatrix}3\\1\\1\\\end{bmatrix}\quad \mathrm{and}\quad
+T\left(\begin{bmatrix}1\\2\\\end{bmatrix}\right)=
+\begin{bmatrix}1\\0\\2\\\end{bmatrix}.
+\]</span> (4 points)(1) Let <span class="math inline">\(A\)</span> be the standard matrix of <span class="math inline">\(T\)</span>, find <span class="math inline">\(A\)</span>.</p>
+<p>(2 points)(2) Find the image of the vector <span class="math inline">\(\pmb u=\begin{bmatrix}1\\3\\\end{bmatrix}\)</span>.</p>
+<p>(4 points)(3) Is the vector <span class="math inline">\(\pmb b=\begin{bmatrix}0\\-2\\5\\\end{bmatrix}\)</span> in the range of <span class="math inline">\(T\)</span>? If so, find all the vectors <span class="math inline">\(\pmb x\)</span> in <span class="math inline">\(\mathbb R^2\)</span> such that <span class="math inline">\(T(\pmb x)=\pmb b\)</span></p>
+<details class="note success no-icon"><summary><p>Problem 8 Solution</p>
+</summary>
+<ol type="1">
+<li><p>Referring to Theorem 10 of Section 1.9 The Matrix of a Linear Transformation, we know that <span class="math display">\[A=[T(\pmb{e}_1)\quad\dots\quad T(\pmb{e}_n)]\]</span> So if we can find <span class="math inline">\(T(\pmb{e}_1)\)</span> and <span class="math inline">\(T(\pmb{e}_2)\)</span>, we obtain <span class="math inline">\(A\)</span>. Remember the property <span class="math display">\[T(c\pmb u+d\pmb v)=cT(\pmb u)+dT(\pmb v)\]</span></p>
+<p>We can use this property to find <span class="math inline">\(A\)</span>. First it is trivial to see that <span class="math display">\[
+ \pmb{e}_1=\begin{bmatrix}1\\0\end{bmatrix}
+         =2\begin{bmatrix}1\\1\end{bmatrix}-\begin{bmatrix}1\\2\end{bmatrix}\\
+ \pmb{e}_2=\begin{bmatrix}1\\0\end{bmatrix}
+         =-\begin{bmatrix}1\\1\end{bmatrix}+\begin{bmatrix}1\\2\end{bmatrix}
+ \]</span> Then apply the property and compute <span class="math display">\[
+ T(\pmb{e}_1)=2T\left(\begin{bmatrix}1\\1\end{bmatrix}\right)-T\left(\begin{bmatrix}1\\2\end{bmatrix}\right)=\begin{bmatrix}5\\1\\0\end{bmatrix}\\
+ T(\pmb{e}_2)=-T\left(\begin{bmatrix}1\\1\end{bmatrix}\right)+T\left(\begin{bmatrix}1\\2\end{bmatrix}\right)=\begin{bmatrix}-2\\-1\\1\end{bmatrix}
+ \]</span> So <span class="math inline">\(A\)</span> is <span class="math inline">\(\begin{bmatrix}5 &amp;-2\\1 &amp;-1\\0 &amp;1\end{bmatrix}\)</span>.</p></li>
+<li><p>The image of the vector <span class="math inline">\(\pmb u\)</span> can be obtained by <span class="math inline">\(A\pmb u\)</span>, the result is <span class="math display">\[
+ A\pmb u=\begin{bmatrix}5 &amp;-2\\1 &amp;-1\\0 &amp;1\end{bmatrix}\begin{bmatrix}1\\3\\\end{bmatrix}=\begin{bmatrix}-1\\-2\\3\\\end{bmatrix}\]</span></p></li>
+<li><p>This is the case of <span class="math inline">\(A\pmb x=\pmb b\)</span> and we need to solve it. The augmented matrix here is <span class="math display">\[\begin{bmatrix}5 &amp;-2 &amp;-1\\1 &amp;-1 &amp;-2\\0 &amp;1 &amp;-3\end{bmatrix}\sim
+ \begin{bmatrix}5 &amp;-2 &amp;-1\\0 &amp;-3 &amp;-9\\0 &amp;0 &amp;-18\end{bmatrix}\]</span> This is inconsistent system and has no solution. So the vetor <span class="math inline">\(\pmb b\)</span> is not in the span of <span class="math inline">\(T\)</span>.</p></li>
+</ol>
+
+</details>
+<h3 id="problem-9-4222-points">Problem 9 (4+2+2+2 points)</h3>
+<p>Consider the linear system <span class="math display">\[
+\begin{align}
+x + 2y +3z &amp;= 2\\
+y+az &amp;= -4\\
+2x+5y+a^{2}z &amp;= a-3
+\end{align}
+\]</span> (4 points)(1) Find a row echoelon form for the augmented matrix of the system.</p>
+<p>(2 points)(2) For which value(s) of <span class="math inline">\(a\)</span> does this system have a infinite number of solutions?</p>
+<p>(2 points)(3) For which value(s) of <span class="math inline">\(a\)</span> does this system have no solution?</p>
+<p>(2 points)(4) For which value(s) of <span class="math inline">\(a\)</span> does this system have a unique solution?</p>
+<details class="note success no-icon"><summary><p>Problem 9 Solution</p>
+</summary>
+<ol type="1">
+<li><p>The augumented matrix and the row reduction results can be seen below <span class="math display">\[
+\begin{bmatrix}1 &amp;2 &amp;3 &amp;2\\0 &amp;1 &amp;a &amp;-4\\2 &amp;5 &amp;a^2 &amp;a-3\\\end{bmatrix}\sim
+\begin{bmatrix}1 &amp;2 &amp;3 &amp;2\\0 &amp;1 &amp;a &amp;-4\\0 &amp;1 &amp;a^2-6 &amp;a-7\\\end{bmatrix}\sim
+\begin{bmatrix}1 &amp;2 &amp;3 &amp;2\\0 &amp;1 &amp;a &amp;-4\\0 &amp;0 &amp;a^2-a-6 &amp;a-3\\\end{bmatrix}
+\]</span> The pivots are <span class="math inline">\(1\)</span>, <span class="math inline">\(1\)</span>, and <span class="math inline">\(a2-a-6\)</span>.</p></li>
+<li><p>Look at the last row of the row echelon form, we can write it as <span class="math inline">\((a-3)(a+2)z=(a-3)\)</span>. Obviously if <span class="math inline">\(a=3\)</span>, <span class="math inline">\(z\)</span> can be any number. So this system has a infinite number of solutions when <span class="math inline">\(a=3\)</span>.</p></li>
+<li><p>If <span class="math inline">\(a=-2\)</span>, the equation becomes <span class="math inline">\(0\cdot z=-5\)</span>. This is impossible. So the system is inconsistent and have no solution when <span class="math inline">\(a=-2\)</span>.</p></li>
+<li><p>If <span class="math inline">\(a\neq -2\)</span> and <span class="math inline">\(a\neq 3\)</span>，<span class="math inline">\(z=\frac 1 {a+2}\)</span>, we can deduce unique solution for this system</p></li>
+</ol>
+
+</details>
+<h3 id="problem-10-55-points">Problem 10 (5+5 points)</h3>
+<p>Let <span class="math display">\[
+A=\begin{bmatrix}1 &amp;2 &amp;0 &amp;-1 &amp;2\\2 &amp;3 &amp;1 &amp;-3 &amp;7\\3 &amp;4 &amp;1 &amp;-3 &amp;9\\\end{bmatrix}
+\]</span></p>
+<p>(5 points)(1) Find the REDUCED row echelon form for the matrix <span class="math inline">\(A\)</span>.</p>
+<p>(5 points)(2) Find a basis for the null space of <span class="math inline">\(A\)</span></p>
+<details class="note success no-icon"><summary><p>Problem 10 Solution</p>
+</summary>
+<ol type="1">
+<li><p>The row reduction is completed next. The symbol ~ before a matrix indicates that the matrix is row equivalent to the preceding matrix. <span class="math display">\[
+\begin{bmatrix}1 &amp;2 &amp;0 &amp;-1 &amp;2\\2 &amp;3 &amp;1 &amp;-3 &amp;7\\3 &amp;4 &amp;1 &amp;-3 &amp;9\\\end{bmatrix}\sim
+\begin{bmatrix}1 &amp;2 &amp;0 &amp;-1 &amp;2\\0 &amp;-1 &amp;1 &amp;-1 &amp;3\\0 &amp;-2 &amp;1 &amp;0 &amp;3\\\end{bmatrix}\sim\begin{bmatrix}1 &amp;2 &amp;0 &amp;-1 &amp;2\\0 &amp;1 &amp;-1 &amp;1 &amp;-3\\0 &amp;0 &amp;1 &amp;-2 &amp;3\\\end{bmatrix}
+\]</span> <span class="math display">\[\sim
+\begin{bmatrix}1 &amp;2 &amp;0 &amp;-1 &amp;2\\0 &amp;1 &amp;0 &amp;-1 &amp;0\\0 &amp;0 &amp;1 &amp;-2 &amp;3\\\end{bmatrix}\sim
+\begin{bmatrix}1 &amp;0 &amp;0 &amp;1 &amp;2\\0 &amp;1 &amp;0 &amp;-1 &amp;0\\0 &amp;0 &amp;1 &amp;-2 &amp;3\\\end{bmatrix}
+\]</span></p></li>
+<li><p>Referring to Section 2.8 Subspaces of <span class="math inline">\(\mathbb R^n\)</span>, by definition the null space of a matrix <span class="math inline">\(A\)</span> is the set Nul <span class="math inline">\(A\)</span> of all solutions of the homogeneous equation <span class="math inline">\(A\pmb{x}=\pmb{0}\)</span>. Also "A basis for a subspace <span class="math inline">\(H\)</span> of <span class="math inline">\(\mathbb R^n\)</span> is a linearly independent set in <span class="math inline">\(H\)</span> that spans <span class="math inline">\(H\)</span>".</p>
+<p>Now write the solution of <span class="math inline">\(A\mathrm x=\pmb 0\)</span> in parametric vector form <span class="math display">\[[A\;\pmb 0]\sim\begin{bmatrix}1 &amp;0 &amp;0 &amp;1 &amp;2 &amp;0\\0 &amp;1 &amp;0 &amp;-1 &amp;0 &amp;0\\0 &amp;0 &amp;1 &amp;-2 &amp;3 &amp;0\\\end{bmatrix}\]</span></p>
+<p>The general solution is <span class="math inline">\(x_1=-x_4-2x_5\)</span>, <span class="math inline">\(x_2=x_4\)</span>, <span class="math inline">\(x_3=2x_4-3x_5\)</span>, with <span class="math inline">\(x_4\)</span> and <span class="math inline">\(x_5\)</span> free. This can be written as <span class="math display">\[
+ \begin{bmatrix}x_1\\x_2\\x_3\\x_4\\x_5\end{bmatrix}=
+ \begin{bmatrix}-x_4-2x_5\\x_4\\2x_4-3x_5\\x_4\\x_5\end{bmatrix}=
+ x_4\begin{bmatrix}-1\\1\\2\\1\\0\end{bmatrix}+
+ x_5\begin{bmatrix}-2\\0\\-3\\0\\1\end{bmatrix}
+ \]</span> So the basis for Nul <span class="math inline">\(A\)</span> is <span class="math display">\[
+ \begin{Bmatrix}\begin{bmatrix}-1\\1\\2\\1\\0\end{bmatrix},
+ \begin{bmatrix}-2\\0\\-3\\0\\1\end{bmatrix}\end{Bmatrix}
+ \]</span></p></li>
+</ol>
+<p><strong>📝Notes:</strong>This problem is similar to the Example 6 of Section 2.8 Subspaces of <span class="math inline">\(\mathbb R^n\)</span>. Read the solution for that example to get a deep understanding of this problem. Also pay attention to the Example 7, the Example 8, Theorem 13, and the Warning below this theorem in the same section.</p>
+
+</details>
+<h2 id="summary">Summary</h2>
+<p>This test set focuses on the following points of linear algebra：</p>
+<ul>
+<li>Systems of linear equations
+<ul>
+<li>Elementary row operations, system consistency</li>
+<li>Row echelon form, and reduced row echelon form</li>
+</ul></li>
+<li>Column vector, linear combinations of vectors, and span</li>
+<li>Matrix equation, solution existence, linear independence</li>
+<li>Linear transformation
+<ul>
+<li>Image, range, identity matrix, standard matrix</li>
+<li>Onto and one-to-one mappings</li>
+</ul></li>
+<li>Matrix operations, inverse of a matrix</li>
+<li>Subspace and basis, null space, dimension and rank</li>
+<li>Determinant, Cramer's rule, adjugate matrix, and inverse formula</li>
+</ul>
+<p>As can be seen that, it has a very good coverage of the basic ideas of linear algebra. So this set of exam problems provides a good test of students' knowledge of linear algebra.</p>
+<p>One thing I would like to highlight for preparing the first exam of linear algebra, is to have a complete understanding of two aspects of matrix equation. It is like two profiles of one object. As can ben seen in the following snapshot taken from the textbook, matrix equation can represent linear combination of its column vectors. In a different context, it is used to describe the transformation that maps a vector in one space to a new vector in the other space.</p>
+<p><img src="Linear-Transformation.png" style="width:70.0%;height:70.0%" /></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Zixi
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://www.packetmania.net/en/2024/01/19/Purdue-MA265-2022-Fall-Midterm1/" title="Purdue MA 26500 Fall 2022 Midterm I Solutions">https://www.packetmania.net/en/2024/01/19/Purdue-MA265-2022-Fall-Midterm1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/en/tags/Linear-Algebra/" rel="tag"><i class="fa fa-tag"></i> Linear Algebra</a>
+              <a href="/en/tags/Machine-Learning/" rel="tag"><i class="fa fa-tag"></i> Machine Learning</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/2023/11/17/RSA-attack-defense-2/" rel="prev" title="RSA: Attack and Defense (II)">
+                  <i class="fa fa-chevron-left"></i> RSA: Attack and Defense (II)
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Gitalk Comments</a></li>
+            <li class="tab"><a href="#comment-utterances">Utterances Comments</a></li>
+            <li class="tab"><a href="#comment-disqus">Disqus Comments</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+            <div class="tab-pane disqus" id="comment-disqus">
+              
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zixi</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>Symbols count total: </span>
+    <span title="Symbols count total">293k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>Reading time total &asymp;</span>
+    <span title="Reading time total">4:27</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5fc1fd29017282c7" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/en/js/comments.js"></script><script src="/en/js/utils.js"></script><script src="/en/js/motion.js"></script><script src="/en/js/next-boot.js"></script><script src="/en/js/bookmark.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/en/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"forest","dark":"forest"},"js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.13.4/dist/mermaid.min.js","integrity":"sha256-96rwDGMWIQYB0yKGp1sKi1yrjrLPj2oT39IpbCsIrsg="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/en/js/third-party/fancybox.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/en/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"packetmania-github-io","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/en/js/third-party/comments/disqus.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"packetmania","repo":"en","client_id":"a45f6ae3f97c1a467856","client_secret":"7d81b74f952b388f93dcb5a8c44cd12f657969fa","admin_user":"packetmania","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"b806e3f65f62f9901a1689b2f330e700"}</script>
+<script src="/en/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"packetmania/en","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/en/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
