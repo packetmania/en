@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://www.packetmania.net/en/2024/01/19/Purdue-MA265-2022-Fall-Midterm1/Linear-Algebra-and-Its-Applications-6e.jpg">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/01/19/Purdue-MA265-2022-Fall-Midterm1/Linear-Transformation.png">
 <meta property="article:published_time" content="2024-01-20T06:55:57.000Z">
-<meta property="article:modified_time" content="2024-01-23T08:05:48.013Z">
+<meta property="article:modified_time" content="2024-01-23T18:13:54.253Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="Linear Algebra">
 <meta property="article:tag" content="Machine Learning">
@@ -277,7 +277,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-01-23 00:05:48" itemprop="dateModified" datetime="2024-01-23T00:05:48-08:00">2024-01-23</time>
+        <time title="Modified: 2024-01-23 10:13:54" itemprop="dateModified" datetime="2024-01-23T10:13:54-08:00">2024-01-23</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -409,14 +409,24 @@
 </ul>
 <details class="note success"><summary><p>Problem 3 Solution</p>
 </summary>
-<p>For (i), a singular matrix <span class="math inline">\(A\)</span> is noninvertible and has <span class="math inline">\(det(A)=0\)</span>. By Theorem 8 of Section 2.3, the columns of <span class="math inline">\(A\)</span> form a linearly dependent set. Denote <span class="math inline">\(A=[\pmb{v}_1\cdots\pmb{v}_8]\)</span>, then <span class="math display">\[c_1\pmb{v}_1+c_2\pmb{v}_2+\cdots+c_8\pmb{v}_8=\pmb{0}\]</span> Does this imply the statement (i) is true? No! If <span class="math inline">\(c_8\)</span> is 0, <span class="math inline">\(\pmb{v}_8\)</span> is NOT a linear combination of the columns <span class="math inline">\(\pmb{v}_1\)</span> to <span class="math inline">\(\pmb{v}_7\)</span>.</p>
+<p>For (i), a singular matrix <span class="math inline">\(A\)</span> is noninvertible and has <span class="math inline">\(det(A)=0\)</span>. By Theorem 8 of Section 2.3, the columns of <span class="math inline">\(A\)</span> form a linearly dependent set. Denote <span class="math inline">\(A=[\pmb{v}_1\cdots\pmb{v}_8]\)</span>, then there exist weights <span class="math inline">\(c_1, c_2,\cdots,c_8\)</span>, not all zero, such that <span class="math display">\[c_1\pmb{v}_1+c_2\pmb{v}_2+\cdots+c_8\pmb{v}_8=\pmb{0}\]</span> Does this imply the statement (i) is true? No! If <span class="math inline">\(c_8\)</span> is 0, <span class="math inline">\(\pmb{v}_8\)</span> is NOT a linear combination of the columns <span class="math inline">\(\pmb{v}_1\)</span> to <span class="math inline">\(\pmb{v}_7\)</span>.</p>
 <p>For (ii), since <span class="math inline">\(AB\cdot\pmb x=A(B\pmb{x})=A\pmb c=\pmb b\)</span>. the consistency holds for the new <span class="math inline">\(5\times 11\)</span> matrix <span class="math inline">\(AB\)</span> as well. It is true.</p>
 <p>For (iii), since <span class="math inline">\(A\)</span> is a <span class="math inline">\(m\times n\)</span> matrix, <span class="math inline">\(A^T\)</span> is a <span class="math inline">\(n\times m\)</span> matrix. From Section 2.9 Dimension and Rank, we know that "If a matrix <span class="math inline">\(A\)</span> has <span class="math inline">\(n\)</span> columns, then <span class="math inline">\(\mathrm rank\,A+\mathrm{dim\,Nul}\,A= n\)</span>." From this, we can list <span class="math display">\[\begin{align}
 \mathrm{dim\,Nul}\,A&amp;=n-rank\,A\\
 \mathrm{dim\,Nul}\,A^T&amp;=m-rank\,A^T
 \end{align}\]</span> As these two dimension numbers are not necessary the same, (iii) is not true.</p>
-<p>For (iv), we can first review the definition of subspace. From Section 2.8 Subspaces of <span class="math inline">\(\mathbb R^n\)</span>, &gt;A subspace of <span class="math inline">\(\mathbb R^n\)</span> is any set <span class="math inline">\(H\)</span> in <span class="math inline">\(\mathbb R^n\)</span> that has three properties: a. The zero vector is in <span class="math inline">\(H\)</span>. b. For each <span class="math inline">\(\pmb u\)</span> and <span class="math inline">\(\pmb v\)</span> in <span class="math inline">\(H\)</span>, the sum <span class="math inline">\(\pmb u+\pmb v\)</span> is in <span class="math inline">\(H\)</span>. c. For each <span class="math inline">\(\pmb u\)</span> in <span class="math inline">\(H\)</span> and each scalar <span class="math inline">\(c\)</span>, the vector <span class="math inline">\(c\pmb u\)</span> is in H.</p>
-<p>Because <span class="math inline">\(A\cdot\pmb{0}=\pmb{0}\)</span>, <span class="math inline">\(A\pmb{x}+A\pmb{y}=A(\pmb{x}+\pmb{y})\)</span>, <span class="math inline">\(A\pmb{u}+A\pmb{v}=A(\pmb u+\pmb v)\)</span>, all the results on the right side are also in the set. This proves that (iv) is true.</p>
+<p>For (iv), we can first review the definition of subspace. From Section 2.8 Subspaces of <span class="math inline">\(\mathbb R^n\)</span>,</p>
+<blockquote>
+<p>A subspace of <span class="math inline">\(\mathbb R^n\)</span> is any set <span class="math inline">\(H\)</span> in <span class="math inline">\(\mathbb R^n\)</span> that has three properties:<br />
+a. The zero vector is in <span class="math inline">\(H\)</span>.<br />
+b. For each <span class="math inline">\(\pmb u\)</span> and <span class="math inline">\(\pmb v\)</span> in <span class="math inline">\(H\)</span>, the sum <span class="math inline">\(\pmb u+\pmb v\)</span> is in <span class="math inline">\(H\)</span>.<br />
+c. For each <span class="math inline">\(\pmb u\)</span> in <span class="math inline">\(H\)</span> and each scalar <span class="math inline">\(c\)</span>, the vector <span class="math inline">\(c\pmb u\)</span> is in H.</p>
+</blockquote>
+<p>Denote <span class="math inline">\(\pmb u=A\pmb x\)</span>, <span class="math inline">\(\pmb v=A\pmb y\)</span>, we have <span class="math display">\[\begin{align}
+A\cdot\pmb{0}&amp;=\pmb{0}\\
+\pmb u+\pmb v&amp;=A\pmb{x}+A\pmb{y}=A(\pmb{x}+\pmb{y})\\
+c\pmb u&amp;=cA\pmb{x}=A(c\pmb x)
+\end{align}\]</span> All the results on the right side are in the set as well. This proves that (iv) is true.</p>
 <p>So the answer is <mark><strong>D</strong></mark>.</p>
 
 </details>
@@ -599,8 +609,8 @@ A=\begin{bmatrix}1 &amp;2 &amp;0 &amp;-1 &amp;2\\2 &amp;3 &amp;1 &amp;-3 &amp;7\
 <li>Subspace and basis, null space, dimension and rank</li>
 <li>Determinant, Cramer's rule, adjugate matrix, and inverse formula</li>
 </ul>
-<p>As can be seen that, it has a very good coverage of the basic ideas of linear algebra. So this set of exam problems provides a good test of students' knowledge of linear algebra.</p>
-<p>One thing I would like to highlight for preparing the first exam of linear algebra, is to have a complete understanding of two aspects of matrix equation. It is like two profiles of one object. As can ben seen in the following snapshot taken from the textbook, matrix equation can represent linear combination of its column vectors. In a different context, it is used to describe the transformation that maps a vector in one space to a new vector in the other space.</p>
+<p>As can be seen that, it has a very decent coverage of the basic ideas of linear algebra. So this set of exam problems provides a good test of students' knowledge of linear algebra.</p>
+<p>One thing I would like to highlight for preparing the first exam of linear algebra, is to have a complete understanding of two aspects of matrix equation. It is like two profiles of one object. As can ben seen in the following snapshot taken from the textbook, matrix equation can represent linear combination of its column vectors. From a different viewpoint, it is used to describe the transformation that maps a vector in one space to a new vector in the other space.</p>
 <p><img src="Linear-Transformation.png" style="width:70.0%;height:70.0%" /></p>
 
     </div>

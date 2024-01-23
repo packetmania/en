@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2024-01-23T08:05:48.013Z</updated>
+  <updated>2024-01-23T18:13:54.253Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.packetmania.net/en/2024/01/19/Purdue-MA265-2022-Fall-Midterm1/"/>
     <id>https://www.packetmania.net/en/2024/01/19/Purdue-MA265-2022-Fall-Midterm1/</id>
     <published>2024-01-20T06:55:57.000Z</published>
-    <updated>2024-01-23T08:05:48.013Z</updated>
+    <updated>2024-01-23T18:13:54.253Z</updated>
     
     
     <summary type="html">&lt;p&gt;Linear algebra provides mathematical tools to represent and analyze data and models in higher dimensions. It is essential for machine learning, computer graphics, control theory, and other scientific and engineering fields. Starting from this post, I will provide study guides and solutions to Purdue MA26500 exams in last a few semesters.</summary>
@@ -94,11 +94,11 @@
     <category term="Technical Know-how" scheme="https://www.packetmania.net/en/categories/Technical-Know-how/"/>
     
     
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
+    
     <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
     
     <category term="Network Security" scheme="https://www.packetmania.net/en/tags/Network-Security/"/>
-    
-    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
     
   </entry>
   
@@ -140,15 +140,15 @@
     <category term="Technical Know-how" scheme="https://www.packetmania.net/en/categories/Technical-Know-how/"/>
     
     
-    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
-    
     <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
     
     <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
     
-    <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
+    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
     
     <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
+    
+    <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
     
   </entry>
   
