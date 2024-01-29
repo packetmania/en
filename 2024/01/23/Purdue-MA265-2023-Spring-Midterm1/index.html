@@ -24,12 +24,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.packetmania.net","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk | utterances | disqus","storage":true,"lazyload":false,"nav":{"disqus":{"text":"Disqus Comments","order":-1},"utterances":{"text":"Utterances Comments","order":-2},"gitalk":{"text":"Gitalk Comments","order":-3}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/en/js/config.js"></script>
-<meta name="description" content="This is the 2nd study notes post for the college linear algebra course. Here we review Purdue MA 26500 Spring 2023 midterm I. We provide solutions and concise explanations for all problems.">
+<meta name="description" content="This is the 2nd study notes post for the college linear algebra course. Here is the review of Purdue MA 26500 Spring 2023 midterm I. I provide solutions to all exam questions as well as concise explan">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Purdue MA 26500 Spring 2023 Midterm I Solutions">
 <meta property="og:url" content="https://www.packetmania.net/en/2024/01/23/Purdue-MA265-2023-Spring-Midterm1/index.html">
 <meta property="og:site_name" content="PacketMania">
-<meta property="og:description" content="This is the 2nd study notes post for the college linear algebra course. Here we review Purdue MA 26500 Spring 2023 midterm I. We provide solutions and concise explanations for all problems.">
+<meta property="og:description" content="This is the 2nd study notes post for the college linear algebra course. Here is the review of Purdue MA 26500 Spring 2023 midterm I. I provide solutions to all exam questions as well as concise explan">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/01/23/Purdue-MA265-2023-Spring-Midterm1/Linear-Algebra-and-Its-Applications-6e.jpg">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/01/23/Purdue-MA265-2023-Spring-Midterm1/Linear-Algebra-and-Its-Appl-6th-study-guide.jpg">
@@ -51,7 +51,7 @@
 <meta property="og:image" content="https://www.packetmania.net/en/2024/01/23/Purdue-MA265-2023-Spring-Midterm1/MA265-Spring2023-Midterm1-P10-2.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/01/23/Purdue-MA265-2023-Spring-Midterm1/MA265-Spring2023-Midterm1-P10-3.png">
 <meta property="article:published_time" content="2024-01-23T19:04:43.000Z">
-<meta property="article:modified_time" content="2024-01-29T01:47:46.789Z">
+<meta property="article:modified_time" content="2024-01-29T03:43:44.526Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="Linear Algebra">
 <meta property="article:tag" content="Machine Learning">
@@ -294,7 +294,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-01-28 17:47:46" itemprop="dateModified" datetime="2024-01-28T17:47:46-08:00">2024-01-28</time>
+        <time title="Modified: 2024-01-28 19:43:44" itemprop="dateModified" datetime="2024-01-28T19:43:44-08:00">2024-01-28</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -338,7 +338,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>This is the 2nd study notes post for the college linear algebra course. Here we review Purdue MA 26500 Spring 2023 midterm I. We provide solutions and concise explanations for all problems. <span id="more"></span></p>
+        <p>This is the 2nd study notes post for the college linear algebra course. Here is the review of Purdue MA 26500 Spring 2023 midterm I. I provide solutions to all exam questions as well as concise explanations. <span id="more"></span></p>
 <div class="note success no-icon"><p><strong>Matrices act. They don't just sit there.</strong><br> <strong>— <em>Gilbert Strang</em> (American mathematician known for his contributions to finite element theory, the calculus of variations, wavelet analysis and linear algebra.)</strong></p>
 </div>
 <h2 id="introduction">Introduction</h2>
@@ -346,7 +346,7 @@
 <blockquote>
 <p><strong><em>Disclosure</em></strong>: <em>This blog site is reader-supported. When you buy through the affiliate links below, as an Amazon Associate, I earn a tiny commission from qualifying purchases. Thank you.</em></p>
 </blockquote>
-<p>MA 26500 textbook is <a target="_blank" rel="noopener" href="https://amzn.to/3Srz7qm"><em>Linear Algebra and its Applications</em></a> (6th Edition) by David C. Lay, Steven R. Lay, Judi J. McDonald. The authors also published a study guide for it, which is available for purchase on Amazon as well.</p>
+<p>MA 26500 textbook is <a target="_blank" rel="noopener" href="https://amzn.to/3Srz7qm"><em>Linear Algebra and its Applications</em></a> (6th Edition) by David C. Lay, Steven R. Lay, Judi J. McDonald. The authors have also published a study guide for it, which is available for purchase on Amazon as well.</p>
 <div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><a target="_blank" rel="noopener" href="https://amzn.to/3Srz7qm"><img src="Linear-Algebra-and-Its-Applications-6e.jpg" /></a></div><div class="group-picture-column"><a target="_blank" rel="noopener" href="https://amzn.to/428m5Bl"><img src="Linear-Algebra-and-Its-Appl-6th-study-guide.jpg" /></a></div></div></div>
 <p>MA 26500 midterm I covers the topics of Sections 1.1 – 3.3 in the textbook. It is usually scheduled at the beginning of the seventh week. The exam format is a combination of multiple-choice questions and short-answer questions. Students are given one hour to finish answering the exam questions.</p>
 <p>Here are a few extra reference links for Purdue MA 26500:</p>

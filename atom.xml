@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2024-01-29T01:47:46.789Z</updated>
+  <updated>2024-01-29T03:43:44.526Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -21,10 +21,10 @@
     <link href="https://www.packetmania.net/en/2024/01/23/Purdue-MA265-2023-Spring-Midterm1/"/>
     <id>https://www.packetmania.net/en/2024/01/23/Purdue-MA265-2023-Spring-Midterm1/</id>
     <published>2024-01-23T19:04:43.000Z</published>
-    <updated>2024-01-29T01:47:46.789Z</updated>
+    <updated>2024-01-29T03:43:44.526Z</updated>
     
     
-    <summary type="html">&lt;p&gt;This is the 2nd study notes post for the college linear algebra course. Here we review Purdue MA 26500 Spring 2023 midterm I. We provide solutions and concise explanations for all problems.</summary>
+    <summary type="html">&lt;p&gt;This is the 2nd study notes post for the college linear algebra course. Here is the review of Purdue MA 26500 Spring 2023 midterm I. I provide solutions to all exam questions as well as concise explanations.</summary>
     
     
     
@@ -42,7 +42,7 @@
     <link href="https://www.packetmania.net/en/2024/01/19/Purdue-MA265-2022-Fall-Midterm1/"/>
     <id>https://www.packetmania.net/en/2024/01/19/Purdue-MA265-2022-Fall-Midterm1/</id>
     <published>2024-01-20T06:55:57.000Z</published>
-    <updated>2024-01-29T00:51:33.460Z</updated>
+    <updated>2024-01-29T03:40:57.919Z</updated>
     
     
     <summary type="html">&lt;p&gt;Linear algebra provides mathematical tools to represent and analyze data and models in higher dimensions. It is essential for machine learning, computer graphics, control theory, and other scientific and engineering fields. Starting from this post, I will provide study guides and solutions to Purdue MA26500 exams in the last few semesters.</summary>
@@ -115,11 +115,11 @@
     <category term="Technical Know-how" scheme="https://www.packetmania.net/en/categories/Technical-Know-how/"/>
     
     
-    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
-    
     <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
     
     <category term="Network Security" scheme="https://www.packetmania.net/en/tags/Network-Security/"/>
+    
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
     
   </entry>
   
@@ -161,13 +161,13 @@
     <category term="Technical Know-how" scheme="https://www.packetmania.net/en/categories/Technical-Know-how/"/>
     
     
-    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
-    
-    <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
-    
     <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
     
     <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
+    
+    <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
+    
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
     
     <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
     
@@ -253,9 +253,9 @@
     <category term="Tool Guide" scheme="https://www.packetmania.net/en/categories/Tool-Guide/"/>
     
     
-    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
-    
     <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
+    
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
     
   </entry>
   
@@ -358,13 +358,13 @@
     <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
     
     
-    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
-    
-    <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
-    
     <category term="Computer Architecture" scheme="https://www.packetmania.net/en/tags/Computer-Architecture/"/>
     
     <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
+    
+    <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
+    
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
     
   </entry>
   
