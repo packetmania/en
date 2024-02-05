@@ -182,20 +182,6 @@
 
   
   <url>
-    <loc>https://www.packetmania.net/en/tags/Cryptography/</loc>
-    <lastmod>2024-02-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.packetmania.net/en/tags/Network-Security/</loc>
-    <lastmod>2024-02-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.packetmania.net/en/tags/C-C-Programming/</loc>
     <lastmod>2024-02-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -218,6 +204,20 @@
   
   <url>
     <loc>https://www.packetmania.net/en/tags/Computer-Communications/</loc>
+    <lastmod>2024-02-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/tags/Cryptography/</loc>
+    <lastmod>2024-02-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/tags/Network-Security/</loc>
     <lastmod>2024-02-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -282,14 +282,14 @@
 
   
   <url>
-    <loc>https://www.packetmania.net/en/categories/Study-Notes/</loc>
+    <loc>https://www.packetmania.net/en/categories/Tool-Guide/</loc>
     <lastmod>2024-02-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.packetmania.net/en/categories/Tool-Guide/</loc>
+    <loc>https://www.packetmania.net/en/categories/Study-Notes/</loc>
     <lastmod>2024-02-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

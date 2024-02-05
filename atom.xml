@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2024-02-05T04:05:06.028Z</updated>
+  <updated>2024-02-05T06:14:58.495Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.packetmania.net/en/2024/01/28/Purdue-MA265-2023-Fall-Midterm1/"/>
     <id>https://www.packetmania.net/en/2024/01/28/Purdue-MA265-2023-Fall-Midterm1/</id>
     <published>2024-01-29T04:18:14.000Z</published>
-    <updated>2024-02-05T04:05:06.028Z</updated>
+    <updated>2024-02-05T06:14:58.495Z</updated>
     
     
     <summary type="html">&lt;p&gt;This is the 3rd study notes post for the college linear algebra course. Here is the review of Purdue MA 26500 Fall 2023 midterm I. I provide solutions to all exam questions as well as concise explanations.</summary>
@@ -136,11 +136,11 @@
     <category term="Technical Know-how" scheme="https://www.packetmania.net/en/categories/Technical-Know-how/"/>
     
     
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
+    
     <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
     
     <category term="Network Security" scheme="https://www.packetmania.net/en/tags/Network-Security/"/>
-    
-    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
     
   </entry>
   
@@ -182,13 +182,13 @@
     <category term="Technical Know-how" scheme="https://www.packetmania.net/en/categories/Technical-Know-how/"/>
     
     
-    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
-    
     <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
     
     <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
     
     <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
+    
+    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
     
     <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
     
