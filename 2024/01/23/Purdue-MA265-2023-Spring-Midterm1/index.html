@@ -51,7 +51,7 @@
 <meta property="og:image" content="https://www.packetmania.net/en/2024/01/23/Purdue-MA265-2023-Spring-Midterm1/MA265-Spring2023-Midterm1-P10-2.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/01/23/Purdue-MA265-2023-Spring-Midterm1/MA265-Spring2023-Midterm1-P10-3.png">
 <meta property="article:published_time" content="2024-01-23T19:04:43.000Z">
-<meta property="article:modified_time" content="2024-02-19T07:56:19.006Z">
+<meta property="article:modified_time" content="2024-02-19T17:29:09.132Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="Linear Algebra">
 <meta property="article:tag" content="Machine Learning">
@@ -294,7 +294,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-02-18 23:56:19" itemprop="dateModified" datetime="2024-02-18T23:56:19-08:00">2024-02-18</time>
+        <time title="Modified: 2024-02-19 09:29:09" itemprop="dateModified" datetime="2024-02-19T09:29:09-08:00">2024-02-19</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -462,7 +462,7 @@ b_{21}&amp;=C_{12}=(-1)^{1+2}\begin{vmatrix}-5 &amp;-1\\3 &amp;-1\end{vmatrix}=-
 <p>Answer A contains the zero vector, thus the set is not linearly independent.</p>
 <p>Answer E contains only 3 vectors, not enough as the basis of <span class="math inline">\(\mathbb R^4\)</span>.</p>
 <p>Answer D column 3 is 2 times column 2, and column 5 is equal to column 2 and column 4. So it has only 3 linearly independent vectors. Still not enough</p>
-<p>Answer C is also not correct. If we scale 1/3 to column 1, then add to column 2 and column, it results in column 4. So only 3 linearly independent vectors.</p>
+<p>Answer C is also not correct. If we scale 1/3 to column 1, and then add it with columns 2 and 3 altogether, it results in column 4. So only 3 linearly independent vectors.</p>
 <p>So the answer is <mark><strong>B</strong></mark>. Indeed B has 4 linearly independent vectors.</p>
 
 </details>
@@ -541,7 +541,7 @@ b_{21}&amp;=C_{12}=(-1)^{1+2}\begin{vmatrix}-5 &amp;-1\\3 &amp;-1\end{vmatrix}=-
  \begin{bmatrix}4\\13\\12\\0\end{bmatrix}\end{Bmatrix}
  \]</span></p></li>
 <li><p>Referring to Section 2.8 Subspaces of <span class="math inline">\(\mathbb R^n\)</span>, by definition the null space of a matrix <span class="math inline">\(A\)</span> is the set Nul <span class="math inline">\(A\)</span> of all solutions of the homogeneous equation <span class="math inline">\(A\pmb{x}=\pmb{0}\)</span>. Also "A basis for a subspace <span class="math inline">\(H\)</span> of <span class="math inline">\(\mathbb R^n\)</span> is a linearly independent set in <span class="math inline">\(H\)</span> that spans <span class="math inline">\(H\)</span>".</p>
-<p>Now write the solution of <span class="math inline">\(A\mathrm x=\pmb 0\)</span> in parametric vector form <span class="math display">\[[A\;\pmb 0]\sim\begin{bmatrix}\color{fuchsia}{1} &amp;0 &amp;0 &amp;4 &amp;5 &amp;0\\0 &amp;0 &amp;\color{fuchsia}{1} &amp;0 &amp;3 &amp;0\\0 &amp;0 &amp;0 &amp;\color{fuchsia}{1} &amp;0 &amp;0\\0 &amp;0 &amp;0 &amp;0 &amp;0 &amp;0\end{bmatrix}\]</span></p>
+<p>Now write the solution of <span class="math inline">\(A\mathrm x=\pmb 0\)</span> in parametric vector form <span class="math display">\[[A\;\pmb 0]\sim\begin{bmatrix}\color{fuchsia}{1} &amp;0 &amp;0 &amp;0 &amp;5 &amp;0\\0 &amp;0 &amp;\color{fuchsia}{1} &amp;0 &amp;3 &amp;0\\0 &amp;0 &amp;0 &amp;\color{fuchsia}{1} &amp;0 &amp;0\\0 &amp;0 &amp;0 &amp;0 &amp;0 &amp;0\end{bmatrix}\]</span></p>
 <p>The general solution is <span class="math inline">\(x_1=-5x_5\)</span>, <span class="math inline">\(x_3=-3x_5\)</span>, <span class="math inline">\(x_4=0\)</span>, with <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_5\)</span> free. This can be written as <span class="math display">\[
  \begin{bmatrix}x_1\\x_2\\x_3\\x_4\\x_5\end{bmatrix}=
  \begin{bmatrix}-5x_5\\x_2\\-3x_5\\0\\x_5\end{bmatrix}=
