@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://www.packetmania.net/en/2024/01/19/Purdue-MA265-2022-Fall-Midterm1/Linear-Algebra-and-Its-Appl-6th-study-guide.jpg">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/01/19/Purdue-MA265-2022-Fall-Midterm1/Linear-Transformation.png">
 <meta property="article:published_time" content="2024-01-20T06:55:57.000Z">
-<meta property="article:modified_time" content="2024-02-04T19:12:46.460Z">
+<meta property="article:modified_time" content="2024-02-19T17:50:05.160Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="Linear Algebra">
 <meta property="article:tag" content="Machine Learning">
@@ -278,7 +278,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-02-04 11:12:46" itemprop="dateModified" datetime="2024-02-04T11:12:46-08:00">2024-02-04</time>
+        <time title="Modified: 2024-02-19 09:50:05" itemprop="dateModified" datetime="2024-02-19T09:50:05-08:00">2024-02-19</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -452,8 +452,8 @@ c\pmb u&amp;=cA\pmb{x}=A(c\pmb x)
 <details class="note success"><summary><p>Problem 4 Solution</p>
 </summary>
 <p>Notice that the third column of the given matrix has all entries equal to zero except <span class="math inline">\(a_{13}\)</span>. Taking advantage of this, we can do a cofactor expansion down the third column, then continue to do cofactor expansion with the <span class="math inline">\(3\times3\)</span> submatrix <span class="math display">\[\begin{align}
-\begin{vmatrix}5 &amp;7 &amp;2 &amp;2\\0 &amp;3 &amp;0 &amp;-4\\-5 &amp;-8 &amp;0 &amp;3\\0 &amp;5 &amp;0 &amp;-6\\\end{vmatrix}&amp;=(-1)^{1+3}\cdot2\cdot\begin{vmatrix}0 &amp;3 &amp;-4\\-5 &amp;-8 &amp;3\\0 &amp;5 &amp;-6\\\end{vmatrix}\\
-&amp;=2\cdot(-1)^{2+1}\cdot(-5)\begin{vmatrix}3 &amp;-4\\5 &amp;-6\\\end{vmatrix}=20
+\begin{vmatrix}5 &amp;7 &amp;\color{fuchsia}2 &amp;2\\0 &amp;3 &amp;0 &amp;-4\\-5 &amp;-8 &amp;0 &amp;3\\0 &amp;5 &amp;0 &amp;-6\\\end{vmatrix}&amp;=(-1)^{1+3}\cdot\color{fuchsia}2\cdot\begin{vmatrix}0 &amp;3 &amp;-4\\\color{blue}{-5} &amp;-8 &amp;3\\0 &amp;5 &amp;-6\\\end{vmatrix}\\
+&amp;=2\cdot(-1)^{2+1}\cdot(\color{blue}{-5})\begin{vmatrix}3 &amp;-4\\5 &amp;-6\\\end{vmatrix}=20
 \end{align}\]</span> So the answer is <mark><strong>B</strong></mark>.</p>
 <p><strong>📝Notes:</strong>This problem is directly taken from the textbook. It is the Practice Problem of Section 3.1 Introduction to Determinants.</p>
 
@@ -490,11 +490,11 @@ c\pmb u&amp;=cA\pmb{x}=A(c\pmb x)
 <details class="note success"><summary><p>Problem 6 Solution</p>
 </summary>
 <p>According to Theorem 8 of Section 3.3, <span class="math inline">\(A^{-1}=\frac{\large{1}}{\large{\mathrm{det}\,A}}\mathrm{adj}\,A\)</span>. Here the adjugate matrix <span class="math inline">\(\mathrm{adj}\, A\)</span> is the transpose of the matrix of cofactors. Hence <span class="math display">\[b_{12}=\frac{C_{21}}{\mathrm{det}\,A}\]</span></p>
-<p>First computer the cofactor <span class="math display">\[C_{21}=-\begin{vmatrix}2 &amp;6\\8 &amp;10\end{vmatrix}=28\]</span> Now computer the determinant efficiently with row operations (Theorem 3 of Section 3.2) for <span class="math inline">\(A\)</span> <span class="math display">\[
+<p>First computer the cofactor <span class="math display">\[C_{21}=(-1)^{2+1}\begin{vmatrix}2 &amp;6\\8 &amp;10\end{vmatrix}=(-1)\cdot(20-48)=28\]</span> Now computer the determinant efficiently with row operations (Theorem 3 of Section 3.2) for <span class="math inline">\(A\)</span> <span class="math display">\[
 {\mathrm{det}\,A}=
 \begin{vmatrix}1 &amp;2 &amp;6\\2 &amp;6 &amp;3\\3 &amp;8 &amp;10\\\end{vmatrix}=
 \begin{vmatrix}1 &amp;2 &amp;6\\0 &amp;2 &amp;-9\\0 &amp;2 &amp;-8\\\end{vmatrix}=
-\begin{vmatrix}1 &amp;2 &amp;6\\0 &amp;2 &amp;-9\\0 &amp;0 &amp;1\\\end{vmatrix}=2
+\begin{vmatrix}\color{blue}1 &amp;2 &amp;6\\0 &amp;\color{blue}2 &amp;-9\\0 &amp;0 &amp;\color{blue}1\\\end{vmatrix}=\color{blue}1\cdot\color{blue}2\cdot\color{blue}1=2
 \]</span> So <span class="math inline">\(C_{21}=28/2=14\)</span>, the answer is <mark><strong>A</strong></mark>.</p>
 
 </details>

@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.packetmania.net/en/2024/01/19/Purdue-MA265-2022-Fall-Midterm1/</loc>
+    
+    <lastmod>2024-02-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.packetmania.net/en/2024/01/23/Purdue-MA265-2023-Spring-Midterm1/</loc>
     
     <lastmod>2024-02-19</lastmod>
@@ -23,15 +32,6 @@
     <loc>https://www.packetmania.net/en/2024/01/28/Purdue-MA265-2023-Fall-Midterm1/</loc>
     
     <lastmod>2024-02-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.packetmania.net/en/2024/01/19/Purdue-MA265-2022-Fall-Midterm1/</loc>
-    
-    <lastmod>2024-02-04</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -191,20 +191,6 @@
 
   
   <url>
-    <loc>https://www.packetmania.net/en/tags/C-C-Programming/</loc>
-    <lastmod>2024-02-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.packetmania.net/en/tags/System-Programming/</loc>
-    <lastmod>2024-02-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.packetmania.net/en/tags/Cryptography/</loc>
     <lastmod>2024-02-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -227,6 +213,20 @@
   
   <url>
     <loc>https://www.packetmania.net/en/tags/Computer-Communications/</loc>
+    <lastmod>2024-02-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/tags/System-Programming/</loc>
+    <lastmod>2024-02-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/tags/C-C-Programming/</loc>
     <lastmod>2024-02-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -291,14 +291,14 @@
 
   
   <url>
-    <loc>https://www.packetmania.net/en/categories/Tool-Guide/</loc>
+    <loc>https://www.packetmania.net/en/categories/Study-Notes/</loc>
     <lastmod>2024-02-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.packetmania.net/en/categories/Study-Notes/</loc>
+    <loc>https://www.packetmania.net/en/categories/Tool-Guide/</loc>
     <lastmod>2024-02-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
