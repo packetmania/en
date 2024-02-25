@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2024-02-25T00:08:17.130Z</updated>
+  <updated>2024-02-25T17:50:21.682Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Purdue CS24000 Fall 2018 Midterm 1 Solutions</title>
+    <link href="https://www.packetmania.net/en/2024/02/24/Purdue-CS240-2018-Fall-Midterm1/"/>
+    <id>https://www.packetmania.net/en/2024/02/24/Purdue-CS240-2018-Fall-Midterm1/</id>
+    <published>2024-02-25T06:41:38.000Z</published>
+    <updated>2024-02-25T17:50:21.682Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Purdue University CS24000 is an undergraduate-level course that teaches students programming principles and techniques for problem-solving in the C programming language. Here are the solution and study notes for the Fall 2018 Midterm 1 exam.</summary>
+    
+    
+    
+    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
+    
+    
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
+    
+  </entry>
   
   <entry>
     <title>Purdue MA 26500 Fall 2022 Midterm II Solutions</title>
