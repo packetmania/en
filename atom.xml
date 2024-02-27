@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2024-02-27T04:55:55.618Z</updated>
+  <updated>2024-02-27T07:17:41.246Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.packetmania.net/en/2024/02/25/Purdue-CS240-2022-2023-Summer-Midterm/"/>
     <id>https://www.packetmania.net/en/2024/02/25/Purdue-CS240-2022-2023-Summer-Midterm/</id>
     <published>2024-02-26T00:16:50.000Z</published>
-    <updated>2024-02-27T04:55:55.618Z</updated>
+    <updated>2024-02-27T07:17:41.246Z</updated>
     
     
     <summary type="html">&lt;p&gt;Purdue University CS24000 is an undergraduate-level course that teaches students programming principles and techniques for problem-solving in the C programming language. Here are the solutions and study notes for the 2022 and 2023 Midterm exams.</summary>
@@ -40,7 +40,7 @@
     <link href="https://www.packetmania.net/en/2024/02/24/Purdue-CS240-2018-Fall-Midterm1/"/>
     <id>https://www.packetmania.net/en/2024/02/24/Purdue-CS240-2018-Fall-Midterm1/</id>
     <published>2024-02-25T06:41:38.000Z</published>
-    <updated>2024-02-26T00:37:30.651Z</updated>
+    <updated>2024-02-27T19:15:33.070Z</updated>
     
     
     <summary type="html">&lt;p&gt;Purdue University CS24000 is an undergraduate-level course that teaches students programming principles and techniques for problem-solving in the C programming language. Here are the solution and study notes for the Fall 2018 Midterm 1 exam.</summary>
@@ -195,11 +195,11 @@
     <category term="Technical Know-how" scheme="https://www.packetmania.net/en/categories/Technical-Know-how/"/>
     
     
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
+    
     <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
     
     <category term="Network Security" scheme="https://www.packetmania.net/en/tags/Network-Security/"/>
-    
-    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
     
   </entry>
   
@@ -241,13 +241,13 @@
     <category term="Technical Know-how" scheme="https://www.packetmania.net/en/categories/Technical-Know-how/"/>
     
     
-    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
-    
     <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
     
     <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
     
     <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
+    
+    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
     
     <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
     
