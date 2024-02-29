@@ -32,7 +32,7 @@
 <meta property="og:description" content="Here is a series of general study guides to college-level C programming courses. This is the first part covering compilation and linking, file operations, typedef, structures, string operations, basic">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-02-29T07:10:00.000Z">
-<meta property="article:modified_time" content="2024-02-29T08:36:29.038Z">
+<meta property="article:modified_time" content="2024-02-29T18:36:37.660Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="C&#x2F;C++ Programming">
 <meta name="twitter:card" content="summary">
@@ -273,7 +273,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-02-29 00:36:29" itemprop="dateModified" datetime="2024-02-29T00:36:29-08:00">2024-02-29</time>
+        <time title="Modified: 2024-02-29 10:36:37" itemprop="dateModified" datetime="2024-02-29T10:36:37-08:00">2024-02-29</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -299,14 +299,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>18k</span>
+      <span>19k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>16 mins.</span>
+      <span>17 mins.</span>
     </span>
 </div>
 
@@ -477,7 +477,7 @@
 <li><code>p++;</code> - Legitimate. Increments the pointer <code>p</code> to point to the next element.</li>
 <li><code>x = --p;</code> - Legitimate. Decrements <code>p</code> and assigns its value to <code>x</code>.</li>
 <li><code>x = *p++;</code> - Legitimate. Assigns the value pointed to by <code>p</code> to <code>x</code>, then increments <code>p</code>.</li>
-<li><code>x = (*p)++;</code> - Legitimate. Assigns the value pointed to by <code>p</code> to <code>x</code>, then increments the value at <code>p</code>.</li>
+<li><code>x = (*p)++;</code> - Legitimate. Assigns the value pointed to by <code>p</code> to <code>x</code>, then increments the value pointed to by <code>p</code>.</li>
 <li><code>arr++;</code> - <strong>Not legitimate</strong>. You cannot increment the entire array <code>arr</code>.</li>
 <li><code>x = p - arr;</code> - Legitimate. Calculates the difference in addresses between <code>p</code> and <code>arr</code> and assigns it to <code>x</code>.</li>
 <li><code>x = (p&gt;arr);</code> - <strong>Not legitimate</strong>. Comparison between a pointer and an array is not valid.</li>
@@ -486,6 +486,28 @@
 <li><code>p = p + 1;</code> - Legitimate. Increments the pointer <code>p</code> to point to the next memory location.</li>
 <li><code>arr = arr + 1;</code> - <strong>Not legitimate</strong>. You cannot increment the entire array <code>arr</code>.</li>
 </ul></li>
+</ul>
+<p><strong>📝Notes:</strong> The difference between <code>x = *p++;</code> and <code>x = (*p)++;</code> lies in how the increment operator (++) is applied:</p>
+<pre><code>* `x = *p++;` This statement first dereferences the pointer p to get the value it points to, assigns that value to x, and then increments the pointer p to point to the next element (not the value pointed to by p). So, x gets the value pointed to by p before the increment.
+* `x = (*p)++;` This statement first dereferences the pointer p to get the value it points to, assigns that value to x, and then increments the value pointed to by p. So, x gets the value pointed to by p before the increment, and the value at the memory location pointed to by p is incremented.
+
+Here&#39;s a brief example to illustrate the difference:
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="built_in">array</span>[] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line">    <span class="type">int</span> *p = <span class="built_in">array</span>;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// x gets the value pointed to by p, then p is incremented</span></span><br><span class="line">    x = *p++;  <span class="comment">// x = 1, p now points to array[1]</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;x = %d, array[1] = %d, p points to %d\n&quot;</span>, x, <span class="built_in">array</span>[<span class="number">1</span>], *p);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// x gets the value pointed to by p, then the value pointed to</span></span><br><span class="line">    <span class="comment">// by p is incremented</span></span><br><span class="line">    x = (*p)++; <span class="comment">// x = 2, array[1] is now 3</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;x = %d, array[1] = %d, p points to %d\n&quot;</span>, x, <span class="built_in">array</span>[<span class="number">1</span>], *p);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+The output of the above program is
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = 1, array[1] = 2, p points to 2</span><br><span class="line">x = 2, array[1] = 3, p points to 3</span><br></pre></td></tr></table></figure>
+
+To test your understanding, now check the following code snippet, what will the output be:
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x = <span class="number">2</span>, y = <span class="number">15</span>, z = <span class="number">0</span>;</span><br><span class="line">   <span class="type">int</span> *p = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">   p = &amp;y;</span><br><span class="line">   x = *p++;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;x = %d, y = %d, z = %d\n&quot;</span>, x, y, z);</span><br><span class="line"></span><br><span class="line">   p = &amp;y;</span><br><span class="line">   z = (*p)++;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;x = %d, y = %d, z = %d\n&quot;</span>, x, y, z);</span><br></pre></td></tr></table></figure>
+&#123;% note success Answer %&#125;
+	
+	<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">15</span>, y = <span class="number">15</span>, z = <span class="number">0</span></span><br><span class="line">x = <span class="number">15</span>, y = <span class="number">16</span>, z = <span class="number">15</span></span><br></pre></td></tr></table></figure>
+	So the variable y has its value incremented after `z = (*p)++;`.
+	
+	&#123;% endnote %&#125;</code></pre>
+<ul>
 <li><p>Given the following definitions:</p>
 <p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[] = &#123; <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;;</span><br><span class="line"><span class="type">int</span> *p = arr;</span><br></pre></td></tr></table></figure> are the following two statements equivalent?</p>
 <p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p = p + <span class="number">1</span>;</span><br><span class="line">p++;</span><br></pre></td></tr></table></figure> What can you say about the result of adding a pointer to an integer?</p>
@@ -493,20 +515,19 @@
 <p>In general, if ptr is a pointer to type T, then <code>ptr + n</code> will point to the memory location "ptr + n * sizeof(T)". This is useful for iterating over arrays or accessing elements in memory sequentially.</p></li>
 <li><p>Write a function called 'swap' that will accept two pointers to integers and will exchange the contents of those integer locations.</p>
 <ul>
-<li>Show a call to this subroutine to exchange two variables.</li>
-<li>Why is it necessary to pass pointers to the integers instead of just passing the integers to the Swap subroutine?</li>
-<li>What would happen if you called swap like this:</li>
-</ul>
-<p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x = <span class="number">5</span>;</span><br><span class="line">swap(&amp;x, &amp;x);</span><br></pre></td></tr></table></figure></p>
+<li><p>Show a call to this subroutine to exchange two variables.</p>
 <p>Here is the sample code:</p>
-<p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span> *a, <span class="type">int</span> *b)</span> &#123;</span><br><span class="line">    <span class="type">int</span> temp = *a;</span><br><span class="line">    *a = *b;</span><br><span class="line">    *b = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> x = <span class="number">5</span>, y = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Before swap: x = %d, y = %d\n&quot;</span>, x, y);</span><br><span class="line">    swap(&amp;x, &amp;y);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;After swap: x = %d, y = %d\n&quot;</span>, x, y);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> It is necessary to pass pointers to the integers instead of just passing the integers themselves to the swap subroutine because <strong>C passes arguments by value</strong>. When you pass an integer to a function, a copy of the integer's value is made and passed to the function. Any changes made to the parameter inside the function do not affect the original variable outside the function.</p>
+<p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span> *a, <span class="type">int</span> *b)</span> &#123;</span><br><span class="line">    <span class="type">int</span> temp = *a;</span><br><span class="line">    *a = *b;</span><br><span class="line">    *b = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> x = <span class="number">5</span>, y = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Before: x = %d, y = %d\n&quot;</span>, x, y);</span><br><span class="line">    swap(&amp;x, &amp;y);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;After: x = %d, y = %d\n&quot;</span>, x, y);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Why is it necessary to pass pointers to the integers instead of just passing the integers to the Swap subroutine?</p>
+<p>It is necessary to pass pointers to the integers instead of just passing the integers themselves to the swap subroutine because <strong>C passes arguments by value</strong>. When you pass an integer to a function, a copy of the integer's value is made and passed to the function. Any changes made to the parameter inside the function do not affect the original variable outside the function.</p>
 <p>By passing pointers to integers (<code>int *a</code> and <code>int *b</code>), you are passing the memory addresses of the integers. This allows the swap function to access and modify the actual integers in memory, rather than working with copies. As a result, the values of the integers are swapped correctly, and the changes are reflected outside the function.</p>
-<p>In summary, <strong>passing pointers to integers allows the swap function to modify the values of the integers themselves</strong>, rather than just copies of the values.</p>
-<p>If you called <code>swap(&amp;x, &amp;x);</code> with the same pointer <code>&amp;x</code> for both arguments, it would effectively try to swap the contents of x with itself. The result would be that x would remain unchanged, as the swap operation would effectively cancel itself out. The swap operation had no net effect on x.</p>
-<ul>
-<li>Can you do this: (why or why not?)</li>
-</ul>
+<p>In summary, <strong>passing pointers to integers allows the swap function to modify the values of the integers themselves</strong>, rather than just copies of the values.</p></li>
+<li><p>What would happen if you called swap like this:</p>
+<p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x = <span class="number">5</span>;</span><br><span class="line">swap(&amp;x, &amp;x);</span><br></pre></td></tr></table></figure></p>
+<p>If you called <code>swap(&amp;x, &amp;x);</code> with the same pointer <code>&amp;x</code> for both arguments, it would effectively try to swap the contents of x with itself. The result would be that x would remain unchanged, as the swap operation would effectively cancel itself out. The swap operation had no net effect on x.</p></li>
+<li><p>Can you do this: (why or why not?)</p>
 <p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swap(&amp;<span class="number">123</span>, &amp;<span class="number">456</span>);</span><br></pre></td></tr></table></figure> No, you cannot do this because &amp;123 and &amp;456 are not valid addresses in memory. 123 and 456 are constants, not variables, so you cannot take their addresses for swapping the content.</p></li>
+</ul></li>
 <li><p>What does the following code print:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">func</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="type">int</span> <span class="built_in">array</span>[] = &#123; <span class="number">4</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">8</span> &#125;;</span><br><span class="line">  <span class="type">int</span> *P = <span class="literal">NULL</span>;</span><br><span class="line">  <span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  p = &amp;<span class="built_in">array</span>[<span class="number">2</span>];</span><br><span class="line">  p++;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, *(p++));</span><br><span class="line">  *(--p) = <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line">  (*p)++;</span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; (<span class="keyword">sizeof</span>(<span class="built_in">array</span>)/<span class="keyword">sizeof</span>(<span class="type">int</span>)); i++) &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, <span class="built_in">array</span>[i]);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>The output is</p>
@@ -616,14 +637,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>Symbols count total: </span>
-    <span title="Symbols count total">372k</span>
+    <span title="Symbols count total">374k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>Reading time total &asymp;</span>
-    <span title="Reading time total">5:38</span>
+    <span title="Reading time total">5:40</span>
   </span>
 </div>
 <div class="busuanzi-count">
