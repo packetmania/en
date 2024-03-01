@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2024-03-01T05:00:46.854Z</updated>
+  <updated>2024-03-01T07:44:40.704Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -15,6 +15,48 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Purdue MA 26500 Spring 2022 Midterm II Solutions</title>
+    <link href="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2022-Spring-Midterm2/"/>
+    <id>https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2022-Spring-Midterm2/</id>
+    <published>2024-03-01T07:41:24.000Z</published>
+    <updated>2024-03-01T07:44:40.704Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Here comes the solution and analysis for Purdue MA 26500 Spring 2022 Midterm II. This second midterm covers topics in Chapter 4 (Vector Spaces) and Chapter 5 (Eigenvalues and Eigenvectors) of the textbook.</summary>
+    
+    
+    
+    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
+    
+    
+    <category term="Linear Algebra" scheme="https://www.packetmania.net/en/tags/Linear-Algebra/"/>
+    
+    <category term="Machine Learning" scheme="https://www.packetmania.net/en/tags/Machine-Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Purdue MA 26500 Spring 2023 Midterm II Solutions</title>
+    <link href="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2023-Spring-Midterm2/"/>
+    <id>https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2023-Spring-Midterm2/</id>
+    <published>2024-03-01T07:21:56.000Z</published>
+    <updated>2024-03-01T07:43:21.327Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Here comes the solution and analysis for Purdue MA 26500 Spring 2023 Midterm II. This second midterm covers topics in Chapter 4 (Vector Spaces) and Chapter 5 (Eigenvalues and Eigenvectors) of the textbook.</summary>
+    
+    
+    
+    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
+    
+    
+    <category term="Linear Algebra" scheme="https://www.packetmania.net/en/tags/Linear-Algebra/"/>
+    
+    <category term="Machine Learning" scheme="https://www.packetmania.net/en/tags/Machine-Learning/"/>
+    
+  </entry>
   
   <entry>
     <title>Programming in C Exam Review and Practices (I)</title>
@@ -262,9 +304,9 @@
     
     <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
     
-    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
-    
     <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
+    
+    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
     
     <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
     
@@ -395,48 +437,6 @@
     <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
     
     <category term="Python Programming" scheme="https://www.packetmania.net/en/tags/Python-Programming/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Build an Awesome Raspberry Pi NAS for Home Media Streaming</title>
-    <link href="https://www.packetmania.net/en/2021/12/29/RPi-NAS-Plex/"/>
-    <id>https://www.packetmania.net/en/2021/12/29/RPi-NAS-Plex/</id>
-    <published>2021-12-29T18:53:08.000Z</published>
-    <updated>2023-11-11T02:45:10.994Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;Network Attached Storage (NAS) provides data access to a heterogeneous group of clients over computer networks. As hard drive prices continue to drop, NAS devices have made their way into the homes of the masses. Leading brands in the SMB and home NAS market, such as Synology, have their products range in price from as low as ﹩300 to ﹩700 for the high models. But if you are a Raspberry Pi player, you can build a very nice home NAS and streaming service for only about half the cost of the lowest price.</summary>
-    
-    
-    
-    <category term="DIY Projects" scheme="https://www.packetmania.net/en/categories/DIY-Projects/"/>
-    
-    
-    <category term="Raspberry Pi" scheme="https://www.packetmania.net/en/tags/Raspberry-Pi/"/>
-    
-    <category term="NAS" scheme="https://www.packetmania.net/en/tags/NAS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IPv4 and IPv6 Header Checksum Algorithm Explained</title>
-    <link href="https://www.packetmania.net/en/2021/12/26/IPv4-IPv6-checksum/"/>
-    <id>https://www.packetmania.net/en/2021/12/26/IPv4-IPv6-checksum/</id>
-    <published>2021-12-27T04:52:03.000Z</published>
-    <updated>2023-09-15T22:01:23.808Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;About the IP packet header checksum algorithm, simply put, it is 16-bit ones&#39; complement of the ones&#39; complement sum of all 16-bit words in the header. However, not many sources show exactly how this is done.</summary>
-    
-    
-    
-    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
-    
-    
-    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
-    
-    <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
     
   </entry>
   
