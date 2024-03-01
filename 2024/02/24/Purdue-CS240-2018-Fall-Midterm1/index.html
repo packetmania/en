@@ -26,7 +26,7 @@
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.packetmania.net","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk | utterances | disqus","storage":true,"lazyload":false,"nav":{"disqus":{"text":"Disqus Comments","order":-1},"utterances":{"text":"Utterances Comments","order":-2},"gitalk":{"text":"Gitalk Comments","order":-3}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/en/js/config.js"></script>
 <meta name="description" content="Purdue University CS24000 is an undergraduate-level course that teaches students programming principles and techniques for problem-solving in the C programming language. Here are the solution and stud">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Purdue CS24000 Fall 2018 Midterm 1 Solutions">
+<meta property="og:title" content="Purdue CS24000 Fall 2018 Midterm I Solutions">
 <meta property="og:url" content="https://www.packetmania.net/en/2024/02/24/Purdue-CS240-2018-Fall-Midterm1/index.html">
 <meta property="og:site_name" content="PacketMania">
 <meta property="og:description" content="Purdue University CS24000 is an undergraduate-level course that teaches students programming principles and techniques for problem-solving in the C programming language. Here are the solution and stud">
@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://www.packetmania.net/en/2024/02/24/Purdue-CS240-2018-Fall-Midterm1/C-ProgLang-2nd.jpg">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/02/24/Purdue-CS240-2018-Fall-Midterm1/Purdue-CS240-Spring-2024-Syllabus.png">
 <meta property="article:published_time" content="2024-02-25T06:41:38.000Z">
-<meta property="article:modified_time" content="2024-02-29T08:09:10.682Z">
+<meta property="article:modified_time" content="2024-03-01T06:12:40.736Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="C&#x2F;C++ Programming">
 <meta name="twitter:card" content="summary">
@@ -45,10 +45,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.packetmania.net/en/2024/02/24/Purdue-CS240-2018-Fall-Midterm1/","path":"2024/02/24/Purdue-CS240-2018-Fall-Midterm1/","title":"Purdue CS24000 Fall 2018 Midterm 1 Solutions"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.packetmania.net/en/2024/02/24/Purdue-CS240-2018-Fall-Midterm1/","path":"2024/02/24/Purdue-CS240-2018-Fall-Midterm1/","title":"Purdue CS24000 Fall 2018 Midterm I Solutions"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Purdue CS24000 Fall 2018 Midterm 1 Solutions | PacketMania</title>
+<title>Purdue CS24000 Fall 2018 Midterm I Solutions | PacketMania</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YKBP0QK7Z"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-9YKBP0QK7Z","only_pageview":false}</script>
@@ -258,7 +258,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Purdue CS24000 Fall 2018 Midterm 1 Solutions
+          Purdue CS24000 Fall 2018 Midterm I Solutions
         </h1>
 
         <div class="post-meta-container">
@@ -276,7 +276,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-02-29 00:09:10" itemprop="dateModified" datetime="2024-02-29T00:09:10-08:00">2024-02-29</time>
+        <time title="Modified: 2024-02-29 22:12:40" itemprop="dateModified" datetime="2024-02-29T22:12:40-08:00">2024-02-29</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -302,14 +302,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>4.2k</span>
+      <span>5.7k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>4 mins.</span>
+      <span>5 mins.</span>
     </span>
 </div>
 
@@ -391,6 +391,8 @@ Explanation:</p>
 <p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">find_voltage</span><span class="params">(<span class="type">resistor_t</span> r, <span class="type">int</span> c)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (c * r.resistance);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
 </ul>
 <h3 id="problem-3-40-pts">Problem 3 (40 pts)</h3>
+<p>The complete program is shown below</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ID_LEN 5</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> CNAME_LEN 24</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">resistor</span> &#123;</span></span><br><span class="line">  <span class="type">char</span> id[ID_LEN];</span><br><span class="line">  <span class="type">float</span> max_power;</span><br><span class="line">  <span class="type">int</span> resistance;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">resistor</span> <span class="title">resistor_t</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">circuit_struct</span> &#123;</span></span><br><span class="line">  <span class="type">char</span> name[CNAME_LEN];</span><br><span class="line">  <span class="type">resistor_t</span> resistors[<span class="number">10</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">blown_resistors</span><span class="params">(<span class="type">char</span>* infile, <span class="type">char</span>* outfile, <span class="type">float</span> voltage)</span> &#123;</span><br><span class="line"></span><br><span class="line">  FILE *in = fopen(infile, <span class="string">&quot;r&quot;</span>);</span><br><span class="line">  <span class="keyword">if</span>(!in) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">  FILE *out = fopen(outfile, <span class="string">&quot;w&quot;</span>);</span><br><span class="line">  <span class="keyword">if</span>(!out) &#123;</span><br><span class="line">    fclose(in);</span><br><span class="line">    in = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// First pass - calculate total resistance</span></span><br><span class="line">  <span class="type">int</span> total_resistance = <span class="number">0</span>;</span><br><span class="line">  <span class="type">int</span> items;</span><br><span class="line">  <span class="type">char</span> id[ID_LEN];</span><br><span class="line">  <span class="type">int</span> resistance;</span><br><span class="line">  <span class="type">float</span> max_power;</span><br><span class="line"></span><br><span class="line">  fseek(in, <span class="number">0</span>, SEEK_SET);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (<span class="built_in">fscanf</span>(in, <span class="string">&quot;%[^,],%d,%f\n&quot;</span>, id, &amp;resistance, &amp;max_power) == <span class="number">3</span>) &#123;</span><br><span class="line">    total_resistance += resistance;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!feof(in)) &#123;</span><br><span class="line">      <span class="comment">// Input format error</span></span><br><span class="line">      fclose(in);</span><br><span class="line">      in = <span class="literal">NULL</span>;</span><br><span class="line">      fclose(out);</span><br><span class="line">      out = <span class="literal">NULL</span>;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Calculate current</span></span><br><span class="line">  <span class="type">float</span> current = voltage / total_resistance;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Second pass - check for blown resistors</span></span><br><span class="line">  <span class="type">int</span> blown_count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  fseek(in, <span class="number">0</span>, SEEK_SET);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (<span class="built_in">fscanf</span>(in, <span class="string">&quot;%[^,],%d,%f\n&quot;</span>, id, &amp;resistance, &amp;max_power) == <span class="number">3</span>) &#123;</span><br><span class="line">    <span class="type">float</span> power = current * current * resistance;</span><br><span class="line">    <span class="keyword">if</span> (power &gt; max_power) &#123;</span><br><span class="line">      blown_count++;</span><br><span class="line">      <span class="built_in">fprintf</span>(out, <span class="string">&quot;%s, %.2f\n&quot;</span>, id, power);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  fclose(in);</span><br><span class="line">  in = <span class="literal">NULL</span>;</span><br><span class="line">  fclose(out);</span><br><span class="line">  out = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> blown_count;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;return is %d\n&quot;</span>, blown_resistors(<span class="string">&quot;input&quot;</span>, <span class="string">&quot;output&quot;</span>, <span class="number">100</span>));</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="problem-4-20-pts">Problem 4 (20 pts)</h3>
 <p>The solution can be like this: (the include and struct definition are not necessary)</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">coord</span> &#123;</span></span><br><span class="line">    <span class="type">float</span> x;</span><br><span class="line">    <span class="type">float</span> y;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> coord <span class="title function_">find_center</span><span class="params">(FILE *file_ptr)</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">coord</span> <span class="title">center</span> =</span> &#123;<span class="number">0.0</span>, <span class="number">0.0</span>&#125;;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">coord</span> <span class="title">temp</span>;</span></span><br><span class="line">    <span class="type">int</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (file_ptr == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot;Error: NULL file pointer\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> center;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Set file position indicator to the beginning</span></span><br><span class="line">    rewind(file_ptr);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (fread(&amp;temp, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> coord), <span class="number">1</span>, file_ptr) == <span class="number">1</span>) &#123;</span><br><span class="line">        center.x += temp.x;</span><br><span class="line">        center.y += temp.y;</span><br><span class="line">        count++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        center.x /= count;</span><br><span class="line">        center.y /= count;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -411,7 +413,7 @@ Explanation:</p>
   </li>
   <li class="post-copyright-link">
       <strong>Post link: </strong>
-      <a href="https://www.packetmania.net/en/2024/02/24/Purdue-CS240-2018-Fall-Midterm1/" title="Purdue CS24000 Fall 2018 Midterm 1 Solutions">https://www.packetmania.net/en/2024/02/24/Purdue-CS240-2018-Fall-Midterm1/</a>
+      <a href="https://www.packetmania.net/en/2024/02/24/Purdue-CS240-2018-Fall-Midterm1/" title="Purdue CS24000 Fall 2018 Midterm I Solutions">https://www.packetmania.net/en/2024/02/24/Purdue-CS240-2018-Fall-Midterm1/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> unless stating additionally.
@@ -489,14 +491,14 @@ Explanation:</p>
       <i class="fa fa-chart-line"></i>
     </span>
       <span>Symbols count total: </span>
-    <span title="Symbols count total">373k</span>
+    <span title="Symbols count total">375k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>Reading time total &asymp;</span>
-    <span title="Reading time total">5:40</span>
+    <span title="Reading time total">5:41</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -557,12 +559,12 @@ Explanation:</p>
 <script src="/en/js/third-party/math/mathjax.js"></script>
 
 
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"packetmania-github-io","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/en/js/third-party/comments/disqus.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
 <script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"packetmania","repo":"en","client_id":"a45f6ae3f97c1a467856","client_secret":"7d81b74f952b388f93dcb5a8c44cd12f657969fa","admin_user":"packetmania","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"91204233039d42411137cbde456ae41a"}</script>
 <script src="/en/js/third-party/comments/gitalk.js"></script>
-<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"packetmania-github-io","count":false,"i18n":{"disqus":"disqus"}}</script>
-<script src="/en/js/third-party/comments/disqus.js"></script>
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"packetmania/en","issue_term":"pathname","theme":"github-light"}</script>
 <script src="/en/js/third-party/comments/utterances.js"></script>
 
