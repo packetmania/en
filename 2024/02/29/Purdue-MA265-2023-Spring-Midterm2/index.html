@@ -48,7 +48,7 @@
 <meta property="og:image" content="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2023-Spring-Midterm2/MA265-Spring2023-Midterm2-P10-2.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2023-Spring-Midterm2/MA265-Spring2023-Midterm2-P10-3.png">
 <meta property="article:published_time" content="2024-03-01T07:21:56.000Z">
-<meta property="article:modified_time" content="2024-03-04T19:11:22.974Z">
+<meta property="article:modified_time" content="2024-03-04T20:07:41.165Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="Linear Algebra">
 <meta property="article:tag" content="Machine Learning">
@@ -291,7 +291,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-03-04 11:11:22" itemprop="dateModified" datetime="2024-03-04T11:11:22-08:00">2024-03-04</time>
+        <time title="Modified: 2024-03-04 12:07:41" itemprop="dateModified" datetime="2024-03-04T12:07:41-08:00">2024-03-04</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -317,7 +317,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>9.9k</span>
+      <span>10k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -358,9 +358,9 @@
 <p><img src="MA265-Spring2023-Midterm2-P1.png" style="width:90.0%;height:90.0%" /></p>
 <details class="note success"><summary><p>Problem 1 Solution</p>
 </summary>
-<p><strong>A</strong> For <span class="math inline">\(5\times 7\)</span> matrix, since <span class="math inline">\(rank(A)=5\)</span>, the dimension of the null space of <span class="math inline">\(A\)</span> is <span class="math inline">\(7-5=2\)</span>. So this is wrong.</p>
+<p><strong>A</strong> For <span class="math inline">\(5\times 7\)</span> matrix, if <span class="math inline">\(rank(A)=5\)</span>, the dimension of the null space is <span class="math inline">\(7-5=2\)</span>. So this is wrong.</p>
 <p><strong>B</strong> The matrix has 7 columns, but there are only 5 pivot columns, so the columns of <span class="math inline">\(A\)</span> are NOT linearly independent. It is wrong.</p>
-<p><strong>C</strong> <span class="math inline">\(A^T\)</span> is a <span class="math inline">\(7\times 5\)</span> matrix, and the rank of <span class="math inline">\(A^T\)</span> is no more than 5, si this is wrong.</p>
+<p><strong>C</strong> <span class="math inline">\(A^T\)</span> is a <span class="math inline">\(7\times 5\)</span> matrix, and the rank of <span class="math inline">\(A^T\)</span> is no more than 5. This statement is wrong.</p>
 <p><strong>D</strong> Because there are 5 pivots, each row has one pivot. Thus the rows of <span class="math inline">\(A\)</span> are linearly independent. This statement is TRUE.</p>
 <p><strong>E</strong> From statement D, it can be deduced that the dimension of the row space is 5, not 2.</p>
 <p>The answer is <mark><strong>D</strong></mark>.</p>
@@ -379,13 +379,15 @@ e\begin{bmatrix}4\\-3\\-9\\-10\end{bmatrix}
 \]</span></p>
 <p>Here the transformation matrix <span class="math inline">\(A\)</span> has 5 columns and each has 4 entries. Hence these column vectors are not linearly independent.</p>
 <blockquote>
-<p>Note that row operations do not affect the dependence relations between the column vectors. This makes it possible to use row reduction to find a basis for the column space.</p>
+<p><em>Note that row operations do not affect the dependence relations between the column vectors. This makes it possible to use row reduction to find a basis for the column space.</em></p>
 </blockquote>
 <p><span class="math display">\[
-\begin{bmatrix}1 &amp;-2 &amp;9 &amp;5 &amp;4\\1 &amp;-1 &amp;6 &amp;5 &amp;-3\\0 &amp;1 &amp;-3 &amp;1 &amp;-9\\0 &amp;0 &amp;0 &amp;5 &amp;-10\end{bmatrix}\sim
+\begin{align}
+&amp;\begin{bmatrix}1 &amp;-2 &amp;9 &amp;5 &amp;4\\1 &amp;-1 &amp;6 &amp;5 &amp;-3\\0 &amp;1 &amp;-3 &amp;1 &amp;-9\\0 &amp;0 &amp;0 &amp;5 &amp;-10\end{bmatrix}\sim
 \begin{bmatrix}1 &amp;-2 &amp;9 &amp;5 &amp;4\\0 &amp;1 &amp;-3 &amp;0 &amp;-7\\0 &amp;1 &amp;-3 &amp;1 &amp;-9\\0 &amp;0 &amp;0 &amp;5 &amp;-10\end{bmatrix}\\
-\sim\begin{bmatrix}1 &amp;-2 &amp;9 &amp;5 &amp;4\\0 &amp;1 &amp;-3 &amp;0 &amp;-7\\0 &amp;0 &amp;0 &amp;1 &amp;-2\\0 &amp;0 &amp;0 &amp;5 &amp;-10\end{bmatrix}\sim
+\sim&amp;\begin{bmatrix}1 &amp;-2 &amp;9 &amp;5 &amp;4\\0 &amp;1 &amp;-3 &amp;0 &amp;-7\\0 &amp;0 &amp;0 &amp;1 &amp;-2\\0 &amp;0 &amp;0 &amp;5 &amp;-10\end{bmatrix}\sim
 \begin{bmatrix}\color{fuchsia}1 &amp;-2 &amp;9 &amp;5 &amp;4\\0 &amp;\color{fuchsia}1 &amp;-3 &amp;0 &amp;-7\\0 &amp;0 &amp;0 &amp;\color{fuchsia}1 &amp;-2\\0 &amp;0 &amp;0 &amp;0 &amp;0\end{bmatrix}
+\end{align}
 \]</span></p>
 <p>The dimension of <span class="math inline">\(H\)</span> is the number of linearly independent columns of the matrix, which is the number of pivots in <span class="math inline">\(A\)</span>'s row echelon form. So the dimension is 3.</p>
 <p>The answer is <mark><strong>C</strong></mark>.</p>
@@ -399,7 +401,7 @@ e\begin{bmatrix}4\\-3\\-9\\-10\end{bmatrix}
 \begin{align}
 \det A-\lambda I &amp;=\begin{vmatrix}2-\lambda &amp;2\\3 &amp;1-\lambda\end{vmatrix}=(\lambda^2-3\lambda+2)-6\\&amp;=\lambda^2-3\lambda-4=(\lambda+1)(\lambda-4)=0
 \end{align}
-\]</span> The above gives two real eigenvalues -1 and 4. Since they have opposite signs, the original is a saddle point.</p>
+\]</span> The above gives two real eigenvalues <span class="math inline">\(-1\)</span> and <span class="math inline">\(4\)</span>. Since they have opposite signs, the origin is a saddle point.</p>
 <p>The answer is <mark><strong>A</strong></mark>.</p>
 
 </details>
@@ -407,13 +409,19 @@ e\begin{bmatrix}4\\-3\\-9\\-10\end{bmatrix}
 <p><img src="MA265-Spring2023-Midterm2-P4.png" style="width:90.0%;height:90.0%" /></p>
 <details class="note success"><summary><p>Problem 4 Solution</p>
 </summary>
-<p><strong>(i)</strong> is NOT true. Referring to Theorem 4 of Section 5.2 "The Characteristic Equation", &gt;If <span class="math inline">\(n\times n\)</span> matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are similar, then they have the same characteristic polynomial and hence the same eigenvalues (with the same multiplicities).</p>
+<p><strong>(i)</strong> is NOT true. Referring to Theorem 4 of Section 5.2 "The Characteristic Equation",</p>
+<blockquote>
+<p>If <span class="math inline">\(n\times n\)</span> matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are similar, then they have the same characteristic polynomial and hence the same eigenvalues (with the same multiplicities).</p>
+</blockquote>
 <p>But the reverse statement is NOT true. They are matrices that are not similar even though they have the same eigenvalues.</p>
-<p><strong>(ii)</strong> is NOT true either. Referring to Theorem 6 of Section 5.3 "Diagonalization", &gt;An <span class="math inline">\(n\times n\)</span> matrix with <span class="math inline">\(n\)</span> distinct eigenvalues is diagonalizable.</p>
-<p>The book clearly mentions that the above theorem "provides a sufficient condition for a matrix to bediagonalizable". So the reverse statement is NOT true. There are examples that a diagonalizable matrix has eigenvalues with multiplicity 2 or more.</p>
-<p><strong>(iii)</strong> Since the identity matrix is symmetric, <span class="math inline">\(\det (A-\lambda I) = \det (A-\lambda I)^T = \det(A^T-\lambda I)\)</span>. So matrix <span class="math inline">\(A\)</span> and its transpose have the same eigenvalues. This statement is TRUE.</p>
+<p><strong>(ii)</strong> is NOT true either. Referring to Theorem 6 of Section 5.3 "Diagonalization",</p>
+<blockquote>
+<p>An <span class="math inline">\(n\times n\)</span> matrix with <span class="math inline">\(n\)</span> distinct eigenvalues is diagonalizable.</p>
+</blockquote>
+<p>The book clearly mentions that the above theorem <u>provides a sufficient condition for a matrix to be diagonalizable</u>. So the reverse statement is NOT true. There are examples that a diagonalizable matrix has eigenvalues with multiplicity 2 or more.</p>
+<p><strong>(iii)</strong> Since the identity matrix is symmetric, and <span class="math inline">\(\det A=\det A^T\)</span> for <span class="math inline">\(n\times n\)</span> matrix, we can write <span class="math inline">\(\det (A-\lambda I) = \det (A-\lambda I)^T = \det(A^T-\lambda I)\)</span>. So matrix <span class="math inline">\(A\)</span> and its transpose have the same eigenvalues. This statement is TRUE.</p>
 <p><strong>(iv)</strong> This is definitely TRUE as we can find eigenvectors that are linearly independent and span <span class="math inline">\(\mathbb R^n\)</span>.</p>
-<p><strong>(v)</strong> If matrix <span class="math inline">\(A\)</span> has zero eigenvalue, <span class="math inline">\(\det A=0\)</span>, it is not invertible. This statement is TRUE.</p>
+<p><strong>(v)</strong> If matrix <span class="math inline">\(A\)</span> has zero eigenvalue, <span class="math inline">\(\det A-0I=\det A=0\)</span>, it is not invertible. This statement is TRUE.</p>
 <p>In summary, statements (iii), (iv), and (v) are TRUE. The answer is <mark><strong>E</strong></mark>.</p>
 
 </details>
@@ -422,9 +430,9 @@ e\begin{bmatrix}4\\-3\\-9\\-10\end{bmatrix}
 <details class="note success"><summary><p>Problem 5 Solution</p>
 </summary>
 <p><strong>A</strong> This vector set does not include zero vector (<span class="math inline">\(x = y = 0\)</span>). So it is not a subspace of <span class="math inline">\(V\)</span>.</p>
-<p><strong>B</strong> For eigenvalue 3, we can find out the eigenvector from <span class="math inline">\(\begin{bmatrix}0 &amp;0\\2 &amp;0\end{bmatrix}\pmb v=\pmb 0\)</span>, it is <span class="math inline">\(\begin{bmatrix}0\\*\end{bmatrix}\)</span>. All vectors in this set satisfy three subspace properties. So this one is good.</p>
-<p><strong>C</strong> This cannot be the right choice, since the 3rd entry is always 1. Also, it does not include zero vector either.</p>
-<p><strong>D</strong> For <span class="math inline">\(p(x)=a_0+a_1x+a_2x^2\)</span> and <span class="math inline">\(p(1)p(2)=0\)</span>, this gives <span class="math display">\[(a_0+a_1+a_2)(a_0+2a_1+4a_2)=0\]</span> To verify if this is closed under vector addition. Define <span class="math inline">\(q(x)=b_0+b_1x+b_2x^2\)</span> that has <span class="math inline">\(q(1)q(2)=0\)</span>, so <span class="math display">\[(b_0+b_1+b_2)(b_0+2b_1+4b_2)=0\]</span> Now let <span class="math inline">\(r(x)=p(x)+q(x)=c_0+c_1x+c_2x^2\)</span>, where <span class="math inline">\(c_i=a_i+b_i\)</span> for <span class="math inline">\(i=0,1,2\)</span>. Is it true that <span class="math display">\[(c_0+c_1+c_2)(c_0+2c_1+4c_2)=0\]</span> No, it is not necessarily the case. This one is not the right choice either.</p>
+<p><strong>B</strong> For eigenvalue 3, we can find out the eigenvector from <span class="math inline">\(\begin{bmatrix}0 &amp;0\\2 &amp;0\end{bmatrix}\pmb v=\pmb 0\)</span>, it is <span class="math inline">\(\begin{bmatrix}0\\\ast\end{bmatrix}\)</span>. All vectors in this set satisfy three subspace properties. So this one is good.</p>
+<p><strong>C</strong> This cannot be the right choice. Since the 3rd entry is always 1, the vector set cannot be closed under vector addition and multiplication by scalars. Also, it does not include zero vector either.</p>
+<p><strong>D</strong> For <span class="math inline">\(p(x)=a_0+a_1x+a_2x^2\)</span> and <span class="math inline">\(p(1)p(2)=0\)</span>, this gives <span class="math display">\[(a_0+a_1+a_2)(a_0+2a_1+4a_2)=0\]</span> To verify if this is closed under vector addition. Define <span class="math inline">\(q(x)=b_0+b_1x+b_2x^2\)</span> that has <span class="math inline">\(q(1)q(2)=0\)</span>, this gives <span class="math display">\[(b_0+b_1+b_2)(b_0+2b_1+4b_2)=0\]</span> Now let <span class="math inline">\(r(x)=p(x)+q(x)=c_0+c_1x+c_2x^2\)</span>, where <span class="math inline">\(c_i=a_i+b_i\)</span> for <span class="math inline">\(i=0,1,2\)</span>. Is it true that <span class="math display">\[(c_0+c_1+c_2)(c_0+2c_1+4c_2)=0\]</span> No, it is not necessarily the case. This one is not the right choice either.</p>
 <p><strong>E</strong> Invertible matrix indicates that its determinant is not 0. The all-zero matrix is certainly not invertible, so it is not in the specified set. Moreover, two invertible matrices can add to a non-invertible matrix, such as the following example <span class="math display">\[
 \begin{bmatrix}2 &amp;1\\1 &amp;2\end{bmatrix}+\begin{bmatrix}-2 &amp;1\\-1 &amp;-2\end{bmatrix}=\begin{bmatrix}0 &amp;2\\0 &amp;0\end{bmatrix}
 \]</span> This set is NOT a subspace of <span class="math inline">\(V\)</span>.</p>
@@ -437,11 +445,11 @@ e\begin{bmatrix}4\\-3\\-9\\-10\end{bmatrix}
 </summary>
 <p>Recall from the Problem 4 solution that a matrix with <span class="math inline">\(n\)</span> distinct eigenvalues is diagonalizable.</p>
 <p><strong>(i)</strong> The following calculation shows that this matrix has two eigenvalues 4 and 1. So it is diagonalizable. <span class="math display">\[\begin{vmatrix}2-\lambda &amp;2\\1 &amp;3-\lambda\end{vmatrix}=(\lambda^2-5\lambda+6)-2=(\lambda-1)(\lambda-4)=0\]</span></p>
-<p><strong>(ii)</strong> It is easy to see that there is one eigenvalue -3 with multiplicity 2. However, we can only get one eigenvector <span class="math inline">\(\begin{bmatrix}1\\0\end{bmatrix}\)</span> for such eigenvalue. So it is NOT diagonalizable.</p>
+<p><strong>(ii)</strong> It is easy to see that there is one eigenvalue <span class="math inline">\(-3\)</span> with multiplicity 2. However, we can only get one eigenvector <span class="math inline">\(\begin{bmatrix}1\\0\end{bmatrix}\)</span> for such eigenvalue. So it is NOT diagonalizable.</p>
 <p><strong>(iii)</strong> To find out the eigenvalues for this <span class="math inline">\(3\times 3\)</span> matrix, do the calculation as below <span class="math display">\[
 \begin{vmatrix}2-\lambda &amp;3 &amp;5\\0 &amp;2-\lambda &amp;1\\0 &amp;1 &amp;2-\lambda\end{vmatrix}=(2-\lambda)\begin{vmatrix}2-\lambda &amp;1\\1 &amp;2-\lambda\end{vmatrix}=(2-\lambda)(\lambda-3)(\lambda-1)
 \]</span> So we get 3 eigenvalues 2, 3, and 1. This matrix is diagonalizable.</p>
-<p><strong>(iv)</strong> This is an upper triangular matrix, so the entries (5, 4, 2) on the diagonal lines are all eigenvalues. Three distinct eigenvalues proves that it is diagonalizable.</p>
+<p><strong>(iv)</strong> This is an upper triangular matrix, so the diagonal entries (5, 4, 2) are all eigenvalues. As this matrix has three distinct eigenvalues, it is diagonalizable.</p>
 <p>Since only (ii) is not diagonalizable, the answer is <mark><strong>E</strong></mark>.</p>
 
 </details>
@@ -488,26 +496,24 @@ T(t^2)&amp;=0+t+4t^2 =&gt; \begin{bmatrix}0\\1\\4\end{bmatrix}\
 \]</span> So there are <span class="math inline">\(\lambda_1=\lambda_2=1\)</span>, and <span class="math inline">\(\lambda_3=4\)</span>.</p>
 <p>Next is to find the eigenvectors for each eigenvalue</p>
 <ul>
-<li>For <span class="math inline">\(\lambda_1=\lambda_2=1\)</span>, apply row reduction to the agumented matrix of the system <span class="math inline">\((A-\lambda I)\pmb x=\pmb 0\)</span> <span class="math display">\[
+<li><p>For <span class="math inline">\(\lambda_1=\lambda_2=1\)</span>, apply row reduction to the agumented matrix of the system <span class="math inline">\((A-\lambda I)\pmb x=\pmb 0\)</span> <span class="math display">\[
 \begin{bmatrix}0 &amp;2 &amp;-1 &amp;0\\0 &amp;2 &amp;-1 &amp;0\\0 &amp;-2 &amp;1 &amp;0\end{bmatrix}\sim
 \begin{bmatrix}0 &amp;2 &amp;-1 &amp;0\\0 &amp;0 &amp;0 &amp;0\\0 &amp;0 &amp;0 &amp;0\end{bmatrix}
 \]</span> With two free variables <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>, we get <span class="math inline">\(x_3=2x_2\)</span>. So the parametric vector form can be written as <span class="math display">\[
 \begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix}=
 x_1\begin{bmatrix}1\\0\\0\end{bmatrix}+x_2\begin{bmatrix}0\\1\\2\end{bmatrix}
-\]</span> So the eigenvectors are <span class="math inline">\(\begin{bmatrix}1\\0\\0\end{bmatrix}\)</span> and <span class="math inline">\(\begin{bmatrix}0\\1\\2\end{bmatrix}\)</span>.</li>
-</ul>
-
-</details>
-<ul>
-<li>For <span class="math inline">\(\lambda_3=4\)</span>, follow the same process <span class="math display">\[
+\]</span> So the eigenvectors are <span class="math inline">\(\begin{bmatrix}1\\0\\0\end{bmatrix}\)</span> and <span class="math inline">\(\begin{bmatrix}0\\1\\2\end{bmatrix}\)</span>.</p></li>
+<li><p>For <span class="math inline">\(\lambda_3=4\)</span>, follow the same process <span class="math display">\[
 \begin{bmatrix}-3 &amp;2 &amp;-1 &amp;0\\0 &amp;-1 &amp;-1 &amp;0\\0 &amp;-2 &amp;-2 &amp;0\end{bmatrix}\sim
 \begin{bmatrix}3 &amp;-2 &amp;1 &amp;0\\0 &amp;1 &amp;1 &amp;0\\0 &amp;0 &amp;0 &amp;0\end{bmatrix}
-\]</span> With one free variable <span class="math inline">\(x_3\)</span>, we get <span class="math inline">\(x_1=x_2=-x_3\)</span>. So the eigenvector can be written as <span class="math inline">\(\begin{bmatrix}1\\1\\-1\end{bmatrix}\)</span> (or <span class="math inline">\(\begin{bmatrix}-1\\-1\\1\end{bmatrix}\)</span>).</li>
+\]</span> With one free variable <span class="math inline">\(x_3\)</span>, we get <span class="math inline">\(x_1=x_2=-x_3\)</span>. So the eigenvector can be written as <span class="math inline">\(\begin{bmatrix}1\\1\\-1\end{bmatrix}\)</span> (or <span class="math inline">\(\begin{bmatrix}-1\\-1\\1\end{bmatrix}\)</span>).</p></li>
 </ul>
 <p><strong>(2)</strong> We can directly construct <span class="math inline">\(P\)</span> from the vectors in last step, and construct <span class="math inline">\(D\)</span> from the corresponding eigenvalues. Here are the answers: <span class="math display">\[
 P=\begin{bmatrix}1 &amp;0 &amp;1\\0 &amp;1 &amp;1\\0 &amp;2 &amp;-1\end{bmatrix},\;
 D=\begin{bmatrix}1 &amp;0 &amp;0\\0 &amp;1 &amp;0\\0 &amp;0 &amp;4\end{bmatrix}
 \]</span></p>
+
+</details>
 <h3 id="problem-10-10-points">Problem 10 (10 points)</h3>
 <p><img src="MA265-Spring2023-Midterm2-P10-1.png" style="width:90.0%;height:90.0%" /> <img src="MA265-Spring2023-Midterm2-P10-2.png" style="width:90.0%;height:90.0%" /> <img src="MA265-Spring2023-Midterm2-P10-3.png" style="width:90.0%;height:90.0%" /></p>
 <details class="note success"><summary><p>Problem 10 Solution</p>
