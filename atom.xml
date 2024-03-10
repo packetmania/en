@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2024-03-10T05:27:16.268Z</updated>
+  <updated>2024-03-10T05:32:12.018Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2022-Spring-Midterm2/"/>
     <id>https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2022-Spring-Midterm2/</id>
     <published>2024-03-01T07:41:24.000Z</published>
-    <updated>2024-03-10T05:27:16.268Z</updated>
+    <updated>2024-03-10T05:32:12.018Z</updated>
     
     
     <summary type="html">&lt;p&gt;Here comes the solution and analysis for Purdue MA 26500 Spring 2022 Midterm II. This second midterm covers topics in Chapter 4 (Vector Spaces) and Chapter 5 (Eigenvalues and Eigenvectors) of the textbook.</summary>
@@ -292,9 +292,9 @@
     
     <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
     
-    <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
-    
     <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
+    
+    <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
     
     <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
     
