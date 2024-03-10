@@ -49,7 +49,7 @@
 <meta property="og:image" content="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2022-Spring-Midterm2/MA265-Spring2022-Midterm2-P10-2.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2022-Spring-Midterm2/MA265-Spring2022-Midterm2-P10-3.png">
 <meta property="article:published_time" content="2024-03-01T07:41:24.000Z">
-<meta property="article:modified_time" content="2024-03-10T01:55:58.917Z">
+<meta property="article:modified_time" content="2024-03-10T05:10:20.384Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="Linear Algebra">
 <meta name="twitter:card" content="summary">
@@ -291,7 +291,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-03-09 17:55:58" itemprop="dateModified" datetime="2024-03-09T17:55:58-08:00">2024-03-09</time>
+        <time title="Modified: 2024-03-09 21:10:20" itemprop="dateModified" datetime="2024-03-09T21:10:20-08:00">2024-03-09</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -317,14 +317,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>11k</span>
+      <span>12k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>10 mins.</span>
+      <span>11 mins.</span>
     </span>
 </div>
 
@@ -395,7 +395,7 @@
 &amp;=(\lambda-4)(\lambda+1)(\lambda^2-9\lambda+18-a^2)
 \end{align}
 \]</span></p>
-<p>So if 2 is an eigenvalue for the above, the last multiplication item becomes <span class="math inline">\((2^2-18+18-a^2)\)</span> and it needs to be zero. So <span class="math inline">\(a=\pm 2\)</span>.</p>
+<p>So if 2 is an eigenvalue for the above, the last multiplication item becomes <span class="math inline">\((2^2-18+18-a^2)\)</span> that should be zero. So <span class="math inline">\(a=\pm 2\)</span>.</p>
 <p>The answer is <mark><strong>E</strong></mark>.</p>
 
 </details>
@@ -403,9 +403,18 @@
 <p><img src="MA265-Spring2022-Midterm2-P4.png" style="width:90.0%;height:90.0%" /></p>
 <details class="note success"><summary><p>Problem 4 Solution</p>
 </summary>
-<blockquote>
-<p>If <span class="math inline">\(n\times n\)</span> matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are similar, then they have the same characteristic polynomial and hence the same eigenvalues (with the same multiplicities).</p>
-</blockquote>
+<p><strong>(i)</strong> Referring to Theorem 4 in Section 5.2 "The Characteristic Equation" &gt;If <span class="math inline">\(n\times n\)</span> matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are similar, then they have the same characteristic polynomial and hence the same eigenvalues (with the same multiplicities).</p>
+<p>So this statement must be TRUE.</p>
+<p><strong>(ii)</strong> If the columns of <span class="math inline">\(A\)</span> are linearly independent, <span class="math inline">\(A\pmb x=\pmb 0\)</span> only has trivial solution and <span class="math inline">\(A\)</span> is an invertible matrix. This also means <span class="math inline">\(\det A\neq 0\)</span>. From here, it must be TRUE that <span class="math inline">\(\det A-0 I\neq 0\)</span>. So 0 is NOT an eigenvalue of <span class="math inline">\(A\)</span>. This statement is FALSE.</p>
+<p><strong>(iii)</strong> A matrix <span class="math inline">\(A\)</span> is said to be diagonalizable if it is similar to a diagonal matrix, which means that there exists an invertible matrix <span class="math inline">\(P\)</span> such that <span class="math inline">\(P^{-1}AP\)</span> is a diagonal matrix. In other words, <span class="math inline">\(A\)</span> is diagonalizable if it has a linearly independent set of eigenvectors that can form a basis for the vector space.</p>
+<p>However, the condition for diagonalizability does not require that all eigenvalues be nonzero. A matrix can be diagonalizable even if it has one or more zero eigenvalues. For example, consider the following matrix: <span class="math display">\[A=\begin{bmatrix}1 &amp;0\\0 &amp;0\end{bmatrix}
+=\begin{bmatrix}1 &amp;0\\0 &amp;1\end{bmatrix}\begin{bmatrix}1 &amp;0\\0 &amp;0\end{bmatrix}\begin{bmatrix}1 &amp;0\\0 &amp;1\end{bmatrix}\]</span> This matrix has one nonzero eigenvalue (<span class="math inline">\(λ = 1\)</span>) and one zero eigenvalue (<span class="math inline">\(λ = 0\)</span>). However, it is diagonalizable with the identity matrix as <span class="math inline">\(P\)</span> and <span class="math inline">\(D=A\)</span>.</p>
+<p>So this statement is FALSE.</p>
+<p><strong>(iv)</strong> Similar matrices have the same eigenvalues (with the same multiplicities). Hence <span class="math inline">\(-\lambda\)</span> is also an eigenvalue of <span class="math inline">\(B\)</span>. Then we have <span class="math inline">\(B\pmb x=-\lambda\pmb x\)</span>. From this, <span class="math display">\[
+BB\pmb x=B(-\lambda)\pmb x=(-\lambda)B\pmb x=(-\lambda)(-\lambda)\pmb x=\lambda^2\pmb x
+\]</span> So <span class="math inline">\(\lambda^2\)</span> is an eigenvalue of <span class="math inline">\(B^2\)</span>. Following the same deduction, we can prove that <span class="math inline">\(\lambda^4\)</span> is an eigenvalue of <span class="math inline">\(B^4\)</span>. This statement is TRUE.</p>
+<p><strong>(v)</strong> Denote <span class="math inline">\(A=PBP^{-1}\)</span>. If <span class="math inline">\(A\)</span> is diagonizible, then <span class="math inline">\(A=QDQ^{-1}\)</span> for some diagonal matrix <span class="math inline">\(D\)</span>. Now we can also write down <span class="math display">\[B=P^{-1}AP=P^{-1}QDQ^{-1}P=(P^{-1}Q)D(P^{-1}Q)^{-1}\]</span> This proves that <span class="math inline">\(B\)</span> is also diagonalizable. This statement is TRUE.</p>
+<p>Since statements (ii) and (iii) are FALSE and the rest are TRUE, the answer is <mark><strong>D</strong></mark>.</p>
 
 </details>
 <h3 id="problem-5-10-points">Problem 5 (10 points)</h3>
@@ -630,14 +639,14 @@ D=\begin{bmatrix}2 &amp;0 &amp;0\\0 &amp;2 &amp;0\\0 &amp;0 &amp;4\end{bmatrix}
       <i class="fa fa-chart-line"></i>
     </span>
       <span>Symbols count total: </span>
-    <span title="Symbols count total">399k</span>
+    <span title="Symbols count total">401k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>Reading time total &asymp;</span>
-    <span title="Reading time total">6:03</span>
+    <span title="Reading time total">6:04</span>
   </span>
 </div>
 <div class="busuanzi-count">
