@@ -49,7 +49,7 @@
 <meta property="og:image" content="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2022-Spring-Midterm2/MA265-Spring2022-Midterm2-P10-2.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2022-Spring-Midterm2/MA265-Spring2022-Midterm2-P10-3.png">
 <meta property="article:published_time" content="2024-03-01T07:41:24.000Z">
-<meta property="article:modified_time" content="2024-03-10T05:10:20.384Z">
+<meta property="article:modified_time" content="2024-03-10T05:27:16.268Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="Linear Algebra">
 <meta name="twitter:card" content="summary">
@@ -291,7 +291,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-03-09 21:10:20" itemprop="dateModified" datetime="2024-03-09T21:10:20-08:00">2024-03-09</time>
+        <time title="Modified: 2024-03-09 21:27:16" itemprop="dateModified" datetime="2024-03-09T21:27:16-08:00">2024-03-09</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -358,13 +358,13 @@
 <p><img src="MA265-Spring2022-Midterm2-P1.png" style="width:90.0%;height:90.0%" /></p>
 <details class="note success"><summary><p>Problem 1 Solution</p>
 </summary>
-<p><strong>A</strong> From the following <span class="math display">\[c_1(\pmb u+\pmb v)+c_2(\pmb v+\pmb w)+c_3\pmb w=c_1\pmb u+(c_1+c_2)\pmb v+(c_2+c_3)\pmb w\]</span> it can be concluded that if <span class="math inline">\(\pmb u\)</span>, <span class="math inline">\(\pmb v\)</span>, and <span class="math inline">\(\pmb w\)</span> are linearly independent, it is always true that <span class="math inline">\(\pmb u+\pmb v\)</span>, a<span class="math inline">\(\pmb v+\pmb w\)</span>, and <span class="math inline">\(\pmb w\)</span> are linearly independent. So this statement is always true.</p>
+<p><strong>A</strong> From the following <span class="math display">\[c_1(\pmb u+\pmb v)+c_2(\pmb v+\pmb w)+c_3\pmb w=c_1\pmb u+(c_1+c_2)\pmb v+(c_2+c_3)\pmb w\]</span> it can be concluded that if <span class="math inline">\(\pmb u\)</span>, <span class="math inline">\(\pmb v\)</span>, and <span class="math inline">\(\pmb w\)</span> are linearly independent, it is always true that <span class="math inline">\(\pmb u+\pmb v\)</span>, <span class="math inline">\(\pmb v+\pmb w\)</span>, and <span class="math inline">\(\pmb w\)</span> are linearly independent. So this statement is always true.</p>
 <p><strong>B</strong> This is also true. If the number of vectors is greater than the number of entries (<span class="math inline">\(n\)</span> here), the transformation matrix has more columns than rows. The column vectors are not linearly independent.</p>
 <p><strong>C</strong> This is always true per the definition of basis and spanning set.</p>
 <p><strong>D</strong> If the nullity of a <span class="math inline">\(m\times n\)</span> matrix <span class="math inline">\(A\)</span> is zero, <span class="math inline">\(rank A=n\)</span>. This means there the column vectors form a linearly independent set, and there is one pivot in each column. However, this does not mean <span class="math inline">\(A\pmb x=\pmb b\)</span> has a unique solution for every <span class="math inline">\(\pmb b\)</span>. For example, see the following <strong>augmented matrix</strong> in row echelon form (after row reduction): <span class="math display">\[
 \begin{bmatrix}1 &amp;\ast &amp;\ast &amp;b_1\\0 &amp;1 &amp;\ast &amp;b_2\\0 &amp;0 &amp;1 &amp;b_3\\0 &amp;0 &amp;0 &amp;b_4\end{bmatrix}
-\]</span> If <span class="math inline">\(b_4\)</span> is not zero, the system is inconsistent and there is no solution. So this statement is not always true.</p>
-<p><strong>E</strong> This is always true since the rank of a <span class="math inline">\(m\times n\)</span> matirx is <span class="math inline">\([0, n]\)</span>.</p>
+\]</span> If <span class="math inline">\(b_4\)</span> is not zero, the system is inconsistent and there is no solution. So this one is NOT always true.</p>
+<p><strong>E</strong> This is always true since the rank of a <span class="math inline">\(m\times n\)</span> matirx is always in the range of <span class="math inline">\([0, n]\)</span>.</p>
 <p>So the answer is <mark><strong>D</strong></mark>.</p>
 
 </details>
@@ -372,14 +372,13 @@
 <p><img src="MA265-Spring2022-Midterm2-P2.png" style="width:90.0%;height:90.0%" /></p>
 <details class="note success"><summary><p>Problem 2 Solution</p>
 </summary>
-<p>Denote <span class="math inline">\(3\times 3\)</span> matrix as <span class="math inline">\(A=\begin{bmatrix}a &amp;b &amp;c\\d &amp;e &amp;f\\g &amp;h &amp;i\end{bmatrix}\)</span>, then from the given condition we can get <span class="math display">\[
-\begin{bmatrix}1 &amp;0 &amp;0\\0 &amp;2 &amp;0\\0 &amp;0 &amp;3\end{bmatrix}\begin{bmatrix}a &amp;b &amp;c\\d &amp;e &amp;f\\g &amp;h &amp;i\end{bmatrix}=\begin{bmatrix}a &amp;b &amp;c\\d &amp;e &amp;f\\g &amp;h &amp;i\end{bmatrix}\begin{bmatrix}1 &amp;0 &amp;0\\0 &amp;2 &amp;0\\0 &amp;0 &amp;3\end{bmatrix}\\
-\implies\begin{bmatrix}a &amp;b &amp;c\\2d &amp;2e &amp;2f\\3g &amp;3h &amp;3i\end{bmatrix}=\begin{bmatrix}a &amp;2b &amp;3c\\d &amp;2e &amp;3f\\g &amp;2h &amp;3i\end{bmatrix}
-\implies A=\begin{bmatrix}a &amp;0 &amp;0\\0 &amp;2e &amp;0\\0 &amp;0 &amp;3i\end{bmatrix}\\
-\implies A=a\begin{bmatrix}1 &amp;0 &amp;0\\0 &amp;0 &amp;0\\0 &amp;0 &amp;0\end{bmatrix}+
+<p>Denote <span class="math inline">\(3\times 3\)</span> matrix as <span class="math inline">\(A=\begin{bmatrix}a &amp;b &amp;c\\d &amp;e &amp;f\\g &amp;h &amp;i\end{bmatrix}\)</span>, then from the given condition we can get <span class="math display">\[\begin{align}
+&amp;\begin{bmatrix}1 &amp;0 &amp;0\\0 &amp;2 &amp;0\\0 &amp;0 &amp;3\end{bmatrix}\begin{bmatrix}a &amp;b &amp;c\\d &amp;e &amp;f\\g &amp;h &amp;i\end{bmatrix}=\begin{bmatrix}a &amp;b &amp;c\\d &amp;e &amp;f\\g &amp;h &amp;i\end{bmatrix}\begin{bmatrix}1 &amp;0 &amp;0\\0 &amp;2 &amp;0\\0 &amp;0 &amp;3\end{bmatrix}\\
+\implies&amp;\begin{bmatrix}a &amp;b &amp;c\\2d &amp;2e &amp;2f\\3g &amp;3h &amp;3i\end{bmatrix}=\begin{bmatrix}a &amp;2b &amp;3c\\d &amp;2e &amp;3f\\g &amp;2h &amp;3i\end{bmatrix}\\
+\implies&amp;A=\begin{bmatrix}a &amp;0 &amp;0\\0 &amp;2e &amp;0\\0 &amp;0 &amp;3i\end{bmatrix}=a\begin{bmatrix}1 &amp;0 &amp;0\\0 &amp;0 &amp;0\\0 &amp;0 &amp;0\end{bmatrix}+
 2e\begin{bmatrix}0 &amp;0 &amp;0\\0 &amp;1 &amp;0\\0 &amp;0 &amp;0\end{bmatrix}+
 3i\begin{bmatrix}0 &amp;0 &amp;0\\0 &amp;0 &amp;0\\0 &amp;0 &amp;1\end{bmatrix}
-\]</span></p>
+\end{align}\]</span></p>
 <p>It can be seen that there are three basis vectors for this subspace and the dimension is 3. The answer is <mark><strong>A</strong></mark>.</p>
 <p>Notice the effects of left-multiplication and right-multiplication of a diagonal matrix.</p>
 
@@ -388,13 +387,11 @@
 <p><img src="MA265-Spring2022-Midterm2-P3.png" style="width:90.0%;height:90.0%" /></p>
 <details class="note success"><summary><p>Problem 3 Solution</p>
 </summary>
-<p>From <span class="math inline">\(\det A-\lambda I\)</span>, it becomes <span class="math display">\[
-\begin{align}
+<p>From <span class="math inline">\(\det A-\lambda I\)</span>, it becomes <span class="math display">\[\begin{align}
 \begin{vmatrix}4-\lambda &amp;0 &amp;0 &amp;0\\-2 &amp;-1-\lambda &amp;0 &amp;0\\10 &amp;-9 &amp;6-\lambda &amp;a\\1 &amp;5 &amp;a &amp;3-\lambda\end{vmatrix}
 &amp;=(4-\lambda)(-1-\lambda)((6-\lambda)(3-\lambda)-a^2)\\
 &amp;=(\lambda-4)(\lambda+1)(\lambda^2-9\lambda+18-a^2)
-\end{align}
-\]</span></p>
+\end{align}\]</span></p>
 <p>So if 2 is an eigenvalue for the above, the last multiplication item becomes <span class="math inline">\((2^2-18+18-a^2)\)</span> that should be zero. So <span class="math inline">\(a=\pm 2\)</span>.</p>
 <p>The answer is <mark><strong>E</strong></mark>.</p>
 
@@ -429,10 +426,10 @@ BB\pmb x=B(-\lambda)\pmb x=(-\lambda)B\pmb x=(-\lambda)(-\lambda)\pmb x=\lambda^
 <li><span class="math inline">\(10cx-2cy=cz\)</span>$, it is closed under scalar multiplication as well.</li>
 </ol>
 <p><strong>(iii)</strong> Here <span class="math inline">\(p(t)=a_0+a_1t+a_2t^2+a_3t^3\)</span> and <span class="math inline">\(a_3\neq 0\)</span>. This set does not include zero polynomial. Besides, if <span class="math inline">\(p_1(t)=t^3+t\)</span> and <span class="math inline">\(p_2(t)=-t^3+t\)</span>, then <span class="math inline">\(p_1(t)+p_2(t)=2t\)</span>. This result is not a polynomial of degree 3. So this subset is NOT closed under vector addition and is NOT a subspace of <span class="math inline">\(\mathbb P_3\)</span>.</p>
-<p><strong>(iv)</strong> The condition <span class="math inline">\(p(2)=0\)</span> means <span class="math inline">\(a_0+2a_1+4a_3+8a_3=0\)</span>. It does include zero polynomial. It also satisfies the other two properties because <span class="math display">\[
-cp(2)=c(a_0+2a_1+4a_3+8a_3)=0\\
-p_1(2)+p_2(2)=(a_0+2a_1+4a_3+8a_3)+(b_0+2b_1+4b_3+8b_3)=0
-\]</span> So this set is indeed a subset of <span class="math inline">\(\mathbb P_3\)</span>.</p>
+<p><strong>(iv)</strong> The condition <span class="math inline">\(p(2)=0\)</span> means <span class="math inline">\(a_0+2a_1+4a_3+8a_3=0\)</span>. It does include zero polynomial. It also satisfies the other two properties because <span class="math display">\[\begin{align}
+cp(2)&amp;=c(a_0+2a_1+4a_3+8a_3)=0\\
+p_1(2)+p_2(2)&amp;=(a_0+2a_1+4a_3+8a_3)+(b_0+2b_1+4b_3+8b_3)=0
+\end{align}\]</span> So this set is indeed a subset of <span class="math inline">\(\mathbb P_3\)</span>.</p>
 <p>Since we have (ii) and (iii) be our choices, the answer is <mark><strong>A</strong></mark>.</p>
 
 </details>
