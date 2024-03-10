@@ -49,7 +49,7 @@
 <meta property="og:image" content="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2022-Spring-Midterm2/MA265-Spring2022-Midterm2-P10-2.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2022-Spring-Midterm2/MA265-Spring2022-Midterm2-P10-3.png">
 <meta property="article:published_time" content="2024-03-01T07:41:24.000Z">
-<meta property="article:modified_time" content="2024-03-09T07:56:14.903Z">
+<meta property="article:modified_time" content="2024-03-10T01:55:58.917Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="Linear Algebra">
 <meta name="twitter:card" content="summary">
@@ -291,7 +291,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-03-08 23:56:14" itemprop="dateModified" datetime="2024-03-08T23:56:14-08:00">2024-03-08</time>
+        <time title="Modified: 2024-03-09 17:55:58" itemprop="dateModified" datetime="2024-03-09T17:55:58-08:00">2024-03-09</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -317,14 +317,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>5.2k</span>
+      <span>11k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>5 mins.</span>
+      <span>10 mins.</span>
     </span>
 </div>
 
@@ -358,11 +358,14 @@
 <p><img src="MA265-Spring2022-Midterm2-P1.png" style="width:90.0%;height:90.0%" /></p>
 <details class="note success"><summary><p>Problem 1 Solution</p>
 </summary>
-<p><strong>A</strong></p>
-<p><strong>B</strong></p>
-<p><strong>C</strong></p>
-<p><strong>D</strong></p>
-<p><strong>E</strong></p>
+<p><strong>A</strong> From the following <span class="math display">\[c_1(\pmb u+\pmb v)+c_2(\pmb v+\pmb w)+c_3\pmb w=c_1\pmb u+(c_1+c_2)\pmb v+(c_2+c_3)\pmb w\]</span> it can be concluded that if <span class="math inline">\(\pmb u\)</span>, <span class="math inline">\(\pmb v\)</span>, and <span class="math inline">\(\pmb w\)</span> are linearly independent, it is always true that <span class="math inline">\(\pmb u+\pmb v\)</span>, a<span class="math inline">\(\pmb v+\pmb w\)</span>, and <span class="math inline">\(\pmb w\)</span> are linearly independent. So this statement is always true.</p>
+<p><strong>B</strong> This is also true. If the number of vectors is greater than the number of entries (<span class="math inline">\(n\)</span> here), the transformation matrix has more columns than rows. The column vectors are not linearly independent.</p>
+<p><strong>C</strong> This is always true per the definition of basis and spanning set.</p>
+<p><strong>D</strong> If the nullity of a <span class="math inline">\(m\times n\)</span> matrix <span class="math inline">\(A\)</span> is zero, <span class="math inline">\(rank A=n\)</span>. This means there the column vectors form a linearly independent set, and there is one pivot in each column. However, this does not mean <span class="math inline">\(A\pmb x=\pmb b\)</span> has a unique solution for every <span class="math inline">\(\pmb b\)</span>. For example, see the following <strong>augmented matrix</strong> in row echelon form (after row reduction): <span class="math display">\[
+\begin{bmatrix}1 &amp;\ast &amp;\ast &amp;b_1\\0 &amp;1 &amp;\ast &amp;b_2\\0 &amp;0 &amp;1 &amp;b_3\\0 &amp;0 &amp;0 &amp;b_4\end{bmatrix}
+\]</span> If <span class="math inline">\(b_4\)</span> is not zero, the system is inconsistent and there is no solution. So this statement is not always true.</p>
+<p><strong>E</strong> This is always true since the rank of a <span class="math inline">\(m\times n\)</span> matirx is <span class="math inline">\([0, n]\)</span>.</p>
+<p>So the answer is <mark><strong>D</strong></mark>.</p>
 
 </details>
 <h3 id="problem-2-10-points">Problem 2 (10 points)</h3>
@@ -400,7 +403,9 @@
 <p><img src="MA265-Spring2022-Midterm2-P4.png" style="width:90.0%;height:90.0%" /></p>
 <details class="note success"><summary><p>Problem 4 Solution</p>
 </summary>
-
+<blockquote>
+<p>If <span class="math inline">\(n\times n\)</span> matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are similar, then they have the same characteristic polynomial and hence the same eigenvalues (with the same multiplicities).</p>
+</blockquote>
 
 </details>
 <h3 id="problem-5-10-points">Problem 5 (10 points)</h3>
@@ -429,14 +434,22 @@ p_1(2)+p_2(2)=(a_0+2a_1+4a_3+8a_3)+(b_0+2b_1+4b_3+8b_3)=0
 <p><span class="math display">\[
 \begin{vmatrix}4-\lambda &amp;2\\3 &amp;5-\lambda\end{vmatrix}=\lambda^2-9\lambda+20-6=(\lambda-2)(\lambda-7)
 \]</span></p>
-<p>So there are two eigenvalues 2 and 7. Since both are positive, the origin is a repeller. The answer is mark&gt;<strong>B</strong></mark>.</p>
+<p>So there are two eigenvalues 2 and 7. Since both are positive, the origin is a repeller. The answer is <mark><strong>B</strong></mark>.</p>
 
 </details>
 <h3 id="problem-7-10-points">Problem 7 (10 points)</h3>
 <p><img src="MA265-Spring2022-Midterm2-P7.png" style="width:90.0%;height:90.0%" /></p>
 <details class="note success"><summary><p>Problem 7 Solution</p>
 </summary>
-
+<p>From Section 5.7 "Applications to Differential Equations", we learn that the general solution to a matrix differential equation is <span class="math display">\[\pmb x(t)=c_1\pmb{v}_1 e^{\lambda_1 t}+c_2\pmb{v}_2 e^{\lambda_2 t}\]</span> For a real matrix, complex eigenvalues and associated eigenvectors come in conjugate pairs. <strong>The real and imaginary parts of <span class="math inline">\(\pmb{v}_1 e^{\lambda_1 t}\)</span> are (real) solutions of <span class="math inline">\(\pmb x&#39;(t)=A\pmb x(t)\)</span>, because they are linear combinations of <span class="math inline">\(\pmb{v}_1 e^{\lambda_1 t}\)</span> and <span class="math inline">\(\pmb{v}_2 e^{\lambda_2 t}\)</span>.</strong> (See the proof in "Complex Eigenvalues" of Section 5.7)</p>
+<p>Now use Euler's formula (<span class="math inline">\(e^{ix}=\cos x+i\sin x\)</span>), we have <span class="math display">\[\begin{align}
+\pmb{v}_1 e^{\lambda_1 t}
+&amp;=e^{1+i}\begin{bmatrix}1-2i\\3+4i\end{bmatrix}\\
+&amp;=e^t(\cos t+i\sin t)\begin{bmatrix}1-2i\\3+4i\end{bmatrix}\\
+&amp;=e^t\begin{bmatrix}\cos t+2\sin t+i(\sin t-2\cos t)\\3\cos t-4\sin t+i(3\sin t+4\cos t)\end{bmatrix}
+\end{align}\]</span> The general REAL solution is the linear combination of the REAL and IMAGINARY parts of the result above, it is <span class="math display">\[c_1 e^t\begin{bmatrix}\cos t+2\sin t\\3\cos t-4\sin t\end{bmatrix}+
+c_2 e^t\begin{bmatrix}\sin t-2\cos t\\3\sin t+4\cos t\end{bmatrix}\]</span></p>
+<p>The answer is <mark><strong>A</strong></mark>.</p>
 
 </details>
 <h3 id="problem-8-10-points">Problem 8 (10 points)</h3>
@@ -465,16 +478,64 @@ c\begin{bmatrix}1 &amp;0\\1 &amp;0\end{bmatrix}
 <p><img src="MA265-Spring2022-Midterm2-P9-1.png" style="width:90.0%;height:90.0%" /> <img src="MA265-Spring2022-Midterm2-P9-2.png" style="width:90.0%;height:90.0%" /></p>
 <details class="note success"><summary><p>Problem 9 Solution</p>
 </summary>
-<p><strong>(1)</strong></p>
-<p><strong>(2)</strong></p>
-<p><strong>(3)</strong></p>
+<p><strong>(1)</strong> First find all the eigenvalues using <span class="math inline">\(\det A-\lambda I=0\)</span> <span class="math display">\[
+\begin{align}
+\begin{vmatrix}2-\lambda &amp;0 &amp;0\\1 &amp;5-\lambda &amp;1\\-1 &amp;-3 &amp;1-\lambda\end{vmatrix}&amp;=(2-\lambda)\begin{vmatrix}5-\lambda &amp;1\\-3 &amp;1\lambda\end{vmatrix}\\
+&amp;=(2-\lambda)(\lambda^2-6\lambda+5+3)\\
+&amp;=(2-\lambda)(\lambda-2)(\lambda-4)
+\end{align}
+\]</span> So there are two eigenvalues 2 with multiplicity and 4.</p>
+<p>Now find out the eigenvector(s) for each eigenvalue</p>
+<ul>
+<li><p>For <span class="math inline">\(\lambda_1=\lambda_2=2\)</span>, the matrix <span class="math inline">\(\det A-\lambda I\)</span> becomes <span class="math display">\[
+\begin{bmatrix}0 &amp;0 &amp;0\\1 &amp;3 &amp;1\\-1 &amp;-3 &amp;-1\end{bmatrix}\sim
+\begin{bmatrix}0 &amp;0 &amp;0\\1 &amp;3 &amp;1\\0 &amp;0 &amp;0\end{bmatrix}
+\]</span> Convert this result to a parametric vector form with two free variables <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_3\)</span> <span class="math display">\[
+\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix}=
+\begin{bmatrix}-3x_2-x_3\\x_2\\x_3\end{bmatrix}=
+x_2\begin{bmatrix}-3\\1\\0\end{bmatrix}+x_3\begin{bmatrix}-1\\0\\1\end{bmatrix}
+\]</span> So the basis for the eigenspace is <span class="math inline">\(\begin{Bmatrix}\begin{bmatrix}-3\\1\\0\end{bmatrix},\begin{bmatrix}-1\\0\\1\end{bmatrix}\end{Bmatrix}\)</span>.</p></li>
+<li><p>For <span class="math inline">\(\lambda_3=4\)</span>, the matrix <span class="math inline">\(\det A-\lambda I\)</span> becomes <span class="math display">\[
+\begin{bmatrix}-2 &amp;0 &amp;0\\1 &amp;1 &amp;1\\-1 &amp;-3 &amp;-3\end{bmatrix}\sim
+\begin{bmatrix}1 &amp;0 &amp;0\\0 &amp;1 &amp;1\\0 &amp;-2 &amp;-2\end{bmatrix}\sim
+\begin{bmatrix}1 &amp;0 &amp;0\\0 &amp;1 &amp;1\\0 &amp;0 &amp;0\end{bmatrix}
+\]</span> This ends up with <span class="math inline">\(x_1=0\)</span> and <span class="math inline">\(x_2=-x_3\)</span>. So the eigenvector is <span class="math inline">\(\begin{bmatrix}0\\-1\\1\end{bmatrix}\)</span> or <span class="math inline">\(\begin{bmatrix}0\\1\\-1\end{bmatrix}\)</span>. The basis for the corresponding eigenspace is <span class="math inline">\(\begin{Bmatrix}\begin{bmatrix}0\\-1\\1\end{bmatrix}\end{Bmatrix}\)</span> or <span class="math inline">\(\begin{Bmatrix}\begin{bmatrix}0\\1\\-1\end{bmatrix}\end{Bmatrix}\)</span>.</p></li>
+</ul>
+<p><strong>(2)</strong> From the answers of (1), we can directly write down <span class="math inline">\(P\)</span> and <span class="math inline">\(D\)</span> as <span class="math display">\[
+P=\begin{bmatrix}-3 &amp;-1 &amp;0\\1 &amp;0 &amp;-1\\0 &amp;1 &amp;1\end{bmatrix},\;
+D=\begin{bmatrix}2 &amp;0 &amp;0\\0 &amp;2 &amp;0\\0 &amp;0 &amp;4\end{bmatrix}
+\]</span></p>
 
 </details>
 <h3 id="problem-10-10-points">Problem 10 (10 points)</h3>
 <p><img src="MA265-Spring2022-Midterm2-P10-1.png" style="width:90.0%;height:90.0%" /> <img src="MA265-Spring2022-Midterm2-P10-2.png" style="width:90.0%;height:90.0%" /> <img src="MA265-Spring2022-Midterm2-P10-3.png" style="width:90.0%;height:90.0%" /></p>
 <details class="note success"><summary><p>Problem 10 Solution</p>
 </summary>
-
+<p><strong>(1)</strong> First find the eigenvalues using <span class="math inline">\(\det A-\lambda I=0\)</span> <span class="math display">\[
+\begin{align}
+\begin{vmatrix}9-\lambda &amp;5\\-6 &amp;-2-\lambda\end{vmatrix}
+&amp;=\lambda^2-7\lambda-18-(-5)\cdot 6\\
+&amp;=\lambda^2-7\lambda+12\\
+&amp;=(\lambda-3)(\lambda-4)
+\end{align}
+\]</span> So there are two eigenvalues 3 and 4.</p>
+<ul>
+<li><p>For <span class="math inline">\(\lambda_1=3\)</span>, the matrix <span class="math inline">\(\det A-\lambda I\)</span> becomes <span class="math display">\[
+\begin{bmatrix}6 &amp;5\\-6 &amp;5\end{bmatrix}\sim
+\begin{bmatrix}6 &amp;5\\0 &amp;0\end{bmatrix}
+\]</span> So the eigenvector can be <span class="math inline">\(\begin{bmatrix}-5\\6\end{bmatrix}\)</span>.</p></li>
+<li><p>Likewise, for <span class="math inline">\(\lambda_2=4\)</span>, the matrix <span class="math inline">\(\det A-\lambda I\)</span> becomes <span class="math display">\[
+\begin{bmatrix}5 &amp;5\\-6 &amp;-6\end{bmatrix}\sim
+\begin{bmatrix}1 &amp;1\\0 &amp;0\end{bmatrix}
+\]</span> So the eigenvector can be <span class="math inline">\(\begin{bmatrix}-1\\1\end{bmatrix}\)</span>.</p></li>
+</ul>
+<p><strong>(2)</strong> With the eigenvalues and corresponding eigenvectors known, we can apply them to the general solution formula <span class="math display">\[\pmb x(t)=c_1\pmb{v}_1 e^{\lambda_1 t}+c_2\pmb{v}_2 e^{\lambda_2 t}\]</span> So the answer is <span class="math display">\[
+\begin{bmatrix}x(t)\\y(t)\end{bmatrix}=c_1\begin{bmatrix}-5\\6\end{bmatrix}e^{3t}+c_2\begin{bmatrix}-1\\1\end{bmatrix}e^{4t}
+\]</span></p>
+<p><strong>(3)</strong> Apply the initial values of <span class="math inline">\(x(0)\)</span> and <span class="math inline">\(y(0)\)</span>, here comes the following equations: <span class="math display">\[\begin{align}
+-5c_1-c_2&amp;=1\\
+6c_1+c_2&amp;=0
+\end{align}\]</span> This gives <span class="math inline">\(c_1=1\)</span> and <span class="math inline">\(c_2=-6\)</span>. So <span class="math inline">\(x(1)+y(1)=-5e^{3}+6e^4+6e^3-6e^4=e^3\)</span>.</p>
 
 </details>
 
@@ -569,14 +630,14 @@ c\begin{bmatrix}1 &amp;0\\1 &amp;0\end{bmatrix}
       <i class="fa fa-chart-line"></i>
     </span>
       <span>Symbols count total: </span>
-    <span title="Symbols count total">393k</span>
+    <span title="Symbols count total">399k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>Reading time total &asymp;</span>
-    <span title="Reading time total">5:58</span>
+    <span title="Reading time total">6:03</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -633,7 +694,7 @@ c\begin{bmatrix}1 &amp;0\\1 &amp;0\end{bmatrix}
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
 <script src="/en/js/third-party/math/mathjax.js"></script>
 
 
