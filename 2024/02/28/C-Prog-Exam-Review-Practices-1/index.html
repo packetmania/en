@@ -32,7 +32,7 @@
 <meta property="og:description" content="Here is a series of general study guides to college-level C programming courses. This is the first part covering compilation and linking, file operations, typedef, structures, string operations, basic">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-02-29T07:10:00.000Z">
-<meta property="article:modified_time" content="2024-03-01T05:00:46.854Z">
+<meta property="article:modified_time" content="2024-03-27T05:46:39.260Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="C&#x2F;C++ Programming">
 <meta name="twitter:card" content="summary">
@@ -173,7 +173,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/en/archives/">
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -273,7 +273,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-02-29 21:00:46" itemprop="dateModified" datetime="2024-02-29T21:00:46-08:00">2024-02-29</time>
+        <time title="Modified: 2024-03-26 22:46:39" itemprop="dateModified" datetime="2024-03-26T22:46:39-07:00">2024-03-26</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -299,14 +299,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>19k</span>
+      <span>20k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>17 mins.</span>
+      <span>18 mins.</span>
     </span>
 </div>
 
@@ -539,7 +539,8 @@
 <li><p>Write a subroutine called clear_it that accepts a pointer to integer and an integer that indicates the size of the space that the pointer points to. clear_it should set all of the elements that the pointer points to to zero.</p>
 <p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">clear_it</span><span class="params">(<span class="type">int</span> *ptr, <span class="type">int</span> size)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">        *(ptr + i) = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
 <li><p>Write a subroutine called add_vectors that accepts three pointers to integer and a fourth parameter to indicate the size of the spaces that the pointers point to. add_vectors should add the elements of the first two 'vectors' together and store them in the third 'vector'. e.g. if two arrays of 10 integers, A and B, were to be added together and the result stored in an array C of the same size, the call would look like <code>add_vectors(a, b, c, 10);</code> and, as a result, c[5] would be the sum of a[5] and b[5]</p>
-<p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">add_vectors</span><span class="params">(<span class="type">int</span> *a, <span class="type">int</span> *b, <span class="type">int</span> *c, <span class="type">int</span> size)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">        c[i] = a[i] + b[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
+<p>All four implementations below are equivalent solutions to this problem:</p>
+<p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">add_vectors</span><span class="params">(<span class="type">int</span> *a, <span class="type">int</span> *b, <span class="type">int</span> *c, <span class="type">int</span> size)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">        c[i] = a[i] + b[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">add_vectors1</span><span class="params">(<span class="type">int</span> *a, <span class="type">int</span> *b, <span class="type">int</span> *c, <span class="type">int</span> size)</span> &#123;</span><br><span class="line">       <span class="type">int</span> *end = c + size;</span><br><span class="line">       <span class="keyword">while</span> (c &lt; end) &#123;</span><br><span class="line">           *c++ = *a++ + *b++;</span><br><span class="line">       &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="type">void</span> <span class="title function_">add_vectors2</span><span class="params">(<span class="type">int</span> *a, <span class="type">int</span> *b, <span class="type">int</span> *c, <span class="type">int</span> size)</span> &#123;</span><br><span class="line">       <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;size; i++) &#123;</span><br><span class="line">           *c++ = *a++ + *b++;</span><br><span class="line">       &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="type">void</span> <span class="title function_">add_vectors3</span><span class="params">(<span class="type">int</span> *a, <span class="type">int</span> *b, <span class="type">int</span> *c, <span class="type">int</span> size)</span> &#123;</span><br><span class="line">       <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;size; i++) &#123;</span><br><span class="line">           *(c+i) = *(a+i) + *(b+i);</span><br><span class="line">       &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p></li>
 </ul>
 
     </div>
@@ -636,14 +637,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>Symbols count total: </span>
-    <span title="Symbols count total">409k</span>
+    <span title="Symbols count total">425k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>Reading time total &asymp;</span>
-    <span title="Reading time total">6:12</span>
+    <span title="Reading time total">6:26</span>
   </span>
 </div>
 <div class="busuanzi-count">

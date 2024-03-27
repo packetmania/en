@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.3.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/en/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="piAnQ_mnwkhV_qh4_Se1yLzM1IwOvuq-vmYfXBkWRXU">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=EB+Garamond:300,300italic,400,400italic,700,700italic%7CNoto+Serif+SC:300,300italic,400,400italic,700,700italic%7CRoboto+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.packetmania.net","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk | utterances | disqus","storage":true,"lazyload":false,"nav":{"disqus":{"text":"Disqus Comments","order":-1},"utterances":{"text":"Utterances Comments","order":-2},"gitalk":{"text":"Gitalk Comments","order":-3}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/en/js/config.js"></script>
+<meta name="description" content="Here is a series of general study guides to college-level C programming courses. This is the second part covering dynamic memory allocation, advanced pointer operations, recursion, linked list and tre">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rogramming in C Exam Review and Practices (II)">
+<meta property="og:url" content="https://www.packetmania.net/en/2024/03/26/C-Prog-Exam-Review-Practices-2/index.html">
+<meta property="og:site_name" content="PacketMania">
+<meta property="og:description" content="Here is a series of general study guides to college-level C programming courses. This is the second part covering dynamic memory allocation, advanced pointer operations, recursion, linked list and tre">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-03-27T05:47:48.000Z">
+<meta property="article:modified_time" content="2024-03-27T19:54:20.256Z">
+<meta property="article:author" content="Zixi">
+<meta property="article:tag" content="C&#x2F;C++ Programming">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.packetmania.net/en/2024/03/26/C-Prog-Exam-Review-Practices-2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.packetmania.net/en/2024/03/26/C-Prog-Exam-Review-Practices-2/","path":"2024/03/26/C-Prog-Exam-Review-Practices-2/","title":"rogramming in C Exam Review and Practices (II)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>rogramming in C Exam Review and Practices (II) | PacketMania</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YKBP0QK7Z"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-9YKBP0QK7Z","only_pageview":false}</script>
+  <script src="/en/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PacketMania" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PacketMania</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Technology | Knowledge | Sharing</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/en/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/en/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+        <li class="menu-item menu-item-rss"><a href="/en/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+        <li class="menu-item menu-item-language"><a href="https://www.packetmania.net/" rel="section"><i class="fa fa-language fa-fw"></i>中文</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#dynamic-memory-allocation"><span class="nav-number">1.</span> <span class="nav-text">Dynamic Memory Allocation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#advanced-pointer-operations"><span class="nav-number">2.</span> <span class="nav-text">Advanced Pointer Operations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#recursion"><span class="nav-number">3.</span> <span class="nav-text">Recursion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linked-list-functions"><span class="nav-number">4.</span> <span class="nav-text">Linked List Functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tree-common-functions"><span class="nav-number">5.</span> <span class="nav-text">Tree Common Functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#local-static-and-global-variables"><span class="nav-number">6.</span> <span class="nav-text">Local, Static and Global Variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#types"><span class="nav-number">7.</span> <span class="nav-text">Types</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c-preprocessor-and-libraries"><span class="nav-number">8.</span> <span class="nav-text">C Preprocessor and Libraries</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zixi"
+      src="/en/images/ccie.gif">
+  <p class="site-author-name" itemprop="name">Zixi</p>
+  <div class="site-description" itemprop="description">Computer Networking and Software Design & Implementation</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/packetmania" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;packetmania" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zixiruoxue@gmail.com" title="E-Mail → mailto:zixiruoxue@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/zixisean" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zixisean" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/15140531" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;15140531" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_nd.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.packetmania.net/en/2024/03/26/C-Prog-Exam-Review-Practices-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/ccie.gif">
+      <meta itemprop="name" content="Zixi">
+      <meta itemprop="description" content="Computer Networking and Software Design & Implementation">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PacketMania">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          rogramming in C Exam Review and Practices (II)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-03-26 22:47:48" itemprop="dateCreated datePublished" datetime="2024-03-26T22:47:48-07:00">2024-03-26</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2024-03-27 12:54:20" itemprop="dateModified" datetime="2024-03-27T12:54:20-07:00">2024-03-27</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/Study-Notes/" itemprop="url" rel="index"><span itemprop="name">Study Notes</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>15k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>14 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Here is a series of general study guides to college-level C programming courses. This is the second part covering dynamic memory allocation, advanced pointer operations, recursion, linked list and tree common functions, etc. <span id="more"></span></p>
+<h2 id="dynamic-memory-allocation">Dynamic Memory Allocation</h2>
+<ul>
+<li><p>Given the following definitions:</p>
+<p><code>c    int *pi = NULL; float *pf = NULL;   char *pc = NULL;    char my_string[] = "Hello, World!";</code> write statements to do the following memory operations: * reserve space for 100 integers and assign a pointer to that space to pi</p>
+<p>```c pi = (int <em>)malloc(sizeof(int) </em> 100); assert(pi != NULL); <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* reserve space for 5 floats and assign a pointer to that space to pf</span><br><span class="line">```c</span><br><span class="line">pf = (float *)malloc(sizeof(float) * 5);assert(pf != NULL);</span><br></pre></td></tr></table></figure> * unreserve the space that pi points to</p>
+<p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">free</span>(pi);</span><br><span class="line">pi = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>reserve space for enough characters to hold the string in my_string and assign a pointer to that space to pc. Copy my_string into that space.</li>
+</ul>
+<p>```c pc = (char *)malloc(strlen(my_string) + 1)); assert(pc != NULL); strcpy(pc, mystring); <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">* free everything that hasn&#x27;t been unreserved yet.</span><br><span class="line"></span><br><span class="line">```cfree(pc);free(pf);pc = NULL;pf = NULL;</span><br></pre></td></tr></table></figure></p></li>
+<li><p>What happens if you reserve memory and assign it to a pointer named p and then reserve more memory and assign the new pointer to p? How can you refer to the first memory reservation? If you reserve then assign then reserve more memory you will have a <strong>memory leak</strong>. If you want to refer to the first pointer, you can set a new pointer to point to the new one before reserving morememory.</p></li>
+<li><p>Does it make sense to free() something twice? What's a good way to prevent this from happening? No, it doesn’t make sense to free something twice, a good way to prevent this is setting the thing you freed to NULL after freeing it.</p></li>
+</ul>
+<h2 id="advanced-pointer-operations">Advanced Pointer Operations</h2>
+<ul>
+<li><p>Suppose p is a pointer to a structure and f is one of its fields. What is a simpler way of saying: <code>x = (*p).f;</code>.</p>
+<p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = p-&gt;f;</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Given the following declarations and definitions:</p>
+<p><code>c    struct s &#123;      int x;      struct s *next; &#125;;</code> what will the following code print?</p>
+<p>```c struct s <em>p1 = NULL; struct s </em>p2 = NULL; struct s <em>p3 = NULL; struct s </em>p4 = NULL; struct s *p5 = NULL; p5 = malloc(sizeof(struct s)); p5-&gt;x = 5; p5-&gt;next = NULL; p4 = malloc(sizeof(struct s)); p4-&gt;x = 4; p4-&gt;next = p5; p3 = malloc(sizeof(struct s)); p3-&gt;x = 3; p3-&gt;next = p4; p2 = malloc(sizeof(struct s)); p2-&gt;x = 2; p2-&gt;next = p3; p1 = malloc(sizeof(struct s)); p1-&gt;x = 1; p1-&gt;next = p2; printf("%d %d", p1-&gt;next-&gt;next-&gt;next-&gt;x, p2-&gt;next-&gt;x); <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">	It will print &quot;4 3&quot;.</span><br><span class="line">	</span><br><span class="line">- Write a subroutine called `do_allocate` that is passed a pointer to the head pointer to a list of block structures: `do_allocate(struct block **)`. If the head pointer is NULL, `do_allocate` should allocate a new struct block and make the headpointer point to it. If the head is not NULL, the new struct block should be prepended to the list, and the head pointer set to point to it.</span><br><span class="line"></span><br><span class="line">   This is a linked list insertion function. New data items should always be inserted into the front of the list. Note the input argument has to be a pointer to pointer to make a change to the original head pointer. A sample solution is shown below</span><br><span class="line">   </span><br><span class="line">   ```c</span><br><span class="line">   #include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">	struct block &#123;</span><br><span class="line">   		int data;</span><br><span class="line">    	struct block *next;</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	void do_allocate(struct block **head) &#123;</span><br><span class="line">    	struct block *new_block = malloc(sizeof(struct block));</span><br><span class="line">    	if (new_block == NULL) &#123;</span><br><span class="line">        	// Handle memory allocation failure</span><br><span class="line">        	return;</span><br><span class="line">    	&#125;</span><br><span class="line"></span><br><span class="line">    	// Initialize the new block</span><br><span class="line">    	new_block-&gt;data = 0;</span><br><span class="line">    	new_block-&gt;next = *head;</span><br><span class="line"></span><br><span class="line">    	// Update the head pointer</span><br><span class="line">    	*head = new_block;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Write a subroutine called my_free that will accept a pointerto a pointer of some arbitrary type and: * free the space pointed to by the pointer * set the pointer to NULL</p>
+<p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">my_free</span><span class="params">(<span class="type">void</span> **ptr)</span> &#123;</span><br><span class="line">   	<span class="keyword">if</span> (ptr != <span class="literal">NULL</span> &amp;&amp; *ptr != <span class="literal">NULL</span>) &#123;</span><br><span class="line">       	<span class="built_in">free</span>(*ptr);</span><br><span class="line">       	*ptr = <span class="literal">NULL</span>;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Given the following declaration: <code>c    struct employee &#123;       char *name;     char *title;        int id; &#125;;</code> write a subroutine called create_employee that accepts two string parameters for the new name and title and one integer parameter for the ID. It should return a newly allocated Employee structure with all of the fields filled in.</p>
+<p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">	<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line">	<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">struct</span> employee *<span class="title function_">create_employee</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *name, <span class="type">const</span> <span class="type">char</span> *title, <span class="type">int</span> id)</span></span><br><span class="line">&#123;</span><br><span class="line">    	<span class="class"><span class="keyword">struct</span> <span class="title">employee</span> *<span class="title">new_employee</span> =</span> <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> employee));</span><br><span class="line">    	<span class="keyword">if</span> (new_employee == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        	<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    	&#125;</span><br><span class="line"></span><br><span class="line">    	<span class="comment">// Allocate memory for the name and copy the string</span></span><br><span class="line">    	new_employee-&gt;name = <span class="built_in">malloc</span>(<span class="built_in">strlen</span>(name) + <span class="number">1</span>);</span><br><span class="line">    	<span class="keyword">if</span> (new_employee-&gt;name == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        	<span class="built_in">free</span>(new_employee);</span><br><span class="line">        	<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="built_in">strcpy</span>(new_employee-&gt;name, name);</span><br><span class="line"></span><br><span class="line">    	<span class="comment">// Allocate memory for the title and copy the string</span></span><br><span class="line">    	new_employee-&gt;title = <span class="built_in">malloc</span>(<span class="built_in">strlen</span>(title) + <span class="number">1</span>);</span><br><span class="line">    	<span class="keyword">if</span> (new_employee-&gt;title == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        	<span class="built_in">free</span>(new_employee-&gt;name);</span><br><span class="line">        	<span class="built_in">free</span>(new_employee);</span><br><span class="line">        	<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="built_in">strcpy</span>(new_employee-&gt;title, title);</span><br><span class="line"></span><br><span class="line">    	<span class="comment">// Set the ID</span></span><br><span class="line">   		new_employee-&gt;id = id;</span><br><span class="line">   		</span><br><span class="line">    	<span class="keyword">return</span> new_employee;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Write a subroutine called fire_employee that accepts a pointer to pointer to struct employee, frees its storage and sets the pointer that points to the storage to NULL.</p>
+<p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">fire_employee</span><span class="params">(<span class="keyword">struct</span> employee **emp_ptr)</span> &#123;</span><br><span class="line">   	<span class="keyword">if</span> (emp_ptr != <span class="literal">NULL</span> &amp;&amp; *emp_ptr != <span class="literal">NULL</span>) &#123;</span><br><span class="line">       	<span class="built_in">free</span>((*emp_ptr)-&gt;name);</span><br><span class="line">       	<span class="built_in">free</span>((*emp_ptr)-&gt;title);</span><br><span class="line">       	<span class="built_in">free</span>(*emp_ptr);</span><br><span class="line">       	*emp_ptr = <span class="literal">NULL</span>;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
+</ul>
+<h2 id="recursion">Recursion</h2>
+<ul>
+<li><p>Create a recursive function to compute the factorial function.</p>
+<p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">	<span class="type">unsigned</span> <span class="type">long</span> <span class="type">long</span> <span class="title function_">factorial</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> n)</span> &#123;</span><br><span class="line">    	<span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">      	<span class="keyword">return</span> n * factorial(n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Create a recursive function to compute the Nth element of the Fibonacci sequence: 0 1 1 2 3 5 8 13 21 34 55 ...</p>
+<p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> <span class="title function_">fibonacci</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> n)</span> &#123;</span><br><span class="line">    	<span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"> 		<span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">return</span> fibonacci(n - <span class="number">1</span>) + fibonacci(n - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Implement a recursive list search. e.g. each function call should either return the list node that it's looking at because it matches the search item or it should return the value from calling itself on the next item in the list.</p>
+<p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span></span><br><span class="line">    	<span class="type">int</span> data;</span><br><span class="line">    	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">next</span>;</span></span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">struct</span> Node* <span class="title function_">search</span><span class="params">(<span class="keyword">struct</span> Node* node, <span class="type">int</span> value)</span> &#123;</span><br><span class="line">    	<span class="keyword">if</span> (node == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    	<span class="keyword">if</span> (node-&gt;data == value) &#123;</span><br><span class="line">        	<span class="keyword">return</span> node;</span><br><span class="line">    	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    		<span class="comment">// Recursive call on the next node</span></span><br><span class="line">        	<span class="keyword">return</span> search(node-&gt;next, value);</span><br><span class="line">   		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
+</ul>
+<h2 id="linked-list-functions">Linked List Functions</h2>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">next</span>;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// Assume the list is ordered with decreasing date values,</span></span><br><span class="line"><span class="comment">// insert before all nodes with less or equal data values.</span></span><br><span class="line"><span class="comment">// [7, 5, 5, (new:4), 4, 2, 1]</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">insertBefore</span><span class="params">(<span class="keyword">struct</span> Node** head, <span class="keyword">struct</span> Node* newNode)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (*head == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="comment">// If head is NULL, insert new node as the first node</span></span><br><span class="line">        newNode-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">        *head = newNode;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">current</span> =</span> *head;</span><br><span class="line">    <span class="keyword">while</span> (current-&gt;next != <span class="literal">NULL</span> &amp;&amp; current-&gt;next-&gt;data &gt; newNode-&gt;data) &#123;</span><br><span class="line">        current = current-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    newNode-&gt;next = current-&gt;next;</span><br><span class="line">    current-&gt;next = newNode;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Assume the list is ordered with decreasing date values,</span></span><br><span class="line"><span class="comment">// insert after all nodes with greater or equal data values.</span></span><br><span class="line"><span class="comment">// [7, 5, 5, 4, (new:4), 2, 1]</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">insertAfter</span><span class="params">(<span class="keyword">struct</span> Node** head, <span class="keyword">struct</span> Node* newNode, <span class="type">int</span> value)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (*head == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="comment">// If head is NULL, insert new node as the first node</span></span><br><span class="line">        newNode-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">        *head = newNode;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ((*head)-&gt;data &gt;= value) &#123;</span><br><span class="line">        newNode-&gt;next = *head;</span><br><span class="line">        *head = newNode;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">current</span> =</span> *head;</span><br><span class="line">    <span class="keyword">while</span> (current-&gt;next != <span class="literal">NULL</span> &amp;&amp; current-&gt;next-&gt;data &gt;= value) &#123;</span><br><span class="line">        current = current-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    newNode-&gt;next = current-&gt;next;</span><br><span class="line">    current-&gt;next = newNode;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">insertAtBeginning</span><span class="params">(<span class="keyword">struct</span> Node** head, <span class="keyword">struct</span> Node* newNode)</span> &#123;</span><br><span class="line">    newNode-&gt;next = *head;</span><br><span class="line">    *head = newNode;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">insertAtTail</span><span class="params">(<span class="keyword">struct</span> Node** head, <span class="keyword">struct</span> Node* newNode)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (*head == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        *head = newNode;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">current</span> =</span> *head;</span><br><span class="line">    <span class="keyword">while</span> (current-&gt;next != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        current = current-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    current-&gt;next = newNode;</span><br><span class="line">    newNode-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">printList</span><span class="params">(<span class="keyword">struct</span> Node* node)</span> &#123;</span><br><span class="line">    <span class="keyword">while</span> (node != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, node-&gt;data);</span><br><span class="line">        node = node-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">head</span> =</span> <span class="literal">NULL</span>;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">node1</span> =</span> (<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">    node1-&gt;data = <span class="number">1</span>;</span><br><span class="line">    node1-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">node2</span> =</span> (<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">    node2-&gt;data = <span class="number">3</span>;</span><br><span class="line">    node2-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">node3</span> =</span> (<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">    node3-&gt;data = <span class="number">5</span>;</span><br><span class="line">    node3-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    insertAtBeginning(&amp;head, node1);</span><br><span class="line">    insertAfter(&amp;head, node2);</span><br><span class="line">    insertBefore(&amp;head, node3, <span class="number">4</span>);</span><br><span class="line">    insertAtTail(&amp;head, node3);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Linked list after insertion: &quot;</span>);</span><br><span class="line">    printList(head);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="tree-common-functions">Tree Common Functions</h2>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">left</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">right</span>;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> Node* <span class="title function_">createNode</span><span class="params">(<span class="type">int</span> value)</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">newNode</span> =</span> <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">    newNode-&gt;data = value;</span><br><span class="line">    newNode-&gt;left = <span class="literal">NULL</span>;</span><br><span class="line">    newNode-&gt;right = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> newNode;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> Node* <span class="title function_">insertNode</span><span class="params">(<span class="keyword">struct</span> Node* root, <span class="type">int</span> value)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> createNode(value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (value &lt; root-&gt;data) &#123;</span><br><span class="line">        root-&gt;left = insertNode(root-&gt;left, value);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (value &gt; root-&gt;data) &#123;</span><br><span class="line">        root-&gt;right = insertNode(root-&gt;right, value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> Node* <span class="title function_">minValueNode</span><span class="params">(<span class="keyword">struct</span> Node* node)</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">current</span> =</span> node;</span><br><span class="line">    <span class="keyword">while</span> (current &amp;&amp; current-&gt;left != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        current = current-&gt;left;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> current;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">inorderTraversal</span><span class="params">(<span class="keyword">struct</span> Node* root)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (root != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        inorderTraversal(root-&gt;left);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, root-&gt;data);</span><br><span class="line">        inorderTraversal(root-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">root</span> =</span> <span class="literal">NULL</span>;</span><br><span class="line">    root = insertNode(root, <span class="number">50</span>);</span><br><span class="line">    insertNode(root, <span class="number">30</span>);</span><br><span class="line">    insertNode(root, <span class="number">20</span>);</span><br><span class="line">    insertNode(root, <span class="number">40</span>);</span><br><span class="line">    insertNode(root, <span class="number">70</span>);</span><br><span class="line">    insertNode(root, <span class="number">60</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Inorder traversal: &quot;</span>);</span><br><span class="line">    inorderTraversal(root);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="local-static-and-global-variables">Local, Static and Global Variables</h2>
+<ul>
+<li><p>Try the following two programs to appreciate the differences between static and non-static local variables.</p>
+<p>```c void try() { void try() { int x = 0; static int x = 0; if (x == 0) { if (x == 0) { x = 5; x = 5; } } x++; x++; printf("X = %d", x); printf("X = %d", x); } } int main() { int main() { int i=0; int i=0; for (i=0; i&lt;10; i++) for (i=0; i&lt;10; i++) try(); try(); } } // Output "X = 6" always // Output "X = 6/7/8/..."<br />
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- What happens if you define a global variable with a static storage class in one module and attempt to refer to that variable in a different module?  The variable will not be accessible in the other module. This is because static variables have internal linkage by default, meaning they are only accessible within the same module.</span><br><span class="line">- Can a function be declared with a static storage class? If so, how? If not, why not?  Yes, you can declare a function with the static storage class,you can use the static keyword. It means that the function has internal linkage, which restricts its scope to the current translation unit (i.e., the source file in which it is defined). This means that the function can only be called from within the same source file, and its name is not visible outside of that file.</span><br><span class="line">- Create a global variable in one module and, in another module use an &quot;extern&quot; declaration to refer to it.</span><br><span class="line"></span><br><span class="line">	```c module1.c</span><br><span class="line">	int globalVariable = 42;</span><br></pre></td></tr></table></figure></p>
+<p><figure class="highlight c"><figcaption><span>module2.c</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="type">int</span> globalVariable; <span class="comment">// Declare the global variable from module1</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">&quot;The value of globalVariable is: %d\n&quot;</span>, globalVariable);</span><br><span class="line">       <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
+</ul>
+<h2 id="types">Types</h2>
+<ul>
+<li><p>Under what conditions can you qualify a type as "const"? The <strong>const</strong> keyword is used to indicate that the value of theobject with that type cannot be modified.</p></li>
+<li><p>What is the difference between the following types?</p>
+<p>```cconst char * cp1;char * const cp2;const char * const cp3; <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">	`const char * cp1;`: This declares cp1 as a pointer to a constant char. It means that the data cp1 points to cannot be modified through cp1, but cp1 itself can be changed to point to a different memory location.</span><br><span class="line"></span><br><span class="line">	`char * const cp2;`: This declares cp2 as a constant pointer to a char. It means that cp2 always points to the same memory location, and this memory location cannot be changed. However, the data at this memory location can be modified through cp2.</span><br><span class="line"></span><br><span class="line">	`const char * const cp3;`: This declares cp3 as a constant pointer to a constant char. It means that both cp3 and the data it points to are constant. cp3 cannot be changed to point to a different memory location, and the data it points to cannot be modified through cp3.</span><br><span class="line"></span><br><span class="line">	In summary:</span><br><span class="line"></span><br><span class="line">	* 	const to the left of * makes the data constant.</span><br><span class="line">	* 	const to the right of * makes the pointer constant.</span><br><span class="line">	* 	const on both sides makes both the pointer and the data constant.</span><br><span class="line">- Name all of the first-class types in &quot;C&quot;.  Scalar types (e.g., int, float, double, char, void, short, long,etc.)</span><br><span class="line"></span><br><span class="line">- Give an example of a derived type in &quot;C&quot;.  Pointer types (e.g., `int *`, `char *`, etc.).  Pointer to function types (e.g., `int (*)(int, int)`, a pointer toa function that takes two `int` arguments and returns an `int)`</span><br><span class="line">	An example is declaring a struct type, e.g.:</span><br><span class="line"></span><br><span class="line">	``` c	struct person &#123;		char name[20];		int age;		float height;	&#125;;</span><br></pre></td></tr></table></figure>- Can you assign a float variable to an int variable? Yes, but the value will be truncated.</p></li>
+<li><p>Can you assign an int variable to a float variable? Yes, but the type will be promoted.</p></li>
+<li><p>Can you assign <em>any</em> first-class type variable to <em>any</em> other first-class type variable? Yes, you just have to typecast them to the matching data type.</p></li>
+<li><p>Can you assign a first-class type variable to <em>any</em> kind of derived type variable? No, e.g. you cannot assign an int to a structure</p></li>
+</ul>
+<h2 id="c-preprocessor-and-libraries">C Preprocessor and Libraries</h2>
+<ul>
+<li>Review how to use the following preprocessor directives:</li>
+</ul>
+<p>``<code>c#define SOMETHING SOMETHING_ELSE ...#ifdef SOMETHING ... #else ... #endif <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">`#define` is a preprocessor directive in C that unconditionallydefines a macro.</span><br><span class="line">`#ifdef` is a preprocessor directive in the C programming languagethat tests whether a macro has been defined or not. It allows conditional compilation of code based on whether a particular macro has been defined or not.</span><br><span class="line">`#else` is run if the macro is not defined in a `#ifdef`</span><br><span class="line">`#endif` Ends a #ifdef macro</span><br><span class="line"></span><br><span class="line">```c#if (SOMETHING == 5)</span><br></pre></td></tr></table></figure></code>#if<code>is a preprocessor directive in the C programming language that allows conditional compilation of code based on the value of an expression. - Does the following program cause a compile-time error?    <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> C 1</span><span class="meta">#<span class="keyword">define</span> A B</span><span class="meta">#<span class="keyword">define</span> B C</span><span class="type">int</span> <span class="title function_">function</span><span class="params">()</span> &#123;   	<span class="type">int</span> x = <span class="number">0</span>;<span class="meta">#<span class="keyword">if</span> (A == 1)</span>   	<span class="keyword">return</span>;<span class="meta">#<span class="keyword">else</span></span>   	<span class="keyword">return</span> <span class="number">0</span>;<span class="meta">#<span class="keyword">endif</span></span>&#125;</span><br></pre></td></tr></table></figure>  No, no compile time error. The macro A is defined as B and B is defined as C. So when the preprocessor replaces A in the</code>#if<code>directive, it replaces it with B and then replaces B with C. Therefore, the</code>#if<code>statement is effectively replaced by</code>#if (C == 1)<code>.         Since C is defined as 1, the condition in the</code>#if<code>statement evaluates to true, and the code in the first branch of the if statement is executed, which is a return statement without a value. In this specific case, the program still works because the function return type is</code>int`, and the return statement in the first branch of the if statement might just return some undetermined number.</p>
+<pre><code>In general, however, it is good practice to always explicitly returna value from a function that has a return type, as it makes the code more clear and less error-prone.</code></pre>
+<ul>
+<li><p>What are the reasons for using libraries? To import useful code, promote modular programming, and provide cross-platform compatibility.</p></li>
+<li><p>What are the differences between static and dynamic (shared)libraries?</p>
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 37%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Aspects</th>
+<th style="text-align: left;">Static library</th>
+<th>Dynamic library</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Linking</td>
+<td style="text-align: left;">Linked at compile time</td>
+<td>Linked at run time</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Size</td>
+<td style="text-align: left;">Increase the size of the executable (the library code is included in the executable.</td>
+<td>Reduce the size of the executable (the library code is stored separately and referenced at run time)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Memory Usage</td>
+<td style="text-align: left;">Increase memory usage (the entire library code is loaded into memory)</td>
+<td>Reduce memory usage (the code is shared among multiple processes, and only one copy of the library code is loaded into memory)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ease of Updates</td>
+<td style="text-align: left;">Require recompilation of the entire program</td>
+<td>Allow for easier updates (can replace the library file without recompiling the program)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Portability</td>
+<td style="text-align: left;">More portable (does not require the presence of the library file at run time)</td>
+<td>Less portable (requires the library file to be present and correctly configured at run time)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Runtime Dependencies</td>
+<td style="text-align: left;">No (directly included in the executable)</td>
+<td>Yes (must be present in the correct location for the program to run)</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>What are the trade-offs between the above two? The trade-offs between static and dynamic libraries involve executable size, memory usage, ease of updates, runtime dependencies, portability, and performance considerations.</p></li>
+<li><p>How do you create a library? Compile c files into an object file and link them with</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc (name).o –shared –o library.so</span><br></pre></td></tr></table></figure></p></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Zixi
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://www.packetmania.net/en/2024/03/26/C-Prog-Exam-Review-Practices-2/" title="rogramming in C Exam Review and Practices (II)">https://www.packetmania.net/en/2024/03/26/C-Prog-Exam-Review-Practices-2/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/en/tags/C-C-Programming/" rel="tag"><i class="fa fa-tag"></i> C/C++ Programming</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/2024/03/24/Purdue-CS240-2022-Summer-Final/" rel="prev" title="Purdue CS24000 2022 Summer Final Exam Solutions">
+                  <i class="fa fa-chevron-left"></i> Purdue CS24000 2022 Summer Final Exam Solutions
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Gitalk Comments</a></li>
+            <li class="tab"><a href="#comment-utterances">Utterances Comments</a></li>
+            <li class="tab"><a href="#comment-disqus">Disqus Comments</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+            <div class="tab-pane disqus" id="comment-disqus">
+              
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zixi</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>Symbols count total: </span>
+    <span title="Symbols count total">425k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>Reading time total &asymp;</span>
+    <span title="Reading time total">6:26</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5fc1fd29017282c7" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/en/js/comments.js"></script><script src="/en/js/utils.js"></script><script src="/en/js/motion.js"></script><script src="/en/js/next-boot.js"></script><script src="/en/js/bookmark.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/en/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdn.jsdelivr.net/npm/pdfobject@2.2.7/pdfobject.min.js","integrity":"sha256-ph3Dk89VmuTVXG6x/RDzk53SU9LPdAh1tpv0UvnDZ2I="},"url":"/en/lib/pdf/web/viewer.html"}</script>
+  <script src="/en/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"forest","dark":"forest"},"js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.13.4/dist/mermaid.min.js","integrity":"sha256-96rwDGMWIQYB0yKGp1sKi1yrjrLPj2oT39IpbCsIrsg="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/en/js/third-party/fancybox.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/en/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"packetmania-github-io","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/en/js/third-party/comments/disqus.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"packetmania","repo":"en","client_id":"a45f6ae3f97c1a467856","client_secret":"7d81b74f952b388f93dcb5a8c44cd12f657969fa","admin_user":"packetmania","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"66f36235cab1e94541ce22183c611fc8"}</script>
+<script src="/en/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"packetmania/en","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/en/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

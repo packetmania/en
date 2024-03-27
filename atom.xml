@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2024-03-27T03:24:28.070Z</updated>
+  <updated>2024-03-27T19:54:20.256Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>rogramming in C Exam Review and Practices (II)</title>
+    <link href="https://www.packetmania.net/en/2024/03/26/C-Prog-Exam-Review-Practices-2/"/>
+    <id>https://www.packetmania.net/en/2024/03/26/C-Prog-Exam-Review-Practices-2/</id>
+    <published>2024-03-27T05:47:48.000Z</published>
+    <updated>2024-03-27T19:54:20.256Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Here is a series of general study guides to college-level C programming courses. This is the second part covering dynamic memory allocation, advanced pointer operations, recursion, linked list and tree common functions, etc.</summary>
+    
+    
+    
+    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
+    
+    
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
+    
+  </entry>
   
   <entry>
     <title>Purdue CS24000 2022 Summer Final Exam Solutions</title>
@@ -78,7 +97,7 @@
     <link href="https://www.packetmania.net/en/2024/02/28/C-Prog-Exam-Review-Practices-1/"/>
     <id>https://www.packetmania.net/en/2024/02/28/C-Prog-Exam-Review-Practices-1/</id>
     <published>2024-02-29T07:10:00.000Z</published>
-    <updated>2024-03-01T05:00:46.854Z</updated>
+    <updated>2024-03-27T05:46:39.260Z</updated>
     
     
     <summary type="html">&lt;p&gt;Here is a series of general study guides to college-level C programming courses. This is the first part covering compilation and linking, file operations, typedef, structures, string operations, basic pointer operations, etc.</summary>
@@ -402,27 +421,6 @@
     <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
     
     <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IPv6 Dynamic Address Allocation Mechanism Illustrated</title>
-    <link href="https://www.packetmania.net/en/2022/03/13/IPv6-Addressing/"/>
-    <id>https://www.packetmania.net/en/2022/03/13/IPv6-Addressing/</id>
-    <published>2022-03-14T05:14:48.000Z</published>
-    <updated>2022-03-24T06:52:16.112Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;IPv6 supports multiple addresses, making address assignments more flexible and convenient. Unlike IPv4, which relied solely on the DHCP protocol for address assignment, IPv6 incorporates a native &lt;a href=&quot;https://tools.ietf.org/html/rfc4862&quot;&gt;Stateless Address AutoConfiguration&lt;/a&gt; SLAAC) protocol. SLAAC can either work alone to provide IPv6 addresses to hosts, or it can work with &lt;a href=&quot;https://tools.ietf.org/html/rfc8415&quot;&gt;DHCPv6&lt;/a&gt; to generate new assignment schemes. Here is a comprehensive analysis of the dynamic address allocation mechanism for IPv6.</summary>
-    
-    
-    
-    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
-    
-    
-    <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
-    
-    <category term="Cisco Technology" scheme="https://www.packetmania.net/en/tags/Cisco-Technology/"/>
     
   </entry>
   
