@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2024-03-10T05:32:12.018Z</updated>
+  <updated>2024-03-27T02:55:31.074Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Purdue CS24000 2022 Summer Final Exam Solutions</title>
+    <link href="https://www.packetmania.net/en/2024/03/24/Purdue-CS240-2022-2023-Summer-Final/"/>
+    <id>https://www.packetmania.net/en/2024/03/24/Purdue-CS240-2022-2023-Summer-Final/</id>
+    <published>2024-03-25T02:04:07.000Z</published>
+    <updated>2024-03-27T02:55:31.074Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Purdue University CS24000 is an undergraduate-level course that teaches students programming principles and techniques for problem-solving in the C programming language. Here are the solutions and study notes for the 2022 and 2023 Final exams.</summary>
+    
+    
+    
+    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
+    
+    
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
+    
+  </entry>
   
   <entry>
     <title>Purdue MA 26500 Spring 2022 Midterm II Solutions</title>
@@ -74,11 +93,11 @@
   </entry>
   
   <entry>
-    <title>Purdue CS24000 2022 and 2023 Summer Midterm Solutions</title>
+    <title>Purdue CS24000 2022 and 2023 Summer Midterm Exam Solutions</title>
     <link href="https://www.packetmania.net/en/2024/02/25/Purdue-CS240-2022-2023-Summer-Midterm/"/>
     <id>https://www.packetmania.net/en/2024/02/25/Purdue-CS240-2022-2023-Summer-Midterm/</id>
     <published>2024-02-26T00:16:50.000Z</published>
-    <updated>2024-02-27T07:17:41.246Z</updated>
+    <updated>2024-03-25T02:08:35.159Z</updated>
     
     
     <summary type="html">&lt;p&gt;Purdue University CS24000 is an undergraduate-level course that teaches students programming principles and techniques for problem-solving in the C programming language. Here are the solutions and study notes for the 2022 and 2023 Midterm exams.</summary>
@@ -292,9 +311,9 @@
     
     <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
     
-    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
-    
     <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
+    
+    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
     
     <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
     
@@ -404,27 +423,6 @@
     <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
     
     <category term="Cisco Technology" scheme="https://www.packetmania.net/en/tags/Cisco-Technology/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Implement Textbook RSA in Python</title>
-    <link href="https://www.packetmania.net/en/2022/01/22/Python-Textbook-RSA/"/>
-    <id>https://www.packetmania.net/en/2022/01/22/Python-Textbook-RSA/</id>
-    <published>2022-01-23T00:09:23.000Z</published>
-    <updated>2023-09-16T00:18:36.810Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;RSA encryption algorithm is one of the core technologies of modern public-key cryptography and is widely used on the Internet. As a classical algorithm of public-key cryptography, the programming implementation of textbook RSA can help us quickly grasp its mathematical mechanism and design ideas, and accumulate important experience in the software implementation of cryptography. Here is a detailed example of textbook RSA implementation in Python 3.8 programming environment.</summary>
-    
-    
-    
-    <category term="Technical Know-how" scheme="https://www.packetmania.net/en/categories/Technical-Know-how/"/>
-    
-    
-    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
-    
-    <category term="Python Programming" scheme="https://www.packetmania.net/en/tags/Python-Programming/"/>
     
   </entry>
   
