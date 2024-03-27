@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2024-03-27T02:55:31.074Z</updated>
+  <updated>2024-03-27T03:09:53.836Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>Purdue CS24000 2022 Summer Final Exam Solutions</title>
-    <link href="https://www.packetmania.net/en/2024/03/24/Purdue-CS240-2022-2023-Summer-Final/"/>
-    <id>https://www.packetmania.net/en/2024/03/24/Purdue-CS240-2022-2023-Summer-Final/</id>
+    <link href="https://www.packetmania.net/en/2024/03/24/Purdue-CS240-2022-Summer-Final/"/>
+    <id>https://www.packetmania.net/en/2024/03/24/Purdue-CS240-2022-Summer-Final/</id>
     <published>2024-03-25T02:04:07.000Z</published>
-    <updated>2024-03-27T02:55:31.074Z</updated>
+    <updated>2024-03-27T03:09:53.836Z</updated>
     
     
     <summary type="html">&lt;p&gt;Purdue University CS24000 is an undergraduate-level course that teaches students programming principles and techniques for problem-solving in the C programming language. Here are the solutions and study notes for the 2022 and 2023 Final exams.</summary>
@@ -311,9 +311,9 @@
     
     <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
     
-    <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
-    
     <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
+    
+    <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
     
     <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
     
