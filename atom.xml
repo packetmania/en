@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2024-03-27T20:00:52.768Z</updated>
+  <updated>2024-03-28T02:27:52.763Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.packetmania.net/en/2024/03/26/C-Prog-Exam-Review-Practices-2/"/>
     <id>https://www.packetmania.net/en/2024/03/26/C-Prog-Exam-Review-Practices-2/</id>
     <published>2024-03-27T05:47:48.000Z</published>
-    <updated>2024-03-27T20:00:52.768Z</updated>
+    <updated>2024-03-28T02:27:52.763Z</updated>
     
     
     <summary type="html">&lt;p&gt;Here is a series of general study guides to college-level C programming courses. This is the second part covering dynamic memory allocation, advanced pointer operations, recursion, linked list and tree common functions, etc.</summary>
@@ -330,9 +330,9 @@
     
     <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
     
-    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
-    
     <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
+    
+    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
     
     <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
     
