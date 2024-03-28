@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2024-03-28T02:27:52.763Z</updated>
+  <updated>2024-03-28T07:26:26.985Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Purdue CS24000 Fall 2018 Midterm II Solutions</title>
+    <link href="https://www.packetmania.net/en/2024/03/27/Purdue-CS240-2018-Fall-Midterm2/"/>
+    <id>https://www.packetmania.net/en/2024/03/27/Purdue-CS240-2018-Fall-Midterm2/</id>
+    <published>2024-03-28T04:47:01.000Z</published>
+    <updated>2024-03-28T07:26:26.985Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Purdue University CS24000 is an undergraduate-level course that teaches students programming principles and techniques for problem-solving in the C programming language. Here are the solution and study notes for the Fall 2018 Midterm 2 exam.</summary>
+    
+    
+    
+    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
+    
+    
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
+    
+  </entry>
   
   <entry>
     <title>Programming in C Exam Review and Practices (II)</title>
@@ -330,9 +349,9 @@
     
     <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
     
-    <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
-    
     <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
+    
+    <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
     
     <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
     
@@ -400,27 +419,6 @@
     <category term="Python Programming" scheme="https://www.packetmania.net/en/tags/Python-Programming/"/>
     
     <category term="CTF" scheme="https://www.packetmania.net/en/tags/CTF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AddressSanitizer - A Tool for Programmers to Detect Memory Access Errors</title>
-    <link href="https://www.packetmania.net/en/2022/04/22/ASAN-intro/"/>
-    <id>https://www.packetmania.net/en/2022/04/22/ASAN-intro/</id>
-    <published>2022-04-23T05:35:17.000Z</published>
-    <updated>2022-04-24T02:00:35.349Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;Memory access errors are the most common software errors that often cause program crashes. The AddressSanitizer tool, developed by Google engineers in 2012, has become the first choice of C/C++ programmers for its wide coverage, high efficiency, and low overhead. Here is a brief introduction to its principle and usage.</summary>
-    
-    
-    
-    <category term="Tool Guide" scheme="https://www.packetmania.net/en/categories/Tool-Guide/"/>
-    
-    
-    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
-    
-    <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
     
   </entry>
   

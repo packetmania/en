@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.packetmania.net/en/2024/03/27/Purdue-CS240-2018-Fall-Midterm2/</loc>
+    
+    <lastmod>2024-03-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.packetmania.net/en/2024/03/26/C-Prog-Exam-Review-Practices-2/</loc>
     
     <lastmod>2024-03-28</lastmod>
@@ -268,20 +277,6 @@
   </url>
   
   <url>
-    <loc>https://www.packetmania.net/en/tags/Computer-Architecture/</loc>
-    <lastmod>2024-03-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.packetmania.net/en/tags/Computer-Communications/</loc>
-    <lastmod>2024-03-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.packetmania.net/en/tags/Cryptography/</loc>
     <lastmod>2024-03-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -290,6 +285,20 @@
   
   <url>
     <loc>https://www.packetmania.net/en/tags/Network-Security/</loc>
+    <lastmod>2024-03-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/tags/Computer-Architecture/</loc>
+    <lastmod>2024-03-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/tags/Computer-Communications/</loc>
     <lastmod>2024-03-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
