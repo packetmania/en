@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://www.packetmania.net/en/2024/02/24/Purdue-CS240-2018-Fall-Midterm1/C-ProgLang-2nd.jpg">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/02/24/Purdue-CS240-2018-Fall-Midterm1/Purdue-CS240-Spring-2024-Syllabus.png">
 <meta property="article:published_time" content="2024-03-28T04:47:01.000Z">
-<meta property="article:modified_time" content="2024-03-28T19:02:39.214Z">
+<meta property="article:modified_time" content="2024-03-29T01:41:24.331Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="C&#x2F;C++ Programming">
 <meta name="twitter:card" content="summary">
@@ -276,7 +276,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-03-28 12:02:39" itemprop="dateModified" datetime="2024-03-28T12:02:39-07:00">2024-03-28</time>
+        <time title="Modified: 2024-03-28 18:41:24" itemprop="dateModified" datetime="2024-03-28T18:41:24-07:00">2024-03-28</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -350,7 +350,7 @@
 <h2 id="exam-solutions-and-notes">Exam Solutions and Notes</h2>
 <h3 id="problem-1-30-pts">Problem 1 (30 pts)</h3>
 <p><strong>(a)</strong> Code without using array brackets:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">reverse</span><span class="params">(<span class="type">int</span> source[], <span class="type">int</span> dest[], <span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span>* srcptr = source;</span><br><span class="line">    <span class="type">int</span>* dstptr = dest;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        *(dstptr + i) = *(srcptr + n - <span class="number">1</span> - i);</span><br><span class="line">        sum += *(dstptr + i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">reverse</span><span class="params">(<span class="type">int</span> *source, <span class="type">int</span> *dest, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span>* srcptr = source;</span><br><span class="line">    <span class="type">int</span>* dstptr = dest;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        *(dstptr + i) = *(srcptr + n - <span class="number">1</span> - i);</span><br><span class="line">        sum += *(dstptr + i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
 <p>In summary, the reverse function reverses the order of elements in the source array, stores them in the dest array, and calculates the sum of the reversed elements.</p>
 <p><strong>(b)</strong> The atomic weight of Aluminum is 26.981.</p>
 <p><strong>(c)</strong> Structure for a singly-linked list node containing an integer:</p>
@@ -477,7 +477,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span>Reading time total &asymp;</span>
-    <span title="Reading time total">6:31</span>
+    <span title="Reading time total">6:32</span>
   </span>
 </div>
 <div class="busuanzi-count">
