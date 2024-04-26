@@ -59,7 +59,7 @@
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P24.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P25.png">
 <meta property="article:published_time" content="2024-04-19T06:51:21.000Z">
-<meta property="article:modified_time" content="2024-04-24T19:38:22.471Z">
+<meta property="article:modified_time" content="2024-04-26T07:14:35.052Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="Linear Algebra">
 <meta name="twitter:card" content="summary">
@@ -301,7 +301,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-04-24 12:38:22" itemprop="dateModified" datetime="2024-04-24T12:38:22-07:00">2024-04-24</time>
+        <time title="Modified: 2024-04-26 00:14:35" itemprop="dateModified" datetime="2024-04-26T00:14:35-07:00">2024-04-26</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -327,14 +327,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>1.8k</span>
+      <span>4.7k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>2 mins.</span>
+      <span>4 mins.</span>
     </span>
 </div>
 
@@ -364,147 +364,195 @@
 </ul>
 <h2 id="spring-2022-final-exam-solutions">Spring 2022 Final Exam Solutions</h2>
 <h3 id="problem-1">Problem 1</h3>
-<p><img src="MA265-Spring2022-Final-P1.png" style="width:80.0%;height:80.0%" /></p>
+<p><img src="MA265-Spring2022-Final-P1.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 1 Solution</p>
 </summary>
-
+<p>Start with the augmented matrix of the system, do row reduction like below</p>
+<p><span class="math display">\[
+\left[\begin{array}{ccc|c}1&amp;2&amp;3&amp;16\\2&amp;0&amp;-2&amp;14\\3&amp;2&amp;1&amp;3a\end{array}\right]\sim
+\left[\begin{array}{ccc|c}1&amp;2&amp;3&amp;16\\0&amp;-4&amp;-8&amp;-18\\0&amp;-4&amp;-8&amp;3a-48\end{array}\right]\sim
+\left[\begin{array}{ccc|c}1&amp;2&amp;3&amp;16\\0&amp;-4&amp;-8&amp;-18\\0&amp;0&amp;0&amp;3a-30\end{array}\right]
+\]</span></p>
+<p>Clearly, this system of equations is consistent when <span class="math inline">\(a=10\)</span>. So the answer is <mark><strong>B</strong></mark>.</p>
 
 </details>
 <h3 id="problem-2">Problem 2</h3>
-<p><img src="MA265-Spring2022-Final-P2.png" style="width:80.0%;height:80.0%" /></p>
+<p><img src="MA265-Spring2022-Final-P2.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 2 Solution</p>
 </summary>
-
+<p>According to the properties of determinants:</p>
+<blockquote>
+<p>Let A be a square matrix.<br />
+a. If a multiple of one row of <span class="math inline">\(A\)</span> is added to another row to produce a matrix <span class="math inline">\(B\)</span>,then <span class="math inline">\(\det B =\det A\)</span>.<br />
+b. If two rows of <span class="math inline">\(A\)</span> are interchanged to produce <span class="math inline">\(B\)</span>, then <span class="math inline">\(\det B=-\det A\)</span>.<br />
+c. If one row of A is multiplied by <span class="math inline">\(k\)</span> to produce B, then <span class="math inline">\(\det B=k\cdot\det A\)</span>.</p>
+</blockquote>
+<p>Also since <span class="math inline">\(\det A^T=\det A\)</span>, a row operation on <span class="math inline">\(A^T\)</span> amounts to a column operation on <span class="math inline">\(A\)</span>. The above property is true for column operations as well.</p>
+<p>With these properties in mind, we can do the following</p>
+<p><span class="math display">\[\begin{align}
+\begin{vmatrix}d&amp;2a&amp;g+d\\e&amp;2b&amp;h+e\\f&amp;2c&amp;i+f\end{vmatrix}
+&amp;=2\times \begin{vmatrix}d&amp;a&amp;g+d\\e&amp;b&amp;h+e\\f&amp;c&amp;i+f\end{vmatrix}=
+  2\times \begin{vmatrix}d&amp;a&amp;g\\e&amp;b&amp;h\\f&amp;c&amp;i\end{vmatrix}=
+  2\times (-1)\times \begin{vmatrix}a&amp;d&amp;g\\b&amp;e&amp;h\\c&amp;f&amp;i\end{vmatrix}\\
+&amp;=(-2)\times \begin{vmatrix}a&amp;b&amp;c\\d&amp;e&amp;f\\g&amp;h&amp;i\end{vmatrix}=(-2)\times 1=-2
+\end{align}\]</span></p>
+<p>So the answer is <mark><strong>A</strong></mark>.</p>
 
 </details>
 <h3 id="problem-3">Problem 3</h3>
-<p><img src="MA265-Spring2022-Final-P3.png" style="width:80.0%;height:80.0%" /></p>
+<p><img src="MA265-Spring2022-Final-P3.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 3 Solution</p>
 </summary>
-
+<p>Denote <span class="math inline">\(A=BCB^{-1}\)</span>, it can be seen that <span class="math display">\[\det A=\det BCB^{-1}=\det B\det C\det B^{-1}=\det (BB^{-1})\det C=\det C\]</span></p>
+<p>Thus we can directly write down the determinant calculation process like below (applying row operations) <span class="math display">\[
+\begin{vmatrix}1&amp;2&amp;3\\1&amp;4&amp;5\\-1&amp;3&amp;7\end{vmatrix}=
+\begin{vmatrix}1&amp;2&amp;3\\0&amp;2&amp;2\\0&amp;5&amp;10\end{vmatrix}=
+1\times (-1)^{1+1}\begin{vmatrix}2&amp;2\\5&amp;10\end{vmatrix}=
+1\times (2\times 10-2\times 5)=10
+\]</span></p>
+<p>So the answer is <mark><strong>B</strong></mark>.</p>
 
 </details>
 <h3 id="problem-4">Problem 4</h3>
-<p><img src="MA265-Spring2022-Final-P4.png" style="width:80.0%;height:80.0%" /></p>
+<p><img src="MA265-Spring2022-Final-P4.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 4 Solution</p>
 </summary>
 
 
 </details>
 <h3 id="problem-5">Problem 5</h3>
-<p><img src="MA265-Spring2022-Final-P5.png" style="width:80.0%;height:80.0%" /></p>
+<p><img src="MA265-Spring2022-Final-P5.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 5 Solution</p>
 </summary>
 
 
 </details>
 <h3 id="problem-6">Problem 6</h3>
-<p><img src="MA265-Spring2022-Final-P6.png" style="width:80.0%;height:80.0%" /></p>
+<p><img src="MA265-Spring2022-Final-P6.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 6 Solution</p>
 </summary>
-
+<p>Note the trace of a square matrix <span class="math inline">\(A\)</span> is the sum of the diagonal entries in A and is denoted by tr <span class="math inline">\(A\)</span>.</p>
+<p>Remember the formula for inverse matrix <span class="math display">\[
+A^{-1}=\frac{1}{\det A}\text{adj}\;A=[b_{ij}]\\
+b_{ij}=\frac{C_{ji}}{\det A}\qquad C_{ji}=(-1)^{i+j}\det A_{ji}
+\]</span> Where <span class="math inline">\(\text{adj}\;A\)</span> is the adjugate of <span class="math inline">\(A\)</span>, <span class="math inline">\(C_{ji}\)</span> is a cofactor of <span class="math inline">\(A\)</span>, and <span class="math inline">\(A_{ji}\)</span> denotes the submatrix of <span class="math inline">\(A\)</span> formed by deleting row <span class="math inline">\(j\)</span> and column <span class="math inline">\(i\)</span>.</p>
+<p>Now we can find the answer step-by-step:</p>
+<ol type="1">
+<li><p>Calculate the determinant of <span class="math inline">\(A\)</span> <span class="math display">\[
+\begin{vmatrix}1&amp;2&amp;7\\1&amp;3&amp;12\\2&amp;5&amp;20\end{vmatrix}=
+\begin{vmatrix}1&amp;2&amp;7\\0&amp;1&amp;5\\0&amp;1&amp;6\end{vmatrix}=
+\begin{vmatrix}1&amp;2&amp;7\\0&amp;1&amp;5\\0&amp;0&amp;1\end{vmatrix}=1
+\]</span></p></li>
+<li><p>Calculate <span class="math inline">\(b_{11}\)</span>, <span class="math inline">\(b_{22}\)</span>, and <span class="math inline">\(b_{33}\)</span> <span class="math display">\[
+b_{11}=\frac{C_{11}}{1}=\begin{vmatrix}3&amp;12\\5&amp;20\end{vmatrix}=0\\
+b_{22}=\frac{C_{22}}{1}=\begin{vmatrix}1&amp;7\\2&amp;20\end{vmatrix}=6\\
+b_{33}=\frac{C_{33}}{1}=\begin{vmatrix}1&amp;2\\1&amp;3\end{vmatrix}=1
+\]</span></p></li>
+<li><p>Get the trace of <span class="math inline">\(A^{-1}\)</span> <span class="math display">\[\text{tr}\;A^{-1}=b_{11}+b_{22}+b_{33}=0+6+1=7\]</span></p></li>
+</ol>
+<p>So the answer is <mark><strong>C</strong></mark>.</p>
 
 </details>
 <h3 id="problem-7">Problem 7</h3>
-<p><img src="MA265-Spring2022-Final-P7.png" style="width:80.0%;height:80.0%" /></p>
+<p><img src="MA265-Spring2022-Final-P7.png" style="width:60.0%;height:60.0%" /></p>
 <details class="note success"><summary><p>Problem 7 Solution</p>
 </summary>
 
 
 </details>
 <h3 id="problem-8">Problem 8</h3>
-<p><img src="MA265-Spring2022-Final-P8.png" style="width:80.0%;height:80.0%" /></p>
+<p><img src="MA265-Spring2022-Final-P8.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 8 Solution</p>
 </summary>
 
 
 </details>
 <h3 id="problem-9">Problem 9</h3>
-<p><img src="MA265-Spring2022-Final-P9.png" style="width:80.0%;height:80.0%" /></p>
+<p><img src="MA265-Spring2022-Final-P9.png" style="width:60.0%;height:60.0%" /></p>
 <details class="note success"><summary><p>Problem 9 Solution</p>
 </summary>
 
 
 </details>
 <h3 id="problem-10">Problem 10</h3>
-<p><img src="MA265-Spring2022-Final-P10.png" style="width:80.0%;height:80.0%" /></p>
+<p><img src="MA265-Spring2022-Final-P10.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 10 Solution</p>
 </summary>
 
 
 </details>
 <h3 id="problem-11">Problem 11</h3>
-<p><img src="MA265-Spring2022-Final-P11.png" style="width:80.0%;height:80.0%" /></p>
+<p><img src="MA265-Spring2022-Final-P11.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 11 Solution</p>
 </summary>
 
 
 </details>
 <h3 id="problem-12">Problem 12</h3>
-<p><img src="MA265-Spring2022-Final-P12.png" style="width:80.0%;height:80.0%" /></p>
+<p><img src="MA265-Spring2022-Final-P12.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 12 Solution</p>
 </summary>
 
 
 </details>
 <h3 id="problem-13">Problem 13</h3>
-<p><img src="MA265-Spring2022-Final-P13.png" style="width:80.0%;height:80.0%" /></p>
+<p><img src="MA265-Spring2022-Final-P13.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 13 Solution</p>
 </summary>
 
 
 </details>
 <h3 id="problem-14">Problem 14</h3>
-<p><img src="MA265-Spring2022-Final-P14.png" style="width:80.0%;height:80.0%" /></p>
+<p><img src="MA265-Spring2022-Final-P14.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 14 Solution</p>
 </summary>
 
 
 </details>
 <h3 id="problem-15">Problem 15</h3>
-<p><img src="MA265-Spring2022-Final-P15.png" style="width:80.0%;height:80.0%" /></p>
+<p><img src="MA265-Spring2022-Final-P15.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 15 Solution</p>
 </summary>
 
 
 </details>
 <h3 id="problem-16">Problem 16</h3>
-<p><img src="MA265-Spring2022-Final-P16.png" style="width:80.0%;height:80.0%" /></p>
+<p><img src="MA265-Spring2022-Final-P16.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 16 Solution</p>
 </summary>
 
 
 </details>
 <h3 id="problem-17">Problem 17</h3>
-<p><img src="MA265-Spring2022-Final-P17.png" style="width:80.0%;height:80.0%" /></p>
+<p><img src="MA265-Spring2022-Final-P17.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 17 Solution</p>
 </summary>
 
 
 </details>
 <h3 id="problem-18">Problem 18</h3>
-<p><img src="MA265-Spring2022-Final-P18.png" style="width:80.0%;height:80.0%" /></p>
+<p><img src="MA265-Spring2022-Final-P18.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 18 Solution</p>
 </summary>
 
 
 </details>
 <h3 id="problem-19">Problem 19</h3>
-<p><img src="MA265-Spring2022-Final-P19.png" style="width:80.0%;height:80.0%" /></p>
+<p><img src="MA265-Spring2022-Final-P19.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 19 Solution</p>
 </summary>
 
 
 </details>
 <h3 id="problem-20">Problem 20</h3>
-<p><img src="MA265-Spring2022-Final-P20.png" style="width:80.0%;height:80.0%" /></p>
+<p><img src="MA265-Spring2022-Final-P20.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 20 Solution</p>
 </summary>
 
 
 </details>
 <h3 id="problem-21">Problem 21</h3>
-<p><img src="MA265-Spring2022-Final-P21.png" style="width:80.0%;height:80.0%" /></p>
+<p><img src="MA265-Spring2022-Final-P21.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 21 Solution</p>
 </summary>
 
@@ -518,21 +566,21 @@
 
 </details>
 <h3 id="problem-23">Problem 23</h3>
-<p><img src="MA265-Spring2022-Final-P23.png" style="width:80.0%;height:80.0%" /></p>
+<p><img src="MA265-Spring2022-Final-P23.png" style="width:65.0%;height:65.0%" /></p>
 <details class="note success"><summary><p>Problem 23 Solution</p>
 </summary>
 
 
 </details>
 <h3 id="problem-24">Problem 24</h3>
-<p><img src="MA265-Spring2022-Final-P24.png" style="width:80.0%;height:80.0%" /></p>
+<p><img src="MA265-Spring2022-Final-P24.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 24 Solution</p>
 </summary>
 
 
 </details>
 <h3 id="problem-25">Problem 25</h3>
-<p><img src="MA265-Spring2022-Final-P25.png" style="width:80.0%;height:80.0%" /></p>
+<p><img src="MA265-Spring2022-Final-P25.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 25 Solution</p>
 </summary>
 
@@ -646,14 +694,14 @@ MA 265 Fall 2019 Final
       <i class="fa fa-chart-line"></i>
     </span>
       <span>Symbols count total: </span>
-    <span title="Symbols count total">433k</span>
+    <span title="Symbols count total">436k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>Reading time total &asymp;</span>
-    <span title="Reading time total">6:34</span>
+    <span title="Reading time total">6:36</span>
   </span>
 </div>
 <div class="busuanzi-count">
