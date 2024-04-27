@@ -59,7 +59,7 @@
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P24.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P25.png">
 <meta property="article:published_time" content="2024-04-19T06:51:21.000Z">
-<meta property="article:modified_time" content="2024-04-26T07:14:35.052Z">
+<meta property="article:modified_time" content="2024-04-27T02:37:29.460Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="Linear Algebra">
 <meta name="twitter:card" content="summary">
@@ -301,7 +301,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-04-26 00:14:35" itemprop="dateModified" datetime="2024-04-26T00:14:35-07:00">2024-04-26</time>
+        <time title="Modified: 2024-04-26 19:37:29" itemprop="dateModified" datetime="2024-04-26T19:37:29-07:00">2024-04-26</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -327,14 +327,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>4.7k</span>
+      <span>10k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>4 mins.</span>
+      <span>9 mins.</span>
     </span>
 </div>
 
@@ -367,7 +367,7 @@
 <p><img src="MA265-Spring2022-Final-P1.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 1 Solution</p>
 </summary>
-<p>Start with the augmented matrix of the system, do row reduction like below</p>
+<p>Start with the augmented matrix of the system, and do row reduction like the below</p>
 <p><span class="math display">\[
 \left[\begin{array}{ccc|c}1&amp;2&amp;3&amp;16\\2&amp;0&amp;-2&amp;14\\3&amp;2&amp;1&amp;3a\end{array}\right]\sim
 \left[\begin{array}{ccc|c}1&amp;2&amp;3&amp;16\\0&amp;-4&amp;-8&amp;-18\\0&amp;-4&amp;-8&amp;3a-48\end{array}\right]\sim
@@ -380,13 +380,11 @@
 <p><img src="MA265-Spring2022-Final-P2.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 2 Solution</p>
 </summary>
-<p>According to the properties of determinants:</p>
-<blockquote>
-<p>Let A be a square matrix.<br />
-a. If a multiple of one row of <span class="math inline">\(A\)</span> is added to another row to produce a matrix <span class="math inline">\(B\)</span>,then <span class="math inline">\(\det B =\det A\)</span>.<br />
+<p>First review the properties of determinants:<br />
+&gt;Let A be a square matrix.<br />
+&gt; a. If a multiple of one row of <span class="math inline">\(A\)</span> is added to another row to produce a matrix <span class="math inline">\(B\)</span>, then <span class="math inline">\(\det B =\det A\)</span>.<br />
 b. If two rows of <span class="math inline">\(A\)</span> are interchanged to produce <span class="math inline">\(B\)</span>, then <span class="math inline">\(\det B=-\det A\)</span>.<br />
 c. If one row of A is multiplied by <span class="math inline">\(k\)</span> to produce B, then <span class="math inline">\(\det B=k\cdot\det A\)</span>.</p>
-</blockquote>
 <p>Also since <span class="math inline">\(\det A^T=\det A\)</span>, a row operation on <span class="math inline">\(A^T\)</span> amounts to a column operation on <span class="math inline">\(A\)</span>. The above property is true for column operations as well.</p>
 <p>With these properties in mind, we can do the following</p>
 <p><span class="math display">\[\begin{align}
@@ -403,7 +401,7 @@ c. If one row of A is multiplied by <span class="math inline">\(k\)</span> to pr
 <p><img src="MA265-Spring2022-Final-P3.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 3 Solution</p>
 </summary>
-<p>Denote <span class="math inline">\(A=BCB^{-1}\)</span>, it can be seen that <span class="math display">\[\det A=\det BCB^{-1}=\det B\det C\det B^{-1}=\det (BB^{-1})\det C=\det C\]</span></p>
+<p>Denote <span class="math inline">\(A=BCB^{-1}\)</span>, it can be seen that <span class="math display">\[\det A=\det (BCB^{-1})=\det B\det C\det B^{-1}=\det (BB^{-1})\det C=\det C\]</span></p>
 <p>Thus we can directly write down the determinant calculation process like below (applying row operations) <span class="math display">\[
 \begin{vmatrix}1&amp;2&amp;3\\1&amp;4&amp;5\\-1&amp;3&amp;7\end{vmatrix}=
 \begin{vmatrix}1&amp;2&amp;3\\0&amp;2&amp;2\\0&amp;5&amp;10\end{vmatrix}=
@@ -433,7 +431,7 @@ c. If one row of A is multiplied by <span class="math inline">\(k\)</span> to pr
 </summary>
 <p>Note the trace of a square matrix <span class="math inline">\(A\)</span> is the sum of the diagonal entries in A and is denoted by tr <span class="math inline">\(A\)</span>.</p>
 <p>Remember the formula for inverse matrix <span class="math display">\[
-A^{-1}=\frac{1}{\det A}\text{adj}\;A=[b_{ij}]\\
+A^{-1}=\frac{1}{\det A}\text{adj}\;A=[b_{ij}]\qquad
 b_{ij}=\frac{C_{ji}}{\det A}\qquad C_{ji}=(-1)^{i+j}\det A_{ji}
 \]</span> Where <span class="math inline">\(\text{adj}\;A\)</span> is the adjugate of <span class="math inline">\(A\)</span>, <span class="math inline">\(C_{ji}\)</span> is a cofactor of <span class="math inline">\(A\)</span>, and <span class="math inline">\(A_{ji}\)</span> denotes the submatrix of <span class="math inline">\(A\)</span> formed by deleting row <span class="math inline">\(j\)</span> and column <span class="math inline">\(i\)</span>.</p>
 <p>Now we can find the answer step-by-step:</p>
@@ -457,7 +455,37 @@ b_{33}=\frac{C_{33}}{1}=\begin{vmatrix}1&amp;2\\1&amp;3\end{vmatrix}=1
 <p><img src="MA265-Spring2022-Final-P7.png" style="width:60.0%;height:60.0%" /></p>
 <details class="note success"><summary><p>Problem 7 Solution</p>
 </summary>
-
+<p>First do row reduction to get <strong>row echelon form</strong> of the matrix <span class="math inline">\(A\)</span>:</p>
+<p><span class="math display">\[\begin{align}
+&amp;\begin{bmatrix}1&amp;2&amp;2&amp;10&amp;3\\2&amp;4&amp;1&amp;11&amp;5\\3&amp;6&amp;2&amp;18&amp;1\end{bmatrix}\sim
+\begin{bmatrix}1&amp;2&amp;2&amp;10&amp;3\\0&amp;0&amp;-3&amp;-9&amp;-1\\0&amp;0&amp;-4&amp;-12&amp;-8\end{bmatrix}\sim
+\begin{bmatrix}1&amp;2&amp;2&amp;10&amp;3\\0&amp;0&amp;3&amp;9&amp;1\\0&amp;0&amp;1&amp;3&amp;2\end{bmatrix}\\
+\sim&amp;\begin{bmatrix}1&amp;2&amp;2&amp;10&amp;3\\0&amp;0&amp;3&amp;9&amp;1\\0&amp;0&amp;3&amp;9&amp;6\end{bmatrix}
+\sim\begin{bmatrix}\color{fuchsia}{1}&amp;2&amp;2&amp;10&amp;3\\0&amp;0&amp;\color{fuchsia}{3}&amp;9&amp;1\\0&amp;0&amp;0&amp;0&amp;\color{fuchsia}{5}\end{bmatrix}
+\end{align}\]</span></p>
+<p>This shows that there are 3 pivot elements and 3 corresponding pivot columns (from the original matrix <span class="math inline">\(A\)</span>) shown below</p>
+<p><span class="math display">\[\begin{Bmatrix}
+\begin{bmatrix}1\\2\\3\end{bmatrix},
+\begin{bmatrix}2\\1\\2\end{bmatrix},
+\begin{bmatrix}3\\5\\1\end{bmatrix}
+\end{Bmatrix}\]</span></p>
+<p>These columns form a basis for <span class="math inline">\(\text{Col}\;A\)</span>. Now look at the statements A and E.</p>
+<p>In the statement A, the first vector equals the sum of the first two pivot columns above. In the statement E, the third vector equals the sum of the last two pivot columns above. So both are TRUE.</p>
+<p>To check the statements B, C, and D, we need to find the basis for <span class="math inline">\(\text{Nul}\;A\)</span>. From the <strong>row echelon form</strong>, it can be deduced that with <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_4\)</span> as free variable <span class="math display">\[\begin{align}
+x_5&amp;=0\\x_3&amp;=-3x_4\\x_1&amp;=-2x_2-2x_3-10x_4=-2x_2-4x_4
+\end{align}\]</span> This leads to <span class="math display">\[
+\begin{bmatrix}x_1\\x_2\\x_3\\x_4\\x_5\end{bmatrix}=
+\begin{bmatrix}-2x_2-4x_4\\x_2\\-3x_4\\x_4\\0\end{bmatrix}=
+x_2\begin{bmatrix}-2\\1\\0\\0\\0\end{bmatrix}+x_4\begin{bmatrix}-4\\0\\-3\\1\\0\end{bmatrix}
+\]</span></p>
+<p>So the basis of <span class="math inline">\(\text{Nul}\;A\)</span> is <span class="math display">\[\begin{Bmatrix}
+\begin{bmatrix}-2\\1\\0\\0\\0\end{bmatrix},
+\begin{bmatrix}-4\\0\\-3\\1\\0\end{bmatrix}
+\end{Bmatrix}\]</span></p>
+<p>The statement B is TRUE because its first vector is the first column above scaled by 2, and its 2nd vector is just the 2nd column above scaled by -1.</p>
+<p>For statement D, its 1st vector is the same as the first column above, and the 2nd vector is just the sum of the two columns. It is TRUE as well.</p>
+<p>The statement B is FALSE since generating the 2nd vector with 3 and -2 coexisting is impossible.</p>
+<p>So the answer is <mark><strong>C</strong></mark>.</p>
 
 </details>
 <h3 id="problem-8">Problem 8</h3>
@@ -471,7 +499,10 @@ b_{33}=\frac{C_{33}}{1}=\begin{vmatrix}1&amp;2\\1&amp;3\end{vmatrix}=1
 <p><img src="MA265-Spring2022-Final-P9.png" style="width:60.0%;height:60.0%" /></p>
 <details class="note success"><summary><p>Problem 9 Solution</p>
 </summary>
-
+<p>To find the <span class="math inline">\(\text{Ker}(T)\)</span>, need to find the set of <span class="math inline">\(p(t)\)</span> such that <span class="math inline">\(T(p(t))=0\)</span> <span class="math display">\[
+T(a_0+a_{1}t+a_{2}t^2)=a_{2}t^3=0 \Rightarrow a_2=0
+\]</span> Thus <span class="math inline">\(p(t)=a_0+a_{1}t\)</span>, the basis is <span class="math inline">\({1,t}\)</span>.</p>
+<p>So the answer is <mark><strong>A</strong></mark>.</p>
 
 </details>
 <h3 id="problem-10">Problem 10</h3>
@@ -485,21 +516,46 @@ b_{33}=\frac{C_{33}}{1}=\begin{vmatrix}1&amp;2\\1&amp;3\end{vmatrix}=1
 <p><img src="MA265-Spring2022-Final-P11.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 11 Solution</p>
 </summary>
-
+<p>The vector set can be regarded as a linear transformation, then we can do row reduction with it:</p>
+<p><span class="math display">\[
+\begin{bmatrix}1&amp;1&amp;1&amp;1&amp;1\\-1&amp;1&amp;2&amp;0&amp;-2\\1&amp;1&amp;1&amp;1&amp;3\end{bmatrix}\sim
+\begin{bmatrix}\color{fuchsia}{1}&amp;1&amp;1&amp;1&amp;1\\0&amp;\color{fuchsia}{2}&amp;3&amp;1&amp;-1\\0&amp;0&amp;0&amp;0&amp;\color{fuchsia}{2}\end{bmatrix}
+\]</span> So there are 3 pivot entries and the rank is 3. The pivot columns below form a basis for <span class="math inline">\(H\)</span>. <span class="math display">\[\begin{Bmatrix}
+\begin{bmatrix}1\\-1\\1\end{bmatrix},
+\begin{bmatrix}1\\1\\1\end{bmatrix},
+\begin{bmatrix}1\\-2\\3\end{bmatrix}
+\end{Bmatrix}\]</span></p>
+<p>A is wrong as it has only 2 vectors and the rank is 2.</p>
+<p>For B, C, and D, their 3rd vectors can be generated with the linear combination of the first two vectors. So their ranks are also 2.</p>
+<p>E is equivalent to the basis above. Its second vector can be generated like below <span class="math display">\[
+\begin{bmatrix}1\\-1\\1\end{bmatrix}+\begin{bmatrix}1\\1\\1\end{bmatrix}=
+\begin{bmatrix}2\\0\\2\end{bmatrix}=2\times \begin{bmatrix}1\\0\\1\end{bmatrix}
+\]</span></p>
+<p>So the answer is <mark><strong>E</strong></mark>.</p>
 
 </details>
 <h3 id="problem-12">Problem 12</h3>
 <p><img src="MA265-Spring2022-Final-P12.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 12 Solution</p>
 </summary>
-
+<p>Note this question asks which one is <strong>NOT</strong> in the subspace spanned by <span class="math inline">\(\pmb x\)</span> and <span class="math inline">\(\pmb y\)</span>. A vector is in the subspace spanned by <span class="math inline">\(\pmb x\)</span> and <span class="math inline">\(\pmb y\)</span> if and only if it is a linear combination of <span class="math inline">\(\pmb x\)</span> and <span class="math inline">\(\pmb y\)</span>. This also means that the augmented matrix <span class="math inline">\([\pmb x\;\pmb y \mid \pmb v]\)</span> has solutions.</p>
+<p>Let's try vector from A. <span class="math display">\[
+\left[\begin{array}{cc|c}2&amp;1&amp;4\\3&amp;2&amp;2\\1&amp;1&amp;1\end{array}\right]\sim
+\left[\begin{array}{cc|c}2&amp;1&amp;4\\3&amp;2&amp;2\\2&amp;2&amp;2\end{array}\right]\sim
+\left[\begin{array}{cc|c}2&amp;1&amp;4\\1&amp;0&amp;0\\0&amp;1&amp;-2\end{array}\right]\sim
+\left[\begin{array}{cc|c}2&amp;0&amp;6\\1&amp;0&amp;0\\0&amp;1&amp;-2\end{array}\right]\sim
+\]</span> This gives inconsistent results for <span class="math inline">\(x_1\)</span>. This vector is NOT a linear combination of <span class="math inline">\(\pmb x\)</span> and <span class="math inline">\(\pmb y\)</span>. We do not need to continue here.</p>
+<p>So the answer is <mark><strong>A</strong></mark>.</p>
 
 </details>
 <h3 id="problem-13">Problem 13</h3>
 <p><img src="MA265-Spring2022-Final-P13.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 13 Solution</p>
 </summary>
-
+<p>For 2 radians counter-clockwise rotation, the transformation matrix is written as <span class="math display">\[A=\begin{bmatrix}\cos(2)&amp;-\sin(2)\\\sin(2)&amp;\cos(2)\end{bmatrix}\]</span> To find the eigenvalues of this <span class="math inline">\(2\times 2\)</span> matrix, need to solve the equation <span class="math inline">\(\det (A-\lambda I)=0\)</span> <span class="math display">\[
+\begin{vmatrix}\cos(2)-\lambda&amp;\sin(2)\\-\sin(2)&amp;\cos(2)-\lambda\end{vmatrix}=\lambda^2-2\cos(2)+\cos^2(2)+\sin^2(2)=\lambda^2-2\cos(2)+1
+\]</span> Apply the quadratic formula, get the roots <span class="math display">\[\lambda=\frac{2\cos(2)\pm\sqrt{4\cos^2(2)-4}}{2}=\cos(2)\pm i\sin(2)\]</span></p>
+<p>So the answer is <mark><strong>C</strong></mark>.</p>
 
 </details>
 <h3 id="problem-14">Problem 14</h3>
@@ -534,7 +590,48 @@ b_{33}=\frac{C_{33}}{1}=\begin{vmatrix}1&amp;2\\1&amp;3\end{vmatrix}=1
 <p><img src="MA265-Spring2022-Final-P18.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 18 Solution</p>
 </summary>
-
+<p>Remember Problem 6 introduced the definition of trace, which is the sum of all diagonal entries of a matrix. Denote the <span class="math inline">\(2\times 2\)</span> as <span class="math inline">\(A=\begin{bmatrix}a&amp;b\\c&amp;d\end{bmatrix}\)</span>, then <span class="math inline">\(\text{tr}(A)=a+d=-2\)</span>. Since <span class="math inline">\(\det A=11\)</span>, it gives <span class="math inline">\(ad-bc=11\)</span>.</p>
+<p>With these in mind, we can do the eigenvalue calculation below <span class="math display">\[
+\begin{vmatrix}a-\lambda&amp;b\\c&amp;d-\lambda\end{vmatrix}=\lambda^2-(a+d)\lambda+ad-bc=\lambda^2+2\lambda+11=0
+\]</span> Apply the quadratic formula, get the roots <span class="math display">\[\lambda=\frac{-2\pm\sqrt{4-44}}{2}=-1\pm i\sqrt{10}\]</span></p>
+<blockquote>
+<p>Refer to the following table for the mapping from <span class="math inline">\(2\times 2\)</span> matrix eigenvalues to trajectories:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Eigenvalues</th>
+<th style="text-align: center;">Trajectories</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\lambda_1&gt;0, \lambda_2&gt;0\)</span></td>
+<td style="text-align: center;">Repeller/Source</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\lambda_1&lt;0, \lambda_2&lt;0\)</span></td>
+<td style="text-align: center;">Attactor/Sink</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\lambda_1&lt;0, \lambda_2&gt;0\)</span></td>
+<td style="text-align: center;">Saddle Point</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\lambda = a\pm bi, a&gt;0\)</span></td>
+<td style="text-align: center;">Spiral (outward) Point</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\lambda = a\pm bi, a&lt;0\)</span></td>
+<td style="text-align: center;">Spiral (inward) Point</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\lambda = \pm bi\)</span></td>
+<td style="text-align: center;">Ellipses (circles if <span class="math inline">\(b=1\)</span>)</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>So the answer is <mark><strong>C</strong></mark>.</p>
 
 </details>
 <h3 id="problem-19">Problem 19</h3>
@@ -694,14 +791,14 @@ MA 265 Fall 2019 Final
       <i class="fa fa-chart-line"></i>
     </span>
       <span>Symbols count total: </span>
-    <span title="Symbols count total">436k</span>
+    <span title="Symbols count total">441k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>Reading time total &asymp;</span>
-    <span title="Reading time total">6:36</span>
+    <span title="Reading time total">6:41</span>
   </span>
 </div>
 <div class="busuanzi-count">
