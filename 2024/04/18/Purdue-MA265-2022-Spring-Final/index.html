@@ -46,6 +46,7 @@
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P11.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P12.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P13.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/radian-rotation.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P14.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P15.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P16.png">
@@ -53,13 +54,17 @@
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P18.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P19.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P20.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/orthonormal-matrix-theorem6.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/orthonormal-matrix-theorem7.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P21.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/orthogonal-projection.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P22.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/least-squares-solution.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P23.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P24.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P25.png">
 <meta property="article:published_time" content="2024-04-19T06:51:21.000Z">
-<meta property="article:modified_time" content="2024-04-27T02:37:29.460Z">
+<meta property="article:modified_time" content="2024-04-28T05:31:30.577Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="Linear Algebra">
 <meta name="twitter:card" content="summary">
@@ -301,7 +306,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-04-26 19:37:29" itemprop="dateModified" datetime="2024-04-26T19:37:29-07:00">2024-04-26</time>
+        <time title="Modified: 2024-04-27 22:31:30" itemprop="dateModified" datetime="2024-04-27T22:31:30-07:00">2024-04-27</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -327,14 +332,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>10k</span>
+      <span>22k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>9 mins.</span>
+      <span>20 mins.</span>
     </span>
 </div>
 
@@ -383,8 +388,8 @@
 <p>First review the properties of determinants:<br />
 &gt;Let A be a square matrix.<br />
 &gt; a. If a multiple of one row of <span class="math inline">\(A\)</span> is added to another row to produce a matrix <span class="math inline">\(B\)</span>, then <span class="math inline">\(\det B =\det A\)</span>.<br />
-b. If two rows of <span class="math inline">\(A\)</span> are interchanged to produce <span class="math inline">\(B\)</span>, then <span class="math inline">\(\det B=-\det A\)</span>.<br />
-c. If one row of A is multiplied by <span class="math inline">\(k\)</span> to produce B, then <span class="math inline">\(\det B=k\cdot\det A\)</span>.</p>
+&gt; b. If two rows of <span class="math inline">\(A\)</span> are interchanged to produce <span class="math inline">\(B\)</span>, then <span class="math inline">\(\det B=-\det A\)</span>.<br />
+&gt; c. If one row of A is multiplied by <span class="math inline">\(k\)</span> to produce B, then <span class="math inline">\(\det B=k\cdot\det A\)</span>.</p>
 <p>Also since <span class="math inline">\(\det A^T=\det A\)</span>, a row operation on <span class="math inline">\(A^T\)</span> amounts to a column operation on <span class="math inline">\(A\)</span>. The above property is true for column operations as well.</p>
 <p>With these properties in mind, we can do the following</p>
 <p><span class="math display">\[\begin{align}
@@ -501,7 +506,7 @@ x_2\begin{bmatrix}-2\\1\\0\\0\\0\end{bmatrix}+x_4\begin{bmatrix}-4\\0\\-3\\1\\0\
 </summary>
 <p>To find the <span class="math inline">\(\text{Ker}(T)\)</span>, need to find the set of <span class="math inline">\(p(t)\)</span> such that <span class="math inline">\(T(p(t))=0\)</span> <span class="math display">\[
 T(a_0+a_{1}t+a_{2}t^2)=a_{2}t^3=0 \Rightarrow a_2=0
-\]</span> Thus <span class="math inline">\(p(t)=a_0+a_{1}t\)</span>, the basis is <span class="math inline">\({1,t}\)</span>.</p>
+\]</span> Thus <span class="math inline">\(p(t)=a_0+a_{1}t\)</span>, the basis is <span class="math inline">\(\{1,t\}\)</span>.</p>
 <p>So the answer is <mark><strong>A</strong></mark>.</p>
 
 </details>
@@ -509,7 +514,14 @@ T(a_0+a_{1}t+a_{2}t^2)=a_{2}t^3=0 \Rightarrow a_2=0
 <p><img src="MA265-Spring2022-Final-P10.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 10 Solution</p>
 </summary>
-
+<p><strong>A.</strong> This statement is FALSE. The column space of <span class="math inline">\(A^T\)</span> is a subspace of <span class="math inline">\(\mathbb{R}^n\)</span>, not <span class="math inline">\(\mathbb{R}^m\)</span>. Since <span class="math inline">\(A\)</span> is an <span class="math inline">\(m \times n\)</span> matrix, its transpose <span class="math inline">\(A^T\)</span> is an <span class="math inline">\(n \times m\)</span> matrix, so the columns of <span class="math inline">\(A^T\)</span> are vectors in <span class="math inline">\(\mathbb{R}^n\)</span>.</p>
+<p><strong>B.</strong> This statement is FALSE. If <span class="math inline">\(A\)</span> is an invertible <span class="math inline">\(n \times n\)</span> matrix, then: <span class="math display">\[\det(2A^{-1} A^T)=2^n \det(A^{-1})\det(A^T)=2^n \det(A^{-1})\det(A)=2^n\]</span></p>
+<p><strong>C.</strong> This statement is FALSE. If <span class="math inline">\(A^2 = I_n\)</span>, then <span class="math inline">\(\det A^2=(\det A)^2=1\)</span>. So <span class="math inline">\(\det A=\pm1\)</span>.</p>
+<p><strong>D.</strong> <span class="math inline">\(𝐴^T𝐴=0⟺𝐴=0\)</span>, this statement is always TRUE. Here's the proof:</p>
+<p>If <span class="math inline">\(A^T A = 0\)</span>, then for any vector <span class="math inline">\(x\)</span>, we have: <span class="math inline">\(x^T (A^T A) x = (x^T A^T) (Ax) = (Ax)^T (Ax) = 0\)</span> Since <span class="math inline">\((Ax)^T (Ax)\)</span> is the dot product of <span class="math inline">\(Ax\)</span> with itself, it can only be zero if <span class="math inline">\(Ax = 0\)</span> for all <span class="math inline">\(x\)</span>. This implies that <span class="math inline">\(A\)</span> must be the zero matrix.</p>
+<p>A more comprehensive proof can be seen at <a target="_blank" rel="noopener" href="https://math.stackexchange.com/questions/1154750/prove-that-operatornametraceata-0-iff-a-0">this stackexchange page</a>. Basically it useds the fact that <span class="math inline">\(\text{trace}(A^TA)=\sum_i\sum_j(a_{ji})^2\)</span>. If this trace is zero, all matrix <span class="math inline">\(A\)</span> entries are zero.</p>
+<p><strong>E.</strong> This statement is FALSE. The null space (or kernel) of a matrix is always a subspace of the space in which the vectors are multiplied by the matrix. Since <span class="math inline">\(A\)</span> is an <span class="math inline">\(m \times n\)</span> matrix, the null space of <span class="math inline">\(A\)</span> is a subspace of <span class="math inline">\(\mathbb{R}^n\)</span>, not <span class="math inline">\(\mathbb{R}^m\)</span>.</p>
+<p>So the answer is <mark><strong>D</strong></mark>.</p>
 
 </details>
 <h3 id="problem-11">Problem 11</h3>
@@ -544,7 +556,7 @@ T(a_0+a_{1}t+a_{2}t^2)=a_{2}t^3=0 \Rightarrow a_2=0
 \left[\begin{array}{cc|c}2&amp;1&amp;4\\3&amp;2&amp;2\\2&amp;2&amp;2\end{array}\right]\sim
 \left[\begin{array}{cc|c}2&amp;1&amp;4\\1&amp;0&amp;0\\0&amp;1&amp;-2\end{array}\right]\sim
 \left[\begin{array}{cc|c}2&amp;0&amp;6\\1&amp;0&amp;0\\0&amp;1&amp;-2\end{array}\right]\sim
-\]</span> This gives inconsistent results for <span class="math inline">\(x_1\)</span>. This vector is NOT a linear combination of <span class="math inline">\(\pmb x\)</span> and <span class="math inline">\(\pmb y\)</span>. We do not need to continue here.</p>
+\]</span> We see inconsistent results for <span class="math inline">\(x_1\)</span>, hence this vector is NOT a linear combination of <span class="math inline">\(\pmb x\)</span> and <span class="math inline">\(\pmb y\)</span>. There is no need to check other options.</p>
 <p>So the answer is <mark><strong>A</strong></mark>.</p>
 
 </details>
@@ -552,38 +564,74 @@ T(a_0+a_{1}t+a_{2}t^2)=a_{2}t^3=0 \Rightarrow a_2=0
 <p><img src="MA265-Spring2022-Final-P13.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 13 Solution</p>
 </summary>
+<p>Refer to Example 3 in the textbook section 1.9 (The Matrix of a Linear Transformation)</p>
+<p><img src="radian-rotation.png" style="width:50.0%;height:50.0%" /></p>
 <p>For 2 radians counter-clockwise rotation, the transformation matrix is written as <span class="math display">\[A=\begin{bmatrix}\cos(2)&amp;-\sin(2)\\\sin(2)&amp;\cos(2)\end{bmatrix}\]</span> To find the eigenvalues of this <span class="math inline">\(2\times 2\)</span> matrix, need to solve the equation <span class="math inline">\(\det (A-\lambda I)=0\)</span> <span class="math display">\[
 \begin{vmatrix}\cos(2)-\lambda&amp;\sin(2)\\-\sin(2)&amp;\cos(2)-\lambda\end{vmatrix}=\lambda^2-2\cos(2)+\cos^2(2)+\sin^2(2)=\lambda^2-2\cos(2)+1
 \]</span> Apply the quadratic formula, get the roots <span class="math display">\[\lambda=\frac{2\cos(2)\pm\sqrt{4\cos^2(2)-4}}{2}=\cos(2)\pm i\sin(2)\]</span></p>
 <p>So the answer is <mark><strong>C</strong></mark>.</p>
+<p><strong>📝Notes:</strong> If it is changed to clockwise rotation, the transformation matrix will become <span class="math display">\[A=\begin{bmatrix}\cos(2)&amp;\sin(2)\\-\sin(2)&amp;\cos(2)\end{bmatrix}\]</span></p>
 
 </details>
 <h3 id="problem-14">Problem 14</h3>
 <p><img src="MA265-Spring2022-Final-P14.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 14 Solution</p>
 </summary>
-
+<p><strong>(i)</strong> Matrix <span class="math inline">\(A\)</span> and its transpose have the same eigenvalues. If one is diagonalizable, so does the other. This statement is TRUE.</p>
+<p><strong>(ii)</strong> This is TRUE. Since a <span class="math inline">\(3\times 3\)</span> matrix has 3 eigenvalues and complex eigenvalues come in pairs (conjugate). So if two are real, the 3rd one must be real.</p>
+<p><strong>(iii)</strong> This is FALSE. Say two values 1 and 2, and the second one (2) has a multiplicity of 2.</p>
+<p><strong>(iv)</strong> Because <span class="math inline">\(B^T=(AA^T)^T=(A^T)^TA^T=AA^T=B\)</span>, <span class="math inline">\(B\)</span> is a symmetric matrix, which is always diagonalizable. This is TRUE.</p>
+<p>So (i), (ii), and (iv) are TRUE, the answer is <mark><strong>D</strong></mark>.</p>
 
 </details>
 <h3 id="problem-15">Problem 15</h3>
 <p><img src="MA265-Spring2022-Final-P15.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 15 Solution</p>
 </summary>
-
+<p><strong>(i)</strong> Since <span class="math inline">\(A\)</span> is a <span class="math inline">\(4\times 6\)</span> matrix, its reduced echelon form has <strong>at most</strong> 4 pivot entries. But the statement says at least, so it is FALSE.</p>
+<p><strong>(ii)</strong> Multiplying A with this vector gives <span class="math display">\[[\pmb v_1 \pmb v_2 \pmb v_3 \pmb v_4 \pmb v_5 \pmb v_6][1\;0\;(-2)\;0\;(-4)\;0]^T=\pmb v_1-2\pmb v_3-4\pmb v_5=\pmb 0\]</span> So indeed this vector is in <span class="math inline">\(\text{Nul}\;A\)</span>. It is TRUE.</p>
+<p><strong>(iii)</strong> The condition given is that <span class="math inline">\(\pmb v_1\)</span> and <span class="math inline">\(\pmb v_4\)</span> are linear combinations of the other vectors. It does not say anything for the rest. The set <span class="math inline">\(\{\pmb v_2 \pmb v_3 \pmb v_5 \pmb v_6\}\)</span> could be linearly dependent. So it is FALSE.</p>
+<p><strong>(iv)</strong> Because <span class="math inline">\(\pmb v_1\)</span> and <span class="math inline">\(\pmb v_4\)</span> are linear combinations of the other vectors, <span class="math inline">\(\text{Col}\;A=\text{Span}\{\pmb v_2 \pmb v_3 \pmb v_5 \pmb v_6\}\)</span>. On the other hand, <span class="math inline">\(\text{Span}\{\pmb v_1 \pmb v_2 \pmb v_3 \pmb v_6\}\)</span> is equivalent to Span<span class="math inline">\(\{\pmb v_2 \pmb v_3 \pmb v_5 \pmb v_6\}\)</span>, because <span class="math inline">\(\pmb v_1\)</span> and <span class="math inline">\(\pmb v_3\)</span> can generate <span class="math inline">\(\pmb v_5\)</span>. So this is TRUE.</p>
+<p><strong>(v)</strong> We know from (i) that <span class="math inline">\(\text{rank}\;A\le 4\)</span>. Since <span class="math inline">\(\text{rank}\;A+\text{nullity}\;A=6\)</span>, it proves that <span class="math inline">\(\text{nullity}\;A\ge 2\)</span>. So this is TRUE.</p>
+<p>Overall, (ii), (iv), and (v) are TRUE, and the answer is <mark><strong>A</strong></mark>.</p>
 
 </details>
 <h3 id="problem-16">Problem 16</h3>
 <p><img src="MA265-Spring2022-Final-P16.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 16 Solution</p>
 </summary>
-
+<p><strong>(i)</strong> Remember Theorem 2 from the book Section 7.1 (Diagonalization of Symmetric Matrices) says &gt;An <span class="math inline">\(n\times n\)</span> matrix <span class="math inline">\(A\)</span> is orthogonally diagonalizable if and only if <span class="math inline">\(A\)</span> is a symmetricmatrix. This means a symmetric matrix is always orthogonally diagonalizable. Since this matrix is symmetric, it is diagonalizable over real numbers.</p>
+<p><strong>(ii)</strong> For this matrix, first find out the eigenvalues <span class="math display">\[\begin{align}
+\begin{vmatrix}1-\lambda&amp;1&amp;1\\0&amp;2-\lambda&amp;2\\0&amp;2&amp;5-\lambda\end{vmatrix}
+&amp;=(1-\lambda)\begin{vmatrix}2-\lambda&amp;2\\2&amp;5-\lambda\end{vmatrix}\\
+&amp;=(1-\lambda)(\lambda^2-7\lambda+10-4)=-(1-\lambda)^2(\lambda-6)
+\end{align}\]</span> We get two eigenvalues 1 (with multiplicity 2) and 6.</p>
+<p>For the eigenvalue 1, we are expecting two eigenvectors. Let's check. <span class="math display">\[
+\begin{bmatrix}0&amp;1&amp;1\\0&amp;1&amp;2\\0&amp;2&amp;4\end{bmatrix}\sim\begin{bmatrix}0&amp;1&amp;1\\0&amp;0&amp;1\\0&amp;0&amp;0\end{bmatrix}
+\]</span> This means <span class="math inline">\(x_1\)</span> is free, <span class="math inline">\(x_2=x_3=0\)</span>. which generates only one eigenvector here <span class="math inline">\(\begin{bmatrix}1\\0\\0\end{bmatrix}\)</span>. This matrix is NOT diagonalizable.</p>
+<p><strong>(iii)</strong> This is an upper triangular matrix, the diagonal entries are the eigenvalues. As these are distinct, this matrix is diagonalizable.</p>
+<p><strong>(iv)</strong> This is also an upper triangular matrix. The eigenvalues are 1 and 3 with multiplicity 2.</p>
+<p>For <span class="math inline">\(\lambda=1\)</span>, we have <span class="math inline">\(\begin{bmatrix}0&amp;0&amp;0\\0&amp;2&amp;4\\0&amp;0&amp;2\end{bmatrix}\)</span>. This solves to an eigenvector <span class="math inline">\(\begin{bmatrix}1\\0\\0\end{bmatrix}\)</span>.</p>
+<p>For <span class="math inline">\(\lambda=3\)</span>, we have <span class="math inline">\(\begin{bmatrix}-2&amp;0&amp;0\\0&amp;0&amp;4\\0&amp;0&amp;0\end{bmatrix}\)</span>. This solves to an eigenvector <span class="math inline">\(\begin{bmatrix}0\\1\\0\end{bmatrix}\)</span>.</p>
+<p>However, we need 3 eigenvectors to diagonalize. So this matrix is NOT diagonalizable.</p>
+<p>So only (i) and (iii) are diagonalizable, the correct answer is <mark><strong>D</strong></mark>.</p>
 
 </details>
 <h3 id="problem-17">Problem 17</h3>
 <p><img src="MA265-Spring2022-Final-P17.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 17 Solution</p>
 </summary>
-
+<p>First calculate <span class="math inline">\(A^{-1}\)</span> <span class="math display">\[A^{-1}=\frac{1}{2\times 1-0\times (-1)}\begin{bmatrix}1&amp;1\\0&amp;2\end{bmatrix}=\frac{1}{2}\begin{bmatrix}1&amp;1\\0&amp;2\end{bmatrix}\]</span></p>
+<p>Then calculate the transformation <span class="math display">\[\begin{align}
+T(X)&amp;=A^{-1}XB=\frac{1}{2}\begin{bmatrix}1&amp;1\\0&amp;2\end{bmatrix}\begin{bmatrix}a&amp;b\\c&amp;d\end{bmatrix}\begin{bmatrix}1&amp;-1\\-1&amp;1\end{bmatrix}\\
+&amp;=\frac{1}{2}\begin{bmatrix}a+c&amp;b+d\\2c&amp;2d\end{bmatrix}\begin{bmatrix}1&amp;-1\\-1&amp;1\end{bmatrix}\\
+&amp;=\frac{1}{2}\begin{bmatrix}a+c-b-d&amp;-a-c+b+d\\2c-2d&amp;-2c+2d\end{bmatrix}
+\end{align}\]</span></p>
+<p>Next, write the result in parametric vector form <span class="math display">\[\begin{align}
+T(X)&amp;=a\begin{bmatrix}1/2&amp;-1/2\\0&amp;0\end{bmatrix}+b\begin{bmatrix}-1/2&amp;1/2\\0&amp;0\end{bmatrix}+c\begin{bmatrix}1/2&amp;-1/2\\1&amp;-1\end{bmatrix}+d\begin{bmatrix}-1/2&amp;1/2\\-1&amp;1\end{bmatrix}\\
+&amp;=(a-b)\begin{bmatrix}1/2&amp;-1/2\\0&amp;0\end{bmatrix}+(c-d)\begin{bmatrix}1/2&amp;-1/2\\1&amp;-1\end{bmatrix}
+\end{align}\]</span> Since the two <span class="math inline">\(2\times 2\)</span> matrices are linearly independent. they form the basis for <span class="math inline">\(\mathcal M_{2\times 2}\)</span>. Hence the range of <span class="math inline">\(T\)</span> has a dimension of 2.</p>
+<p>So the answer is <mark><strong>C</strong></mark>.</p>
 
 </details>
 <h3 id="problem-18">Problem 18</h3>
@@ -638,49 +686,126 @@ T(a_0+a_{1}t+a_{2}t^2)=a_{2}t^3=0 \Rightarrow a_2=0
 <p><img src="MA265-Spring2022-Final-P19.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 19 Solution</p>
 </summary>
-
+<ul>
+<li><p>Method 1: matrix multiplication</p>
+<p>From <span class="math inline">\(P^{-1}AP=D\)</span>, we have <span class="math inline">\(AP=PD\)</span>. We can use the latter to do a simple calculation (and avoid calculating the inverse of <span class="math inline">\(P\)</span>).</p>
+<p>If we start from the last option <strong>E</strong>, we can find that it satisfies the equation.</p>
+<p><span class="math display">\[\begin{align}
+  AP=\begin{bmatrix}4&amp;0&amp;0\\3&amp;2&amp;1\\0&amp;1&amp;2\end{bmatrix}\begin{bmatrix}0&amp;0&amp;1\\-1&amp;1&amp;2\\1&amp;1&amp;1\end{bmatrix}=\begin{bmatrix}0&amp;0&amp;4\\-1&amp;3&amp;8\\1&amp;3&amp;4\end{bmatrix}\\
+  PD=\begin{bmatrix}0&amp;0&amp;1\\-1&amp;1&amp;2\\1&amp;1&amp;1\end{bmatrix}\begin{bmatrix}1&amp;0&amp;0\\0&amp;3&amp;0\\0&amp;0&amp;4\end{bmatrix}=\begin{bmatrix}0&amp;0&amp;4\\-1&amp;3&amp;8\\1&amp;3&amp;4\end{bmatrix}
+  \end{align}\]</span></p></li>
+<li><p>Method 2: eigenvalues and eigenvectors</p>
+<p>From <span class="math inline">\(P^{-1}AP=D\)</span>, we also have <span class="math inline">\(A=PDP^{-1}\)</span>. This means that <span class="math inline">\(D\)</span> could be the diagonalized matrix of <span class="math inline">\(A\)</span>. Inspecting <span class="math inline">\(D\)</span>, we can see that this is true. So the diagonal entries of <span class="math inline">\(D\)</span> are just eigenvalues of <span class="math inline">\(A\)</span>, and <span class="math inline">\(P\)</span>'s columns are corresponding eigenvectors.</p>
+<p>Now take the eigenvalue 4, we get the matrix becomes <span class="math display">\[
+  \begin{bmatrix}0&amp;0&amp;0\\3&amp;-2&amp;1\\0&amp;1&amp;-2\end{bmatrix}\sim
+  \begin{bmatrix}0&amp;0&amp;0\\3&amp;0&amp;-3\\0&amp;1&amp;-2\end{bmatrix}
+  \]</span> This gives the eigenvector as <span class="math inline">\(\begin{bmatrix}1\\2\\1\end{bmatrix}\)</span>. Only option E has this as the last column.</p></li>
+</ul>
+<p>So the answer is <mark><strong>C</strong></mark>.</p>
 
 </details>
 <h3 id="problem-20">Problem 20</h3>
 <p><img src="MA265-Spring2022-Final-P20.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 20 Solution</p>
 </summary>
-
+<p><strong>A.</strong> This statement is TRUE. By definition, <span class="math inline">\(W^⊥\)</span> is the set of all vectors that are orthogonal to every vector in <span class="math inline">\(W\)</span>. If <span class="math inline">\(\pmb z\)</span> is orthogonal to <span class="math inline">\(\pmb u_1\)</span> and <span class="math inline">\(\pmb u_2\)</span>, and <span class="math inline">\(W\)</span> is spanned by <span class="math inline">\(\pmb u_1\)</span> and <span class="math inline">\(\pmb u_2\)</span>, then <span class="math inline">\(\pmb z\)</span> is orthogonal to every vector in <span class="math inline">\(W\)</span>, So <span class="math inline">\(\pmb z\)</span> is in <span class="math inline">\(W^⊥\)</span>.</p>
+<p><strong>B.</strong> This statement is TRUE. If <span class="math inline">\(\pmb y\)</span> is decomposed into a sum of <span class="math inline">\(\pmb z_1\)</span> in <span class="math inline">\(W\)</span> and <span class="math inline">\(\pmb z_2\)</span> in <span class="math inline">\(W^⊥\)</span>, then <span class="math inline">\(\pmb z_1\)</span> is the projection of <span class="math inline">\(\pmb y\)</span> onto <span class="math inline">\(W\)</span>.</p>
+<p><strong>C.</strong> This statement is TRUE. If <span class="math inline">\(\pmb x\)</span> is not in <span class="math inline">\(W\)</span>, then <span class="math inline">\(proj_W \pmb x\)</span> is the closest point in <span class="math inline">\(W\)</span> to <span class="math inline">\(\pmb x\)</span>. The vector <span class="math inline">\(\pmb x−proj_W \pmb x\)</span> is orthogonal to <span class="math inline">\(W\)</span> and represents the "error" between <span class="math inline">\(\pmb x\)</span> and its projection onto <span class="math inline">\(W\)</span>. This error vector is non-zero if <span class="math inline">\(\pmb x\)</span> is not in <span class="math inline">\(W\)</span>.</p>
+<p><strong>D.</strong> This statement is TRUE. Refer to Theorem 6 and 7 in the book section 6.3 (Orthogonal Sets), quoted below <img src="orthonormal-matrix-theorem6.png" style="width:90.0%;height:90.0%" /> <img src="orthonormal-matrix-theorem7.png" style="width:90.0%;height:90.0%" /></p>
+<p><strong>E.</strong> This statement is FALSE. The best approximation to <span class="math inline">\(\pmb y\)</span> by elements of a subspace <span class="math inline">\(W\)</span> is <span class="math inline">\(proj_W \pmb y\)</span>, the closest point in <span class="math inline">\(W\)</span> to <span class="math inline">\(\pmb y\)</span>.</p>
+<p>All statements except <strong>E</strong> are true. Therefore, the correct answer is <mark><strong>E</strong></mark>.</p>
 
 </details>
+<p><strong>📝Notes:</strong> An orthogonal matrix is such a square invertible matrix <span class="math inline">\(U\)</span> such that <span class="math inline">\(U^{-1}=U^T\)</span>. Let <span class="math inline">\(U\)</span> be an <span class="math inline">\(n\times n\)</span> matrix with orthonormal columns, then <span class="math inline">\(\det U=±1\)</span>.</p>
 <h3 id="problem-21">Problem 21</h3>
 <p><img src="MA265-Spring2022-Final-P21.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 21 Solution</p>
 </summary>
-
+<p>Refer to the figure below from the book Section 6.3 (Orthogonal Projections)</p>
+<p><img src="orthogonal-projection.png" style="width:50.0%;height:50.0%" /></p>
+<p>The closest point in <span class="math inline">\(W\)</span> to <span class="math inline">\(\pmb x\)</span> is the orthogonal projection of <span class="math inline">\(\pmb x\)</span> onto <span class="math inline">\(W\)</span>. The formula to calculate that is <span class="math display">\[\begin{align}
+\text{proj}_{W}\pmb x&amp;=\frac{\pmb x\bullet\pmb u_1}{\pmb u_1\bullet\pmb u_1}\pmb u_1+
+\frac{\pmb x\bullet\pmb u_2}{\pmb u_2\bullet\pmb u_2}\pmb u_2\\
+&amp;=\frac{1\times 4+2\times 7+(-4)\times 1}{1^2+2^2+(-4)^2}\begin{bmatrix}1\\2\\-4\end{bmatrix}+\frac{2\times 4+1\times 7+1\times 1}{2^2+1^1+1^2}\begin{bmatrix}2\\1\\1\end{bmatrix}\\
+&amp;=\frac{14}{21}\begin{bmatrix}1\\2\\-4\end{bmatrix}+\frac{16}{6}\begin{bmatrix}2\\1\\1\end{bmatrix}=\frac{2}{3}\begin{bmatrix}1\\2\\-4\end{bmatrix}+\frac{8}{3}\begin{bmatrix}2\\1\\1\end{bmatrix}=\begin{bmatrix}6\\4\\0\end{bmatrix}
+\end{align}\]</span></p>
+<p>So the answer is <mark><strong>A</strong></mark>.</p>
 
 </details>
 <h3 id="problem-22">Problem 22</h3>
 <p><img src="MA265-Spring2022-Final-P22.png" style="width:80.0%;height:80.0%" /></p>
 <details class="note success"><summary><p>Problem 22 Solution</p>
 </summary>
-
+<p>Refer to the figure below from the book Section 6.5 (Least-Squares Problems)</p>
+<p><img src="least-squares-solution.png" style="width:50.0%;height:50.0%" /></p>
+<p>Each least-squares solution of <span class="math inline">\(A\pmb x=\pmb b\)</span> satisfies the equation <span class="math inline">\(A^TA\pmb x=A^T\pmb b\)</span>.</p>
+<p>Following this, first calculate <span class="math inline">\(A^TA\)</span> and <span class="math inline">\(A^T\pmb b\)</span> separately <span class="math display">\[\begin{align}
+A^TA&amp;=\begin{bmatrix}1&amp;-1&amp;2\\0&amp;1&amp;2\end{bmatrix}\begin{bmatrix}1&amp;0\\-1&amp;1\\2&amp;2\end{bmatrix}
+=\begin{bmatrix}6&amp;3\\3&amp;5\end{bmatrix}\\
+A^T\pmb b&amp;=\begin{bmatrix}1&amp;-1&amp;2\\0&amp;1&amp;2\end{bmatrix}\begin{bmatrix}-5\\0\\1\end{bmatrix}
+=\begin{bmatrix}-3\\2\end{bmatrix}
+\end{align}\]</span> Then combine the results to form an augmented matrix and solve it by row reduction <span class="math display">\[
+\left[\begin{array}{cc|c}6&amp;3&amp;-3\\3&amp;5&amp;2\end{array}\right]\sim
+\left[\begin{array}{cc|c}6&amp;3&amp;-3\\6&amp;10&amp;4\end{array}\right]\sim
+\left[\begin{array}{cc|c}6&amp;3&amp;-3\\0&amp;7&amp;7\end{array}\right]\sim
+\left[\begin{array}{cc|c}2&amp;1&amp;-1\\0&amp;1&amp;1\end{array}\right]
+\]</span></p>
+<p>This ends up with <span class="math inline">\(x_2=1\)</span> and <span class="math inline">\(x_1=-1\)</span>.</p>
+<p>So the answer is <mark><strong>E</strong></mark>.</p>
 
 </details>
 <h3 id="problem-23">Problem 23</h3>
 <p><img src="MA265-Spring2022-Final-P23.png" style="width:65.0%;height:65.0%" /></p>
 <details class="note success"><summary><p>Problem 23 Solution</p>
 </summary>
-
+<p><strong>(1)</strong> First find the eigenvalues using <span class="math inline">\(\det A-\lambda I=0\)</span> <span class="math display">\[
+\begin{vmatrix}1-\lambda &amp;4\\2 &amp;3-\lambda\end{vmatrix}=\lambda^2-4\lambda+3-8=(\lambda-5)(\lambda+1)
+\]</span> So there are two eigenvalues 5 and -1.</p>
+<ul>
+<li><p>For <span class="math inline">\(\lambda_1=5\)</span>, the matrix <span class="math inline">\(\det A-\lambda I\)</span> becomes <span class="math display">\[
+\begin{bmatrix}-4 &amp;4\\2 &amp;-2\end{bmatrix}\sim
+\begin{bmatrix}-1 &amp;1\\0 &amp;0\end{bmatrix}
+\]</span> So the eigenvector can be <span class="math inline">\(\begin{bmatrix}1\\1\end{bmatrix}\)</span>.</p></li>
+<li><p>Likewise, for <span class="math inline">\(\lambda_2=-1\)</span>, the matrix <span class="math inline">\(\det A-\lambda I\)</span> becomes <span class="math display">\[
+\begin{bmatrix}2 &amp;4\\2 &amp;4\end{bmatrix}\sim
+\begin{bmatrix}1 &amp;2\\0 &amp;0\end{bmatrix}
+\]</span> So the eigenvector can be <span class="math inline">\(\begin{bmatrix}2\\-1\end{bmatrix}\)</span>.</p></li>
+</ul>
+<p><strong>(2)</strong> With the eigenvalues and corresponding eigenvectors known, we can apply them to the general solution formula <span class="math display">\[\pmb x(t)=c_1\pmb{v}_1 e^{\lambda_1 t}+c_2\pmb{v}_2 e^{\lambda_2 t}\]</span> This gives <span class="math display">\[
+\begin{bmatrix}x(t)\\y(t)\end{bmatrix}=c_1\begin{bmatrix}1\\1\end{bmatrix}e^{5t}+c_2\begin{bmatrix}2\\-1\end{bmatrix}e^{-t}
+\]</span></p>
+<p><strong>(3)</strong> Apply the initial values of <span class="math inline">\(x(0)=-1\)</span> and <span class="math inline">\(y(0)=2\)</span>, here comes the following equations: <span class="math display">\[\begin{align}
+c_1+2c_2&amp;=-1\\
+c_1-c_2&amp;=2
+\end{align}\]</span> Solving this gives <span class="math inline">\(c_1=1\)</span> and <span class="math inline">\(c_2=-1\)</span>. So <span class="math inline">\(x(2)=e^{5\times 2}-2e^{-2}=e^{10}-2e^{-2}\)</span>.</p>
+<p>So the answer is <mark><strong>D</strong></mark>.</p>
 
 </details>
 <h3 id="problem-24">Problem 24</h3>
 <p><img src="MA265-Spring2022-Final-P24.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 24 Solution</p>
 </summary>
-
+<p>Denote <span class="math inline">\(x(t)=20t^3-12t^2\)</span> and <span class="math inline">\(u_1=1, u_2=t\)</span>, the process to find the orthogonal projection of <span class="math inline">\(x(t)\)</span> onto <span class="math inline">\(W\)</span> spanned by <span class="math inline">\(u_1\)</span> and <span class="math inline">\(u_2\)</span> is shown below (applying the given inner product definition):</p>
+<p><span class="math display">\[\begin{align}
+\text{proj}_{W}x&amp;=\frac{\langle x,u_1\rangle}{\langle u_1,u_1\rangle}u_1+
+\frac{\langle x,u_2\rangle}{\langle u_2,u_2\rangle}u_2\\
+&amp;=\frac{\langle 20t^3-12t^2,1\rangle}{\langle 1,1\rangle}1+\frac{\langle 20t^3-12t^2,t\rangle}{\langle t,t\rangle}t\\
+&amp;=\frac{\int_{-1}^1 (20t^3-12t^2)dt}{\int_{-1}^1 1\cdot 1dt}+\frac{\int_{-1}^1 (20t^4-12t^3)dt}{\int_{-1}^1 (t\cdot t)dt}\\
+&amp;=\frac{(5t^4-4t^3)\large\rvert_{-1}^1}{t\large\rvert_{-1}^1}+\frac{(4t^5-3t^4)\large\rvert_{-1}^1}{\frac{1}{3}t^3\large\rvert_{-1}^1}\\
+&amp;=\frac{(5-4)-(5+4)}{1-(-1)}+\frac{(4-3)-(-4-3)}{\frac{1}{3}-(-\frac{1}{3})}t=-4+12t
+\end{align}\]</span></p>
+<p>So the answer is <mark><strong>B</strong></mark>.</p>
 
 </details>
 <h3 id="problem-25">Problem 25</h3>
 <p><img src="MA265-Spring2022-Final-P25.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 25 Solution</p>
 </summary>
-
+<p>Apply the normalization process:</p>
+<p><span class="math display">\[
+\pmb u_1=\frac{\pmb v_1}{\|\pmb v_1\|}=\frac{1}{\sqrt{\pmb v_1\bullet\pmb v_1}}\begin{bmatrix}2\\1\\2\end{bmatrix}=\frac{1}{\sqrt{2^2+1+2^2}}\begin{bmatrix}2\\1\\2\end{bmatrix}=\begin{bmatrix}2/3\\1/3\\2/3\end{bmatrix}
+\]</span></p>
+<p>Only the option B matches. So the answer is <mark><strong>B</strong></mark>.</p>
 
 </details>
 <h2 id="other-ma265-final-exam-solutions">Other MA265 Final Exam Solutions</h2>
@@ -791,14 +916,14 @@ MA 265 Fall 2019 Final
       <i class="fa fa-chart-line"></i>
     </span>
       <span>Symbols count total: </span>
-    <span title="Symbols count total">441k</span>
+    <span title="Symbols count total">453k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>Reading time total &asymp;</span>
-    <span title="Reading time total">6:41</span>
+    <span title="Reading time total">6:52</span>
   </span>
 </div>
 <div class="busuanzi-count">
