@@ -37,7 +37,12 @@
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P2.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P3.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P4.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2024/01/28/Purdue-MA265-2023-Fall-Midterm1/LAnIA-6th-Chap2_8-Theorem13-Warning.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P5.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/Onto.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/One-to-One.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/Onto-and-One-to-One.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/Not-Onto-Not-One-to-One.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P6.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P7.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P8.png">
@@ -64,7 +69,7 @@
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P24.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P25.png">
 <meta property="article:published_time" content="2024-04-19T06:51:21.000Z">
-<meta property="article:modified_time" content="2024-04-28T05:31:30.577Z">
+<meta property="article:modified_time" content="2024-04-28T22:50:20.619Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="Linear Algebra">
 <meta name="twitter:card" content="summary">
@@ -306,7 +311,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-04-27 22:31:30" itemprop="dateModified" datetime="2024-04-27T22:31:30-07:00">2024-04-27</time>
+        <time title="Modified: 2024-04-28 15:50:20" itemprop="dateModified" datetime="2024-04-28T15:50:20-07:00">2024-04-28</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -332,14 +337,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>22k</span>
+      <span>27k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>20 mins.</span>
+      <span>24 mins.</span>
     </span>
 </div>
 
@@ -385,11 +390,13 @@
 <p><img src="MA265-Spring2022-Final-P2.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 2 Solution</p>
 </summary>
-<p>First review the properties of determinants:<br />
-&gt;Let A be a square matrix.<br />
-&gt; a. If a multiple of one row of <span class="math inline">\(A\)</span> is added to another row to produce a matrix <span class="math inline">\(B\)</span>, then <span class="math inline">\(\det B =\det A\)</span>.<br />
-&gt; b. If two rows of <span class="math inline">\(A\)</span> are interchanged to produce <span class="math inline">\(B\)</span>, then <span class="math inline">\(\det B=-\det A\)</span>.<br />
-&gt; c. If one row of A is multiplied by <span class="math inline">\(k\)</span> to produce B, then <span class="math inline">\(\det B=k\cdot\det A\)</span>.</p>
+<p>First review the properties of determinants:</p>
+<blockquote>
+<p>Let A be a square matrix.<br />
+a. If a multiple of one row of <span class="math inline">\(A\)</span> is added to another row to produce a matrix <span class="math inline">\(B\)</span>, then <span class="math inline">\(\det B =\det A\)</span>.<br />
+b. If two rows of <span class="math inline">\(A\)</span> are interchanged to produce <span class="math inline">\(B\)</span>, then <span class="math inline">\(\det B=-\det A\)</span>.<br />
+c. If one row of A is multiplied by <span class="math inline">\(k\)</span> to produce B, then <span class="math inline">\(\det B=k\cdot\det A\)</span>.</p>
+</blockquote>
 <p>Also since <span class="math inline">\(\det A^T=\det A\)</span>, a row operation on <span class="math inline">\(A^T\)</span> amounts to a column operation on <span class="math inline">\(A\)</span>. The above property is true for column operations as well.</p>
 <p>With these properties in mind, we can do the following</p>
 <p><span class="math display">\[\begin{align}
@@ -420,14 +427,50 @@
 <p><img src="MA265-Spring2022-Final-P4.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 4 Solution</p>
 </summary>
-
+<p>From the book Section 4.6 (Rank):</p>
+<blockquote>
+<p><em>If two matrices A and B are row equivalent, then their row spaces are the same. If B is in echelon form, the nonzero rows of B form a basis for the row space of A as well as for that of B.</em></p>
+</blockquote>
+<p>Also, pay attention to the following warning from the book as well:</p>
+<p><img src="https://www.packetmania.net/en/2024/01/28/Purdue-MA265-2023-Fall-Midterm1/LAnIA-6th-Chap2_8-Theorem13-Warning.png" /></p>
+<p>With this information, we can tell that statements (i) and (iii) are TRUE, while statements (iv) and (v) are FALSE because "row operations can change the column space of a matrix". If we do row reduction to the augmented matrix, the far right column (representing <span class="math inline">\(\pmb b\)</span>) would be changed. This proves (iv) is also FALSE.</p>
+<p>For (ii), since <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are row-equivalent matrices, their null spaces are the same. This is because none of these operations change the solution set of homogeneous linear equations. So <span class="math inline">\(A\pmb x=\pmb 0\)</span> if and and only if <span class="math inline">\(B\pmb x=\pmb 0\)</span>. Hence <span class="math inline">\(\text{Nul}\;A=\{\pmb 0\}\)</span>, so the columns of <span class="math inline">\(A\)</span> are <strong>linearly independent</strong>. This statement is FALSE.</p>
+<p>So the answer is <mark><strong>E</strong></mark>.</p>
+<p>Note the following statement is also TRUE.</p>
+<blockquote>
+<p>Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(n\times n\)</span> matrix. If <span class="math inline">\(\text{Col}\;A = \text{Nul}\;A\)</span>, it can be proven that <span class="math inline">\(\text{Nul}\;A^2=\mathbb R^n\)</span>.</p>
+</blockquote>
 
 </details>
 <h3 id="problem-5">Problem 5</h3>
 <p><img src="MA265-Spring2022-Final-P5.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 5 Solution</p>
 </summary>
-
+<p><span class="math inline">\(A\)</span> is a <span class="math inline">\(4\times 5\)</span> matrix for a linear transformation <span class="math inline">\(T\)</span> from <span class="math inline">\(\mathbb R^5\)</span> to <span class="math inline">\(\mathbb R^4\)</span>. Correspondingly, <span class="math inline">\(A^T\)</span> is a <span class="math inline">\(5\times 4\)</span> matrix for a linear transformation <span class="math inline">\(S\)</span> from <span class="math inline">\(\mathbb R^4\)</span> to <span class="math inline">\(\mathbb R^5\)</span>.</p>
+<div class="group-picture">
+<div class="group-picture-row">
+<div class="group-picture-column">
+<img src="Onto.png" alt="Onto" />
+</div>
+<div class="group-picture-column">
+<img src="One-to-One.png" alt="One-to-One" />
+</div>
+</div>
+<div class="group-picture-row">
+<div class="group-picture-column">
+<img src="Onto-and-One-to-One.png" alt="Onto and One-to-One" />
+</div>
+<div class="group-picture-column">
+<img src="Not-Onto-Not-One-to-One.png" alt="Neither Onto Nor One-to-One" />
+</div>
+</div>
+</div>
+<p><strong>A.</strong> Note that <span class="math inline">\(A\)</span> has an all-zero column, and has a pivot position in each row (rank 4). This means it has only 4 linear independent columns. For each <span class="math inline">\(\pmb b\)</span> in <span class="math inline">\(\mathbb R^4\)</span>, the equation<span class="math inline">\(A\pmb x=\pmb b\)</span> is consistent. In other words, the linear transformation <span class="math inline">\(T\)</span> maps <span class="math inline">\(\mathbb R^5\)</span> <strong>onto</strong> <span class="math inline">\(\mathbb R^4\)</span>. But we can multiply any value with the first all-zeros vector, it is definitely not one-to-one. This statement is FALSE.</p>
+<p><strong>B.</strong> Remember that <em>"A linear transformation <span class="math inline">\(S\)</span> is one-to-one if and only if the columns of the matrix are linearly independent, and if and only if <span class="math inline">\(S(\pmb x)=\pmb 0\)</span> has only the trivial solution."</em> <span class="math inline">\(A^T\)</span> satisfies this. This statement is TRUE.</p>
+<p><strong>C.</strong> For <span class="math inline">\(S\)</span> to be onto, the rank of <span class="math inline">\(A^T\)</span> must equal the number of rows. So it needs rank 5 to be onto. However, it has a row of all zeros, its rank is 4. Therefore, S is not onto. Not all <span class="math inline">\(\pmb b\)</span> has solutions.</p>
+<p><strong>D.</strong> <span class="math inline">\(A^T\)</span> has rank 4 and 4 columns. So the nullity is 4-4 = 0. This statement is FALSE. Alternately we can see that <span class="math inline">\(A^T\pmb x=\pmb 0\)</span> has only a trivial (all-zero) solution.</p>
+<p><strong>E.</strong> The range of <span class="math inline">\(T\)</span> is the column space of <span class="math inline">\(A\)</span>. It is <span class="math inline">\(\mathbb R^4\)</span>. This statement is FALSE.</p>
+<p>So the answer is <mark><strong>B</strong></mark>.</p>
 
 </details>
 <h3 id="problem-6">Problem 6</h3>
@@ -447,8 +490,8 @@ b_{ij}=\frac{C_{ji}}{\det A}\qquad C_{ji}=(-1)^{i+j}\det A_{ji}
 \begin{vmatrix}1&amp;2&amp;7\\0&amp;1&amp;5\\0&amp;0&amp;1\end{vmatrix}=1
 \]</span></p></li>
 <li><p>Calculate <span class="math inline">\(b_{11}\)</span>, <span class="math inline">\(b_{22}\)</span>, and <span class="math inline">\(b_{33}\)</span> <span class="math display">\[
-b_{11}=\frac{C_{11}}{1}=\begin{vmatrix}3&amp;12\\5&amp;20\end{vmatrix}=0\\
-b_{22}=\frac{C_{22}}{1}=\begin{vmatrix}1&amp;7\\2&amp;20\end{vmatrix}=6\\
+b_{11}=\frac{C_{11}}{1}=\begin{vmatrix}3&amp;12\\5&amp;20\end{vmatrix}=0\quad
+b_{22}=\frac{C_{22}}{1}=\begin{vmatrix}1&amp;7\\2&amp;20\end{vmatrix}=6\quad
 b_{33}=\frac{C_{33}}{1}=\begin{vmatrix}1&amp;2\\1&amp;3\end{vmatrix}=1
 \]</span></p></li>
 <li><p>Get the trace of <span class="math inline">\(A^{-1}\)</span> <span class="math display">\[\text{tr}\;A^{-1}=b_{11}+b_{22}+b_{33}=0+6+1=7\]</span></p></li>
@@ -489,7 +532,7 @@ x_2\begin{bmatrix}-2\\1\\0\\0\\0\end{bmatrix}+x_4\begin{bmatrix}-4\\0\\-3\\1\\0\
 \end{Bmatrix}\]</span></p>
 <p>The statement B is TRUE because its first vector is the first column above scaled by 2, and its 2nd vector is just the 2nd column above scaled by -1.</p>
 <p>For statement D, its 1st vector is the same as the first column above, and the 2nd vector is just the sum of the two columns. It is TRUE as well.</p>
-<p>The statement B is FALSE since generating the 2nd vector with 3 and -2 coexisting is impossible.</p>
+<p>The statement C is FALSE since generating the 2nd vector with 3 and -2 coexisting is impossible.</p>
 <p>So the answer is <mark><strong>C</strong></mark>.</p>
 
 </details>
@@ -497,7 +540,37 @@ x_2\begin{bmatrix}-2\\1\\0\\0\\0\end{bmatrix}+x_4\begin{bmatrix}-4\\0\\-3\\1\\0\
 <p><img src="MA265-Spring2022-Final-P8.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 8 Solution</p>
 </summary>
-
+<p>Per the definition of Subspace in Section 4.1 "Vector Spaces and Subspaces"</p>
+<blockquote>
+<p>A <strong>subspace</strong> of a vector space <span class="math inline">\(V\)</span> is a subset <span class="math inline">\(H\)</span> of <span class="math inline">\(V\)</span> that has three properties:<br />
+a. The zero vector of <span class="math inline">\(V\)</span> is in <span class="math inline">\(H\)</span>.<br />
+b. <span class="math inline">\(H\)</span> is closed under vector addition. That is, for each <span class="math inline">\(\pmb u\)</span> and <span class="math inline">\(\pmb v\)</span> in <span class="math inline">\(H\)</span>, the sum <span class="math inline">\(\pmb u + \pmb v\)</span> is in <span class="math inline">\(H\)</span>.<br />
+c. <span class="math inline">\(H\)</span> is closed under multiplication by scalars. That is, for each <span class="math inline">\(\pmb u\)</span> in <span class="math inline">\(H\)</span> and each scalar <span class="math inline">\(c\)</span>, the vector <span class="math inline">\(c\pmb u\)</span> is in <span class="math inline">\(H\)</span>.</p>
+</blockquote>
+<p><strong>(i)</strong> This is FALSE since the zero vector <span class="math inline">\(\begin{bmatrix}0\\0\end{bmatrix}\)</span> is not satifying the condition.</p>
+<p><strong>(ii)</strong> Obviously the zero vector is in the set because <span class="math inline">\(A\pmb 0=3\pmb 0\)</span>. This is the set of eigenvectors of <span class="math inline">\(A\)</span> corresponding to the eigenvalue 3. Eigenvectors corresponding to the same eigenvalue, along with the zero vector, form a subspace. So this is a subspace of V. It is TRUE.</p>
+<p>Besides it is easy to verify that <span class="math display">\[
+A(c\pmb v)=cA\pmb v=c3\pmb v=3(c\pmb v)
+A(\pmb v_1+\pmb v_2)=A\pmb v_1+A\pmb v_2=3\pmb v_1+3\pmb v_2=3(\pmb v_1+\pmb v_2)
+\]</span> So the set is closed under both multiplication by scalars and vector addition, hence it forms a subspace.</p>
+<p><strong>(iii)</strong> First check if the zero vector is in the vector set, we get the system of equations below <span class="math display">\[
+\left\{ 
+\begin{array}{ll}
+a+b+3d&amp;=0\\ 
+a+c&amp;=-1\\ 
+-c+d&amp;=1\\
+b+2c&amp;=0
+\end{array}
+\right. 
+\]</span></p>
+<p>Solve this with the augmented matrix, and do row reduction in the process</p>
+<p><span class="math display">\[\begin{align}
+&amp;\left[\begin{array}{cccc|c}1&amp;1&amp;0&amp;3&amp;0\\1&amp;0&amp;1&amp;0&amp;-1\\0&amp;0&amp;-1&amp;1&amp;1\\0&amp;1&amp;2&amp;0&amp;0\end{array}\right]\sim
+\left[\begin{array}{cccc|c}1&amp;1&amp;0&amp;3&amp;0\\0&amp;-1&amp;1&amp;-3&amp;-1\\0&amp;0&amp;-1&amp;1&amp;1\\0&amp;1&amp;2&amp;0&amp;0\end{array}\right]\\
+\sim&amp;\left[\begin{array}{cccc|c}1&amp;1&amp;0&amp;3&amp;0\\0&amp;-1&amp;1&amp;-3&amp;-1\\0&amp;0&amp;-1&amp;1&amp;1\\0&amp;0&amp;3&amp;-3&amp;-1\end{array}\right]\sim\left[\begin{array}{cccc|c}1&amp;1&amp;0&amp;3&amp;0\\0&amp;-1&amp;1&amp;-3&amp;-1\\0&amp;0&amp;-1&amp;1&amp;1\\0&amp;0&amp;0&amp;0&amp;2\end{array}\right]
+\end{align}\]</span> This ends up with an inconsistent system without a solution. This means the zero vector is not in the set. This set does NOT form a subspace.</p>
+<p><strong>(iv)</strong> For <span class="math inline">\(\mathbb P_3\)</span>, we can write <span class="math inline">\(p(t)=a_0+a_1t+a_2t^2+a_3t^3\)</span> and <span class="math inline">\(p&#39;(t)=a_1+2a_2t+3a_3t^2\)</span>. Now since <span class="math inline">\(p&#39;(2)=0\)</span>, we get <span class="math inline">\(a_1+4a_2+12a_3=0\)</span>. It can be easily proved that this <span class="math inline">\(p(t)\)</span> in this polynomial set has all three properties. It is TRUE that this set forms a subspace.</p>
+<p>Now we have (ii) and (iv) are subspaces, so the is <mark><strong>D</strong></mark>.</p>
 
 </details>
 <h3 id="problem-9">Problem 9</h3>
@@ -529,10 +602,14 @@ T(a_0+a_{1}t+a_{2}t^2)=a_{2}t^3=0 \Rightarrow a_2=0
 <details class="note success"><summary><p>Problem 11 Solution</p>
 </summary>
 <p>The vector set can be regarded as a linear transformation, then we can do row reduction with it:</p>
+<blockquote>
+<p><em>Note that row operations do not affect the dependence relations between the column vectors. This makes it possible to use row reduction to find a basis for the column space.</em></p>
+</blockquote>
 <p><span class="math display">\[
 \begin{bmatrix}1&amp;1&amp;1&amp;1&amp;1\\-1&amp;1&amp;2&amp;0&amp;-2\\1&amp;1&amp;1&amp;1&amp;3\end{bmatrix}\sim
 \begin{bmatrix}\color{fuchsia}{1}&amp;1&amp;1&amp;1&amp;1\\0&amp;\color{fuchsia}{2}&amp;3&amp;1&amp;-1\\0&amp;0&amp;0&amp;0&amp;\color{fuchsia}{2}\end{bmatrix}
-\]</span> So there are 3 pivot entries and the rank is 3. The pivot columns below form a basis for <span class="math inline">\(H\)</span>. <span class="math display">\[\begin{Bmatrix}
+\]</span></p>
+<p>So there are 3 pivot entries and the rank is 3. The pivot columns below form a basis for <span class="math inline">\(H\)</span>. <span class="math display">\[\begin{Bmatrix}
 \begin{bmatrix}1\\-1\\1\end{bmatrix},
 \begin{bmatrix}1\\1\\1\end{bmatrix},
 \begin{bmatrix}1\\-2\\3\end{bmatrix}
@@ -555,7 +632,7 @@ T(a_0+a_{1}t+a_{2}t^2)=a_{2}t^3=0 \Rightarrow a_2=0
 \left[\begin{array}{cc|c}2&amp;1&amp;4\\3&amp;2&amp;2\\1&amp;1&amp;1\end{array}\right]\sim
 \left[\begin{array}{cc|c}2&amp;1&amp;4\\3&amp;2&amp;2\\2&amp;2&amp;2\end{array}\right]\sim
 \left[\begin{array}{cc|c}2&amp;1&amp;4\\1&amp;0&amp;0\\0&amp;1&amp;-2\end{array}\right]\sim
-\left[\begin{array}{cc|c}2&amp;0&amp;6\\1&amp;0&amp;0\\0&amp;1&amp;-2\end{array}\right]\sim
+\left[\begin{array}{cc|c}2&amp;0&amp;6\\1&amp;0&amp;0\\0&amp;1&amp;-2\end{array}\right]
 \]</span> We see inconsistent results for <span class="math inline">\(x_1\)</span>, hence this vector is NOT a linear combination of <span class="math inline">\(\pmb x\)</span> and <span class="math inline">\(\pmb y\)</span>. There is no need to check other options.</p>
 <p>So the answer is <mark><strong>A</strong></mark>.</p>
 
@@ -701,7 +778,7 @@ T(X)&amp;=a\begin{bmatrix}1/2&amp;-1/2\\0&amp;0\end{bmatrix}+b\begin{bmatrix}-1/
   \begin{bmatrix}0&amp;0&amp;0\\3&amp;0&amp;-3\\0&amp;1&amp;-2\end{bmatrix}
   \]</span> This gives the eigenvector as <span class="math inline">\(\begin{bmatrix}1\\2\\1\end{bmatrix}\)</span>. Only option E has this as the last column.</p></li>
 </ul>
-<p>So the answer is <mark><strong>C</strong></mark>.</p>
+<p>So the answer is <mark><strong>E</strong></mark>.</p>
 
 </details>
 <h3 id="problem-20">Problem 20</h3>
@@ -916,14 +993,14 @@ MA 265 Fall 2019 Final
       <i class="fa fa-chart-line"></i>
     </span>
       <span>Symbols count total: </span>
-    <span title="Symbols count total">453k</span>
+    <span title="Symbols count total">458k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>Reading time total &asymp;</span>
-    <span title="Reading time total">6:52</span>
+    <span title="Reading time total">6:56</span>
   </span>
 </div>
 <div class="busuanzi-count">
