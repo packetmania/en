@@ -69,7 +69,7 @@
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P24.png">
 <meta property="og:image" content="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/MA265-Spring2022-Final-P25.png">
 <meta property="article:published_time" content="2024-04-19T06:51:21.000Z">
-<meta property="article:modified_time" content="2024-04-28T22:50:20.619Z">
+<meta property="article:modified_time" content="2024-04-29T05:11:49.665Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="Linear Algebra">
 <meta name="twitter:card" content="summary">
@@ -311,7 +311,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-04-28 15:50:20" itemprop="dateModified" datetime="2024-04-28T15:50:20-07:00">2024-04-28</time>
+        <time title="Modified: 2024-04-28 22:11:49" itemprop="dateModified" datetime="2024-04-28T22:11:49-07:00">2024-04-28</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -344,7 +344,7 @@
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>24 mins.</span>
+      <span>25 mins.</span>
     </span>
 </div>
 
@@ -793,20 +793,21 @@ T(X)&amp;=a\begin{bmatrix}1/2&amp;-1/2\\0&amp;0\end{bmatrix}+b\begin{bmatrix}-1/
 <p>All statements except <strong>E</strong> are true. Therefore, the correct answer is <mark><strong>E</strong></mark>.</p>
 
 </details>
-<p><strong>📝Notes:</strong> An orthogonal matrix is such a square invertible matrix <span class="math inline">\(U\)</span> such that <span class="math inline">\(U^{-1}=U^T\)</span>. Let <span class="math inline">\(U\)</span> be an <span class="math inline">\(n\times n\)</span> matrix with orthonormal columns, then <span class="math inline">\(\det U=±1\)</span>.</p>
+<p><strong>📝Notes:</strong> An orthogonal matrix is such a square invertible matrix <span class="math inline">\(U\)</span> such that <span class="math inline">\(U^{-1}=U^T\)</span>. Let <span class="math inline">\(U\)</span> be an <span class="math inline">\(n\times n\)</span> matrix with orthonormal columns, then <span class="math inline">\(U^TU=I\)</span> and <span class="math inline">\(\det U=\det U^{-1}=±1\)</span>.</p>
 <h3 id="problem-21">Problem 21</h3>
 <p><img src="MA265-Spring2022-Final-P21.png" style="width:85.0%;height:85.0%" /></p>
 <details class="note success"><summary><p>Problem 21 Solution</p>
 </summary>
 <p>Refer to the figure below from the book Section 6.3 (Orthogonal Projections)</p>
 <p><img src="orthogonal-projection.png" style="width:50.0%;height:50.0%" /></p>
-<p>The closest point in <span class="math inline">\(W\)</span> to <span class="math inline">\(\pmb x\)</span> is the orthogonal projection of <span class="math inline">\(\pmb x\)</span> onto <span class="math inline">\(W\)</span>. The formula to calculate that is <span class="math display">\[\begin{align}
+<p>Since <span class="math inline">\(\pmb u_1\)</span> and <span class="math inline">\(\pmb u_2\)</span> are orthogonal, they form an orthogonal basis of <span class="math inline">\(W\)</span>. Hence the closest point in <span class="math inline">\(W\)</span> to <span class="math inline">\(\pmb x\)</span> is the orthogonal projection of <span class="math inline">\(\pmb x\)</span> onto <span class="math inline">\(W\)</span>. The formula to calculate that is <span class="math display">\[\begin{align}
 \text{proj}_{W}\pmb x&amp;=\frac{\pmb x\bullet\pmb u_1}{\pmb u_1\bullet\pmb u_1}\pmb u_1+
 \frac{\pmb x\bullet\pmb u_2}{\pmb u_2\bullet\pmb u_2}\pmb u_2\\
 &amp;=\frac{1\times 4+2\times 7+(-4)\times 1}{1^2+2^2+(-4)^2}\begin{bmatrix}1\\2\\-4\end{bmatrix}+\frac{2\times 4+1\times 7+1\times 1}{2^2+1^1+1^2}\begin{bmatrix}2\\1\\1\end{bmatrix}\\
 &amp;=\frac{14}{21}\begin{bmatrix}1\\2\\-4\end{bmatrix}+\frac{16}{6}\begin{bmatrix}2\\1\\1\end{bmatrix}=\frac{2}{3}\begin{bmatrix}1\\2\\-4\end{bmatrix}+\frac{8}{3}\begin{bmatrix}2\\1\\1\end{bmatrix}=\begin{bmatrix}6\\4\\0\end{bmatrix}
 \end{align}\]</span></p>
 <p>So the answer is <mark><strong>A</strong></mark>.</p>
+<p>⚠️ <strong>Warning:</strong> If <span class="math inline">\(\pmb u_1\)</span> and <span class="math inline">\(\pmb u_2\)</span> are NOT orthogonal, we cannot use the above formula. Instead, we can use the least-squares solution to find the closest point in <span class="math inline">\(W\)</span> to <span class="math inline">\(\pmb x\)</span>.</p>
 
 </details>
 <h3 id="problem-22">Problem 22</h3>
