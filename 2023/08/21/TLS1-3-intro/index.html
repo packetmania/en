@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://www.packetmania.net/en/2023/08/21/TLS1-3-intro/TLS1_3-clienthello.jpg">
 <meta property="og:image" content="https://www.packetmania.net/en/2023/08/21/TLS1-3-intro/TLS1_3-stats.png">
 <meta property="article:published_time" content="2023-08-22T02:50:26.000Z">
-<meta property="article:modified_time" content="2024-03-01T05:53:50.984Z">
+<meta property="article:modified_time" content="2025-02-16T17:42:31.927Z">
 <meta property="article:author" content="Zixi">
 <meta property="article:tag" content="Cryptography">
 <meta property="article:tag" content="Network Security">
@@ -279,7 +279,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-02-29 21:53:50" itemprop="dateModified" datetime="2024-02-29T21:53:50-08:00">2024-02-29</time>
+        <time title="Modified: 2025-02-16 09:42:31" itemprop="dateModified" datetime="2025-02-16T09:42:31-08:00">2025-02-16</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -312,7 +312,7 @@
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>22 mins.</span>
+      <span>23 mins.</span>
     </span>
 </div>
 
@@ -323,11 +323,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>TLS (Transport Layer Security) is a cryptographic protocol to secure network communication. TLS 1.3 is the latest version of the TLS protocol, succeeding TLS 1.2. TLS 1.3 aims to provide more robust security, higher privacy protection, as well as better performance than previous versions. Here is a brief introduction to TLS 1.3. Also, we discuss NIST's requirement for TLS 1.3 readiness and give examples of enabling TLS 1.3 in some commonly used web servers. <span id="more"></span></p>
+        <p>TLS (Transport Layer Security) is a cryptographic protocol to secure network communication. TLS 1.3 is the latest version of the TLS protocol, succeeding TLS 1.2. TLS 1.3 aims to provide more robust security, higher privacy protection, and better performance than previous versions. Here is a brief introduction to TLS 1.3. Also, we discuss NIST's requirement for TLS 1.3 readiness and give examples of enabling TLS 1.3 in some commonly used web servers. <span id="more"></span></p>
 <div class="note success no-icon"><p><strong>It takes 20 years to build a reputation and a few minutes of cyber-incident to ruin it.</strong><br> <strong>— <em>Stéphane Nappo</em> (Vice President and Global Chief Information Security Officer of Groupe SEB, France, 2018 Global CISO of the year)</strong></p>
 </div>
 <h2 id="introduction-to-tls-1.3">Introduction to TLS 1.3</h2>
-<p>TLS 1.3 is the latest recommended cryptographic protocol for protecting a wide variety of network communications, including web browsing, email, online trading, instant messaging, mobile payments, and many other applications. By using TLS 1.3, more secure and reliable communication connections can be established, ensuring confidentiality, authenticity, and data integrity. It was standardized by the Internet Engineering Task Force (IETF) in August 2018, and published as <a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc8446">RFC 8446</a>.</p>
+<p>TLS 1.3 is the latest recommended cryptographic protocol for protecting various network communications, including web browsing, email, online trading, instant messaging, mobile payments, and many other applications. By using TLS 1.3, more secure and reliable communication connections can be established, ensuring confidentiality, authenticity, and data integrity. It was standardized by the Internet Engineering Task Force (IETF) in August 2018, and published as <a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc8446">RFC 8446</a>.</p>
 <p>TLS 1.3 introduces some important improvements over TLS 1.2. The table below presents a quick comparison of the two:</p>
 <table>
 <colgroup>
@@ -385,7 +385,7 @@
 </tr>
 </tbody>
 </table>
-<p>It can be seen that enhanced security and performance improvements are the most notable features of TLS 1.3, and we can explore more into these in the following sections.</p>
+<p>It can be seen that enhanced security and performance improvements are the most notable features of TLS 1.3, and we can explore these in the following sections.</p>
 <h3 id="security-hardening">Security Hardening</h3>
 <h4 id="cipher-suites">Cipher Suites</h4>
 <p>The protocol design principle of TLS 1.3 has enhanced security as its primary goal. As a result, TLS 1.3 drastically reduces the number of supported cipher suites. It removes insecure and weak cipher suites, leaving only more secure and modern cipher suites. This helps to increase the security of communications and avoids the use of outdated or vulnerable cipher suites.</p>
@@ -403,10 +403,10 @@
 <h4 id="signature-verification">Signature Verification</h4>
 <p>For signature verification in the key exchange phase, TLS 1.3 introduces more signature algorithms to meet different security requirements:</p>
 <ul>
-<li><strong>RSA signature algorithm</strong>: TLS 1.3 still supports RSA-based signature algorithms, including RSA-PKCS1-SHA256, RSA-PKCS1-SHA384, etc. These algorithms use RSA keys for digital signatures.</li>
+<li><strong>RSASSA-PKCS1-v1.5 signature algorithm</strong>: TLS 1.3 still supports the validation of RSA certificates that were signed by RSA-PKCS1-v1_5. But it does not allow RSASSA-PKCS1-v1_5 for signing handshake messages (e.g., CertificateVerify messages). Instead, it mandates using RSASSA-PSS RSAE algorithm for such certificates.</li>
+<li><strong>RSASSA-PSS PSS signature algorithm</strong>: TLS 1.3 also introduces the support of RSASSA-PSS PSS signature algorithm, which is a more secure signature method based on RSA and has better attack resistance. Note that RSASSA-PSS PSS requires PSS-Only certificate exclusively used for message signing purposes.</li>
 <li><strong>ECDSA signature algorithm</strong>: TLS 1.3 introduces more signature algorithms based on elliptic curve cryptography (ECC), such as ECDSA-SHA256, ECDSA-SHA384, etc. These algorithms use elliptic curve keys for digital signatures and are generally superior to RSA in terms of security and performance.</li>
 <li><strong>EdDSA signature algorithm</strong>: TLS 1.3 also introduces the EdDSA (Edwards-curve Digital Signature Algorithm) signature algorithm based on the Edwards curve. It features efficient performance and strong security for mobile devices and resource-constrained environments.</li>
-<li><strong>RSASSA-PSS signature algorithm</strong>: In addition to the traditional RSA-PKCS1 signature algorithm, TLS 1.3 also introduces the RSASSA-PSS signature algorithm, which is a more secure signature method based on RSA and has better attack resistance.</li>
 <li><strong>PSK signature algorithm</strong>: TLS 1.3 supports the signature algorithm based on the pre-shared key (PSK), which applies to the PSK handshake mode. This approach does not involve a digital certificate but uses a pre-shared key for verification.</li>
 </ul>
 <p>TLS 1.3 stops using the DSA (Digital Signature Algorithm) signature algorithm. This is also a notable difference from TLS 1.2. DSA has some security and performance limitations and is rarely used in practice, so TLS 1.3 removed support for DSA certificates.</p>
@@ -607,7 +607,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
