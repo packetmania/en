@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2024-04-30T07:24:06.205Z</updated>
+  <updated>2025-02-23T05:41:49.327Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Harvard CS50AI Introduction - Learning Artificial Intelligence from Scratch</title>
+    <link href="https://www.packetmania.net/en/2025/02/22/Harvard-CS50-AI-intro/"/>
+    <id>https://www.packetmania.net/en/2025/02/22/Harvard-CS50-AI-intro/</id>
+    <published>2025-02-23T01:05:26.000Z</published>
+    <updated>2025-02-23T05:41:49.327Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Harvard&#39;s CS50AI is an open online course that introduces the fundamentals of artificial intelligence using Python for programming and hands-on project-based learning. The course is created and taught by Harvard Professor David J. Malan and his team and is part of the popular CS50 computer science series, suitable for learners with some programming experience.</summary>
+    
+    
+    
+    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
+    
+    
+    <category term="Artificial Intelligence and Machine Learning" scheme="https://www.packetmania.net/en/tags/Artificial-Intelligence-and-Machine-Learning/"/>
+    
+  </entry>
   
   <entry>
     <title>Purdue MA 26500 Spring 2022 Final Exam Solutions</title>
@@ -368,9 +387,9 @@
     
     <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
     
-    <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
-    
     <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
+    
+    <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
     
     <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
     
@@ -389,27 +408,6 @@
     
     
     <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
-    
-    
-    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
-    
-    <category term="Network Security" scheme="https://www.packetmania.net/en/tags/Network-Security/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Please Stop Using TLS 1.0 and TLS 1.1 Now!</title>
-    <link href="https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/"/>
-    <id>https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/</id>
-    <published>2022-11-11T07:56:28.000Z</published>
-    <updated>2024-01-28T00:50:49.244Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;In March 2021, the Internet Engineering Task Force (IETF) released &lt;a href=&quot;https://tools.ietf.org/html/rfc8996&quot;&gt;RFC 8996&lt;/a&gt;, classified as a current best practice, officially announcing the deprecation of the TLS 1.0 and TLS 1.1 protocols. If your applications and web services are still using these protocols, please stop immediately and update to TLS 1.2 or TLS 1.3 protocol versions as soon as possible to eliminate any possible security risks.</summary>
-    
-    
-    
-    <category term="Technology Review" scheme="https://www.packetmania.net/en/categories/Technology-Review/"/>
     
     
     <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>

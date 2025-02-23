@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.3.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/en/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="piAnQ_mnwkhV_qh4_Se1yLzM1IwOvuq-vmYfXBkWRXU">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=EB+Garamond:300,300italic,400,400italic,700,700italic%7CNoto+Serif+SC:300,300italic,400,400italic,700,700italic%7CRoboto+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.packetmania.net","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk | utterances | disqus","storage":true,"lazyload":false,"nav":{"disqus":{"text":"Disqus Comments","order":-1},"utterances":{"text":"Utterances Comments","order":-2},"gitalk":{"text":"Gitalk Comments","order":-3}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/en/js/config.js"></script>
+<meta name="description" content="Harvard&#39;s CS50AI is an open online course that introduces the fundamentals of artificial intelligence using Python for programming and hands-on project-based learning. The course is created and taught">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Harvard CS50AI Introduction - Learning Artificial Intelligence from Scratch">
+<meta property="og:url" content="https://www.packetmania.net/en/2025/02/22/Harvard-CS50-AI-intro/index.html">
+<meta property="og:site_name" content="PacketMania">
+<meta property="og:description" content="Harvard&#39;s CS50AI is an open online course that introduces the fundamentals of artificial intelligence using Python for programming and hands-on project-based learning. The course is created and taught">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.packetmania.net/en/2025/02/22/Harvard-CS50-AI-intro/CS50AI-enrolled.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2025/02/22/Harvard-CS50-AI-intro/AI-A_Modern_Approach.jpg">
+<meta property="og:image" content="https://www.packetmania.net/en/2025/02/22/Harvard-CS50-AI-intro/CS50AI-gradebook-sample.jpg">
+<meta property="og:image" content="https://www.packetmania.net/en/2025/02/22/Harvard-CS50-AI-intro/CS50AI-cert-sample.jpg">
+<meta property="og:image" content="https://www.packetmania.net/en/2025/02/22/Harvard-CS50-AI-intro/CS50AI-cert-verified-sample.png">
+<meta property="article:published_time" content="2025-02-23T01:05:26.000Z">
+<meta property="article:modified_time" content="2025-02-23T05:41:49.327Z">
+<meta property="article:author" content="Zixi">
+<meta property="article:tag" content="Artificial Intelligence and Machine Learning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.packetmania.net/en/2025/02/22/Harvard-CS50-AI-intro/CS50AI-enrolled.png">
+
+
+<link rel="canonical" href="https://www.packetmania.net/en/2025/02/22/Harvard-CS50-AI-intro/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.packetmania.net/en/2025/02/22/Harvard-CS50-AI-intro/","path":"2025/02/22/Harvard-CS50-AI-intro/","title":"Harvard CS50AI Introduction - Learning Artificial Intelligence from Scratch"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Harvard CS50AI Introduction - Learning Artificial Intelligence from Scratch | PacketMania</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YKBP0QK7Z"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-9YKBP0QK7Z","only_pageview":false}</script>
+  <script src="/en/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PacketMania" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PacketMania</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Technology | Knowledge | Sharing</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/en/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/en/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+        <li class="menu-item menu-item-rss"><a href="/en/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+        <li class="menu-item menu-item-language"><a href="https://www.packetmania.net/" rel="section"><i class="fa fa-language fa-fw"></i>中文</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#course-overview"><span class="nav-number">1.</span> <span class="nav-text">Course Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#course-website"><span class="nav-number">1.1.</span> <span class="nav-text">Course Website</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#course-information"><span class="nav-number">1.2.</span> <span class="nav-text">Course Information</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#certification"><span class="nav-number">1.3.</span> <span class="nav-text">Certification</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#course-syllabus"><span class="nav-number">2.</span> <span class="nav-text">Course Syllabus</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#search"><span class="nav-number">2.1.</span> <span class="nav-text">Search</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#knowledge"><span class="nav-number">2.2.</span> <span class="nav-text">Knowledge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uncertainty"><span class="nav-number">2.3.</span> <span class="nav-text">Uncertainty</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#optimization"><span class="nav-number">2.4.</span> <span class="nav-text">Optimization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#learning"><span class="nav-number">2.5.</span> <span class="nav-text">Learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#neural-networks"><span class="nav-number">2.6.</span> <span class="nav-text">Neural Networks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#language"><span class="nav-number">2.7.</span> <span class="nav-text">Language</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#learning-experience"><span class="nav-number">3.</span> <span class="nav-text">Learning Experience</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#course-preparation"><span class="nav-number">3.1.</span> <span class="nav-text">Course Preparation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#progress-planning"><span class="nav-number">3.2.</span> <span class="nav-text">Progress Planning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#project-experience"><span class="nav-number">3.3.</span> <span class="nav-text">Project Experience</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zixi"
+      src="/en/images/ccie.gif">
+  <p class="site-author-name" itemprop="name">Zixi</p>
+  <div class="site-description" itemprop="description">Computer Networking and Software Design & Implementation</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/packetmania" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;packetmania" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zixiruoxue@gmail.com" title="E-Mail → mailto:zixiruoxue@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/zixisean" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zixisean" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/15140531" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;15140531" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_nd.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.packetmania.net/en/2025/02/22/Harvard-CS50-AI-intro/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/ccie.gif">
+      <meta itemprop="name" content="Zixi">
+      <meta itemprop="description" content="Computer Networking and Software Design & Implementation">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PacketMania">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Harvard CS50AI Introduction - Learning Artificial Intelligence from Scratch
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-02-22 17:05:26 / Modified: 21:41:49" itemprop="dateCreated datePublished" datetime="2025-02-22T17:05:26-08:00">2025-02-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/Study-Notes/" itemprop="url" rel="index"><span itemprop="name">Study Notes</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>18k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>16 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Harvard's CS50AI is an open online course that introduces the fundamentals of artificial intelligence using Python for programming and hands-on project-based learning. The course is created and taught by Harvard Professor David J. Malan and his team and is part of the popular CS50 computer science series, suitable for learners with some programming experience. <span id="more"></span></p>
+<div class="note success no-icon"><p><strong>Artificial intelligence is the new electricity.</strong><br> <strong>— <em>Andrew Ng</em> (British-American computer scientist and tech entrepreneur, focused on machine learning and AI, co-founder and head of Google Brain project, former Chief Scientist at Baidu)</strong></p>
+</div>
+<h2 id="course-overview">Course Overview</h2>
+<p>CS50AI's full name is CS50's Introduction to Artificial Intelligence with Python. Harvard University and online learning platform edX launched this course in 2020, with updates and revisions made in 2024.</p>
+<p>CS50AI introduces fundamental concepts and algorithms of modern artificial intelligence, explaining the ideas behind technologies like game engines, handwriting recognition, and machine translation. Through hands-on projects, students can explore the theories behind AI topics such as graph search algorithms, classification, optimization, machine learning, and large language models, incorporating them into their Python programs. By the end of the course, students will gain experience with machine learning libraries and knowledge of AI principles, preparing them for further advanced study in AI and machine learning.</p>
+<h3 id="course-website">Course Website</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.edx.org/learn/artificial-intelligence/harvard-university-cs50-s-introduction-to-artificial-intelligence-with-python">edX Course Page</a>: Here, you can enroll in the latest CS50AI course for free. After enrollment, you'll have access to all course content links, timelines, and progress information.</li>
+<li><a target="_blank" rel="noopener" href="https://cs50.harvard.edu/ai/">CS50AI Official Website</a>: This is the course's main homepage. It contains all lectures, videos, notes and PPT slides, source code, quizzes, programming projects, and social network links for discussion groups.</li>
+</ul>
+<p>The image below shows the course information and start links included in the registration confirmation email:</p>
+<p><img src="CS50AI-enrolled.png" style="width:50.0%;height:50.0%" /></p>
+<h3 id="course-information">Course Information</h3>
+<ul>
+<li><p>The course follows a self-paced online learning format with an extended duration, allowing students to progress at their own pace. You have the flexibility to arrange your study schedule freely. Following the recommended 10-30 hours per week, it can be completed in seven weeks. If you cannot meet the recommended weekly study hours, that's fine - as long as you complete all programming projects before year-end (12/31), you've achieved the goal.</p></li>
+<li><p>The course contains seven core units. Teaching materials include video lectures, code examples, quizzes, and a total of 12 AI hands-on projects. Each unit module includes a 1-2 hour video lecture, an online quiz, and one or two programming tasks. The quizzes are optional but very helpful in testing our understanding of basic concepts. Programming projects will further reinforce learned knowledge points and practical application abilities.</p></li>
+<li><p>Prerequisites:</p>
+<ul>
+<li>Python basics: If you don't have Python programming experience, you can first take <a target="_blank" rel="noopener" href="https://cs50.harvard.edu/x/">CS50x</a> or the <a target="_blank" rel="noopener" href="https://cs50.harvard.edu/python/">Python introductory course</a>.</li>
+<li>Math fundamentals: Understanding basic linear algebra, probability theory, and logical reasoning will make it easier to understand AI-related content.</li>
+</ul></li>
+<li><p>CS50-AI does not have an official designated textbook, but it provides several related learning resources. The most important is <em>Artificial Intelligence: A Modern Approach</em>. The 4th edition of this book is currently the most up-to-date and comprehensive introduction to AI theory and practice, unmatched in breadth and depth by other textbooks, and highly recommended.</p>
+<blockquote>
+<p><em><strong>Disclosure:</strong> This blog site is reader-supported. When you buy through the affiliate links below, as an Amazon Associate, I earn a tiny commission from qualifying purchases. Thank you.</em></p>
+</blockquote></li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://amzn.to/4gSxNWe"><img src="AI-A_Modern_Approach.jpg" style="width:45.0%;height:45.0%" /></a></p>
+<h3 id="certification">Certification</h3>
+<p>The course is completely free, and no payment is required for learning. Upon successful completion and submission of all 12 projects, you can receive a completion certificate. As shown below, the left shows the project gradebook, and the right shows the completion certificate generated after finishing.</p>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img src="CS50AI-gradebook-sample.jpg" /></div><div class="group-picture-column"><img src="CS50AI-cert-sample.jpg" /></div></div></div>
+<p>If you want to obtain a jointly certified certificate from Harvard/edX platform (Harvard edX verification, sample shown below) to boost career development, you can apply for an official certificate for a fee. The certification fee is currently $299. You can also find some discount codes online to save ~20% of the cost.</p>
+<p><img src="CS50AI-cert-verified-sample.png" style="width:55.0%;height:55.0%" /></p>
+<h2 id="course-syllabus">Course Syllabus</h2>
+<p>CS50AI course is divided into seven core units, let's briefly explain each one.</p>
+<h3 id="search">Search</h3>
+<p>The first unit module introduces search algorithms that help AI find paths from starting points to goals. The lecture covers search problem structures (including states, actions, and goals) and explores different search strategies, including Depth-First Search (DFS), Breadth-First Search (BFS), Greedy Best-First Search, and A* Search. These algorithms are demonstrated through practical examples like maze-solving, and the lecture also covers game strategies using adversarial search techniques like Minimax and Alpha-beta pruning.</p>
+<p>Programming projects:</p>
+<ul>
+<li><strong>Degrees</strong> (Social Network Shortest Path): Use graph search algorithm (BFS) to find the shortest collaboration path between two actors (similar to "Six Degrees of Separation"), algorithm implementation uses First-In-First-Out (FIFO) queue.</li>
+<li><strong>Tic-Tac-Toe</strong>: Apply the Minimax algorithm with Alpha-beta pruning to implement an unbeatable Tic-Tac-Toe AI. This project requires installing Python pygame package.</li>
+</ul>
+<h3 id="knowledge">Knowledge</h3>
+<p>This explores knowledge representation and reasoning in AI, focusing on how to encode information in a way machines can use for logical deduction. It introduces propositional logic (using symbols and logical operators like NOT, AND, and OR) and first-order logic (adding quantifiers and relations). The lecture demonstrates how to use inference rules (like modus ponens and resolution) to derive new knowledge from existing facts. It covers knowledge bases, model checking, and automated theorem proving, showing how AI systems can make logical inferences and solve puzzle games by representing knowledge as logical statements and applying systematic reasoning.</p>
+<p>Programming projects:</p>
+<ul>
+<li><strong>Knights</strong> (Knights/Knaves): Given a logical reasoning system that can solve puzzles, it can infer whether a character is a knight or knave based on a set of statements made by each character. The task is to determine how to represent these puzzles using propositional logic so the system can run model checking algorithms to solve them.</li>
+<li><strong>Minesweeper</strong>: Knowledge-based intelligent agents consider their knowledge base when making decisions and make inferences based on this knowledge. The task is to create an AI agent that collects and analyzes board information and knowledge in the Minesweeper game to infer mine locations. This project requires installing Python pygame package.</li>
+</ul>
+<h3 id="uncertainty">Uncertainty</h3>
+<p>The third lecture discusses how AI systems handle uncertainty, which is a key capability when dealing with incomplete information or probabilistic outcomes. The lecture introduces probability theory fundamentals and Bayesian Networks for representing relationships between variables. It covers conditional probability, random variables, independence, and joint probability distributions. The lecture explains inference by enumeration, sampling, and likelihood weighting to calculate probabilities in complex scenarios. It also explores Markov models for event sequences and Hidden Markov Models (HMM) for inferring hidden states from observable data, demonstrating how probabilistic reasoning enables AI to make informed decisions under uncertainty.</p>
+<p>Programming projects:</p>
+<ul>
+<li><strong>PageRank</strong> (Web Page Ranking): Implement Google's PageRank algorithm to calculate webpage importance. Specifically apply two PageRank calculation methods - 1. Through sampling from Markov chain random surfer pages; 2. Through iterative use of the PageRank formula.</li>
+<li><strong>Heredity</strong> (Genetic Probability Inference): The task is to use inference on populations using a Bayesian network model of genetic inheritance. Through given information, the AI will be able to determine the probability distribution of genes for each person, as well as the probability distribution of trait expression in tests.</li>
+</ul>
+<h3 id="optimization">Optimization</h3>
+<p>This unit module focuses on optimization techniques for finding the best solutions to complex problems. It introduces local search algorithms like hill climbing and simulated annealing, which iteratively improve solutions by exploring neighboring states. The lecture covers optimization challenges, such as getting stuck in local maxima, and explores techniques to overcome these limitations. It discusses linear programming and constraint satisfaction problems (CSPs), where CSP solutions must satisfy specific constraints. The lecture demonstrates algorithms like backtracking search, arc consistency, and the AC-3 algorithm, applying these concepts to problems like scheduling, map coloring, and Sudoku puzzles, showing how optimization algorithms can efficiently find solutions in large search spaces where exhaustive search would be impractical.</p>
+<p>Programming projects:</p>
+<ul>
+<li><strong>Crossword</strong> (Crossword Puzzle): Model the crossword puzzle as a CSP, where each sequence of squares is a variable, requiring completion of a solver - select a different word from the given vocabulary for each variable, satisfying all unary and binary constraints. The programming solution must implement the backtrack search and AC-3 algorithm. This project requires installing Python pillow package.</li>
+</ul>
+<h3 id="learning">Learning</h3>
+<p>The fifth lecture introduces machine learning fundamentals, focusing on supervised learning techniques where computers learn patterns from labeled training data. The lecture covers several classification algorithms, including nearest-neighbor classification, k-nearest neighbors, perceptron learning, and support vector machines, each with its own method of creating decision boundaries. It explains regression analysis for predicting continuous values and discusses loss functions for quantifying prediction errors. The lecture also discusses important concepts like overfitting and regularization, demonstrating how to balance model complexity with generalization ability. Furthermore, the lecture introduces reinforcement learning, where agents learn optimal behaviors through reward feedback, exploring Markov decision processes and Q-learning algorithms. Finally, it touches on unsupervised learning through clustering techniques like k-means, which can identify patterns in unlabeled data.</p>
+<p>Programming projects:</p>
+<ul>
+<li><strong>Shopping</strong> (E-commerce Shopping Prediction): The task is to build a nearest-neighbor classifier to help websites determine user purchase intent based on relevant information. The project provides visit data for about 12,000 users from a shopping website to train the classifier.</li>
+<li><strong>Nim</strong> (Nim Game): Nim is a mathematical strategy game played in turns by two players. The project requires completing an AI that applies the Q-learning algorithm from reinforcement learning, repeatedly playing against itself to eventually find the winning strategy for the game.</li>
+</ul>
+<h3 id="neural-networks">Neural Networks</h3>
+<p>The sixth unit explores neural networks, a computational model inspired by the biological structure of the brain. The lecture explains how artificial neural networks process information through interconnected units that combine inputs with weighted connections and activation functions (like step functions, sigmoid functions, and ReLU). It covers perceptron models for simple linear decisions and multilayer neural networks for handling complex nonlinear problems. The lecture introduces the backpropagation algorithm as a method for training these networks, through calculating errors and updating weights. It also discusses gradient descent optimization techniques, methods to prevent overfitting (like dropout), and implementation frameworks like TensorFlow. Special attention is given to convolutional neural networks for computer vision, explaining techniques like convolution, pooling, and flattening that make image processing possible. Finally, the lecture introduces recurrent neural networks as solutions for processing sequential data tasks like language translation and image captioning.</p>
+<p>Programming projects:</p>
+<ul>
+<li><strong>Traffic</strong> (Traffic Sign Recognition): Use TensorFlow to build a neural network that classifies road signs based on sign images. The project uses the German Traffic Sign Recognition Benchmark (GTSRB) dataset, which includes thousands of images of 43 different road signs.</li>
+</ul>
+<h3 id="language">Language</h3>
+<p>The seventh unit module examines natural language processing and how AI can understand and generate human language. The lecture first introduces various natural language processing tasks like automatic summarization, translation, and speech recognition, then delves into the challenges of syntax and semantics in language understanding. It covers context-free grammar and syntax trees for representing sentence structure and explores n-grams as word sequences that capture language patterns. The lecture examines tokenization methods for breaking text into meaningful units and discusses Markov models for text generation. For text classification, the lecture explains the bag-of-words model and naive Bayes classifiers, showing how AI can analyze sentiment without understanding grammar. The lecture explains word representation techniques, including distributed representations and word2vec, showing how AI captures semantic relationships between words. Finally, it introduces neural network architectures for language tasks, including recurrent neural networks with attention mechanisms and transformer models, which have revolutionized natural language processing by enabling parallel processing of language data.</p>
+<p>Programming projects:</p>
+<ul>
+<li><strong>Parser</strong> (Syntax Parser): The task is to write an AI to parse sentences and extract noun phrases, using context-free grammar forms to parse English sentences to determine their structure. This project requires installing Python natural language toolkit nltk.</li>
+<li><strong>Attention</strong> (Attention Mechanism): The project has two tasks - 1. Write a program using the transformers Python library developed by Hugging Face to predict masked words using BERT. The program will also generate visualization attention score charts, with 144 attention heads each generating one chart; 2. Analyze the charts generated by the program to try to understand what BERT's attention heads might be paying attention to when trying to understand our natural language.</li>
+</ul>
+<h2 id="learning-experience">Learning Experience</h2>
+<p>I completed this online course in 2024. Overall, CS50AI stands out as an excellent introduction to AI, striking a good balance between theoretical understanding and practical implementation. Its project-driven learning approach is a highlight, reinforcing theoretical knowledge and providing practical application through 12 Python programming projects. CS50AI is particularly suitable for:</p>
+<p>It's particularly valuable for:</p>
+<ul>
+<li>Computer science students wanting to specialize in AI</li>
+<li>Software developers looking to incorporate AI into their skillset</li>
+<li>Anyone seeking a structured, academic approach to learning AI fundamentals</li>
+</ul>
+<p>Below are my personal experiences and insights on course preparation, learning progress, time management, and project completion:</p>
+<h3 id="course-preparation">Course Preparation</h3>
+<p>For those without prior programming experience, CS50AI's learning pace can be challenging. Therefore, it's strongly recommended to first quickly learn Python, reaching a level where you can comfortably read and understand simple program code and write Python application functions. The course's mathematical requirements aren't high, but if you've forgotten the basic knowledge of calculus and engineering mathematics from your first two years of college, you'll need supplementary learning. Of course, going back to college textbooks isn't practical. Many AI introductory books, including the recommended "Artificial Intelligence: A Modern Approach," provide appendices explaining mathematical foundations, which are very worth reviewing.</p>
+<p>You can also prepare Python programming and related mathematics cheatsheets and print them for quick reference. Many ready-made cheatsheets are available online for download, or you can compile and combine what you consider most important to create customized cheatsheets.</p>
+<h3 id="progress-planning">Progress Planning</h3>
+<p>For students with rich Python programming experience and a good mathematics foundation, if you can dedicate 20+ hours per week to studying CS50AI, completing all course content and projects within a month should be feasible. If you're a working professional like me who can't study full-time, consider scheduling weekend time. If you can concentrate 6-8 hours each day on weekends for learning and programming projects, completing two units in a month is a viable progress plan. This way, the entire course can be finished within four months.</p>
+<h3 id="project-experience">Project Experience</h3>
+<ul>
+<li><p><strong>Tool Programs</strong></p>
+<p>CS50AI course is part of Harvard University's CS50 online course series. The programming projects for these courses share a set of <a target="_blank" rel="noopener" href="https://github.com/cs50">CS50 tool programs</a>:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://cs50.readthedocs.io/projects/check50/en/latest/">check50</a>: A command-line program with which you can check the correctness of your programs. Learners can use check50 to test project code locally. If tests fail, you can check the logs for debugging.</li>
+<li><a target="_blank" rel="noopener" href="https://cs50.readthedocs.io/style50/">style50</a>: a command-line tool with which you can check your code for consistency with <a target="_blank" rel="noopener" href="https://peps.python.org/pep-0008/">PEP 8 - Python Style Guide</a>.</li>
+<li><a target="_blank" rel="noopener" href="https://cs50.readthedocs.io/submit50/">submit50</a>: A command-line tool with which you can submit work. It allows multiple submissions.</li>
+</ul>
+<p>Here are examples of running these tools (just replace <code>degrees</code> for different projects):</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">check50 ai50/projects/2024/x/degrees</span><br><span class="line">style50 degrees.py</span><br><span class="line">submit50 ai50/projects/2024/x/degrees</span><br></pre></td></tr></table></figure></p>
+<p>When running the check50 tool for testing and finding errors, if you need to look into test cases for debugging, you can check the <a target="_blank" rel="noopener" href="https://github.com/ai50/projects">CS50AI project test code repository</a> for actual test cases of each project. You can also find the same test files in the local <code>~/.local/share/check50/ai50/projects/</code> directory, for example, the test cases for the first project Degrees are located at:</p>
+<p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/.local/share/check50/ai50/projects/degrees/__init__.py</span><br></pre></td></tr></table></figure></p></li>
+<li><p><strong>Project Programming</strong></p>
+<p>Before starting project programming, it's recommended to read the provided code carefully to have a full understanding of the entire program framework. Some projects can directly leverage the sample code from the lectures (downloadable from the course website).</p>
+<p>If you get stuck debugging a project, you can seek help from CS50AI discussion groups on various social networks (Discord, Slack, etc.) or the <a target="_blank" rel="noopener" href="https://cs50.ai/">CS50 AI Assistant</a>. If you really can't find the clues and don't know where to start, you can reference some completed project code repositories, such as my GitHub <a target="_blank" rel="noopener" href="https://github.com/packetmania/Harvard-CS50-AI">CS50AI code repository</a>. Even though, it's best to understand someone else's answer, organize your thoughts, and then do your own implementation. <strong>⚠️Please don't copy code directly, as doing so makes the project practice and the entire course learning meaningless</strong>.</p></li>
+<li><p><strong>Project Summary</strong></p>
+<p>Finally, here's a comparative summary of CS50AI's 12 projects (notes provide some tips for programming implementation, for reference):</p>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 32%" />
+<col style="width: 16%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Project Name</strong></th>
+<th><strong>Learning Unit</strong></th>
+<th><strong>Technical Area &amp; Algorithm</strong></th>
+<th><strong>Difficulty</strong></th>
+<th><strong>Notes</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Degrees</strong></td>
+<td>Search</td>
+<td>Graph search (BFS), FIFO queue</td>
+<td>★★</td>
+<td>Use provided FIFO queue for BFS, watch for corner cases</td>
+</tr>
+<tr class="even">
+<td><strong>Tic-Tac-Toe</strong></td>
+<td>Search</td>
+<td>Adversarial search, Minimax &amp; Alpha-beta pruning</td>
+<td>★★</td>
+<td>Start with state evaluation, then implement Minimax recursively</td>
+</tr>
+<tr class="odd">
+<td><strong>Knights</strong></td>
+<td>Knowledge</td>
+<td>Propositional logic, model checking</td>
+<td>★★</td>
+<td>Break down complex statements into simple logical rules</td>
+</tr>
+<tr class="even">
+<td><strong>Minesweeper</strong></td>
+<td>Knowledge</td>
+<td>Knowledge base, logical inference</td>
+<td>★★★</td>
+<td>Use recursion, carefully track safe cells and mines using sets</td>
+</tr>
+<tr class="odd">
+<td><strong>PageRank</strong></td>
+<td>Uncertainty</td>
+<td>Markov chain, PageRank formula iteration</td>
+<td>★★★</td>
+<td>Follow both random surfer and iterative formulas</td>
+</tr>
+<tr class="even">
+<td><strong>Heredity</strong></td>
+<td>Uncertainty</td>
+<td>Probability distribution, Bayesian networks</td>
+<td>★★★</td>
+<td>Use joint probability tables, handle conditionals carefully</td>
+</tr>
+<tr class="odd">
+<td><strong>Crossword</strong></td>
+<td>Optimization</td>
+<td>CSP, backtracking search &amp; AC-3 algorithm</td>
+<td>★★★★</td>
+<td>Implement constraint satisfaction with backtracking</td>
+</tr>
+<tr class="even">
+<td><strong>Shopping</strong></td>
+<td>Learning</td>
+<td>Supervised learning, nearest neighbor classifier</td>
+<td>★★★</td>
+<td>Focus on feature selection and data preprocessing</td>
+</tr>
+<tr class="odd">
+<td><strong>Nim</strong></td>
+<td>Learning</td>
+<td>Reinforcement learning (Q-learning)</td>
+<td>★★★</td>
+<td>Start with basic Q-learning, implement exploration strategy</td>
+</tr>
+<tr class="even">
+<td><strong>Traffic</strong></td>
+<td>Neural Networks</td>
+<td>TensorFlow, computer vision (CNN)</td>
+<td>★★★★</td>
+<td>Start with simple CNN architecture, then tune</td>
+</tr>
+<tr class="odd">
+<td><strong>Parser</strong></td>
+<td>Language</td>
+<td>Grammar parsing, rule handling</td>
+<td>★★★</td>
+<td>Break down into tokenization and tree building</td>
+</tr>
+<tr class="even">
+<td><strong>Attention</strong></td>
+<td>Language</td>
+<td>Attention mechanism, Transformer, BERT</td>
+<td>★★★★★</td>
+<td>Focus on TF-IDF and query processing first</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<p>📌 <strong>Start learning CS50AI today and take your AI skills to the next level! 🚀</strong></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Zixi
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://www.packetmania.net/en/2025/02/22/Harvard-CS50-AI-intro/" title="Harvard CS50AI Introduction - Learning Artificial Intelligence from Scratch">https://www.packetmania.net/en/2025/02/22/Harvard-CS50-AI-intro/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/en/tags/Artificial-Intelligence-and-Machine-Learning/" rel="tag"><i class="fa fa-tag"></i> Artificial Intelligence and Machine Learning</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/2024/04/18/Purdue-MA265-2022-Spring-Final/" rel="prev" title="Purdue MA 26500 Spring 2022 Final Exam Solutions">
+                  <i class="fa fa-chevron-left"></i> Purdue MA 26500 Spring 2022 Final Exam Solutions
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Gitalk Comments</a></li>
+            <li class="tab"><a href="#comment-utterances">Utterances Comments</a></li>
+            <li class="tab"><a href="#comment-disqus">Disqus Comments</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+            <div class="tab-pane disqus" id="comment-disqus">
+              
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zixi</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>Symbols count total: </span>
+    <span title="Symbols count total">476k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>Reading time total &asymp;</span>
+    <span title="Reading time total">7:13</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5fc1fd29017282c7" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/en/js/comments.js"></script><script src="/en/js/utils.js"></script><script src="/en/js/motion.js"></script><script src="/en/js/next-boot.js"></script><script src="/en/js/bookmark.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/en/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdn.jsdelivr.net/npm/pdfobject@2.2.7/pdfobject.min.js","integrity":"sha256-ph3Dk89VmuTVXG6x/RDzk53SU9LPdAh1tpv0UvnDZ2I="},"url":"/en/lib/pdf/web/viewer.html"}</script>
+  <script src="/en/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"forest","dark":"forest"},"js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.13.4/dist/mermaid.min.js","integrity":"sha256-96rwDGMWIQYB0yKGp1sKi1yrjrLPj2oT39IpbCsIrsg="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/en/js/third-party/fancybox.js"></script>
+
+
+  
+  <script defer src="https://vercount.one/js"></script>
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/en/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"packetmania-github-io","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/en/js/third-party/comments/disqus.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"packetmania","repo":"en","client_id":"a45f6ae3f97c1a467856","client_secret":"7d81b74f952b388f93dcb5a8c44cd12f657969fa","admin_user":"packetmania","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"6d0d8ad6941ec2fec0500b630b6f593c"}</script>
+<script src="/en/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"packetmania/en","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/en/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
