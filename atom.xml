@@ -6,7 +6,7 @@
   <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
   
   <link href="https://www.packetmania.net/en/"/>
-  <updated>2025-02-24T04:12:06.852Z</updated>
+  <updated>2025-09-28T07:15:56.518Z</updated>
   <id>https://www.packetmania.net/en/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode 75 Study Plan Checklist and Solutions</title>
+    <link href="https://www.packetmania.net/en/2025/09/27/LeetCode-75-Solutions/"/>
+    <id>https://www.packetmania.net/en/2025/09/27/LeetCode-75-Solutions/</id>
+    <published>2025-09-27T17:11:08.000Z</published>
+    <updated>2025-09-28T07:15:56.518Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://leetcode.com/studyplan/leetcode-75/&quot;&gt;LeetCode 75&lt;/a&gt; study plan selects 75 classic algorithm problems, covering strings, arrays, hashing, two pointers, linked lists, trees, graphs, and dynamic programming. It not only helps beginners quickly master commonly used algorithms and data structures, but also enables experienced programmers to review and fill in gaps systematically. Here we provide a full progress checklist and reference solutions for all 75 problems.</summary>
+    
+    
+    
+    <category term="Interview Guide" scheme="https://www.packetmania.net/en/categories/Interview-Guide/"/>
+    
+    
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
+    
+    <category term="Python Programming" scheme="https://www.packetmania.net/en/tags/Python-Programming/"/>
+    
+  </entry>
   
   <entry>
     <title>Harvard CS50AI Introduction - Learning Artificial Intelligence from Scratch</title>
@@ -392,27 +413,6 @@
     <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
     
     <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Does Diffie-Hellman Key Exchange Use a Technology Similar to RSA?</title>
-    <link href="https://www.packetmania.net/en/2022/11/21/DH-and-RSA/"/>
-    <id>https://www.packetmania.net/en/2022/11/21/DH-and-RSA/</id>
-    <published>2022-11-22T06:38:45.000Z</published>
-    <updated>2023-11-10T22:04:06.277Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;Recently, at a WPA3 technology introduction meeting within the R&amp;amp;D team, the speaker mentioned that the OWE technology for encrypted wireless open networks is based on Diffie-Hellman key exchange, and casually said that Diffie-Hellman key exchange is using technology similar to RSA. This statement is wrong!</summary>
-    
-    
-    
-    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
-    
-    
-    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
-    
-    <category term="Network Security" scheme="https://www.packetmania.net/en/tags/Network-Security/"/>
     
   </entry>
   

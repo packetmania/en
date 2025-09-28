@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.3.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/en/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="piAnQ_mnwkhV_qh4_Se1yLzM1IwOvuq-vmYfXBkWRXU">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=EB+Garamond:300,300italic,400,400italic,700,700italic%7CNoto+Serif+SC:300,300italic,400,400italic,700,700italic%7CRoboto+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.packetmania.net","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk | utterances","storage":true,"lazyload":false,"nav":{"utterances":{"text":"Utterances Comments","order":-1},"gitalk":{"text":"Gitalk Comments","order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/en/js/config.js"></script>
+<meta name="description" content="LeetCode 75 study plan selects 75 classic algorithm problems, covering strings, arrays, hashing, two pointers, linked lists, trees, graphs, and dynamic programming. It not only helps beginners quickly">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode 75 Study Plan Checklist and Solutions">
+<meta property="og:url" content="https://www.packetmania.net/en/2025/09/27/LeetCode-75-Solutions/index.html">
+<meta property="og:site_name" content="PacketMania">
+<meta property="og:description" content="LeetCode 75 study plan selects 75 classic algorithm problems, covering strings, arrays, hashing, two pointers, linked lists, trees, graphs, and dynamic programming. It not only helps beginners quickly">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-09-27T17:11:08.000Z">
+<meta property="article:modified_time" content="2025-09-28T07:15:56.518Z">
+<meta property="article:author" content="Zixi">
+<meta property="article:tag" content="C&#x2F;C++ Programming">
+<meta property="article:tag" content="Python Programming">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.packetmania.net/en/2025/09/27/LeetCode-75-Solutions/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.packetmania.net/en/2025/09/27/LeetCode-75-Solutions/","path":"2025/09/27/LeetCode-75-Solutions/","title":"LeetCode 75 Study Plan Checklist and Solutions"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>LeetCode 75 Study Plan Checklist and Solutions | PacketMania</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YKBP0QK7Z"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-9YKBP0QK7Z","only_pageview":false}</script>
+  <script src="/en/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PacketMania" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PacketMania</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Technology | Knowledge | Sharing</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/en/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/en/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+        <li class="menu-item menu-item-rss"><a href="/en/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+        <li class="menu-item menu-item-language"><a href="https://www.packetmania.net/" rel="section"><i class="fa fa-language fa-fw"></i>中文</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#plan-overview"><span class="nav-number">1.</span> <span class="nav-text">Plan Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#progress-checklist"><span class="nav-number">2.</span> <span class="nav-text">Progress Checklist</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#study-tips"><span class="nav-number">3.</span> <span class="nav-text">Study Tips</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reference-solutions"><span class="nav-number">4.</span> <span class="nav-text">Reference Solutions</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zixi"
+      src="/en/images/ccie.gif">
+  <p class="site-author-name" itemprop="name">Zixi</p>
+  <div class="site-description" itemprop="description">Computer Science & Technology and Software Design & Implementation</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/packetmania" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;packetmania" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zixiruoxue@gmail.com" title="E-Mail → mailto:zixiruoxue@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/zixisean" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zixisean" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/15140531" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;15140531" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_nd.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.packetmania.net/en/2025/09/27/LeetCode-75-Solutions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/ccie.gif">
+      <meta itemprop="name" content="Zixi">
+      <meta itemprop="description" content="Computer Science & Technology and Software Design & Implementation">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PacketMania">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LeetCode 75 Study Plan Checklist and Solutions
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-09-27 10:11:08" itemprop="dateCreated datePublished" datetime="2025-09-27T10:11:08-07:00">2025-09-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2025-09-28 00:15:56" itemprop="dateModified" datetime="2025-09-28T00:15:56-07:00">2025-09-28</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/Interview-Guide/" itemprop="url" rel="index"><span itemprop="name">Interview Guide</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>12k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>11 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><a target="_blank" rel="noopener" href="https://leetcode.com/studyplan/leetcode-75/">LeetCode 75</a> study plan selects 75 classic algorithm problems, covering strings, arrays, hashing, two pointers, linked lists, trees, graphs, and dynamic programming. It not only helps beginners quickly master commonly used algorithms and data structures, but also enables experienced programmers to review and fill in gaps systematically. Here we provide a full progress checklist and reference solutions for all 75 problems.<span id="more"></span></p>
+<div class="note success no-icon"><p><strong>One LeetCode a Day Keeps Unemployment Away.</strong><br></p>
+</div>
+<h3 id="plan-overview">Plan Overview</h3>
+<p>The <a target="_blank" rel="noopener" href="https://leetcode.com/studyplan/leetcode-75/">LeetCode 75</a> study plan official overview:</p>
+<ul>
+<li>75 Essential &amp; Trending Problems</li>
+<li>Must-do problem list for interview prep</li>
+<li>Best for 1~3 months of prep time</li>
+</ul>
+<p>The difficulty distribution of the 75 problems in this study plan:</p>
+<ul>
+<li><span class="math inline">\(\mathrm{\color{green}{Easy}}\)</span>: 22<br />
+</li>
+<li><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span>: 53<br />
+</li>
+<li><span class="math inline">\(\mathrm{\color{red}{Hard}}\)</span>: 0</li>
+</ul>
+<p>As can be seen, there are no "Hard" level problems, making it especially suitable for college students preparing for software engineering internship positions.</p>
+<h3 id="progress-checklist">Progress Checklist</h3>
+<p>For this study plan, I created a <a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/leetcode75_checklist_en.md">progress checklist</a> (sample below):</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 21%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 23%" />
+<col style="width: 8%" />
+<col style="width: 6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Problem No.</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Group</th>
+<th style="text-align: left;">Tags</th>
+<th style="text-align: left;">Tips</th>
+<th>Difficulty</th>
+<th>Done</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/merge-strings-alternately/">1768</a></td>
+<td style="text-align: left;">Merge Strings Alternately</td>
+<td style="text-align: left;">Array/String</td>
+<td style="text-align: left;">Two Pointers, String</td>
+<td style="text-align: left;">Use two pointers to iterate through both strings</td>
+<td><span class="math inline">\(\mathrm{\color{green}{Easy}}\)</span></td>
+<td>☐</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/greatest-common-divisor-of-strings/">1071</a></td>
+<td style="text-align: left;">Greatest Common Divisor of Strings</td>
+<td style="text-align: left;">Array/String</td>
+<td style="text-align: left;">String, Math</td>
+<td style="text-align: left;">Use GCD concept with string concatenation</td>
+<td><span class="math inline">\(\mathrm{\color{green}{Easy}}\)</span></td>
+<td>☐</td>
+</tr>
+<tr class="odd">
+<td>...</td>
+<td>...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<h3 id="study-tips">Study Tips</h3>
+<p>Based on the author's experience, if you already have solid programming skills and a good foundation in algorithms, then a total of about 80 hours of problem-solving and review should actually be sufficient. Refer to the progress checklist above, and I also offer the following suggestions:</p>
+<ul>
+<li>Track your progress using the checkbox column</li>
+<li>Set a daily or weekly goal for problem-solving</li>
+<li>Use the tips column as hints before looking at solutions</li>
+<li>Focus on understanding patterns within each group</li>
+<li>Review solutions and optimize for better time/space complexity</li>
+<li>Summarize after completing each section</li>
+<li>Revisit problems after a few days to reinforce learning</li>
+</ul>
+<h3 id="reference-solutions">Reference Solutions</h3>
+<p>The following table lists all 75 <a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/">reference solutions</a> that the author has collected, assembled, and verified. Most are written in Python, with a small portion implemented in C. All programs include comments that explain the key algorithmic steps, as well as their time and space complexities. The majority of the code also contains basic test cases. Readers are welcome to leave comments for discussion, feedback, and corrections.</p>
+<table>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 8%" />
+<col style="width: 22%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 25%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Problem No.</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Group</th>
+<th style="text-align: left;">Tags</th>
+<th style="text-align: left;">Tips</th>
+<th>Difficulty</th>
+<th>Solutions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/merge-strings-alternately/">1768</a></td>
+<td style="text-align: left;">Merge Strings Alternately</td>
+<td style="text-align: left;">Array/String</td>
+<td style="text-align: left;">Two Pointers, String</td>
+<td style="text-align: left;">Use two pointers to iterate through both strings</td>
+<td><span class="math inline">\(\mathrm{\color{green}{Easy}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC1768-MergeStringsAlternately.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/greatest-common-divisor-of-strings/">1071</a></td>
+<td style="text-align: left;">Greatest Common Divisor of Strings</td>
+<td style="text-align: left;">Array/String</td>
+<td style="text-align: left;">String, Math</td>
+<td style="text-align: left;">Use GCD concept with string concatenation</td>
+<td><span class="math inline">\(\mathrm{\color{green}{Easy}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC1071-GreatestCommonDivisorOfStrings.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/kids-with-the-greatest-number-of-candies/">1431</a></td>
+<td style="text-align: left;">Kids With the Greatest Number of Candies</td>
+<td style="text-align: left;">Array/String</td>
+<td style="text-align: left;">Array, Greedy</td>
+<td style="text-align: left;">Find max candies first, then check each kid</td>
+<td><span class="math inline">\(\mathrm{\color{green}{Easy}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC1431-KidsWithTheGreatestNumberOfCandies.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/can-place-flowers/">605</a></td>
+<td style="text-align: left;">Can Place Flowers</td>
+<td style="text-align: left;">Array/String</td>
+<td style="text-align: left;">Array, Greedy</td>
+<td style="text-align: left;">Check adjacent positions before placing</td>
+<td><span class="math inline">\(\mathrm{\color{green}{Easy}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC605-CanPlaceFlowers.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/reverse-vowels-of-a-string/">345</a></td>
+<td style="text-align: left;">Reverse Vowels of a String</td>
+<td style="text-align: left;">Array/String</td>
+<td style="text-align: left;">Two Pointers, String</td>
+<td style="text-align: left;">Use two pointers from start and end</td>
+<td><span class="math inline">\(\mathrm{\color{green}{Easy}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC345-ReverseVowelsOfAString.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/reverse-words-in-a-string/">151</a></td>
+<td style="text-align: left;">Reverse Words in a String</td>
+<td style="text-align: left;">Array/String</td>
+<td style="text-align: left;">Two Pointers, String</td>
+<td style="text-align: left;">Split by spaces and reverse order</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC151-ReverseWordsInAString.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/product-of-array-except-self/">238</a></td>
+<td style="text-align: left;">Product of Array Except Self</td>
+<td style="text-align: left;">Array/String</td>
+<td style="text-align: left;">Array, Prefix Sum</td>
+<td style="text-align: left;">Use left and right product arrays</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC238-ProductOfArrayExceptSelf.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/increasing-triplet-subsequence/">334</a></td>
+<td style="text-align: left;">Increasing Triplet Subsequence</td>
+<td style="text-align: left;">Array/String</td>
+<td style="text-align: left;">Array, Greedy</td>
+<td style="text-align: left;">Track smallest and second smallest values</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC334-IncreasingTripletSubsequence.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/string-compression/">443</a></td>
+<td style="text-align: left;">String Compression</td>
+<td style="text-align: left;">Array/String</td>
+<td style="text-align: left;">Two Pointers, String</td>
+<td style="text-align: left;">Count consecutive characters</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC443-StringCompression.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/move-zeroes/">283</a></td>
+<td style="text-align: left;">Move Zeroes</td>
+<td style="text-align: left;">Two Pointers</td>
+<td style="text-align: left;">Array, Two Pointers</td>
+<td style="text-align: left;">Use write pointer to place non-zero elements</td>
+<td><span class="math inline">\(\mathrm{\color{green}{Easy}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC283-MoveZeros.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/is-subsequence/">392</a></td>
+<td style="text-align: left;">Is Subsequence</td>
+<td style="text-align: left;">Two Pointers</td>
+<td style="text-align: left;">Two Pointers, String, DP</td>
+<td style="text-align: left;">Use two pointers to match characters</td>
+<td><span class="math inline">\(\mathrm{\color{green}{Easy}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC392-IsSubsequence.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/container-with-most-water/">11</a></td>
+<td style="text-align: left;">Container With Most Water</td>
+<td style="text-align: left;">Two Pointers</td>
+<td style="text-align: left;">Array, Two Pointers, Greedy</td>
+<td style="text-align: left;">Start from both ends, move shorter line</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC11-ContainerWithMostWater.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/max-number-of-k-sum-pairs/">1679</a></td>
+<td style="text-align: left;">Max Number of K-Sum Pairs</td>
+<td style="text-align: left;">Two Pointers</td>
+<td style="text-align: left;">Array, Hash Table, Two Pointers</td>
+<td style="text-align: left;">Sort array or use hash map</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC1679-MaxNumberOfKSumPairs.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/maximum-average-subarray-i/">643</a></td>
+<td style="text-align: left;">Maximum Average Subarray I</td>
+<td style="text-align: left;">Sliding Window</td>
+<td style="text-align: left;">Array, Sliding Window</td>
+<td style="text-align: left;">Use sliding window of size k</td>
+<td><span class="math inline">\(\mathrm{\color{green}{Easy}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC643-MaximumAverageSubarrayI.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/">1456</a></td>
+<td style="text-align: left;">Maximum Number of Vowels in a Substring of Given Length</td>
+<td style="text-align: left;">Sliding Window</td>
+<td style="text-align: left;">String, Sliding Window</td>
+<td style="text-align: left;">Slide window and count vowels</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC1456-MaximumNumberofVowelsInASubstirngOfGivenLength.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/max-consecutive-ones-iii/">1004</a></td>
+<td style="text-align: left;">Max Consecutive Ones III</td>
+<td style="text-align: left;">Sliding Window</td>
+<td style="text-align: left;">Array, Binary Search, Sliding Window, Prefix Sum</td>
+<td style="text-align: left;">Use sliding window with at most k zeros</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC1004-MaxConsectiveOnesII.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>17</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/">1493</a></td>
+<td style="text-align: left;">Longest Subarray of 1's After Deleting One Element</td>
+<td style="text-align: left;">Sliding Window</td>
+<td style="text-align: left;">Array, Binary Search, Sliding Window</td>
+<td style="text-align: left;">Allow at most one zero in window</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC1493-LongestSubarrayOf1sAfterDeletingOneElement.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>18</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-the-highest-altitude/">1732</a></td>
+<td style="text-align: left;">Find the Highest Altitude</td>
+<td style="text-align: left;">Prefix Sum</td>
+<td style="text-align: left;">Array, Prefix Sum</td>
+<td style="text-align: left;">Keep running sum of gains</td>
+<td><span class="math inline">\(\mathrm{\color{green}{Easy}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC1732-FindTheHighestAltitude.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>19</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-pivot-index/">724</a></td>
+<td style="text-align: left;">Find Pivot Index</td>
+<td style="text-align: left;">Prefix Sum</td>
+<td style="text-align: left;">Array, Prefix Sum</td>
+<td style="text-align: left;">Check if left sum equals right sum</td>
+<td><span class="math inline">\(\mathrm{\color{green}{Easy}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC724-FindPivotIndex.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>20</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-the-difference-of-two-arrays/">2215</a></td>
+<td style="text-align: left;">Find the Difference of Two Arrays</td>
+<td style="text-align: left;">Hash Map/Set</td>
+<td style="text-align: left;">Array, Hash Table</td>
+<td style="text-align: left;">Use sets to find unique elements</td>
+<td><span class="math inline">\(\mathrm{\color{green}{Easy}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC2215-FindTheDifferenceOfTwoArrays.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>21</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/unique-number-of-occurrences/">1207</a></td>
+<td style="text-align: left;">Unique Number of Occurrences</td>
+<td style="text-align: left;">Hash Map/Set</td>
+<td style="text-align: left;">Array, Hash Table</td>
+<td style="text-align: left;">Count frequencies, check uniqueness</td>
+<td><span class="math inline">\(\mathrm{\color{green}{Easy}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC1207-UniqueNumberOfOccurrences.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>22</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/determine-if-two-strings-are-close/">1657</a></td>
+<td style="text-align: left;">Determine if Two Strings Are Close</td>
+<td style="text-align: left;">Hash Map/Set</td>
+<td style="text-align: left;">Hash Table, String, Sorting</td>
+<td style="text-align: left;">Check character sets and frequency patterns</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC1657-DetermineIfTwoStringsAreClose.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>23</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/equal-row-and-column-pairs/">2352</a></td>
+<td style="text-align: left;">Equal Row and Column Pairs</td>
+<td style="text-align: left;">Hash Map/Set</td>
+<td style="text-align: left;">Array, Hash Table, Matrix, Simulation</td>
+<td style="text-align: left;">Convert rows/columns to comparable format</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC2352-EqualRowAndColumnPairs.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>24</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/removing-stars-from-a-string/">2390</a></td>
+<td style="text-align: left;">Removing Stars From a String</td>
+<td style="text-align: left;">Stack</td>
+<td style="text-align: left;">String, Stack, Simulation</td>
+<td style="text-align: left;">Use stack to handle star removals</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC2390-RemovingStarsFromAString.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>25</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/asteroid-collision/">735</a></td>
+<td style="text-align: left;">Asteroid Collision</td>
+<td style="text-align: left;">Stack</td>
+<td style="text-align: left;">Array, Stack, Simulation</td>
+<td style="text-align: left;">Simulate collisions with stack</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC735-AsteroidCollision.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>26</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/decode-string/">394</a></td>
+<td style="text-align: left;">Decode String</td>
+<td style="text-align: left;">Stack</td>
+<td style="text-align: left;">String, Stack, Recursion</td>
+<td style="text-align: left;">Use stack to handle nested brackets</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC394-DecodeString.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>27</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/number-of-recent-calls/">933</a></td>
+<td style="text-align: left;">Number of Recent Calls</td>
+<td style="text-align: left;">Queue</td>
+<td style="text-align: left;">Design, Queue, Data Stream</td>
+<td style="text-align: left;">Use queue to maintain time window</td>
+<td><span class="math inline">\(\mathrm{\color{green}{Easy}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC933-NumberOfRecentCalls.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>28</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/dota2-senate/">649</a></td>
+<td style="text-align: left;">Dota2 Senate</td>
+<td style="text-align: left;">Queue</td>
+<td style="text-align: left;">String, Greedy, Queue</td>
+<td style="text-align: left;">Use two queues for each party</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC649-Dota2Senate.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>29</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/">2095</a></td>
+<td style="text-align: left;">Delete the Middle Node of a Linked List</td>
+<td style="text-align: left;">Linked List</td>
+<td style="text-align: left;">Linked List, Two Pointers</td>
+<td style="text-align: left;">Use slow/fast pointers to find middle</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC2095-DeleteTheMiddleNodeOfALinkedList.c">C</a></td>
+</tr>
+<tr class="even">
+<td>30</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/odd-even-linked-list/">328</a></td>
+<td style="text-align: left;">Odd Even Linked List</td>
+<td style="text-align: left;">Linked List</td>
+<td style="text-align: left;">Linked List</td>
+<td style="text-align: left;">Separate odd/even positioned nodes</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC328-OddEvenLinkedList.c">C</a></td>
+</tr>
+<tr class="odd">
+<td>31</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/reverse-linked-list/">206</a></td>
+<td style="text-align: left;">Reverse Linked List</td>
+<td style="text-align: left;">Linked List</td>
+<td style="text-align: left;">Linked List, Recursion</td>
+<td style="text-align: left;">Use iterative or recursive approach</td>
+<td><span class="math inline">\(\mathrm{\color{green}{Easy}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC206-ReverseLinkedList.c">C</a></td>
+</tr>
+<tr class="even">
+<td>32</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list/">2130</a></td>
+<td style="text-align: left;">Maximum Twin Sum of a Linked List</td>
+<td style="text-align: left;">Linked List</td>
+<td style="text-align: left;">Linked List, Two Pointers, Stack</td>
+<td style="text-align: left;">Find middle, reverse second half</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC2130-MaximumTwinSumOfALinkedList.c">C</a></td>
+</tr>
+<tr class="odd">
+<td>33</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/maximum-depth-of-binary-tree/">104</a></td>
+<td style="text-align: left;">Maximum Depth of Binary Tree</td>
+<td style="text-align: left;">Binary Tree - DFS</td>
+<td style="text-align: left;">Tree, DFS, BFS, Binary Tree</td>
+<td style="text-align: left;">Use recursion or level-order traversal</td>
+<td><span class="math inline">\(\mathrm{\color{green}{Easy}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC104-MaximumDepathOfBinaryTree.c">C</a></td>
+</tr>
+<tr class="even">
+<td>34</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/leaf-similar-trees/">872</a></td>
+<td style="text-align: left;">Leaf-Similar Trees</td>
+<td style="text-align: left;">Binary Tree - DFS</td>
+<td style="text-align: left;">Tree, DFS, Binary Tree</td>
+<td style="text-align: left;">Compare leaf sequences</td>
+<td><span class="math inline">\(\mathrm{\color{green}{Easy}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC872-LeafSimilarTrees.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>35</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/count-good-nodes-in-binary-tree/">1448</a></td>
+<td style="text-align: left;">Count Good Nodes in Binary Tree</td>
+<td style="text-align: left;">Binary Tree - DFS</td>
+<td style="text-align: left;">Tree, DFS, Binary Tree</td>
+<td style="text-align: left;">Track maximum value in path</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC1448-CountGoodNodesInBinaryTree.c">C</a></td>
+</tr>
+<tr class="even">
+<td>36</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/path-sum-iii/">437</a></td>
+<td style="text-align: left;">Path Sum III</td>
+<td style="text-align: left;">Binary Tree - DFS</td>
+<td style="text-align: left;">Tree, DFS, Binary Tree</td>
+<td style="text-align: left;">Use prefix sum with DFS</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC437-PathSumIII.c">C</a></td>
+</tr>
+<tr class="odd">
+<td>37</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/longest-zigzag-path-in-a-binary-tree/">1372</a></td>
+<td style="text-align: left;">Longest ZigZag Path in a Binary Tree</td>
+<td style="text-align: left;">Binary Tree - DFS</td>
+<td style="text-align: left;">DP, Tree, DFS, Binary Tree</td>
+<td style="text-align: left;">Track direction and length</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC1372-LongestZigzagPathInABinaryTree.c">C</a></td>
+</tr>
+<tr class="even">
+<td>38</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/">236</a></td>
+<td style="text-align: left;">Lowest Common Ancestor of a Binary Tree</td>
+<td style="text-align: left;">Binary Tree - DFS</td>
+<td style="text-align: left;">Tree, DFS, Binary Tree</td>
+<td style="text-align: left;">Use recursive search</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC236-LowestCommonAncestorOfABinaryTree.c">C</a></td>
+</tr>
+<tr class="odd">
+<td>39</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/binary-tree-right-side-view/">199</a></td>
+<td style="text-align: left;">Binary Tree Right Side View</td>
+<td style="text-align: left;">Binary Tree - BFS</td>
+<td style="text-align: left;">Tree, DFS, BFS, Binary Tree</td>
+<td style="text-align: left;">Use level-order traversal</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC199-BinaryTreeRightSideView.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>40</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/">1161</a></td>
+<td style="text-align: left;">Maximum Level Sum of a Binary Tree</td>
+<td style="text-align: left;">Binary Tree - BFS</td>
+<td style="text-align: left;">Tree, BFS, Binary Tree</td>
+<td style="text-align: left;">Level-order traversal with sum tracking</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC1161-MaximumLevelSumOfABinaryTree.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>41</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/search-in-a-binary-search-tree/">700</a></td>
+<td style="text-align: left;">Search in a Binary Search Tree</td>
+<td style="text-align: left;">Binary Search Tree</td>
+<td style="text-align: left;">Tree, Binary Search Tree, Binary Tree</td>
+<td style="text-align: left;">Use BST property for efficient search</td>
+<td><span class="math inline">\(\mathrm{\color{green}{Easy}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC700-SearchInABinarySearchTree.c">C</a></td>
+</tr>
+<tr class="even">
+<td>42</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/delete-node-in-a-bst/">450</a></td>
+<td style="text-align: left;">Delete Node in a BST</td>
+<td style="text-align: left;">Binary Search Tree</td>
+<td style="text-align: left;">Tree, Binary Search Tree, Binary Tree</td>
+<td style="text-align: left;">Handle three cases: leaf, one child, two children</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC450-DeleteNoeInABST.c">C</a></td>
+</tr>
+<tr class="odd">
+<td>43</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/keys-and-rooms/">841</a></td>
+<td style="text-align: left;">Keys and Rooms</td>
+<td style="text-align: left;">Graphs - DFS</td>
+<td style="text-align: left;">DFS, BFS, Graph</td>
+<td style="text-align: left;">Use DFS/BFS to visit all reachable rooms</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC841-KeysAndRooms.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>44</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/number-of-provinces/">547</a></td>
+<td style="text-align: left;">Number of Provinces</td>
+<td style="text-align: left;">Graphs - DFS</td>
+<td style="text-align: left;">DFS, BFS, Union Find, Graph</td>
+<td style="text-align: left;">Count connected components</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC547-NumberOfProvinces.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>45</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/">1466</a></td>
+<td style="text-align: left;">Reorder Routes to Make All Paths Lead to the City Zero</td>
+<td style="text-align: left;">Graphs - DFS</td>
+<td style="text-align: left;">DFS, BFS, Graph</td>
+<td style="text-align: left;">Count edges that need to be reversed</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC1466-ReorderRoutesToMakeAllPathsLeadToTheCityZero.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>46</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/evaluate-division/">399</a></td>
+<td style="text-align: left;">Evaluate Division</td>
+<td style="text-align: left;">Graphs - DFS</td>
+<td style="text-align: left;">Array, DFS, BFS, Union Find, Graph, Shortest Path</td>
+<td style="text-align: left;">Build weighted graph, use DFS for queries</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC399-EvaluateDivision.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>47</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/nearest-exit-from-entrance-in-maze/">1926</a></td>
+<td style="text-align: left;">Nearest Exit from Entrance in Maze</td>
+<td style="text-align: left;">Graphs - BFS</td>
+<td style="text-align: left;">Array, BFS, Matrix</td>
+<td style="text-align: left;">Use BFS to find shortest path to boundary</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC1926-NearestExitFromEntranceInMaze.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>48</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/rotting-oranges/">994</a></td>
+<td style="text-align: left;">Rotting Oranges</td>
+<td style="text-align: left;">Graphs - BFS</td>
+<td style="text-align: left;">Array, BFS, Matrix</td>
+<td style="text-align: left;">Multi-source BFS simulation</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC994-RottingOranges.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>49</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/kth-largest-element-in-an-array/">215</a></td>
+<td style="text-align: left;">Kth Largest Element in an Array</td>
+<td style="text-align: left;">Heap/Priority Queue</td>
+<td style="text-align: left;">Array, Divide and Conquer, Sorting, Heap, Quickselect</td>
+<td style="text-align: left;">Use min heap of size k or quickselect</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC215-KthLargestElementInAnArray.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>50</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/smallest-number-in-infinite-set/">2336</a></td>
+<td style="text-align: left;">Smallest Number in Infinite Set</td>
+<td style="text-align: left;">Heap/Priority Queue</td>
+<td style="text-align: left;">Hash Table, Design, Heap</td>
+<td style="text-align: left;">Use min heap and set for added back numbers</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC2336-SmallestNumberInInfiniteSet.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>51</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/maximum-subsequence-score/">2542</a></td>
+<td style="text-align: left;">Maximum Subsequence Score</td>
+<td style="text-align: left;">Heap/Priority Queue</td>
+<td style="text-align: left;">Array, Greedy, Sorting, Heap</td>
+<td style="text-align: left;">Sort by one criterion, use heap for other</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC2542-MaximumSubsequenceScore.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>52</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/total-cost-to-hire-k-workers/">2462</a></td>
+<td style="text-align: left;">Total Cost to Hire K Workers</td>
+<td style="text-align: left;">Heap/Priority Queue</td>
+<td style="text-align: left;">Array, Two Pointers, Simulation, Heap</td>
+<td style="text-align: left;">Use two heaps for candidates from both ends</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC2462-TotalCostToHireKWorkers.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>53</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/guess-number-higher-or-lower/">374</a></td>
+<td style="text-align: left;">Guess Number Higher or Lower</td>
+<td style="text-align: left;">Binary Search</td>
+<td style="text-align: left;">Binary Search, Interactive, Game</td>
+<td style="text-align: left;">Standard binary search template</td>
+<td><span class="math inline">\(\mathrm{\color{green}{Easy}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC374-GuessNumberHigherOrLower.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>54</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/successful-pairs-of-spells-and-potions/">2300</a></td>
+<td style="text-align: left;">Successful Pairs of Spells and Potions</td>
+<td style="text-align: left;">Binary Search</td>
+<td style="text-align: left;">Array, Two Pointers, Binary Search, Sorting</td>
+<td style="text-align: left;">Sort potions, binary search for each spell</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC2300-SuccessfulPairsOfSpellsAndPotions.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>55</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-peak-element/">162</a></td>
+<td style="text-align: left;">Find Peak Element</td>
+<td style="text-align: left;">Binary Search</td>
+<td style="text-align: left;">Array, Binary Search</td>
+<td style="text-align: left;">Compare with neighbors in binary search</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC162-FindPeakElement.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>56</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/koko-eating-bananas/">875</a></td>
+<td style="text-align: left;">Koko Eating Bananas</td>
+<td style="text-align: left;">Binary Search</td>
+<td style="text-align: left;">Array, Binary Search</td>
+<td style="text-align: left;">Binary search on eating speed</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC875-KokoEatingBananas.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>57</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/letter-combinations-of-a-phone-number/">17</a></td>
+<td style="text-align: left;">Letter Combinations of a Phone Number</td>
+<td style="text-align: left;">Backtracking</td>
+<td style="text-align: left;">Hash Table, String, Backtracking</td>
+<td style="text-align: left;">Use DFS with mapping of digits to letters</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC17-LetterCombinationOfAPhoneNumber.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>58</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/combination-sum-iii/">216</a></td>
+<td style="text-align: left;">Combination Sum III</td>
+<td style="text-align: left;">Backtracking</td>
+<td style="text-align: left;">Array, Backtracking</td>
+<td style="text-align: left;">Backtrack with sum and count constraints</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC216-CombinationSumIII.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>59</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/n-th-tribonacci-number/">1137</a></td>
+<td style="text-align: left;">N-th Tribonacci Number</td>
+<td style="text-align: left;">DP - 1D</td>
+<td style="text-align: left;">Math, DP, Memoization</td>
+<td style="text-align: left;">Use iterative DP or memoization</td>
+<td><span class="math inline">\(\mathrm{\color{green}{Easy}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC1137-NthTribonacciNumber.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>60</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/min-cost-climbing-stairs/">746</a></td>
+<td style="text-align: left;">Min Cost Climbing Stairs</td>
+<td style="text-align: left;">DP - 1D</td>
+<td style="text-align: left;">Array, DP</td>
+<td style="text-align: left;">Choose minimum cost path</td>
+<td><span class="math inline">\(\mathrm{\color{green}{Easy}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC746-MinCostClimbingStairs.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>61</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/house-robber/">198</a></td>
+<td style="text-align: left;">House Robber</td>
+<td style="text-align: left;">DP - 1D</td>
+<td style="text-align: left;">Array, DP</td>
+<td style="text-align: left;">Track max money without adjacent houses</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC198-HouseRobber.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>62</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/domino-and-tromino-tiling/">790</a></td>
+<td style="text-align: left;">Domino and Tromino Tiling</td>
+<td style="text-align: left;">DP - 1D</td>
+<td style="text-align: left;">DP</td>
+<td style="text-align: left;">Consider different tile placements</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC790-DominoAndTrominoTiling.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>63</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/unique-paths/">62</a></td>
+<td style="text-align: left;">Unique Paths</td>
+<td style="text-align: left;">DP - Multidimensional</td>
+<td style="text-align: left;">Math, DP, Combinatorics</td>
+<td style="text-align: left;">Use DP table or combinatorics</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC62-UniquePaths.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>64</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/longest-common-subsequence/">1143</a></td>
+<td style="text-align: left;">Longest Common Subsequence</td>
+<td style="text-align: left;">DP - Multidimensional</td>
+<td style="text-align: left;">String, DP</td>
+<td style="text-align: left;">Build 2D DP table</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC1143-LongestCommonSubsequence.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>65</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/">714</a></td>
+<td style="text-align: left;">Best Time to Buy and Sell Stock with Transaction Fee</td>
+<td style="text-align: left;">DP - Multidimensional</td>
+<td style="text-align: left;">Array, DP, Greedy</td>
+<td style="text-align: left;">Track held and sold states</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC714-BestTimeToBuyAndSellStockWithTransactionFee.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>66</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/edit-distance/">72</a></td>
+<td style="text-align: left;">Edit Distance</td>
+<td style="text-align: left;">DP - Multidimensional</td>
+<td style="text-align: left;">String, DP</td>
+<td style="text-align: left;">Classic edit distance DP</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC72-EditDistance.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>67</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/counting-bits/">338</a></td>
+<td style="text-align: left;">Counting Bits</td>
+<td style="text-align: left;">Bit Manipulation</td>
+<td style="text-align: left;">DP, Bit Manipulation</td>
+<td style="text-align: left;">Use bit manipulation properties</td>
+<td><span class="math inline">\(\mathrm{\color{green}{Easy}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC338-CountingBits.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>68</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/single-number/">136</a></td>
+<td style="text-align: left;">Single Number</td>
+<td style="text-align: left;">Bit Manipulation</td>
+<td style="text-align: left;">Array, Bit Manipulation</td>
+<td style="text-align: left;">Use XOR properties</td>
+<td><span class="math inline">\(\mathrm{\color{green}{Easy}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC136-SingleNumber.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>69</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/minimum-flips-to-make-a-or-b-equal-to-c/">1318</a></td>
+<td style="text-align: left;">Minimum Flips to Make a OR b Equal to c</td>
+<td style="text-align: left;">Bit Manipulation</td>
+<td style="text-align: left;">Bit Manipulation</td>
+<td style="text-align: left;">Check each bit position</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC1318-MinimumFlipsToMakeAORBEqualToC.c">C</a></td>
+</tr>
+<tr class="even">
+<td>70</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/implement-trie-prefix-tree/">208</a></td>
+<td style="text-align: left;">Implement Trie (Prefix Tree)</td>
+<td style="text-align: left;">Trie</td>
+<td style="text-align: left;">Hash Table, String, Design, Trie</td>
+<td style="text-align: left;">Use nested hash maps or array of children</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC208-ImplementTrie.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>71</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/search-suggestions-system/">1268</a></td>
+<td style="text-align: left;">Search Suggestions System</td>
+<td style="text-align: left;">Trie</td>
+<td style="text-align: left;">Array, String, Trie</td>
+<td style="text-align: left;">Build trie, then traverse for each prefix</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC1268-SearchSuggestionsSystem.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>72</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/non-overlapping-intervals/">435</a></td>
+<td style="text-align: left;">Non-overlapping Intervals</td>
+<td style="text-align: left;">Intervals</td>
+<td style="text-align: left;">Array, DP, Greedy, Sorting</td>
+<td style="text-align: left;">Sort by end time, greedy selection</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC435-NonoverlappingIntervals.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>73</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/">452</a></td>
+<td style="text-align: left;">Minimum Number of Arrows to Burst Balloons</td>
+<td style="text-align: left;">Intervals</td>
+<td style="text-align: left;">Array, Greedy, Sorting</td>
+<td style="text-align: left;">Sort intervals, count non-overlapping</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC452-MinimumNumberOfArrowsToBurstBalloons.py">Python</a></td>
+</tr>
+<tr class="even">
+<td>74</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/daily-temperatures/">739</a></td>
+<td style="text-align: left;">Daily Temperatures</td>
+<td style="text-align: left;">Monotonic Stack</td>
+<td style="text-align: left;">Array, Stack, Monotonic Stack</td>
+<td style="text-align: left;">Use decreasing monotonic stack</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC739-DailyTemperatures.py">Python</a></td>
+</tr>
+<tr class="odd">
+<td>75</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/online-stock-span/">901</a></td>
+<td style="text-align: left;">Online Stock Span</td>
+<td style="text-align: left;">Monotonic Stack</td>
+<td style="text-align: left;">Stack, Design, Monotonic Stack, Data Stream</td>
+<td style="text-align: left;">Stack stores (price, span) pairs</td>
+<td><span class="math inline">\(\mathrm{\color{orange}{Medium}}\)</span></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/packetmania/LeetCode/blob/main/LC901-OnlineStockSpan.py">Python</a></td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/en/images/wechatpay.jpg" alt="Zixi WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/en/images/paypal.jpg" alt="Zixi PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Zixi
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://www.packetmania.net/en/2025/09/27/LeetCode-75-Solutions/" title="LeetCode 75 Study Plan Checklist and Solutions">https://www.packetmania.net/en/2025/09/27/LeetCode-75-Solutions/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/en/tags/C-C-Programming/" rel="tag"><i class="fa fa-tag"></i> C/C++ Programming</a>
+              <a href="/en/tags/Python-Programming/" rel="tag"><i class="fa fa-tag"></i> Python Programming</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/2025/02/22/Harvard-CS50-AI-intro/" rel="prev" title="Harvard CS50AI Introduction - Learning Artificial Intelligence from Scratch">
+                  <i class="fa fa-chevron-left"></i> Harvard CS50AI Introduction - Learning Artificial Intelligence from Scratch
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Gitalk Comments</a></li>
+            <li class="tab"><a href="#comment-utterances">Utterances Comments</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zixi</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>Symbols count total: </span>
+    <span title="Symbols count total">488k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>Reading time total &asymp;</span>
+    <span title="Reading time total">7:24</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5fc1fd29017282c7" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/en/js/comments.js"></script><script src="/en/js/utils.js"></script><script src="/en/js/motion.js"></script><script src="/en/js/next-boot.js"></script><script src="/en/js/bookmark.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/en/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdn.jsdelivr.net/npm/pdfobject@2.2.7/pdfobject.min.js","integrity":"sha256-ph3Dk89VmuTVXG6x/RDzk53SU9LPdAh1tpv0UvnDZ2I="},"url":"/en/lib/pdf/web/viewer.html"}</script>
+  <script src="/en/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"forest","dark":"forest"},"js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.13.4/dist/mermaid.min.js","integrity":"sha256-96rwDGMWIQYB0yKGp1sKi1yrjrLPj2oT39IpbCsIrsg="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/en/js/third-party/fancybox.js"></script>
+
+
+  
+  <script defer src="https://vercount.one/js"></script>
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/en/js/third-party/math/mathjax.js"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"packetmania","repo":"en","client_id":"a45f6ae3f97c1a467856","client_secret":"7d81b74f952b388f93dcb5a8c44cd12f657969fa","admin_user":"packetmania","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"0b6bcbaae09c6874934418af05ddd17e"}</script>
+<script src="/en/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"packetmania/en","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/en/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
