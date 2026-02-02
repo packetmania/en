@@ -408,9 +408,9 @@
     
     <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
     
-    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
-    
     <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
+    
+    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
     
     <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
     

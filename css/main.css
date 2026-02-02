@@ -310,7 +310,7 @@ dd {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-  font-size: 14px;
+  font-size: 0.875em;
   margin: 0 0 20px;
   width: 100%;
 }
@@ -612,7 +612,7 @@ pre figcaption {
   background: var(--highlight-gutter-background);
   color: var(--highlight-foreground);
   display: flow-root;
-  font-size: 14px;
+  font-size: 0.875em;
   line-height: 1.2;
   padding: 0.5em;
 }
@@ -633,7 +633,7 @@ code {
 }
 code {
   border-radius: 3px;
-  font-size: 14px;
+  font-size: 0.875em;
   padding: 2px 4px;
   overflow-wrap: break-word;
 }
@@ -3246,4 +3246,16 @@ mjx-container[display='true'] + br {
 .MathJax,
 mjx-container {
   font-size: 98% !important;
+}
+/* Adjusts the font size for all code blocks and inline code */
+code,
+pre code {
+  font-size: 95% !important; /* Adjust percentage as needed */
+  font-feature-settings: "liga" off, "clig" off, "dlig" off !important;
+  text-rendering: optimizeSpeed !important;
+}
+/* Adjusts the font size within tables */
+table th,
+table td {
+  font-size: 95% !important; /* Adjust percentage as needed */
 }
