@@ -221,8 +221,8 @@ body {
   background: var(--body-bg-color);
   box-sizing: border-box;
   color: var(--text-color);
-  font-family: EB Garamond, Noto Serif SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  font-size: 1.1em;
+  font-family: Inter, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-size: 0.94em;
   line-height: 2;
   min-height: 100%;
   position: relative;
@@ -234,7 +234,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: EB Garamond, Noto Serif SC, EB Garamond, Noto Serif SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Poppins, Inter, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-weight: bold;
   line-height: 1.5;
   margin: 30px 0 15px;
@@ -629,7 +629,7 @@ pre figcaption a:hover {
 }
 pre,
 code {
-  font-family: "PT Mono", Consolas, Monaco, Menlo, monospace;
+  font-family: "JetBrains Mono", Consolas, Monaco, Menlo, monospace;
 }
 code {
   border-radius: 3px;
@@ -1387,7 +1387,7 @@ pre code {
   color: var(--brand-hover-color);
 }
 .site-title {
-  font-family: Noto Serif SC, EB Garamond, Noto Serif SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Poppins, Inter, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 1.375em;
   font-weight: normal;
   line-height: 1.5;
@@ -2143,7 +2143,7 @@ pre code {
   width: 4px;
 }
 .post-body {
-  font-family: EB Garamond, Noto Serif SC, EB Garamond, Noto Serif SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Inter, Inter, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   overflow-wrap: break-word;
 }
 @media (min-width: 1200px) {
@@ -2330,7 +2330,7 @@ pre code {
 }
 .posts-expand .post-meta-container {
   color: #999;
-  font-family: EB Garamond, Noto Serif SC, EB Garamond, Noto Serif SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Inter, Inter, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 0.75em;
   margin-top: 3px;
 }
@@ -3241,4 +3241,9 @@ mjx-container[display='true'] + br {
 }
 .busuanzi-count #busuanzi_container_site_pv {
   display: inline;
+}
+/* Make MathJax output smaller */
+.MathJax,
+mjx-container {
+  font-size: 98% !important;
 }
