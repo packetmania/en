@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <author>
+    <name>Zixi</name>
+  </author>
+  <generator uri="https://hexo.io/">Hexo</generator>
+  <icon>https://www.packetmania.net/en/icon.png</icon>
+  <id>https://www.packetmania.net/en/</id>
+  <link href="https://www.packetmania.net/en/" rel="alternate"/>
+  <link href="https://www.packetmania.net/en/atom.xml" rel="self"/>
+  <rights>All rights reserved 2026, Zixi</rights>
+  <subtitle>Technology | Knowledge | Sharing</subtitle>
+  <title>PacketMania</title>
+  <updated>2026-07-24T01:01:52.175Z</updated>
+  <entry>
+    <author>
+      <name>Zixi</name>
+    </author>
+    <category term="Technical Know-how" scheme="https://www.packetmania.net/en/categories/Technical-Know-how/"/>
+    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
+    <category term="Network Security" scheme="https://www.packetmania.net/en/tags/Network-Security/"/>
+    <category term="Python Programming" scheme="https://www.packetmania.net/en/tags/Python-Programming/"/>
+    <id>https://www.packetmania.net/en/2026/07/23/RSA-attack-defense-2/</id>
+    <link href="https://www.packetmania.net/en/2026/07/23/RSA-attack-defense-2/"/>
+    <published>2026-07-24T01:01:52.175Z</published>
+    <summary>
+      <![CDATA[<p>This article first supplements two specific integer factorization
+methods - Fermat’s factorization method and Pollard’s rho algorithm,
+explaining the essence of their algorithms and applicable scenarios, and
+provides a Python reference implementation. Next, it analyzes in detail
+a classic low private exponent attack - Wiener’s attack, elaborating on
+the mathematical basis, the attack principle, and the attack procedure,
+with a complete Python program. The article also cites the latest
+research paper proposing a new upper bound for the private exponent when
+Wiener’s attack is successful and verifies the correctness of this limit
+with a test case.]]>
+    </summary>
+    <title>RSA: Attack and Defense (II)</title>
+    <updated>2026-07-24T01:01:52.175Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Zixi</name>
+    </author>
+    <category term="Interview Guide" scheme="https://www.packetmania.net/en/categories/Interview-Guide/"/>
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
+    <category term="Python Programming" scheme="https://www.packetmania.net/en/tags/Python-Programming/"/>
+    <id>https://www.packetmania.net/en/2025/09/27/LeetCode-75-Solutions/</id>
+    <link href="https://www.packetmania.net/en/2025/09/27/LeetCode-75-Solutions/"/>
+    <published>2025-09-27T17:11:08.000Z</published>
+    <summary>
+      <![CDATA[<p><a href="https://leetcode.com/studyplan/leetcode-75/">LeetCode 75</a>
+study plan selects 75 classic algorithm problems, covering strings,
+arrays, hashing, two pointers, linked lists, trees, graphs, and dynamic
+programming. It not only helps beginners quickly master commonly used
+algorithms and data structures, but also enables experienced programmers
+to review and fill in gaps systematically. Here we provide a full
+progress checklist and reference solutions for all 75
+problems.]]>
+    </summary>
+    <title>LeetCode 75 Study Plan Checklist and Solutions</title>
+    <updated>2026-07-24T01:01:52.138Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Zixi</name>
+    </author>
+    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
+    <category term="Artificial Intelligence and Machine Learning" scheme="https://www.packetmania.net/en/tags/Artificial-Intelligence-and-Machine-Learning/"/>
+    <id>https://www.packetmania.net/en/2025/02/22/Harvard-CS50-AI-intro/</id>
+    <link href="https://www.packetmania.net/en/2025/02/22/Harvard-CS50-AI-intro/"/>
+    <published>2025-02-23T01:05:26.000Z</published>
+    <summary>
+      <![CDATA[<p>Harvard’s CS50AI is an open online course that introduces the
+fundamentals of artificial intelligence using Python for programming and
+hands-on project-based learning. The course is created and taught by
+Harvard Professor David J. Malan and his team and is part of the popular
+CS50 computer science series, suitable for learners with some
+programming experience.]]>
+    </summary>
+    <title>Harvard CS50AI Introduction - Learning Artificial Intelligence from Scratch</title>
+    <updated>2026-07-24T01:01:52.135Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Zixi</name>
+    </author>
+    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
+    <category term="Linear Algebra" scheme="https://www.packetmania.net/en/tags/Linear-Algebra/"/>
+    <id>https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/</id>
+    <link href="https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/"/>
+    <published>2024-04-19T06:51:21.000Z</published>
+    <summary>
+      <![CDATA[<p>Here comes the solution and analysis for Purdue MA 26500 Spring 2022
+Final exam. This exam covers all topics from Chapter 1 (Linear Equations
+in Linear Algebra) to Chapter 7 Section 1 (Diagonalization of Symmetric
+Matrices).]]>
+    </summary>
+    <title>Purdue MA 26500 Spring 2022 Final Exam Solutions</title>
+    <updated>2026-07-24T01:01:52.141Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Zixi</name>
+    </author>
+    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
+    <id>https://www.packetmania.net/en/2024/03/27/Purdue-CS240-2018-Fall-Midterm2/</id>
+    <link href="https://www.packetmania.net/en/2024/03/27/Purdue-CS240-2018-Fall-Midterm2/"/>
+    <published>2024-03-28T04:47:01.000Z</published>
+    <summary>
+      <![CDATA[<p>Purdue University CS24000 is an undergraduate-level course that
+teaches students programming principles and techniques for
+problem-solving in the C programming language. Here are the solution and
+study notes for the Fall 2018 Midterm 2 exam.]]>
+    </summary>
+    <title>Purdue CS24000 Fall 2018 Midterm II Solutions</title>
+    <updated>2026-07-24T01:01:52.139Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Zixi</name>
+    </author>
+    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
+    <id>https://www.packetmania.net/en/2024/03/26/C-Prog-Exam-Review-Practices-2/</id>
+    <link href="https://www.packetmania.net/en/2024/03/26/C-Prog-Exam-Review-Practices-2/"/>
+    <published>2024-03-27T05:47:48.000Z</published>
+    <summary>
+      <![CDATA[<p>Here is a series of general study guides to college-level C
+programming courses. This is the second part covering dynamic memory
+allocation, advanced pointer operations, recursion, linked list and tree
+common functions, etc.]]>
+    </summary>
+    <title>Programming in C Exam Review and Practices (II)</title>
+    <updated>2026-07-24T01:01:52.132Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Zixi</name>
+    </author>
+    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
+    <id>https://www.packetmania.net/en/2024/03/24/Purdue-CS240-2022-Summer-Final/</id>
+    <link href="https://www.packetmania.net/en/2024/03/24/Purdue-CS240-2022-Summer-Final/"/>
+    <published>2024-03-25T02:04:07.000Z</published>
+    <summary>
+      <![CDATA[<p>Purdue University CS24000 is an undergraduate-level course that
+teaches students programming principles and techniques for
+problem-solving in the C programming language. Here are the solutions
+and study notes for the 2022 and 2023 Final exams.]]>
+    </summary>
+    <title>Purdue CS24000 2022 Summer Final Exam Solutions</title>
+    <updated>2026-07-24T01:01:52.140Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Zixi</name>
+    </author>
+    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
+    <category term="Linear Algebra" scheme="https://www.packetmania.net/en/tags/Linear-Algebra/"/>
+    <id>https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2022-Spring-Midterm2/</id>
+    <link href="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2022-Spring-Midterm2/"/>
+    <published>2024-03-01T07:41:24.000Z</published>
+    <summary>
+      <![CDATA[<p>Here comes the solution and analysis for Purdue MA 26500 Spring 2022
+Midterm II. This second midterm covers topics in Chapter 4 (Vector
+Spaces) and Chapter 5 (Eigenvalues and Eigenvectors) of the textbook.]]>
+    </summary>
+    <title>Purdue MA 26500 Spring 2022 Midterm II Solutions</title>
+    <updated>2026-07-24T01:01:52.148Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Zixi</name>
+    </author>
+    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
+    <category term="Linear Algebra" scheme="https://www.packetmania.net/en/tags/Linear-Algebra/"/>
+    <id>https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2023-Spring-Midterm2/</id>
+    <link href="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2023-Spring-Midterm2/"/>
+    <published>2024-03-01T07:21:56.000Z</published>
+    <summary>
+      <![CDATA[<p>Here comes the solution and analysis for Purdue MA 26500 Spring 2023
+Midterm II. This second midterm covers topics in Chapter 4 (Vector
+Spaces) and Chapter 5 (Eigenvalues and Eigenvectors) of the textbook.]]>
+    </summary>
+    <title>Purdue MA 26500 Spring 2023 Midterm II Solutions</title>
+    <updated>2026-07-24T01:01:52.159Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Zixi</name>
+    </author>
+    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
+    <id>https://www.packetmania.net/en/2024/02/28/C-Prog-Exam-Review-Practices-1/</id>
+    <link href="https://www.packetmania.net/en/2024/02/28/C-Prog-Exam-Review-Practices-1/"/>
+    <published>2024-02-29T07:10:00.000Z</published>
+    <summary>
+      <![CDATA[<p>Here is a series of general study guides to college-level C
+programming courses. This is the first part covering compilation and
+linking, file operations, typedef, structures, string operations, basic
+pointer operations, etc.]]>
+    </summary>
+    <title>Programming in C Exam Review and Practices (I)</title>
+    <updated>2026-07-24T01:01:52.132Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Zixi</name>
+    </author>
+    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
+    <id>https://www.packetmania.net/en/2024/02/25/Purdue-CS240-2022-2023-Summer-Midterm/</id>
+    <link href="https://www.packetmania.net/en/2024/02/25/Purdue-CS240-2022-2023-Summer-Midterm/"/>
+    <published>2024-02-26T00:16:50.000Z</published>
+    <summary>
+      <![CDATA[<p>Purdue University CS24000 is an undergraduate-level course that
+teaches students programming principles and techniques for
+problem-solving in the C programming language. Here are the solutions
+and study notes for the 2022 and 2023 Midterm exams.]]>
+    </summary>
+    <title>Purdue CS24000 2022 and 2023 Summer Midterm Exam Solutions</title>
+    <updated>2026-07-24T01:01:52.140Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Zixi</name>
+    </author>
+    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
+    <id>https://www.packetmania.net/en/2024/02/24/Purdue-CS240-2018-Fall-Midterm1/</id>
+    <link href="https://www.packetmania.net/en/2024/02/24/Purdue-CS240-2018-Fall-Midterm1/"/>
+    <published>2024-02-25T06:41:38.000Z</published>
+    <summary>
+      <![CDATA[<p>Purdue University CS24000 is an undergraduate-level course that
+teaches students programming principles and techniques for
+problem-solving in the C programming language. Here are the solution and
+study notes for the Fall 2018 Midterm 1 exam.]]>
+    </summary>
+    <title>Purdue CS24000 Fall 2018 Midterm I Solutions</title>
+    <updated>2026-07-24T01:01:52.138Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Zixi</name>
+    </author>
+    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
+    <category term="Linear Algebra" scheme="https://www.packetmania.net/en/tags/Linear-Algebra/"/>
+    <id>https://www.packetmania.net/en/2024/02/10/Purdue-MA265-2022-Fall-Midterm2/</id>
+    <link href="https://www.packetmania.net/en/2024/02/10/Purdue-MA265-2022-Fall-Midterm2/"/>
+    <published>2024-02-11T06:44:07.000Z</published>
+    <summary>
+      <![CDATA[<p>Here comes the solution and analysis for Purdue MA 26500 Fall 2022
+Midterm II. This second midterm covers topics in Chapter 4 (Vector
+Spaces) and Chapter 5 (Eigenvalues and Eigenvectors) of the textbook.]]>
+    </summary>
+    <title>Purdue MA 26500 Fall 2022 Midterm II Solutions</title>
+    <updated>2026-07-24T01:01:52.141Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Zixi</name>
+    </author>
+    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
+    <category term="Linear Algebra" scheme="https://www.packetmania.net/en/tags/Linear-Algebra/"/>
+    <id>https://www.packetmania.net/en/2024/01/28/Purdue-MA265-2023-Fall-Midterm1/</id>
+    <link href="https://www.packetmania.net/en/2024/01/28/Purdue-MA265-2023-Fall-Midterm1/"/>
+    <published>2024-01-29T04:18:14.000Z</published>
+    <summary>
+      <![CDATA[<p>This is the 3rd study notes post for the college linear algebra
+course. Here is the review of Purdue MA 26500 Fall 2023 midterm I. I
+provide solutions to all exam questions as well as concise explanations.]]>
+    </summary>
+    <title>Purdue MA 26500 Fall 2023 Midterm I Solutions</title>
+    <updated>2026-07-24T01:01:52.151Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Zixi</name>
+    </author>
+    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
+    <category term="Linear Algebra" scheme="https://www.packetmania.net/en/tags/Linear-Algebra/"/>
+    <id>https://www.packetmania.net/en/2024/01/23/Purdue-MA265-2023-Spring-Midterm1/</id>
+    <link href="https://www.packetmania.net/en/2024/01/23/Purdue-MA265-2023-Spring-Midterm1/"/>
+    <published>2024-01-23T19:04:43.000Z</published>
+    <summary>
+      <![CDATA[<p>This is the 2nd study notes post for the college linear algebra
+course. Here is the review of Purdue MA 26500 Spring 2023 midterm I. I
+provide solutions to all exam questions as well as concise explanations.]]>
+    </summary>
+    <title>Purdue MA 26500 Spring 2023 Midterm I Solutions</title>
+    <updated>2026-07-24T01:01:52.156Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Zixi</name>
+    </author>
+    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
+    <category term="Linear Algebra" scheme="https://www.packetmania.net/en/tags/Linear-Algebra/"/>
+    <id>https://www.packetmania.net/en/2024/01/19/Purdue-MA265-2022-Fall-Midterm1/</id>
+    <link href="https://www.packetmania.net/en/2024/01/19/Purdue-MA265-2022-Fall-Midterm1/"/>
+    <published>2024-01-20T06:55:57.000Z</published>
+    <summary>
+      <![CDATA[<p>Linear algebra provides mathematical tools to represent and analyze
+data and models in higher dimensions. It is essential for machine
+learning, computer graphics, control theory, and other scientific and
+engineering fields. Starting from this post, I will provide study guides
+and solutions to Purdue MA26500 exams in the last few
+semesters.]]>
+    </summary>
+    <title>Purdue MA 26500 Fall 2022 Midterm I Solutions</title>
+    <updated>2026-07-24T01:01:52.140Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Zixi</name>
+    </author>
+    <category term="Study Notes" scheme="https://www.packetmania.net/en/categories/Study-Notes/"/>
+    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
+    <id>https://www.packetmania.net/en/2023/11/14/Fermats-Little-Theorem/</id>
+    <link href="https://www.packetmania.net/en/2023/11/14/Fermats-Little-Theorem/"/>
+    <published>2023-11-15T07:52:56.000Z</published>
+    <summary>
+      <![CDATA[<p>In the history of mathematics, Pierre de Fermat was a special figure.
+His formal occupation was as a lawyer, but he was exceptionally fond of
+mathematics. Although an amateur, Fermat’s achievements in mathematics
+were no less than those of professional mathematicians of the same era.
+He contributed to modern calculus, analytic geometry, probability, and
+number theory. Especially in the field of number theory, Fermat was most
+interested and achieved the most outstanding
+results.]]>
+    </summary>
+    <title>The Inductive Proof and Applications of Fermat's Little Theorem</title>
+    <updated>2026-07-24T01:01:52.135Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Zixi</name>
+    </author>
+    <category term="Technical Know-how" scheme="https://www.packetmania.net/en/categories/Technical-Know-how/"/>
+    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
+    <category term="Network Security" scheme="https://www.packetmania.net/en/tags/Network-Security/"/>
+    <id>https://www.packetmania.net/en/2023/08/21/TLS1-3-intro/</id>
+    <link href="https://www.packetmania.net/en/2023/08/21/TLS1-3-intro/"/>
+    <published>2023-08-22T02:50:26.000Z</published>
+    <summary>
+      <![CDATA[<p>TLS (Transport Layer Security) is a cryptographic protocol to secure
+network communication. TLS 1.3 is the latest version of the TLS
+protocol, succeeding TLS 1.2. TLS 1.3 aims to provide more robust
+security, higher privacy protection, and better performance than
+previous versions. Here is a brief introduction to TLS 1.3. Also, we
+discuss NIST’s requirement for TLS 1.3 readiness and give examples of
+enabling TLS 1.3 in some commonly used web servers.]]>
+    </summary>
+    <title>TLS 1.3 and the Coming NIST Mandate</title>
+    <updated>2026-07-24T01:01:52.177Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Zixi</name>
+    </author>
+    <category term="Technical Know-how" scheme="https://www.packetmania.net/en/categories/Technical-Know-how/"/>
+    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
+    <category term="Network Security" scheme="https://www.packetmania.net/en/tags/Network-Security/"/>
+    <category term="Python Programming" scheme="https://www.packetmania.net/en/tags/Python-Programming/"/>
+    <id>https://www.packetmania.net/en/2023/03/16/RSA-attack-defense/</id>
+    <link href="https://www.packetmania.net/en/2023/03/16/RSA-attack-defense/"/>
+    <published>2023-03-17T04:00:32.000Z</published>
+    <summary>
+      <![CDATA[<p>RSA is a public-key cryptosystem built on top of an asymmetric
+encryption algorithm, which was jointly invented by three cryptographers
+and computer scientists at the Massachusetts Institute of Technology in
+1977. The RSA public-key encryption algorithm and cryptosystem provide
+data confidentiality and signature verification functions widely used on
+the Internet. Since its birth, RSA has become a major research object of
+modern cryptography. Many cryptanalysts and information security experts
+have been studying its possible theoretical flaws and technical
+loopholes to ensure security and reliability in practical
+applications.]]>
+    </summary>
+    <title>RSA: Attack and Defense (I)</title>
+    <updated>2026-07-24T01:01:52.175Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Zixi</name>
+    </author>
+    <category term="Technical Know-how" scheme="https://www.packetmania.net/en/categories/Technical-Know-how/"/>
+    <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
+    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
+    <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
+    <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
+    <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
+    <id>https://www.packetmania.net/en/2023/03/10/uClibc-tips/</id>
+    <link href="https://www.packetmania.net/en/2023/03/10/uClibc-tips/"/>
+    <published>2023-03-11T07:38:37.000Z</published>
+    <summary>
+      <![CDATA[<p><a href="https://www.uclibc.org">uClibc</a> is a small and exquisite
+C standard library for embedded Linux systems. It is widely used in the
+development of low-end embedded systems and Internet of Things devices.
+Here are some recent experiences to provide convenience for engineers
+who need to solve similar problems or meet corresponding
+requirements.]]>
+    </summary>
+    <title>Notes on Using uClibc Standard Library in Embedded Linux System</title>
+    <updated>2026-07-24T01:01:52.180Z</updated>
+  </entry>
+</feed>

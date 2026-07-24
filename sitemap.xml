@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://www.packetmania.net/en/categories/index.html</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/tags/index.html</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/ranking/index.html</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2022/08/20/picoCTF-Sum-O-Primes/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2023/03/10/uClibc-tips/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2023/08/21/TLS1-3-intro/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2026/07/23/RSA-attack-defense-2/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2022/11/10/Stop-TLS1-0-TLS1-1/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2023/03/16/RSA-attack-defense/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2022/01/22/Python-Textbook-RSA/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2021/12/29/RPi-NAS-Plex/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2023-Spring-Midterm2/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2024/01/23/Purdue-MA265-2023-Spring-Midterm1/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2024/01/28/Purdue-MA265-2023-Fall-Midterm1/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2022-Spring-Midterm2/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2024/02/10/Purdue-MA265-2022-Fall-Midterm2/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2024/04/18/Purdue-MA265-2022-Spring-Final/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2024/01/19/Purdue-MA265-2022-Fall-Midterm1/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2024/02/25/Purdue-CS240-2022-2023-Summer-Midterm/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2024/03/24/Purdue-CS240-2022-Summer-Final/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2024/03/27/Purdue-CS240-2018-Fall-Midterm2/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2021/12/26/IPv4-IPv6-checksum/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2024/02/24/Purdue-CS240-2018-Fall-Midterm1/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2025/09/27/LeetCode-75-Solutions/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2022/03/13/IPv6-Addressing/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2021/12/24/Endianness/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2025/02/22/Harvard-CS50-AI-intro/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2023/11/14/Fermats-Little-Theorem/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2022/11/21/DH-and-RSA/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2024/02/28/C-Prog-Exam-Review-Practices-1/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2022/04/22/ASAN-intro/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/2024/03/26/C-Prog-Exam-Review-Practices-2/</loc>
+    
+    <lastmod>2026-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+
+  <url>
+    <loc>https://www.packetmania.net/en</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  
+  <url>
+    <loc>https://www.packetmania.net/en/tags/C-C-Programming/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/tags/Cryptography/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/tags/Network-Security/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/tags/System-Programming/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/tags/Computer-Architecture/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/tags/Computer-Communications/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/tags/Artificial-Intelligence-and-Machine-Learning/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/tags/TCP-IP/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/tags/Python-Programming/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/tags/Cisco-Technology/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/tags/Linear-Algebra/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/tags/CTF/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/tags/Raspberry-Pi/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/tags/NAS/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+
+  
+  <url>
+    <loc>https://www.packetmania.net/en/categories/Study-Notes/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/categories/Tool-Guide/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/categories/Interview-Guide/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/categories/Technical-Know-how/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/categories/DIY-Projects/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.packetmania.net/en/categories/Technology-Review/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+</urlset>

@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/en/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="piAnQ_mnwkhV_qh4_Se1yLzM1IwOvuq-vmYfXBkWRXU">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Poppins:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.31/dist/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.packetmania.net","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"atom-one-light","dark":"atom-one-dark-reasonable"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk | utterances","storage":true,"lazyload":false,"nav":{"utterances":{"text":"Utterances Comments","order":-1},"gitalk":{"text":"Gitalk Comments","order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/en/js/config.js" defer></script>
+
+    <meta name="description" content="Here comes the solution and analysis for Purdue MA 26500 Spring 2023 Midterm II. This second midterm covers topics in Chapter 4 (Vector Spaces) and Chapter 5 (Eigenvalues and Eigenvectors) of the text">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Purdue MA 26500 Spring 2023 Midterm II Solutions">
+<meta property="og:url" content="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2023-Spring-Midterm2/index.html">
+<meta property="og:site_name" content="PacketMania">
+<meta property="og:description" content="Here comes the solution and analysis for Purdue MA 26500 Spring 2023 Midterm II. This second midterm covers topics in Chapter 4 (Vector Spaces) and Chapter 5 (Eigenvalues and Eigenvectors) of the text">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2023-Spring-Midterm2/MA265-Spring2023-Midterm2-P1.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2023-Spring-Midterm2/MA265-Spring2023-Midterm2-P2.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2023-Spring-Midterm2/MA265-Spring2023-Midterm2-P3.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2023-Spring-Midterm2/MA265-Spring2023-Midterm2-P4.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2023-Spring-Midterm2/MA265-Spring2023-Midterm2-P5.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2023-Spring-Midterm2/MA265-Spring2023-Midterm2-P6.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2023-Spring-Midterm2/MA265-Spring2023-Midterm2-P7.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2023-Spring-Midterm2/MA265-Spring2023-Midterm2-P8-1.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2023-Spring-Midterm2/MA265-Spring2023-Midterm2-P9-1.png">
+<meta property="og:image" content="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2023-Spring-Midterm2/MA265-Spring2023-Midterm2-P10-1.png">
+<meta property="article:published_time" content="2024-03-01T07:21:56.000Z">
+<meta property="article:modified_time" content="2026-07-24T01:01:52.159Z">
+<meta property="article:author" content="Zixi">
+<meta property="article:tag" content="Linear Algebra">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2023-Spring-Midterm2/MA265-Spring2023-Midterm2-P1.png">
+
+
+<link rel="canonical" href="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2023-Spring-Midterm2/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2023-Spring-Midterm2/","path":"2024/02/29/Purdue-MA265-2023-Spring-Midterm2/","title":"Purdue MA 26500 Spring 2023 Midterm II Solutions"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Purdue MA 26500 Spring 2023 Midterm II Solutions | PacketMania</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YKBP0QK7Z"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-9YKBP0QK7Z","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/en/js/third-party/analytics/google-analytics.js" defer></script>
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.31/dist/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+<script src="/en/js/comments.js" defer></script><script src="/en/js/utils.js" defer></script><script src="/en/js/motion.js" defer></script><script src="/en/js/sidebar.js" defer></script><script src="/en/js/next-boot.js" defer></script><script src="/en/js/bookmark.js" defer></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.5.0/dist/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/en/js/third-party/search/local-search.js" defer></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdn.jsdelivr.net/npm/pdfobject@2.3.1/pdfobject.min.js","integrity":"sha256-jI72I8ZLVflVOisZIOaLvRew3tyvzeu6aZXFm7P7dEo="},"url":"/en/lib/pdf/web/viewer.html"}</script>
+  <script src="/en/js/third-party/tags/pdf.js" defer></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"forest","dark":"forest"},"js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@11.10.1/dist/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js" defer></script>
+
+
+  <script src="/en/js/third-party/fancybox.js" defer></script>
+
+
+  <script src="/en/js/third-party/addtoany.js" defer></script>
+
+  
+  <script async src="https://vercount.one/js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/en/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PacketMania" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PacketMania</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Technology | Knowledge | Sharing</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/en/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-ranking"><a href="/en/ranking/" rel="section"><i class="fa fa-list-ol fa-fw"></i>Ranking</a></li><li class="menu-item menu-item-sitemap"><a href="/en/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li><li class="menu-item menu-item-rss"><a href="/en/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li><li class="menu-item menu-item-language"><a href="https://www.packetmania.net/" rel="section"><i class="fa fa-language fa-fw"></i>language</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#textbook-and-study-guide"><span class="nav-number">1.1.</span> <span class="nav-text">Textbook and Study Guide</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exam-information"><span class="nav-number">1.2.</span> <span class="nav-text">Exam Information</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reference-links"><span class="nav-number">1.3.</span> <span class="nav-text">Reference Links</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring-2023-midterm-ii-solutions"><span class="nav-number">2.</span> <span class="nav-text">Spring 2023 Midterm II
+Solutions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem-1-10-points"><span class="nav-number">2.1.</span> <span class="nav-text">Problem 1 (10 points)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#problem-2-10-points"><span class="nav-number">2.2.</span> <span class="nav-text">Problem 2 (10 points)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#problem-3-10-points"><span class="nav-number">2.3.</span> <span class="nav-text">Problem 3 (10 points)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#problem-4-10-points"><span class="nav-number">2.4.</span> <span class="nav-text">Problem 4 (10 points)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#problem-5-10-points"><span class="nav-number">2.5.</span> <span class="nav-text">Problem 5 (10 points)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#problem-6-10-points"><span class="nav-number">2.6.</span> <span class="nav-text">Problem 6 (10 points)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#problem-7-10-points"><span class="nav-number">2.7.</span> <span class="nav-text">Problem 7 (10 points)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#problem-8-10-points"><span class="nav-number">2.8.</span> <span class="nav-text">Problem 8 (10 points)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#problem-9-10-points"><span class="nav-number">2.9.</span> <span class="nav-text">Problem 9 (10 points)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#problem-10-10-points"><span class="nav-number">2.10.</span> <span class="nav-text">Problem 10 (10 points)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#summary"><span class="nav-number">3.</span> <span class="nav-text">Summary</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zixi"
+      src="/en/images/ccie.gif">
+  <p class="site-author-name" itemprop="name">Zixi</p>
+  <div class="site-description" itemprop="description">Computer Science & Technology and Software Design & Implementation</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/packetmania" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;packetmania" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zixiruoxue@gmail.com" title="E-Mail → mailto:zixiruoxue@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/zixisean" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zixisean" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/15140531" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;15140531" rel="noopener me" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_nd.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+        
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    Related Posts
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/en/2024/02/29/Purdue-MA265-2022-Spring-Midterm2/" rel="bookmark">
+        <time class="popular-posts-time">2024-02-29</time>
+        <br>
+      Purdue MA 26500 Spring 2022 Midterm II Solutions
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/en/2024/02/10/Purdue-MA265-2022-Fall-Midterm2/" rel="bookmark">
+        <time class="popular-posts-time">2024-02-10</time>
+        <br>
+      Purdue MA 26500 Fall 2022 Midterm II Solutions
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/en/2024/04/18/Purdue-MA265-2022-Spring-Final/" rel="bookmark">
+        <time class="popular-posts-time">2024-04-18</time>
+        <br>
+      Purdue MA 26500 Spring 2022 Final Exam Solutions
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/en/2024/01/23/Purdue-MA265-2023-Spring-Midterm1/" rel="bookmark">
+        <time class="popular-posts-time">2024-01-23</time>
+        <br>
+      Purdue MA 26500 Spring 2023 Midterm I Solutions
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2023-Spring-Midterm2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/ccie.gif">
+      <meta itemprop="name" content="Zixi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PacketMania">
+      <meta itemprop="description" content="Computer Science & Technology and Software Design & Implementation">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Purdue MA 26500 Spring 2023 Midterm II Solutions | PacketMania">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Purdue MA 26500 Spring 2023 Midterm II Solutions
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-29 23:21:56" itemprop="dateCreated datePublished" datetime="2024-02-29T23:21:56-08:00">2024-02-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-07-23 18:01:52" itemprop="dateModified" datetime="2026-07-23T18:01:52-07:00">2026-07-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/Study-Notes/" itemprop="url" rel="index"><span itemprop="name">Study Notes</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>2.8k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>10 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>Here comes the solution and analysis for Purdue MA 26500 Spring 2023
+Midterm II. This second midterm covers topics in Chapter 4 (Vector
+Spaces) and Chapter 5 (Eigenvalues and Eigenvectors) of the textbook.
+<span id="more"></span></p>
+<h2 id="introduction">Introduction</h2>
+<p>Purdue Department of Mathematics provides a linear algebra course MA
+26500 every semester, which is mandatory for undergraduate students of
+almost all science and engineering majors.</p>
+<h3 id="textbook-and-study-guide">Textbook and Study Guide</h3>
+<blockquote>
+<p><strong><em>Disclosure</em></strong>: <em>This blog site is
+reader-supported. When you buy through the affiliate links below, as an
+Amazon Associate, I earn a tiny commission from qualifying purchases.
+Thank you.</em></p>
+</blockquote>
+<p>MA 26500 textbook is <a target="_blank" rel="noopener" href="https://amzn.to/3Srz7qm"><em>Linear
+Algebra and its Applications</em></a> (6th Edition) by David C. Lay,
+Steven R. Lay, and Judi J. McDonald. The authors have also published a
+<a target="_blank" rel="noopener" href="https://amzn.to/428m5Bl"><em>student study guide</em></a> for
+it, which is available for purchase on Amazon as well.</p>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><a target="_blank" rel="noopener" href="https://amzn.to/3Srz7qm"><img
+src="https://www.packetmania.net/en/2024/01/19/Purdue-MA265-2022-Fall-Midterm1/Linear-Algebra-and-Its-Applications-6e.jpg" /></a></div><div class="group-picture-column"><a target="_blank" rel="noopener" href="https://amzn.to/428m5Bl"><img
+src="https://www.packetmania.net/en/2024/01/19/Purdue-MA265-2022-Fall-Midterm1/Linear-Algebra-and-Its-Appl-6th-study-guide.jpg" /></a></div></div></div>
+<h3 id="exam-information">Exam Information</h3>
+<p>MA 26500 midterm II covers the topics of Sections 4.1 – 5.7 in the
+textbook. It is usually scheduled at the beginning of the thirteenth
+week. The exam format is a combination of multiple-choice questions and
+short-answer questions. Students are given one hour to finish answering
+the exam questions.</p>
+<p>Based on the knowledge of linear equations and matrix algebra learned
+in the book chapters 1 and 2, Chapter 4 leads the student to a deep dive
+into the vector space framework. Chapter 5 introduces the important
+concepts of eigenvectors and eigenvalues. They are useful throughout
+pure and applied mathematics. Eigenvalues are also used to study
+differential equations and continuous dynamical systems, they provide
+critical information in engineering design,</p>
+<h3 id="reference-links">Reference Links</h3>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://www.math.purdue.edu/academic/courses/semester/semesters">Purdue
+Department of Mathematics Course Achive</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.math.purdue.edu/academic/courses/semester/202420/ma26500/index.html">Purdue
+MA 26500 Spring 2024</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.math.purdue.edu/academic/courses/oldexams.php?course=MA26500">Purdue
+MA 26500 Exam Archive</a></li>
+</ul>
+<h2 id="spring-2023-midterm-ii-solutions">Spring 2023 Midterm II
+Solutions</h2>
+<h3 id="problem-1-10-points">Problem 1 (10 points)</h3>
+<p><img src="MA265-Spring2023-Midterm2-P1.png"
+style="width:90.0%;height:90.0%" /></p>
+<details class="note success"><summary><p>Problem 1 Solution</p>
+</summary>
+<p><strong>A</strong> For <span class="math inline">\(5\times 7\)</span>
+matrix, if <span class="math inline">\(rank(A)=5\)</span>, the dimension
+of the null space is <span class="math inline">\(7-5=2\)</span>. So this
+is wrong.</p>
+<p><strong>B</strong> The matrix has 7 columns, but there are only 5
+pivot columns, so the columns of <span class="math inline">\(A\)</span>
+are NOT linearly independent. It is wrong.</p>
+<p><strong>C</strong> <span class="math inline">\(A^T\)</span> is a
+<span class="math inline">\(7\times 5\)</span> matrix, and the rank of
+<span class="math inline">\(A^T\)</span> is no more than 5. This
+statement is wrong.</p>
+<p><strong>D</strong> Because there are 5 pivots, each row has one
+pivot. Thus the rows of <span class="math inline">\(A\)</span> are
+linearly independent. This statement is TRUE.</p>
+<p><strong>E</strong> From statement D, it can be deduced that the
+dimension of the row space is 5, not 2.</p>
+<p>The answer is <mark><strong>D</strong></mark>.</p>
+
+</details>
+<h3 id="problem-2-10-points">Problem 2 (10 points)</h3>
+<p><img src="MA265-Spring2023-Midterm2-P2.png"
+style="width:90.0%;height:90.0%" /></p>
+<details class="note success"><summary><p>Problem 2 Solution</p>
+</summary>
+<p>The vector in this subspace <span class="math inline">\(H\)</span>
+can be represented as <span class="math display">\[
+a\begin{bmatrix}1\\1\\0\\0\end{bmatrix}+
+b\begin{bmatrix}-2\\-1\\1\\0\end{bmatrix}+
+c\begin{bmatrix}9\\6\\-3\\0\end{bmatrix}+
+d\begin{bmatrix}5\\5\\1\\5\end{bmatrix}+
+e\begin{bmatrix}4\\-3\\-9\\-10\end{bmatrix}
+\]</span></p>
+<p>Here the transformation matrix <span class="math inline">\(A\)</span>
+has 5 columns and each has 4 entries. Hence these column vectors are not
+linearly independent.</p>
+<blockquote>
+<p><em>Note that row operations do not affect the dependence relations
+between the column vectors. This makes it possible to use row reduction
+to find a basis for the column space.</em></p>
+</blockquote>
+<p><span class="math display">\[
+\begin{align}
+&amp;\begin{bmatrix}1 &amp;-2 &amp;9 &amp;5 &amp;4\\1 &amp;-1 &amp;6
+&amp;5 &amp;-3\\0 &amp;1 &amp;-3 &amp;1 &amp;-9\\0 &amp;0 &amp;0 &amp;5
+&amp;-10\end{bmatrix}\sim
+\begin{bmatrix}1 &amp;-2 &amp;9 &amp;5 &amp;4\\0 &amp;1 &amp;-3 &amp;0
+&amp;-7\\0 &amp;1 &amp;-3 &amp;1 &amp;-9\\0 &amp;0 &amp;0 &amp;5
+&amp;-10\end{bmatrix}\\
+\sim&amp;\begin{bmatrix}1 &amp;-2 &amp;9 &amp;5 &amp;4\\0 &amp;1 &amp;-3
+&amp;0 &amp;-7\\0 &amp;0 &amp;0 &amp;1 &amp;-2\\0 &amp;0 &amp;0 &amp;5
+&amp;-10\end{bmatrix}\sim
+\begin{bmatrix}\color{fuchsia}1 &amp;-2 &amp;9 &amp;5 &amp;4\\0
+&amp;\color{fuchsia}1 &amp;-3 &amp;0 &amp;-7\\0 &amp;0 &amp;0
+&amp;\color{fuchsia}1 &amp;-2\\0 &amp;0 &amp;0 &amp;0
+&amp;0\end{bmatrix}
+\end{align}
+\]</span></p>
+<p>The dimension of <span class="math inline">\(H\)</span> is the number
+of linearly independent columns of the matrix, which is the number of
+pivots in <span class="math inline">\(A\)</span>’s row echelon form. So
+the dimension is 3.</p>
+<p>The answer is <mark><strong>C</strong></mark>.</p>
+
+</details>
+<h3 id="problem-3-10-points">Problem 3 (10 points)</h3>
+<p><img src="MA265-Spring2023-Midterm2-P3.png"
+style="width:90.0%;height:90.0%" /></p>
+<details class="note success"><summary><p>Problem 3 Solution</p>
+</summary>
+<p>First, find the eigenvalues for the matrix <span
+class="math display">\[
+\begin{align}
+\det A-\lambda I &amp;=\begin{vmatrix}2-\lambda &amp;2\\3
+&amp;1-\lambda\end{vmatrix}=(\lambda^2-3\lambda+2)-6\\&amp;=\lambda^2-3\lambda-4=(\lambda+1)(\lambda-4)=0
+\end{align}
+\]</span> The above gives two real eigenvalues <span
+class="math inline">\(-1\)</span> and <span
+class="math inline">\(4\)</span>. Since they have opposite signs, the
+origin is a saddle point.</p>
+<p>The answer is <mark><strong>A</strong></mark>.</p>
+
+</details>
+<h3 id="problem-4-10-points">Problem 4 (10 points)</h3>
+<p><img src="MA265-Spring2023-Midterm2-P4.png"
+style="width:90.0%;height:90.0%" /></p>
+<details class="note success"><summary><p>Problem 4 Solution</p>
+</summary>
+<p><strong>(i)</strong> is NOT true. Referring to Theorem 4 of Section
+5.2 “The Characteristic Equation”,</p>
+<blockquote>
+<p>If <span class="math inline">\(n\times n\)</span> matrices <span
+class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span> are similar, then they have the same
+characteristic polynomial and hence the same eigenvalues (with the same
+multiplicities).</p>
+</blockquote>
+<p>But the reverse statement is NOT true. They are matrices that are not
+similar even though they have the same eigenvalues.</p>
+<p><strong>(ii)</strong> is NOT true either. Referring to Theorem 6 of
+Section 5.3 “Diagonalization”,</p>
+<blockquote>
+<p>An <span class="math inline">\(n\times n\)</span> matrix with <span
+class="math inline">\(n\)</span> distinct eigenvalues is
+diagonalizable.</p>
+</blockquote>
+<p>The book mentions that the above theorem <u>provides a sufficient
+condition for a matrix to be diagonalizable</u>. So the reverse
+statement is NOT true. There are examples that a diagonalizable matrix
+has eigenvalues with multiplicity 2 or more.</p>
+<p><strong>(iii)</strong> Since the identity matrix is symmetric, and
+<span class="math inline">\(\det A=\det A^T\)</span> for <span
+class="math inline">\(n\times n\)</span> matrix, we can write <span
+class="math inline">\(\det (A-\lambda I) = \det (A-\lambda I)^T =
+\det(A^T-\lambda I)\)</span>. So matrix <span
+class="math inline">\(A\)</span> and its transpose have the same
+eigenvalues. This statement is TRUE.</p>
+<p><strong>(iv)</strong> This is definitely TRUE as we can find
+eigenvectors that are linearly independent and span <span
+class="math inline">\(\mathbb R^n\)</span>.</p>
+<p><strong>(v)</strong> If matrix <span class="math inline">\(A\)</span>
+has zero eigenvalue, <span class="math inline">\(\det A-0I=\det
+A=0\)</span>, it is not invertible. This statement is TRUE.</p>
+<p>In summary, statements (iii), (iv), and (v) are TRUE. The answer is
+<mark><strong>E</strong></mark>.</p>
+
+</details>
+<h3 id="problem-5-10-points">Problem 5 (10 points)</h3>
+<p><img src="MA265-Spring2023-Midterm2-P5.png"
+style="width:90.0%;height:90.0%" /></p>
+<details class="note success"><summary><p>Problem 5 Solution</p>
+</summary>
+<p><strong>A</strong> This vector set does not include zero vector
+(<span class="math inline">\(x = y = 0\)</span>). So it is not a
+subspace of <span class="math inline">\(V\)</span>.</p>
+<p><strong>B</strong> For eigenvalue 3, we can find out the eigenvector
+from <span class="math inline">\(\begin{bmatrix}0 &amp;0\\2
+&amp;0\end{bmatrix}\pmb v=\pmb 0\)</span>, it is <span
+class="math inline">\(\begin{bmatrix}0\\\ast\end{bmatrix}\)</span>. All
+vectors in this set satisfy three subspace properties. So this one is
+good.</p>
+<p><strong>C</strong> This cannot be the right choice. Since the 3rd
+entry is always 1, the vector set cannot be closed under vector addition
+and multiplication by scalars. Also, it does not include zero vector
+either.</p>
+<p><strong>D</strong> For <span
+class="math inline">\(p(x)=a_0+a_1x+a_2x^2\)</span> and <span
+class="math inline">\(p(1)p(2)=0\)</span>, this gives <span
+class="math display">\[(a_0+a_1+a_2)(a_0+2a_1+4a_2)=0\]</span> To verify
+if this is closed under vector addition. Define <span
+class="math inline">\(q(x)=b_0+b_1x+b_2x^2\)</span> that has <span
+class="math inline">\(q(1)q(2)=0\)</span>, this gives <span
+class="math display">\[(b_0+b_1+b_2)(b_0+2b_1+4b_2)=0\]</span> Now let
+<span class="math inline">\(r(x)=p(x)+q(x)=c_0+c_1x+c_2x^2\)</span>,
+where <span class="math inline">\(c_i=a_i+b_i\)</span> for <span
+class="math inline">\(i=0,1,2\)</span>. Is it true that <span
+class="math display">\[(c_0+c_1+c_2)(c_0+2c_1+4c_2)=0\]</span> No, it is
+not necessarily the case. This one is not the right choice either.</p>
+<p><strong>E</strong> Invertible matrix indicates that its determinant
+is not 0. The all-zero matrix is certainly not invertible, so it is not
+in the specified set. Moreover, two invertible matrices can add to a
+non-invertible matrix, such as the following example <span
+class="math display">\[
+\begin{bmatrix}2 &amp;1\\1 &amp;2\end{bmatrix}+\begin{bmatrix}-2
+&amp;1\\-1 &amp;-2\end{bmatrix}=\begin{bmatrix}0 &amp;2\\0
+&amp;0\end{bmatrix}
+\]</span> This set is NOT a subspace of <span
+class="math inline">\(V\)</span>.</p>
+<p>The answer is <mark><strong>B</strong></mark>.</p>
+
+</details>
+<h3 id="problem-6-10-points">Problem 6 (10 points)</h3>
+<p><img src="MA265-Spring2023-Midterm2-P6.png"
+style="width:90.0%;height:90.0%" /></p>
+<details class="note success"><summary><p>Problem 6 Solution</p>
+</summary>
+<p>Recall from the Problem 4 solution that a matrix with <span
+class="math inline">\(n\)</span> distinct eigenvalues is
+diagonalizable.</p>
+<p><strong>(i)</strong> The following calculation shows this matrix has
+two eigenvalues 4 and 1. So it is diagonalizable. <span
+class="math display">\[\begin{vmatrix}2-\lambda &amp;2\\1
+&amp;3-\lambda\end{vmatrix}=(\lambda^2-5\lambda+6)-2=(\lambda-1)(\lambda-4)=0\]</span></p>
+<p><strong>(ii)</strong> It is easy to see that there is one eigenvalue
+<span class="math inline">\(-3\)</span> with multiplicity 2. However, we
+can only get one eigenvector <span
+class="math inline">\(\begin{bmatrix}1\\0\end{bmatrix}\)</span> for such
+eigenvalue. So it is NOT diagonalizable.</p>
+<p><strong>(iii)</strong> To find out the eigenvalues for this <span
+class="math inline">\(3\times 3\)</span> matrix, do the calculation as
+below <span class="math display">\[
+\begin{vmatrix}2-\lambda &amp;3 &amp;5\\0 &amp;2-\lambda &amp;1\\0
+&amp;1 &amp;2-\lambda\end{vmatrix}=(2-\lambda)\begin{vmatrix}2-\lambda
+&amp;1\\1 &amp;2-\lambda\end{vmatrix}=(2-\lambda)(\lambda-3)(\lambda-1)
+\]</span> So we get 3 eigenvalues 2, 3, and 1. This matrix is
+diagonalizable.</p>
+<p><strong>(iv)</strong> This is an upper triangular matrix, so the
+diagonal entries (5, 4, 2) are all eigenvalues. As this matrix has three
+distinct eigenvalues, it is diagonalizable.</p>
+<p>Since only (ii) is not diagonalizable, the answer is
+<mark><strong>E</strong></mark>.</p>
+
+</details>
+<h3 id="problem-7-10-points">Problem 7 (10 points)</h3>
+<p><img src="MA265-Spring2023-Midterm2-P7.png"
+style="width:90.0%;height:90.0%" /></p>
+<details class="note success"><summary><p>Problem 7 Solution</p>
+</summary>
+<p>This problem involves complex eigenvalues.</p>
+<p><strong>Step 1:</strong> Find the eigenvalue of the given matrix
+<span class="math display">\[
+\begin{vmatrix}1-\lambda &amp;-1\\1
+&amp;1-\lambda\end{vmatrix}=\lambda^2-2\lambda+2=0
+\]</span> Solve this with the quadratic formula <span
+class="math display">\[
+\lambda=\frac {-b\pm {\sqrt {b^{2}-4ac}}}{2a}=\frac {-(-2)\pm {\sqrt
+{(-2)^2-4\times 1\times 2}}}{2\times 1}=1\pm i
+\]</span></p>
+<p><strong>Step 2:</strong> Find the corresponding eigenvector for <span
+class="math inline">\(\lambda=1+i\)</span> <span class="math display">\[
+\begin{bmatrix}-i &amp;-1\\1 &amp;-i\end{bmatrix}\sim\begin{bmatrix}0
+&amp;0\\1 &amp;-i\end{bmatrix}
+\]</span> This gives <span class="math inline">\(x_1=ix_2\)</span>, so
+the eigervector can be <span
+class="math inline">\(\begin{bmatrix}i\\1\end{bmatrix}\)</span>.</p>
+<p><strong>Step 3:</strong> Generate the real solution</p>
+<p>From Section 5.7 “Applications to Differential Equations”, we learn
+that the general solution to a matrix differential equation is <span
+class="math display">\[\pmb x(t)=c_1\pmb{v}_1 e^{\lambda_1
+t}+c_2\pmb{v}_2 e^{\lambda_2 t}\]</span> For a real matrix, complex
+eigenvalues and associated eigenvectors come in conjugate pairs.
+<strong>The real and imaginary parts of <span
+class="math inline">\(\pmb{v}_1 e^{\lambda_1 t}\)</span> are (real)
+solutions of <span class="math inline">\(\pmb x&#39;(t)=A\pmb
+x(t)\)</span>, because they are linear combinations of <span
+class="math inline">\(\pmb{v}_1 e^{\lambda_1 t}\)</span> and <span
+class="math inline">\(\pmb{v}_2 e^{\lambda_2 t}\)</span>.</strong> (See
+the proof in “Complex Eigenvalues” of Section 5.7)</p>
+<p>Now use Euler’s formula (<span class="math inline">\(e^{ix}=\cos
+x+i\sin x\)</span>), we have <span class="math display">\[\pmb{v}_1
+e^{\lambda_1 t}=e^t(\cos t+i\sin t)\begin{bmatrix}i\\1\end{bmatrix}\\
+=e^t\begin{bmatrix}-\sin t+i\cos t\\\cos t+i\sin t\end{bmatrix}\]</span>
+The general REAL solution is the linear combination of the REAL and
+IMAGINARY parts of the result above, it is <span
+class="math display">\[c_1 e^t\begin{bmatrix}-\sin t\\\cos
+t\end{bmatrix}+
+c_2 e^t\begin{bmatrix}\cos t\\\sin t\end{bmatrix}\]</span></p>
+<p>At first glance, none on the list matches our answer above. However,
+let’s inspect this carefully. We can exclude C and D first since they
+both have <span class="math inline">\(e^{-t}\)</span> that is not in our
+answer. Next, it is impossible to be E because it has no minus sign.</p>
+<p>Now between A and B, which one is most likely to be the right one? We
+see that B has <span class="math inline">\(-\cos t\)</span> on top of
+<span class="math inline">\(\sin t\)</span>. That could not match our
+answer no matter what <span class="math inline">\(c_2\)</span> is. If we
+switch <span class="math inline">\(c_1\)</span> and <span
+class="math inline">\(c_2\)</span> of A and inverse the sign of the 2nd
+vector, A would become the same as our answer. Since <span
+class="math inline">\(c_1\)</span> and <span
+class="math inline">\(c_2\)</span> are just scalars, this deduction is
+reasonable.</p>
+<p>So the answer is <mark><strong>A</strong></mark>.</p>
+
+</details>
+<h3 id="problem-8-10-points">Problem 8 (10 points)</h3>
+<p><img src="MA265-Spring2023-Midterm2-P8-1.png"
+style="width:90.0%;height:90.0%" /> <img
+src="MA265-Spring2023-Midterm2-P8-2.png"
+style="width:90.0%;height:90.0%" /></p>
+<details class="note success"><summary><p>Problem 8 Solution</p>
+</summary>
+<p><strong>(1)</strong> Directly apply <span
+class="math inline">\(p(t)=t^2-1\)</span> to the mapping function <span
+class="math display">\[T(t^2-1)=0^2-1+(1^2-1)t+(2^2-1)t^2=-1+3t^2\]</span></p>
+<p><strong>(2)</strong> Denote <span
+class="math inline">\(p(t)=a_0+a_1t+a_2t^2\)</span>, <span
+class="math inline">\(T(p(t))=b_0+b_1t+b_2t^2\)</span>, then <span
+class="math display">\[
+T(a_0+a_1t+a_2t^2)=a_0+(a_0+a_1+a_2)t+(a_0+2a_1+4a_2)t^2
+\]</span> So <span class="math display">\[
+\begin{align}
+a_0 &amp;&amp;=b_0\\
+a_0 &amp;+ a_1 + a_2 &amp;=b_1\\
+a_0 &amp;+ 2a_1 + 4a_2 &amp;=b_2
+\end{align}
+\]</span> This gives the <span
+class="math inline">\([T]_B=\begin{bmatrix}1 &amp;0 &amp;0\\1 &amp;1
+&amp;1\\1 &amp;2 &amp;4\end{bmatrix}\)</span>.</p>
+<p>Alternatively, we can form the same matrix with the transformation of
+each base vector: <span class="math display">\[\begin{align}
+T(1)&amp;=1+t+t^2 =&gt; \begin{bmatrix}1\\1\\1\end{bmatrix}\\
+T(t)&amp;=0+t+2t^2 =&gt; \begin{bmatrix}0\\1\\2\end{bmatrix}\\
+T(t^2)&amp;=0+t+4t^2 =&gt; \begin{bmatrix}0\\1\\4\end{bmatrix}\
+\end{align}\]</span></p>
+
+</details>
+<h3 id="problem-9-10-points">Problem 9 (10 points)</h3>
+<p><img src="MA265-Spring2023-Midterm2-P9-1.png"
+style="width:90.0%;height:90.0%" /> <img
+src="MA265-Spring2023-Midterm2-P9-2.png"
+style="width:90.0%;height:90.0%" /></p>
+<details class="note success"><summary><p>Problem 9 Solution</p>
+</summary>
+<p><strong>(1)</strong> Find the eigenvalues with <span
+class="math inline">\(\det (A-\lambda I)=0\)</span> <span
+class="math display">\[
+\begin{vmatrix}1-\lambda &amp;2 &amp;-1\\0 &amp;3-\lambda &amp;-1\\0
+&amp;-2 &amp;2-\lambda\end{vmatrix}=(1-\lambda)\begin{vmatrix}3-\lambda
+&amp;-1\\-2
+&amp;2-\lambda\end{vmatrix}=(1-\lambda)(\lambda-4)(\lambda-1)
+\]</span> So there are <span
+class="math inline">\(\lambda_1=\lambda_2=1\)</span>, and <span
+class="math inline">\(\lambda_3=4\)</span>.</p>
+<p>Next is to find the eigenvectors for each eigenvalue</p>
+<ul>
+<li><p>For <span class="math inline">\(\lambda_1=\lambda_2=1\)</span>,
+apply row reduction to the agumented matrix of the system <span
+class="math inline">\((A-\lambda I)\pmb x=\pmb 0\)</span> <span
+class="math display">\[
+\begin{bmatrix}0 &amp;2 &amp;-1 &amp;0\\0 &amp;2 &amp;-1 &amp;0\\0
+&amp;-2 &amp;1 &amp;0\end{bmatrix}\sim
+\begin{bmatrix}0 &amp;2 &amp;-1 &amp;0\\0 &amp;0 &amp;0 &amp;0\\0 &amp;0
+&amp;0 &amp;0\end{bmatrix}
+\]</span> With two free variables <span
+class="math inline">\(x_1\)</span> and <span
+class="math inline">\(x_2\)</span>, we get <span
+class="math inline">\(x_3=2x_2\)</span>. So the parametric vector form
+can be written as <span class="math display">\[
+\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix}=
+x_1\begin{bmatrix}1\\0\\0\end{bmatrix}+x_2\begin{bmatrix}0\\1\\2\end{bmatrix}
+\]</span> So the eigenvectors are <span
+class="math inline">\(\begin{bmatrix}1\\0\\0\end{bmatrix}\)</span> and
+<span
+class="math inline">\(\begin{bmatrix}0\\1\\2\end{bmatrix}\)</span>.</p></li>
+<li><p>For <span class="math inline">\(\lambda_3=4\)</span>, follow the
+same process <span class="math display">\[
+\begin{bmatrix}-3 &amp;2 &amp;-1 &amp;0\\0 &amp;-1 &amp;-1 &amp;0\\0
+&amp;-2 &amp;-2 &amp;0\end{bmatrix}\sim
+\begin{bmatrix}3 &amp;-2 &amp;1 &amp;0\\0 &amp;1 &amp;1 &amp;0\\0 &amp;0
+&amp;0 &amp;0\end{bmatrix}
+\]</span> With one free variable <span
+class="math inline">\(x_3\)</span>, we get <span
+class="math inline">\(x_1=x_2=-x_3\)</span>. So the eigenvector can be
+written as <span
+class="math inline">\(\begin{bmatrix}1\\1\\-1\end{bmatrix}\)</span> (or
+<span
+class="math inline">\(\begin{bmatrix}-1\\-1\\1\end{bmatrix}\)</span>).</p></li>
+</ul>
+<p><strong>(2)</strong> We can directly construct <span
+class="math inline">\(P\)</span> from the vectors in last step, and
+construct <span class="math inline">\(D\)</span> from the corresponding
+eigenvalues. Here are the answers: <span class="math display">\[
+P=\begin{bmatrix}\color{fuchsia}1 &amp;\color{fuchsia}0
+&amp;\color{blue}1\\\color{fuchsia}0 &amp;\color{fuchsia}1
+&amp;\color{blue}1\\\color{fuchsia}0 &amp;\color{fuchsia}2
+&amp;\color{blue}{-1}\end{bmatrix},\;
+D=\begin{bmatrix}\color{fuchsia}1 &amp;0 &amp;0\\0 &amp;\color{fuchsia}1
+&amp;0\\0 &amp;0 &amp;\color{blue}4\end{bmatrix}
+\]</span></p>
+
+</details>
+<h3 id="problem-10-10-points">Problem 10 (10 points)</h3>
+<p><img src="MA265-Spring2023-Midterm2-P10-1.png"
+style="width:90.0%;height:90.0%" /> <img
+src="MA265-Spring2023-Midterm2-P10-2.png"
+style="width:90.0%;height:90.0%" /> <img
+src="MA265-Spring2023-Midterm2-P10-3.png"
+style="width:90.0%;height:90.0%" /></p>
+<details class="note success"><summary><p>Problem 10 Solution</p>
+</summary>
+<p><strong>(1)</strong> Find the eigenvalues with <span
+class="math inline">\(\det (A-\lambda I)=0\)</span><br />
+<span class="math display">\[\begin{vmatrix}-4-\lambda &amp;-5\\2
+&amp;3-\lambda\end{vmatrix}=(\lambda^2+\lambda-12)+10=(\lambda+2)(\lambda-1)=0\]</span>
+So there are two eigervalues <span class="math inline">\(-2\)</span> and
+1. Next is to find the eigenvectors for each eigenvalue.</p>
+<p>For <span class="math inline">\(\lambda=-2\)</span>, the matrix
+becomes <span class="math display">\[\begin{bmatrix}-2 &amp;-5\\2
+&amp;5\end{bmatrix}=\begin{bmatrix}0 &amp;0\\2
+&amp;5\end{bmatrix}\]</span> This yields eigen vector <span
+class="math inline">\(\begin{bmatrix}5\\-2\end{bmatrix}\)</span>.</p>
+<p>For <span class="math inline">\(\lambda=1\)</span>, the matrix
+becomes <span class="math display">\[\begin{bmatrix}-5 &amp;-5\\2
+&amp;2\end{bmatrix}=\begin{bmatrix}0 &amp;0\\1
+&amp;1\end{bmatrix}\]</span> This yields eigen vector <span
+class="math inline">\(\begin{bmatrix}1\\-1\end{bmatrix}\)</span>.</p>
+<p><strong>(2)</strong> The general solution to a matrix differential
+equation is <span class="math display">\[\pmb x(t)=c_1\pmb{v}_1
+e^{\lambda_1 t}+c_2\pmb{v}_2 e^{\lambda_2 t}\]</span> So from this,
+since we already found out the eigenvalues and the corresponding
+eigenvectors, we can write down <span class="math display">\[
+\begin{bmatrix}x(t)\\y(t)\end{bmatrix}=c_1\begin{bmatrix}5\\-2\end{bmatrix}e^{-2t}+c_2\begin{bmatrix}1\\-1\end{bmatrix}e^t
+\]</span></p>
+<p><strong>(3)</strong> Apply the initial values of <span
+class="math inline">\(x(0)\)</span> and <span
+class="math inline">\(y(0)\)</span>, here comes the following equations:
+<span class="math display">\[\begin{align}
+5c_1+c_2&amp;=-3\\
+-2c_1-c_2&amp;=0
+\end{align}\]</span> This gives <span
+class="math inline">\(c_1=-1\)</span> and <span
+class="math inline">\(c_2=2\)</span>. So <span
+class="math inline">\(x(1)+y(1)=-5e^{-2}+2e^1+2e^{-2}-2e^{-1}=-3e^{-2}\)</span>.</p>
+
+</details>
+<h2 id="summary">Summary</h2>
+<p>Here are the key knowledge points covered by this exam:</p>
+<ul>
+<li>Linear dependency, Rank, and dimension of null space</li>
+<li>Vector Space, Subspace Properties, and Basis</li>
+<li>Eigenvalues, eigenvectors, and the origin graph</li>
+<li>Similar matrices and diagonalization</li>
+<li>Applications to Differential Equations</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/en/images/wechatpay.jpg" alt="Zixi WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/en/images/paypal.jpg" alt="Zixi PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Zixi
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2023-Spring-Midterm2/" title="Purdue MA 26500 Spring 2023 Midterm II Solutions">https://www.packetmania.net/en/2024/02/29/Purdue-MA265-2023-Spring-Midterm2/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/en/tags/Linear-Algebra/" rel="tag"><i class="fa fa-tag"></i> Linear Algebra</a>
+          </div>
+
+        
+  <div class="social-like a2a_kit a2a_kit_size_32 a2a_default_style">
+    <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a>
+      <a class="a2a_button_linkedin"></a>
+      <a class="a2a_button_facebook"></a>
+      <a class="a2a_button_x"></a>
+      <a class="a2a_button_reddit"></a>
+      <a class="a2a_button_douban"></a>
+      <a class="a2a_button_wechat"></a>
+      <a class="a2a_button_whatsapp"></a>
+      <a class="a2a_button_line"></a>
+      <a class="a2a_button_telegram"></a>
+      <a class="a2a_button_threads"></a>
+      <a class="a2a_button_viber"></a>
+      <a class="a2a_button_print"></a>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/2024/02/28/C-Prog-Exam-Review-Practices-1/" rel="prev" title="Programming in C Exam Review and Practices (I)">
+                  <i class="fa fa-angle-left"></i> Programming in C Exam Review and Practices (I)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/2024/02/29/Purdue-MA265-2022-Spring-Midterm2/" rel="next" title="Purdue MA 26500 Spring 2022 Midterm II Solutions">
+                  Purdue MA 26500 Spring 2022 Midterm II Solutions <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Gitalk Comments</a></li>
+            <li class="tab"><a href="#comment-utterances">Utterances Comments</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Zixi</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>Word count total: </span>
+    <span title="Word count total">94k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>Reading time total &asymp;</span>
+    <span title="Reading time total">5:41</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.8.0/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"packetmania","repo":"en","client_id":"a45f6ae3f97c1a467856","client_secret":"7d81b74f952b388f93dcb5a8c44cd12f657969fa","admin_user":"packetmania","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","body":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.8.0/dist/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"a28ebc3bc1f82b0fe2657f9e5b247380"}</script>
+<script src="/en/js/third-party/comments/gitalk.js" defer></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"packetmania/en","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/en/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>
