@@ -387,10 +387,10 @@ applications.]]>
       <name>Zixi</name>
     </author>
     <category term="Technical Know-how" scheme="https://www.packetmania.net/en/categories/Technical-Know-how/"/>
-    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
     <category term="C/C++ Programming" scheme="https://www.packetmania.net/en/tags/C-C-Programming/"/>
     <category term="System Programming" scheme="https://www.packetmania.net/en/tags/System-Programming/"/>
     <category term="Computer Communications" scheme="https://www.packetmania.net/en/tags/Computer-Communications/"/>
+    <category term="Cryptography" scheme="https://www.packetmania.net/en/tags/Cryptography/"/>
     <category term="TCP/IP" scheme="https://www.packetmania.net/en/tags/TCP-IP/"/>
     <id>https://www.packetmania.net/en/2023/03/10/uClibc-tips/</id>
     <link href="https://www.packetmania.net/en/2023/03/10/uClibc-tips/"/>
